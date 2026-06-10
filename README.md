@@ -58,4 +58,4 @@ python3 -m http.server 8080
 
 ## License
 
-© Shining Star Media Productions. All rights reserved.
+© Shining Star Drones. All rights reserved.
