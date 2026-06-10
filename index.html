@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shining Star Media Productions | Commercial Drone Services London</title>
+    <meta name="description" content="GVC-qualified commercial drone services in London, Buckinghamshire & the South East. Aerial surveying, inspection, mapping, cinematic filming & FPV. Fully insured & CAA authorised.">
+    <meta name="keywords" content="drone services london, commercial drone pilot london, aerial surveying london, drone inspection buckinghamshire, FPV drone filming, GVC qualified drone pilot UK, roof inspection drone, construction drone survey">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Shining Star Media Productions | Commercial Drone Services">
+    <meta property="og:description" content="GVC-qualified commercial drone services. Aerial surveying, inspection, mapping & cinematic filming across London and the South East.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://shiningstarmedia.co.uk">
+
+    <!-- LocalBusiness JSON-LD (local SEO) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "@id": "https://shiningstarmedia.co.uk/#business",
+      "name": "Shining Star Media Productions",
+      "alternateName": "Shining Star Media",
+      "url": "https://shiningstarmedia.co.uk",
+      "email": "hello@shiningstarmedia.co.uk",
+      "description": "GVC-qualified commercial drone services: aerial surveying, inspection, mapping, and cinematic filming across London, Buckinghamshire, Berkshire, and Surrey.",
+      "image": "https://shiningstarmedia.co.uk/og-image.jpg",
+      "priceRange": "££",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "West London",
+        "addressRegion": "Greater London",
+        "addressCountry": "GB"
+      },
+      "areaServed": [
+        {"@type": "City", "name": "London"},
+        {"@type": "AdministrativeArea", "name": "Buckinghamshire"},
+        {"@type": "AdministrativeArea", "name": "Berkshire"},
+        {"@type": "AdministrativeArea", "name": "Surrey"},
+        {"@type": "AdministrativeArea", "name": "Hertfordshire"}
+      ],
+      "serviceType": [
+        "Aerial Surveying",
+        "Aerial Inspection",
+        "Roof Inspection",
+        "Construction Site Monitoring",
+        "Topographic Surveying",
+        "3D Modelling",
+        "Thermal Imaging Survey",
+        "Aerial Photography",
+        "Aerial Videography",
+        "FPV Drone Filming"
+      ],
+      "knowsAbout": [
+        "Drone surveying",
+        "Aerial inspection",
+        "Photogrammetry",
+        "RTK GPS",
+        "GVC certification",
+        "CAA regulations"
+      ]
+    }
+    </script>
+    
+    <style>
+        :root {
+            --bg: #0a0a0f;
+            --surface: #111118;
+            --border: #1e1e2e;
+            --text: #e4e4e7;
+            --muted: #a1a1aa;
+            --accent: #3b82f6;
+            --accent-glow: rgba(59, 130, 246, 0.15);
+            --gold: #f59e0b;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            background: rgba(10, 10, 15, 0.9);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text);
+            text-decoration: none;
+            letter-spacing: -0.02em;
+        }
+        
+        .logo span { color: var(--accent); }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: var(--muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+        
+        .nav-links a:hover { color: var(--text); }
+        
+        .nav-cta {
+            background: var(--accent);
+            color: white !important;
+            padding: 0.5rem 1.25rem;
+            border-radius: 6px;
+            font-weight: 500;
+        }
+        
+        /* Hero */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 6rem 2rem 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(ellipse at 30% 20%, rgba(59, 130, 246, 0.08) 0%, transparent 50%),
+                        radial-gradient(ellipse at 70% 80%, rgba(245, 158, 11, 0.05) 0%, transparent 50%);
+            animation: heroGlow 15s ease-in-out infinite;
+        }
+        
+        @keyframes heroGlow {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(-5%, -3%); }
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+        }
+        
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--accent-glow);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            padding: 0.4rem 1rem;
+            border-radius: 100px;
+            font-size: 0.8rem;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+        
+        .badge::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            background: #22c55e;
+            border-radius: 50%;
+            animation: pulse 2s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.4; }
+        }
+        
+        h1 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+        }
+        
+        h1 .highlight {
+            background: linear-gradient(135deg, var(--accent), #818cf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .hero-sub {
+            font-size: 1.2rem;
+            color: var(--muted);
+            max-width: 600px;
+            margin: 0 auto 2.5rem;
+        }
+        
+        .hero-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.8rem 1.75rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.2s;
+            cursor: pointer;
+            border: none;
+        }
+        
+        .btn-primary {
+            background: var(--accent);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: #2563eb;
+            transform: translateY(-1px);
+        }
+        
+        .btn-secondary {
+            background: var(--surface);
+            color: var(--text);
+            border: 1px solid var(--border);
+        }
+        
+        .btn-secondary:hover {
+            border-color: var(--muted);
+        }
+        
+        /* Sections */
+        section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-header h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.75rem;
+        }
+        
+        .section-header p {
+            color: var(--muted);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        /* Services Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .service-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2rem;
+            transition: all 0.3s;
+        }
+        
+        .service-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-2px);
+        }
+        
+        .service-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .service-card h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .service-card p {
+            color: var(--muted);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        
+        .service-card .price {
+            color: var(--gold);
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        
+        /* Credentials */
+        .credentials {
+            background: var(--surface);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .credentials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+        
+        .credential-item {
+            padding: 1.5rem;
+        }
+        
+        .credential-item .icon {
+            font-size: 2rem;
+            margin-bottom: 0.75rem;
+        }
+        
+        .credential-item h4 {
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+        
+        .credential-item p {
+            color: var(--muted);
+            font-size: 0.85rem;
+        }
+        
+        /* Pricing */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .pricing-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2rem;
+            position: relative;
+        }
+        
+        .pricing-card.featured {
+            border-color: var(--accent);
+        }
+        
+        .pricing-card.featured::before {
+            content: 'Most Popular';
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--accent);
+            color: white;
+            padding: 0.25rem 1rem;
+            border-radius: 100px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+        
+        .pricing-card h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .pricing-card .price {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin: 1rem 0;
+        }
+        
+        .pricing-card .price span {
+            font-size: 1rem;
+            font-weight: 400;
+            color: var(--muted);
+        }
+        
+        .pricing-card ul {
+            list-style: none;
+            margin: 1.5rem 0;
+        }
+        
+        .pricing-card li {
+            padding: 0.4rem 0;
+            font-size: 0.9rem;
+            color: var(--muted);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .pricing-card li::before {
+            content: '✓';
+            color: #22c55e;
+            font-weight: 700;
+        }
+        
+        /* CTA */
+        .cta-section {
+            text-align: center;
+            background: var(--surface);
+            border-radius: 16px;
+            padding: 4rem 2rem;
+            margin: 2rem auto;
+            max-width: 800px;
+        }
+        
+        .cta-section h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        .cta-section p {
+            color: var(--muted);
+            margin-bottom: 2rem;
+        }
+        
+        /* Footer */
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 3rem 2rem;
+            text-align: center;
+            color: var(--muted);
+            font-size: 0.85rem;
+        }
+        
+        footer a {
+            color: var(--text);
+            text-decoration: none;
+        }
+
+        /* Showreel */
+        .showreel-grid {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .video-wrap {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 */
+            height: 0;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        .video-wrap iframe {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Areas */
+        .areas-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1rem;
+            text-align: left;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .areas-grid > div {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 1.25rem 1.5rem;
+            font-size: 0.92rem;
+            line-height: 1.5;
+        }
+        .areas-grid strong {
+            color: var(--accent);
+            display: block;
+            margin-bottom: 0.4rem;
+            font-size: 1rem;
+        }
+        .areas-grid span {
+            color: var(--muted);
+            font-size: 0.85rem;
+        }
+
+        /* Contact form */
+        .contact-form {
+            max-width: 720px;
+            margin: 2rem auto 0;
+            text-align: left;
+        }
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        .form-field {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 1rem;
+        }
+        .form-field label {
+            font-size: 0.8rem;
+            color: var(--muted);
+            margin-bottom: 0.35rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .form-field input,
+        .form-field select,
+        .form-field textarea {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 0.75rem 1rem;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            font-family: inherit;
+            transition: border-color 0.2s, background 0.2s;
+        }
+        .form-field input:focus,
+        .form-field select:focus,
+        .form-field textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+            background: rgba(59,130,246,0.05);
+        }
+        .form-field textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+        .form-fineprint {
+            text-align: center;
+            color: var(--muted);
+            font-size: 0.8rem;
+            margin-top: 0.75rem;
+        }
+        .contact-alt {
+            text-align: center;
+            margin-top: 2.5rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+        }
+        .contact-alt p {
+            color: var(--muted);
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+        .contact-alt-actions {
+            display: flex;
+            gap: 0.75rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        @media (max-width: 600px) {
+            .form-row { grid-template-columns: 1fr; }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .hero { padding-top: 5rem; }
+            section { padding: 3rem 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <a href="#" class="logo">Shining<span>Star</span> Media</a>
+        <ul class="nav-links">
+            <li><a href="#services">Services</a></li>
+            <li><a href="#credentials">Credentials</a></li>
+            <li><a href="#showreel">Showreel</a></li>
+            <li><a href="#areas">Areas</a></li>
+            <li><a href="#pricing">Pricing</a></li>
+            <li><a href="tel:+44 20 0000 0000" aria-label="Phone">📞</a></li>
+            <li><a href="#contact" class="nav-cta">Get a Quote</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="badge">Available for bookings</div>
+            <h1>Commercial <span class="highlight">Drone Services</span><br>Across London & the South East</h1>
+            <p class="hero-sub">
+                GVC-qualified pilot delivering aerial surveying, inspection, mapping & cinematic filming. 
+                Fully insured. CAA authorised. Data processing included.
+            </p>
+            <div class="hero-actions">
+                <a href="#contact" class="btn btn-primary">📩 Get a Free Quote</a>
+                <a href="https://www.youtube.com/@shiningstarmediaproductions" class="btn btn-secondary" target="_blank">🎬 View Showreel</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section id="services">
+        <div class="section-header">
+            <h2>What We Do</h2>
+            <p>Two distinct service lines — commercial data capture and cinematic production</p>
+        </div>
+        
+        <div class="services-grid">
+            <!-- Commercial Services -->
+            <div class="service-card">
+                <div class="service-icon">🏗️</div>
+                <h3>Construction Monitoring</h3>
+                <p>Progress tracking, site overviews, earthwork volumetrics & as-built documentation. Monthly retainer available.</p>
+                <div class="price">From £500/visit</div>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon">🏠</div>
+                <h3>Roof & Building Inspection</h3>
+                <p>Safe, fast inspection of roofs, facades & structures without scaffolding. Detailed reports with annotated imagery.</p>
+                <div class="price">From £300/inspection</div>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon">🗺️</div>
+                <h3>Surveying & Mapping</h3>
+                <p>Topographic surveys, orthomosaics, 3D models & digital twins. RTK-accurate data processing included.</p>
+                <div class="price">From £1,000/project</div>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon">🌡️</div>
+                <h3>Thermal Imaging</h3>
+                <p>Solar panel inspection, building heat loss analysis, water leak detection. FLIR-grade thermal data.</p>
+                <div class="price">From £500/site</div>
+            </div>
+            
+            <!-- Creative Services -->
+            <div class="service-card">
+                <div class="service-icon">🎥</div>
+                <h3>Cinematic Filming</h3>
+                <p>Broadcast-quality aerial footage for film, TV, brands & real estate. Smooth, cinematic camera work.</p>
+                <div class="price">From £400/half day</div>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-icon">🚀</div>
+                <h3>FPV Drone Filming</h3>
+                <p>High-speed, immersive FPV footage through buildings, landscapes & tight spaces. GoPro 12 quality.</p>
+                <div class="price">From £700/day</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Credentials -->
+    <section id="credentials" class="credentials">
+        <div class="credentials-grid">
+            <div class="credential-item">
+                <div class="icon">✅</div>
+                <h4>GVC Qualified</h4>
+                <p>General VLOS Certificate — CAA approved for commercial operations</p>
+            </div>
+            <div class="credential-item">
+                <div class="icon">🛡️</div>
+                <h4>£1m Public Liability</h4>
+                <p>Fully insured for commercial drone operations (CAA Operator ID on request)</p>
+            </div>
+            <div class="credential-item">
+                <div class="icon">📍</div>
+                <h4>London & South East</h4>
+                <p>Covering Greater London, Buckinghamshire, Berkshire, Surrey & beyond</p>
+            </div>
+            <div class="credential-item">
+                <div class="icon">📊</div>
+                <h4>Data Processing</h4>
+                <p>Full data pipeline — from capture to deliverable. Not just raw footage.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Showreel -->
+    <section id="showreel">
+        <div class="section-header">
+            <h2>See the Work</h2>
+            <p>Cinematic, commercial, and FPV — straight from the YouTube channel</p>
+        </div>
+        <div class="showreel-grid">
+            <div class="video-wrap">
+                <iframe
+                    src="https://www.youtube.com/embed?listType=user_uploads&list=shiningstarmediaproductions&index=0"
+                    title="Shining Star Media — Showreel"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen loading="lazy"></iframe>
+            </div>
+        </div>
+        <p style="text-align:center; color: var(--muted); margin-top: 1.5rem; font-size: 0.9rem;">
+            Full portfolio: <a href="https://www.youtube.com/@shiningstarmediaproductions" target="_blank" style="color: var(--accent);">@shiningstarmediaproductions</a>
+        </p>
+    </section>
+
+    <!-- Areas Covered (local SEO) -->
+    <section id="areas" class="credentials">
+        <div class="section-header" style="margin-bottom:2rem;">
+            <h2>Areas We Cover</h2>
+            <p>Service-area business — we come to you across the Home Counties</p>
+        </div>
+        <div class="areas-grid">
+            <div><strong>West London</strong><br><span>Chiswick · Ealing · Hammersmith · Fulham · Kensington · Chelsea</span></div>
+            <div><strong>Greater London</strong><br><span>All boroughs by appointment</span></div>
+            <div><strong>Buckinghamshire</strong><br><span>Windsor · Maidenhead · High Wycombe · Aylesbury · Beaconsfield</span></div>
+            <div><strong>Berkshire</strong><br><span>Slough · Reading · Bracknell · Wokingham · Newbury</span></div>
+            <div><strong>Surrey</strong><br><span>Woking · Guildford · Staines · Egham · Camberley</span></div>
+            <div><strong>Hertfordshire</strong><br><span>Watford · St Albans · Hemel Hempstead · Stevenage</span></div>
+        </div>
+    </section>
+
+    <!-- Pricing -->
+    <section id="pricing">
+        <div class="section-header">
+            <h2>Transparent Pricing</h2>
+            <p>No hidden fees. Travel included within 1 hour. VAT applicable.</p>
+        </div>
+        
+        <div class="pricing-grid">
+            <div class="pricing-card">
+                <h3>Half Day Filming</h3>
+                <div class="price">£400 <span>/ 4 hours</span></div>
+                <ul>
+                    <li>4 hours on-site filming</li>
+                    <li>1 hour travel included</li>
+                    <li>DJI Mini 3 Pro or FPV</li>
+                    <li>Raw footage delivery</li>
+                    <li>Up to 2 additional hours available</li>
+                </ul>
+                <a href="#contact" class="btn btn-secondary" style="width:100%;justify-content:center;">Enquire</a>
+            </div>
+            
+            <div class="pricing-card featured">
+                <h3>Full Day Filming</h3>
+                <div class="price">£700 <span>/ 8 hours</span></div>
+                <ul>
+                    <li>8 hours on-site filming</li>
+                    <li>1 hour travel included</li>
+                    <li>Any drone in our fleet</li>
+                    <li>Raw footage delivery</li>
+                    <li>Best value for productions</li>
+                </ul>
+                <a href="#contact" class="btn btn-primary" style="width:100%;justify-content:center;">Book Now</a>
+            </div>
+            
+            <div class="pricing-card">
+                <h3>Editing Package</h3>
+                <div class="price">£250 <span>/ project</span></div>
+                <ul>
+                    <li>2-min horizontal edit</li>
+                    <li>Two 45-sec vertical edits</li>
+                    <li>2 revisions included</li>
+                    <li>Colour grading & sound design</li>
+                    <li>Turnaround: 3-5 working days</li>
+                </ul>
+                <a href="#contact" class="btn btn-secondary" style="width:100%;justify-content:center;">Enquire</a>
+            </div>
+        </div>
+        
+        <p style="text-align:center; color: var(--muted); margin-top: 2rem; font-size: 0.9rem;">
+            Commercial surveying, inspection & mapping projects are quoted individually. 
+            <a href="#contact" style="color: var(--accent);">Get in touch</a> for a free assessment.
+        </p>
+    </section>
+
+    <!-- CTA / Contact -->
+    <section id="contact">
+        <div class="cta-section">
+            <h2>Get a Quote</h2>
+            <p>Tell us about your project. We reply within 24 hours with a tailored quote.</p>
+
+            <form id="contact-form" class="contact-form" action="https://formspree.io/f/REPLACE_WITH_YOUR_FORM_ID" method="POST">
+                <div class="form-row">
+                    <div class="form-field">
+                        <label for="cf-name">Name *</label>
+                        <input type="text" id="cf-name" name="name" required autocomplete="name">
+                    </div>
+                    <div class="form-field">
+                        <label for="cf-company">Company</label>
+                        <input type="text" id="cf-company" name="company" autocomplete="organization">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-field">
+                        <label for="cf-email">Email *</label>
+                        <input type="email" id="cf-email" name="email" required autocomplete="email">
+                    </div>
+                    <div class="form-field">
+                        <label for="cf-phone">Phone</label>
+                        <input type="tel" id="cf-phone" name="phone" autocomplete="tel">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-field">
+                        <label for="cf-service">Service *</label>
+                        <select id="cf-service" name="service" required>
+                            <option value="">Select a service…</option>
+                            <option>Roof / building inspection</option>
+                            <option>Construction progress monitoring</option>
+                            <option>Topographic / site survey</option>
+                            <option>Volumetric / earthworks</option>
+                            <option>Thermal imaging survey</option>
+                            <option>3D model / digital twin</option>
+                            <option>Solar panel inspection</option>
+                            <option>Cinematic filming (half day)</option>
+                            <option>Cinematic filming (full day)</option>
+                            <option>FPV drone filming</option>
+                            <option>Real estate photography</option>
+                            <option>Other / not sure</option>
+                        </select>
+                    </div>
+                    <div class="form-field">
+                        <label for="cf-location">Site location</label>
+                        <input type="text" id="cf-location" name="location" placeholder="e.g. Slough, West London">
+                    </div>
+                </div>
+                <div class="form-field">
+                    <label for="cf-message">Tell us about the project</label>
+                    <textarea id="cf-message" name="message" rows="5" placeholder="Size of site, deadlines, access notes, what's been done before…"></textarea>
+                </div>
+                <!-- honeypot -->
+                <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px" aria-hidden="true">
+                <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;font-size:1.05rem;">
+                    Send Enquiry →
+                </button>
+                <p class="form-fineprint">
+                    Submissions go to <strong>hello@shiningstarmedia.co.uk</strong>. We'll never share your details.
+                </p>
+            </form>
+
+            <div class="contact-alt">
+                <p>Prefer email or a quick call?</p>
+                <div class="contact-alt-actions">
+                    <a href="mailto:hello@shiningstarmedia.co.uk" class="btn btn-secondary">📧 hello@shiningstarmedia.co.uk</a>
+                    <a href="tel:+44 20 0000 0000" class="btn btn-secondary">📞 +44 20 0000 0000</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p><strong>Shining Star Media Productions</strong></p>
+        <p style="margin-top:0.25rem;">West London · hello@shiningstarmedia.co.uk · +44 20 0000 0000</p>
+        <p style="margin-top: 0.75rem; font-size: 0.8rem;">
+            GVC Qualified · CAA Authorised · £1m Public Liability Insurance
+        </p>
+        <p style="margin-top: 1.5rem;">
+            <a href="https://www.youtube.com/@shiningstarmediaproductions" target="_blank" rel="noopener">YouTube</a> ·
+            <a href="https://www.linkedin.com/company/shining-star-media-productions" target="_blank" rel="noopener">LinkedIn</a> ·
+            <a href="mailto:hello@shiningstarmedia.co.uk">Email</a> ·
+            <a href="tel:+44 20 0000 0000">Call</a>
+        </p>
+        <p style="margin-top: 1.5rem; font-size:0.75rem; opacity:0.6;">
+            &copy; 2026 Shining Star Media Productions. Registered in England. All rights reserved.
+        </p>
+    </footer>
+
+</body>
+</html>

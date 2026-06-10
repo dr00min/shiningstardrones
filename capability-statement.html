@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Shining Star Media Productions — Capability Statement</title>
+<style>
+    @page { size: A4; margin: 12mm; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+        font-family: -apple-system, "Segoe UI", system-ui, sans-serif;
+        color: #0a0a0f;
+        background: #fff;
+        line-height: 1.45;
+        font-size: 10.5pt;
+    }
+    .page { padding: 8mm; }
+    h1 { font-size: 22pt; color: #0a0a0f; margin-bottom: 2pt; letter-spacing: -0.02em; }
+    .tagline { color: #3b82f6; font-size: 11pt; font-weight: 500; margin-bottom: 16pt; }
+    h2 { font-size: 12pt; color: #0a0a0f; border-bottom: 2px solid #3b82f6; padding-bottom: 3pt; margin: 14pt 0 6pt; text-transform: uppercase; letter-spacing: 0.05em; }
+    h3 { font-size: 10.5pt; color: #0a0a0f; margin: 8pt 0 3pt; }
+    p { margin-bottom: 6pt; }
+    .header { display: flex; justify-content: space-between; align-items: flex-start; border-bottom: 3px solid #3b82f6; padding-bottom: 12pt; margin-bottom: 14pt; }
+    .header .name { font-size: 22pt; font-weight: 800; }
+    .header .role { color: #666; font-size: 9pt; }
+    .header .contact { text-align: right; font-size: 9pt; color: #333; line-height: 1.6; }
+    .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10pt; }
+    .credentials { background: #f5f7fa; border-left: 3px solid #3b82f6; padding: 8pt 10pt; }
+    .credentials ul { list-style: none; }
+    .credentials li { padding: 2pt 0; font-size: 9.5pt; }
+    .credentials li strong { color: #0a0a0f; }
+    table { width: 100%; border-collapse: collapse; margin: 6pt 0; font-size: 9.5pt; }
+    th, td { padding: 4pt 6pt; text-align: left; border-bottom: 1px solid #e5e7eb; }
+    th { background: #f9fafb; font-weight: 600; color: #374151; }
+    .price { font-weight: 600; color: #0a0a0f; text-align: right; }
+    .placeholder { background: #fef3c7; padding: 2pt 4pt; border-radius: 2pt; font-family: monospace; font-size: 8.5pt; }
+    .footer { margin-top: 16pt; padding-top: 8pt; border-top: 1px solid #e5e7eb; font-size: 8pt; color: #666; }
+    .sample-img {
+        background: #e5e7eb;
+        border: 1px solid #d1d5db;
+        border-radius: 4pt;
+        height: 100pt;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #6b7280;
+        font-size: 9pt;
+    }
+    .deliverables { list-style: none; counter-reset: d; }
+    .deliverables li { padding: 2pt 0 2pt 18pt; position: relative; }
+    .deliverables li::before { counter-increment: d; content: counter(d); position: absolute; left: 0; top: 2pt; width: 14pt; height: 14pt; background: #3b82f6; color: #fff; border-radius: 50%; font-size: 8pt; font-weight: 600; display: flex; align-items: center; justify-content: center; }
+</style>
+</head>
+<body>
+<div class="page">
+
+    <div class="header">
+        <div>
+            <div class="name">Shining Star Media Productions</div>
+            <div class="role">Commercial drone services · West London</div>
+        </div>
+        <div class="contact">
+            <strong>[Your Name]</strong><br>
+            Founder & Chief Pilot<br>
+            <a>hello@shiningstarmedia.co.uk</a><br>
+            +44 [phone]<br>
+            <a>https://shiningstarmedia.co.uk</a>
+        </div>
+    </div>
+
+    <h1>Aerial data, delivered.</h1>
+    <p class="tagline">GVC-qualified commercial drone services for surveying, inspection, and cinematic work across London and the South East.</p>
+
+    <h2>Credentials & Assurance</h2>
+    <div class="credentials">
+        <ul>
+            <li><strong>CAA General VLOS Certificate (GVC)</strong> — UK commercial drone authorisation</li>
+            <li><strong>CAA Operator ID:</strong> <span class="placeholder">[INSERT]</span></li>
+            <li><strong>Public liability insurance:</strong> £1,000,000 (certificate on request)</li>
+            <li><strong>Coverage:</strong> Greater London, Buckinghamshire, Berkshire, Surrey, Hertfordshire</li>
+            <li><strong>Fleet:</strong> DJI Mini 3 Pro · custom FPV rigs (GoPro 12) · RTK/thermal aircraft deployed per project</li>
+            <li><strong>Data handling:</strong> In-house processing — orthomosaics, point clouds, 3D models, volumetric analysis</li>
+        </ul>
+    </div>
+
+    <h2>Services & Indicative Pricing</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Service</th>
+                <th>Typical deliverable</th>
+                <th>From</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td>Roof &amp; building inspection</td><td>4K stills + annotated PDF report</td><td class="price">£300</td></tr>
+            <tr><td>Construction progress monitoring (per visit)</td><td>Orthomosaic, set of comparison stills, optional cut/fill</td><td class="price">£500</td></tr>
+            <tr><td>Topographic / site survey (RTK)</td><td>GeoTIFF, point cloud, linework DXF</td><td class="price">£1,200</td></tr>
+            <tr><td>Volumetric / earthworks</td><td>Cut/fill report, stockpile volumes</td><td class="price">£800</td></tr>
+            <tr><td>Thermal imaging survey</td><td>RGB + radiometric orthomosaic, defect flags</td><td class="price">£600</td></tr>
+            <tr><td>3D model / digital twin</td><td>Web-viewable 3D model + downloadable mesh</td><td class="price">£1,500</td></tr>
+            <tr><td>Solar panel inspection</td><td>Per-panel fault map, severity ranking</td><td class="price">£500</td></tr>
+            <tr><td>Cinematic filming — half day (4h)</td><td>Raw footage, colour-graded</td><td class="price">£400</td></tr>
+            <tr><td>Cinematic filming — full day (8h)</td><td>Raw footage, colour-graded</td><td class="price">£700</td></tr>
+            <tr><td>FPV drone filming (per day)</td><td>High-speed immersive GoPro 12 footage</td><td class="price">£750</td></tr>
+            <tr><td>Editing package</td><td>2-min horizontal + two 45-sec vertical edits</td><td class="price">£250</td></tr>
+        </tbody>
+    </table>
+    <p style="font-size:8.5pt; color:#6b7280;">All prices exclude VAT. Commercial surveying and inspection projects are quoted individually based on site size, complexity, and deliverable requirements. Travel within 1 hour included; extended travel at £20/hr.</p>
+
+    <h2>Sample Deliverables</h2>
+    <div class="grid">
+        <div>
+            <h3>Sample orthomosaic crop</h3>
+            <div class="sample-img">[REPLACE: orthomosaic crop, ~150pt square]</div>
+            <p style="font-size:8.5pt; color:#6b7280;">Construction site, 0.4 ha · Phantom 4 RTK · 49 MP · 2.1 cm/px GSD</p>
+        </div>
+        <div>
+            <h3>Sample inspection report</h3>
+            <div class="sample-img">[REPLACE: annotated inspection still]</div>
+            <p style="font-size:8.5pt; color:#6b7280;">Roof condition survey, 4-bed detached · 18 defect callouts</p>
+        </div>
+    </div>
+
+    <h2>How We Work</h2>
+    <ol class="deliverables">
+        <li><strong>Brief.</strong> 20-min call to understand the site, access, deliverable, deadline.</li>
+        <li><strong>Quote.</strong> Fixed-price or day-rate quote in writing within 24 hours.</li>
+        <li><strong>Flight.</strong> CAA-compliant operation, weather/permission check on the day.</li>
+        <li><strong>Process.</strong> In-house: orthomosaic, point cloud, volumetrics, annotations as required.</li>
+        <li><strong>Deliver.</strong> Report + data files delivered to your inbox, typically 48h post-flight.</li>
+    </ol>
+
+    <h2>Recent / Representative Work</h2>
+    <table>
+        <thead><tr><th>Client / project</th><th>Service</th><th>Deliverable</th></tr></thead>
+        <tbody>
+            <tr><td><span class="placeholder">[INSERT]</span></td><td>Construction monitoring</td><td>Monthly orthomosaics, 6 months</td></tr>
+            <tr><td><span class="placeholder">[INSERT]</span></td><td>Roof inspection</td><td>Annotated report, 4 defects flagged</td></tr>
+            <tr><td><span class="placeholder">[INSERT]</span></td><td>FPV brand film</td><td>90-sec social cut + 3-min hero</td></tr>
+        </tbody>
+    </table>
+
+    <div class="footer">
+        <strong>Shining Star Media Productions</strong> · [Business Address] · Company No. [if applicable] · VAT No. [if applicable]<br>
+        GVC Qualified · CAA Operator ID [INSERT] · £1m Public Liability Insurance<br>
+        Coverage: Greater London · Buckinghamshire · Berkshire · Surrey · Hertfordshire
+    </div>
+
+</div>
+</body>
+</html>

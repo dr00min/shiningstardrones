@@ -1,0 +1,26 @@
+# macOS / OS noise
+.DS_Store
+Thumbs.db
+
+# Editors
+*.swp
+*.swo
+*~
+.vscode/
+.idea/
+
+# Local dev
+*.log
+.cache/
+.local/
+
+# Test fixtures
+test-*.html
+*-copy.html
+*-backup.html
+
+# Build outputs (not used yet, but safe to ignore)
+dist/
+build/
+*.min.css
+*.min.js

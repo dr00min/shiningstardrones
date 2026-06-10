@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quote Generator — Shining Star Media</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+            background: #0a0a0f;
+            color: #e4e4e7;
+            padding: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        h1 { font-size: 1.5rem; margin-bottom: 1.5rem; color: #e4e4e7; }
+        .form-group { margin-bottom: 1.25rem; }
+        label { display: block; font-size: 0.85rem; color: #a1a1aa; margin-bottom: 0.4rem; font-weight: 500; }
+        input, select, textarea {
+            width: 100%;
+            padding: 0.7rem;
+            background: #111118;
+            border: 1px solid #1e1e2e;
+            border-radius: 6px;
+            color: #e4e4e7;
+            font-size: 0.95rem;
+        }
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: #3b82f6;
+        }
+        .row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+        .checkbox-group { display: flex; flex-wrap: wrap; gap: 1rem; }
+        .checkbox-item { display: flex; align-items: center; gap: 0.5rem; }
+        .checkbox-item input { width: auto; }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.8rem 1.75rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            border: none;
+            background: #3b82f6;
+            color: white;
+        }
+        .btn:hover { background: #2563eb; }
+        .btn-secondary {
+            background: #111118;
+            border: 1px solid #1e1e2e;
+            color: #e4e4e7;
+        }
+        .btn-secondary:hover { border-color: #a1a1aa; }
+        
+        #quote-output {
+            display: none;
+            margin-top: 2rem;
+            background: #111118;
+            border: 1px solid #1e1e2e;
+            border-radius: 12px;
+            padding: 2rem;
+        }
+        #quote-output h2 { font-size: 1.25rem; margin-bottom: 1rem; color: #3b82f6; }
+        .quote-line {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #1e1e2e;
+            font-size: 0.95rem;
+        }
+        .quote-line:last-child { border-bottom: none; }
+        .quote-line .label { color: #a1a1aa; }
+        .quote-line .value { font-weight: 500; }
+        .quote-total {
+            display: flex;
+            justify-content: space-between;
+            padding: 1rem 0;
+            margin-top: 0.5rem;
+            border-top: 2px solid #3b82f6;
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+        .quote-total .value { color: #f59e0b; }
+        .quote-notes { margin-top: 1rem; color: #a1a1aa; font-size: 0.85rem; }
+        .actions { display: flex; gap: 1rem; margin-top: 1.5rem; }
+        
+        @media print {
+            body { background: white; color: black; }
+            .no-print { display: none !important; }
+            #quote-output { border: 1px solid #ccc; background: white; }
+            input, select, textarea { border: 1px solid #ccc; background: white; color: black; }
+        }
+    </style>
+</head>
+<body>
+
+<h1>📝 Shining Star Media — Quote Generator</h1>
+
+<form id="quote-form">
+    <div class="row">
+        <div class="form-group">
+            <label>Client Name</label>
+            <input type="text" id="client-name" placeholder="Company or individual name" required>
+        </div>
+        <div class="form-group">
+            <label>Contact Email</label>
+            <input type="email" id="client-email" placeholder="email@example.com">
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="form-group">
+            <label>Service Type</label>
+            <select id="service-type" onchange="updateOptions()">
+                <option value="">Select a service...</option>
+                <optgroup label="Filming Services">
+                    <option value="filming_half">Half Day Filming (4 hours)</option>
+                    <option value="filming_full">Full Day Filming (8 hours)</option>
+                    <option value="fpv_half">Half Day FPV Filming</option>
+                    <option value="fpv_full">Full Day FPV Filming</option>
+                </optgroup>
+                <optgroup label="Inspection & Survey">
+                    <option value="roof_inspection">Roof/Building Inspection</option>
+                    <option value="thermal_inspection">Thermal Imaging Survey</option>
+                    <option value="construction_visit">Construction Progress Visit</option>
+                    <option value="site_survey">Site Survey (Topographic)</option>
+                    <option value="volumetric">Volumetric Analysis</option>
+                    <option value="3d_model">3D Model / Digital Twin</option>
+                    <option value="solar_inspection">Solar Panel Inspection</option>
+                </optgroup>
+                <optgroup label="Editing">
+                    <option value="editing_standard">Standard Edit Package</option>
+                    <option value="editing_additional_h">Additional Horizontal Edit</option>
+                    <option value="editing_additional_v">Set of 3 Vertical Edits</option>
+                </optgroup>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Location</label>
+            <input type="text" id="location" placeholder="e.g., West London, Windsor, Slough">
+        </div>
+    </div>
+    
+    <div class="form-group">
+        <label>Additional Services</label>
+        <div class="checkbox-group">
+            <label class="checkbox-item">
+                <input type="checkbox" id="add-extra-hours"> Extra hours
+                <input type="number" id="extra-hours-count" min="0" max="12" value="0" style="width:60px;margin-left:0.5rem;" oninput="updateHourlyLabels()"> × £100/hr
+            </label>
+            <label class="checkbox-item">
+                <input type="checkbox" id="add-assistant"> Assistant (+£150 half / £350 full)
+            </label>
+            <label class="checkbox-item">
+                <input type="checkbox" id="add-travel"> Extended travel
+                <input type="number" id="travel-hours-count" min="0" max="20" value="0" style="width:60px;margin-left:0.5rem;" oninput="updateHourlyLabels()"> × £20/hr
+            </label>
+            <label class="checkbox-item">
+                <input type="checkbox" id="add-revisions"> Additional revisions (+£80)
+            </label>
+            <label class="checkbox-item">
+                <input type="checkbox" id="add-rental"> Hardware rental (quote separately)
+            </label>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label>Number of Sites/Locations</label>
+        <select id="num-sites">
+            <option value="1">1 site</option>
+            <option value="2">2 sites (+50%)</option>
+            <option value="3">3 sites (+75%)</option>
+            <option value="4">4+ sites (custom quote required)</option>
+        </select>
+        <small id="multi-site-note" style="color:var(--muted);font-size:0.8rem;"></small>
+    </div>
+    
+    <div class="form-group">
+        <label>Project Description / Notes</label>
+        <textarea id="description" rows="3" placeholder="Brief description of what's needed, deadlines, special requirements..."></textarea>
+    </div>
+    
+    <div class="form-group">
+        <label>Manual Price Override (£, leave blank for auto-calc)</label>
+        <input type="number" id="price-override" placeholder="e.g., 500">
+        <small id="override-hint" style="color:var(--muted);font-size:0.8rem;"></small>
+    </div>
+    
+    <div class="actions no-print">
+        <button type="submit" class="btn">Generate Quote</button>
+        <button type="button" class="btn btn-secondary" onclick="resetForm()">Reset</button>
+    </div>
+</form>
+
+<div id="quote-output">
+    <h2 id="quote-title">Quote Preview</h2>
+    <div id="quote-lines"></div>
+    <div class="quote-total">
+        <span class="label">Total (excl. VAT)</span>
+        <span class="value" id="quote-total">£0</span>
+    </div>
+    <div class="quote-notes">
+        <p>• All prices are exclusive of VAT</p>
+        <p>• 50% deposit required to confirm booking</p>
+        <p>• Balance due within 14 days of delivery</p>
+        <p>• Subject to weather and airspace conditions</p>
+    </div>
+    <div class="actions no-print">
+        <button class="btn" onclick="window.print()">📄 Print / Save PDF</button>
+        <button class="btn btn-secondary" onclick="copyQuote()">📋 Copy to Clipboard</button>
+    </div>
+</div>
+
+<script>
+const PRICING = {
+    filming_half: { label: "Half Day Filming", price: 400 },
+    filming_full: { label: "Full Day Filming", price: 700 },
+    fpv_half: { label: "Half Day FPV Filming", price: 450 },
+    fpv_full: { label: "Full Day FPV Filming", price: 750 },
+    roof_inspection: { label: "Roof/Building Inspection", price: 350 },
+    thermal_inspection: { label: "Thermal Imaging Survey", price: 600 },
+    construction_visit: { label: "Construction Progress Visit", price: 500 },
+    site_survey: { label: "Site Survey (Topographic)", price: 1200 },
+    volumetric: { label: "Volumetric Analysis", price: 800 },
+    "3d_model": { label: "3D Model / Digital Twin", price: 1500 },
+    solar_inspection: { label: "Solar Panel Inspection", price: 500 },
+    editing_standard: { label: "Standard Edit Package", price: 250 },
+    editing_additional_h: { label: "Additional Horizontal Edit", price: 150 },
+    editing_additional_v: { label: "Set of 3 Vertical Edits", price: 150 },
+};
+
+document.getElementById('quote-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    generateQuote();
+});
+
+function generateQuote() {
+    const clientName = document.getElementById('client-name').value.trim();
+    const clientEmail = document.getElementById('client-email').value.trim();
+    const serviceType = document.getElementById('service-type').value;
+    const location = document.getElementById('location').value.trim();
+    const numSites = parseInt(document.getElementById('num-sites').value) || 1;
+    const priceOverrideStr = document.getElementById('price-override').value;
+    const priceOverride = priceOverrideStr ? parseFloat(priceOverrideStr) : null;
+    const extraHours = Math.max(0, parseInt(document.getElementById('extra-hours-count').value) || 0);
+    const travelHours = Math.max(0, parseInt(document.getElementById('travel-hours-count').value) || 0);
+
+    if (!clientName) {
+        alert('Please enter a client name');
+        return;
+    }
+
+    // 4+ sites is a custom-quote case
+    if (numSites === 4 && !priceOverride) {
+        document.getElementById('multi-site-note').textContent =
+            '⚠️ 4+ sites requires a custom quote — set the price override below.';
+        document.getElementById('multi-site-note').style.color = '#f59e0b';
+        if (!confirm('4+ sites should be quoted manually. Set a price override and continue anyway?')) {
+            return;
+        }
+    }
+
+    const lines = [];
+    let total = 0;
+    let basePrice = 0;
+
+    // Base service
+    if (priceOverride !== null && !isNaN(priceOverride)) {
+        lines.push({ label: "Custom quote (per project)", price: priceOverride });
+        total = priceOverride;
+        basePrice = priceOverride;
+        if (numSites > 1) {
+            lines.push({ label: `Multi-site (${numSites} sites)`, price: 0, note: 'included in custom price' });
+        }
+    } else if (PRICING[serviceType]) {
+        const base = PRICING[serviceType];
+        lines.push({ label: base.label, price: base.price });
+        total = base.price;
+        basePrice = base.price;
+
+        // Multi-site multiplier (only when not overridden)
+        if (numSites > 1) {
+            const multiplier = numSites === 2 ? 1.5 : numSites === 3 ? 1.75 : 2;
+            const siteTotal = base.price * multiplier;
+            lines.push({ label: `Multi-site (${numSites} sites, ${multiplier}× multiplier)`, price: siteTotal - base.price });
+            total = siteTotal;
+        }
+    } else {
+        lines.push({ label: "Custom Service", price: 0 });
+        basePrice = 0;
+    }
+
+    // Extra hours (number × £100)
+    if (document.getElementById('add-extra-hours').checked && extraHours > 0) {
+        const cost = extraHours * 100;
+        lines.push({ label: `Extra hours (${extraHours} × £100)`, price: cost });
+        total += cost;
+    } else if (document.getElementById('add-extra-hours').checked && extraHours === 0) {
+        document.getElementById('add-extra-hours').checked = false;
+    }
+
+    // Assistant (checkbox only — rate auto-selected by service type)
+    if (document.getElementById('add-assistant').checked) {
+        const isFull = serviceType.includes('full') || serviceType.includes('survey') || serviceType.includes('model') || serviceType.includes('construction') || serviceType.includes('volumetric') || serviceType.includes('thermal') || serviceType.includes('solar');
+        const assistantPrice = isFull ? 350 : 150;
+        lines.push({ label: isFull ? "Assistant (full day)" : "Assistant (half day)", price: assistantPrice });
+        total += assistantPrice;
+    }
+
+    // Extended travel (number × £20)
+    if (document.getElementById('add-travel').checked && travelHours > 0) {
+        const cost = travelHours * 20;
+        lines.push({ label: `Extended travel (${travelHours} hours × £20)`, price: cost });
+        total += cost;
+    } else if (document.getElementById('add-travel').checked && travelHours === 0) {
+        document.getElementById('add-travel').checked = false;
+    }
+
+    // Additional revisions
+    if (document.getElementById('add-revisions').checked) {
+        lines.push({ label: "Additional revisions", price: 80 });
+        total += 80;
+    }
+
+    // Hardware rental (placeholder)
+    if (document.getElementById('add-rental').checked) {
+        lines.push({ label: "Hardware rental", price: 0, note: 'TBC — quoted per project' });
+    }
+
+    // Output — escape user input to avoid HTML injection / rendering bugs
+    const date = new Date().toLocaleDateString('en-GB');
+    const safeName = escapeHtml(clientName);
+    const safeEmail = escapeHtml(clientEmail);
+    const safeLocation = escapeHtml(location);
+    const safeService = escapeHtml(serviceType || '(not selected)');
+
+    document.getElementById('quote-title').textContent = `Quote for ${clientName} — ${date}`;
+
+    let html = '';
+    html += `<div class="quote-line"><span class="label">Client</span><span class="value">${safeName}</span></div>`;
+    if (clientEmail) html += `<div class="quote-line"><span class="label">Email</span><span class="value">${safeEmail}</span></div>`;
+    if (location) html += `<div class="quote-line"><span class="label">Location</span><span class="value">${safeLocation}</span></div>`;
+    html += `<div class="quote-line"><span class="label">Service</span><span class="value">${safeService}</span></div>`;
+    html += `<div class="quote-line"><span class="label">Date</span><span class="value">${date}</span></div>`;
+    html += '<hr style="border-color:#1e1e2e;margin:0.5rem 0;">';
+
+    lines.forEach(line => {
+        const priceStr = line.price > 0 ? '£' + line.price : (line.note || 'TBC');
+        html += `<div class="quote-line"><span class="label">${escapeHtml(line.label)}</span><span class="value">${escapeHtml(priceStr)}</span></div>`;
+    });
+
+    document.getElementById('quote-lines').innerHTML = html;
+    document.getElementById('quote-total').textContent = '£' + total;
+
+    document.getElementById('quote-output').style.display = 'block';
+    document.getElementById('quote-output').scrollIntoView({ behavior: 'smooth' });
+}
+
+function escapeHtml(s) {
+    if (s === null || s === undefined) return '';
+    return String(s)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+}
+
+function updateHourlyLabels() {
+    // Update the price-override hint when multi-site = 4
+    const numSites = parseInt(document.getElementById('num-sites').value) || 1;
+    const note = document.getElementById('multi-site-note');
+    if (numSites === 4) {
+        note.textContent = '⚠️ 4+ sites requires a custom quote — set the price override below.';
+        note.style.color = '#f59e0b';
+    } else if (numSites > 1) {
+        const multiplier = numSites === 2 ? '1.5' : '1.75';
+        note.textContent = `${numSites} sites will apply a ${multiplier}× multiplier to the base service.`;
+        note.style.color = 'var(--muted)';
+    } else {
+        note.textContent = '';
+    }
+}
+
+document.getElementById('num-sites').addEventListener('change', updateHourlyLabels);
+
+function resetForm() {
+    document.getElementById('quote-form').reset();
+    document.getElementById('quote-output').style.display = 'none';
+}
+
+function copyQuote() {
+    const output = document.getElementById('quote-output');
+    const text = output.innerText;
+    navigator.clipboard.writeText(text).then(() => {
+        alert('Quote copied to clipboard!');
+    });
+}
+</script>
+
+</body>
+</html>
