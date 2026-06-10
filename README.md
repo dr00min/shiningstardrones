@@ -42,6 +42,18 @@ The site is set up to deploy to either **GitHub Pages** (free) or **Netlify** (f
 4. Custom domain: `shiningstardrones.co.uk`
 5. Enable Forms for the contact form to work without Formspree
 
+### Option C — Cloudflare Pages (current host)
+
+1. Cloudflare dashboard → **Workers & Pages** → **Create application** → **Pages** → **Connect to Git**
+2. Select `dr00min/shiningstardrones` → **Begin setup**
+3. Project name: `shining-star-drones`
+4. Production branch: `main`
+5. Framework preset: **None**
+6. Build command: *(empty)*
+7. Build output directory: `/` (root)
+8. **Custom domains** tab → add `shiningstardrones.co.uk` — Cloudflare handles DNS + SSL automatically
+9. Staging URL: `https://shining-star-drones.pages.dev` (visit first to verify deploy)
+
 ## Local preview
 
 ```bash
