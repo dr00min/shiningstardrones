@@ -21,7 +21,7 @@ This is a vanilla HTML/CSS/JS site. No framework, no bundler. Edit the files dir
 
 - **Copy / pricing changes** → edit `index.html` directly
 - **Service list** → search for the `<section class="services">` block
-- **Contact form** → swap the `REPLACE_WITH_YOUR_FORM_ID` placeholder in `index.html` with the real Formspree endpoint (see [outreach/inbound_setup.md](../outreach/inbound_setup.md) in the parent pipeline repo)
+- **Contact form** → Formspree endpoint is set to `https://formspree.io/f/mbdeaqgg`. Submissions go to `info@shiningstardrones.co.uk`. Verify the form works by submitting a test message after deploy.
 - **LocalBusiness JSON-LD** → search for `"@type": "LocalBusiness"` in `index.html`
 
 ## Deployment
