@@ -75,7 +75,16 @@
         }
         
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        
+
+        /* Anchor jumps land below the fixed nav instead of under it */
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 5.5rem;
+        }
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+        }
+
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
             background: var(--bg);
@@ -135,6 +144,9 @@
         
         /* Hero */
         .hero {
+            /* section{} caps width at 1200px — the hero must be full-bleed
+               or the background reel gets letterboxed by the page gutters */
+            max-width: none;
             min-height: 100vh;
             display: flex;
             align-items: center;
@@ -148,6 +160,8 @@
         .hero::before {
             content: '';
             position: absolute;
+            z-index: 2;
+            pointer-events: none;
             top: -50%;
             left: -50%;
             width: 200%;
@@ -162,9 +176,46 @@
             50% { transform: translate(-5%, -3%); }
         }
         
+        /* Hero background reel */
+        .hero-media {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            overflow: hidden;
+            /* Poster shows immediately; the video fades in on top of it */
+            background: #0a0a0f url('media/reel-poster.jpg') center / cover no-repeat;
+        }
+        .hero-video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            opacity: 0;
+            transition: opacity 1.2s ease;
+        }
+        .hero-video.is-ready { opacity: 1; }
+
+        /* Darkens the footage so the headline stays readable over bright shots.
+           Heavier at top and bottom to protect the nav and the fade into
+           the next section. */
+        .hero-scrim {
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+            pointer-events: none;
+            background:
+                linear-gradient(to bottom,
+                    rgba(10, 10, 15, 0.88) 0%,
+                    rgba(10, 10, 15, 0.72) 30%,
+                    rgba(10, 10, 15, 0.74) 60%,
+                    rgba(10, 10, 15, 0.97) 100%),
+                radial-gradient(ellipse at center,
+                    transparent 20%, rgba(10, 10, 15, 0.55) 100%);
+        }
+
         .hero-content {
             position: relative;
-            z-index: 1;
+            z-index: 3;
             max-width: 800px;
         }
         
@@ -201,6 +252,12 @@
             letter-spacing: -0.03em;
             line-height: 1.1;
             margin-bottom: 1.5rem;
+        }
+
+        /* Extra separation from the moving footage behind the hero */
+        .hero .hero-content h1,
+        .hero .hero-sub {
+            text-shadow: 0 2px 24px rgba(0, 0, 0, 0.65);
         }
         
         h1 .highlight {
@@ -466,25 +523,103 @@
             text-decoration: none;
         }
 
-        /* Showreel */
-        .showreel-grid {
-            max-width: 900px;
+        /* Showreel — center stage */
+        #showreel {
+            max-width: 1400px;
+        }
+        .reel-stage {
+            position: relative;
+            max-width: 1100px;
             margin: 0 auto;
+        }
+        /* Ambient glow behind the player */
+        .reel-stage::before {
+            content: '';
+            position: absolute;
+            inset: -8% -4%;
+            background: radial-gradient(ellipse at center, var(--accent-glow) 0%, transparent 65%);
+            filter: blur(40px);
+            pointer-events: none;
+            z-index: 0;
         }
         .video-wrap {
             position: relative;
-            padding-bottom: 56.25%; /* 16:9 */
-            height: 0;
-            background: var(--surface);
+            z-index: 1;
+            aspect-ratio: 16 / 9;
+            background: #000;
             border: 1px solid var(--border);
-            border-radius: 12px;
+            border-radius: 16px;
             overflow: hidden;
+            box-shadow: 0 30px 80px -20px rgba(0, 0, 0, 0.8);
         }
-        .video-wrap iframe {
-            position: absolute;
-            top: 0; left: 0;
+        .video-wrap video {
+            display: block;
             width: 100%;
             height: 100%;
+            object-fit: cover;
+            background: #000;
+        }
+        /* Click-to-unmute overlay */
+        .reel-overlay {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            padding: 2rem;
+            background: linear-gradient(to top, rgba(0,0,0,0.55) 0%, transparent 45%);
+            transition: opacity 0.3s;
+            cursor: pointer;
+            border: none;
+            width: 100%;
+            font: inherit;
+            color: var(--text);
+        }
+        .reel-overlay[hidden] { display: none; }
+        .reel-overlay span {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            background: rgba(10, 10, 15, 0.75);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            padding: 0.75rem 1.5rem;
+            border-radius: 100px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: background 0.2s, border-color 0.2s, transform 0.2s;
+        }
+        .reel-overlay:hover span {
+            background: var(--accent);
+            border-color: var(--accent);
+            transform: translateY(-2px);
+        }
+        .reel-caption {
+            text-align: center;
+            color: var(--muted);
+            margin-top: 1.75rem;
+            font-size: 0.9rem;
+        }
+        .reel-caption a { color: var(--accent); }
+        /* Shown only if media/reel.mp4 is missing or fails to load */
+        .reel-fallback { display: none; }
+        .reel-fallback[data-active] {
+            display: flex;
+            position: absolute;
+            inset: 0;
+            z-index: 2;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            text-align: center;
+            padding: 2rem;
+            background: var(--surface);
+            border-radius: 16px;
+        }
+        .reel-fallback p { color: var(--muted); font-size: 0.95rem; }
+        @media (prefers-reduced-motion: reduce) {
+            .reel-overlay span { transition: none; }
         }
 
         /* Areas */
@@ -604,9 +739,9 @@
     <nav>
         <a href="#" class="logo">Shining<span>Star</span> Drones</a>
         <ul class="nav-links">
+            <li><a href="#showreel">Showreel</a></li>
             <li><a href="#services">Services</a></li>
             <li><a href="#credentials">Credentials</a></li>
-            <li><a href="#showreel">Showreel</a></li>
             <li><a href="#areas">Areas</a></li>
             <li><a href="#pricing">Pricing</a></li>
             <li><a href="tel:+447415502186" aria-label="Phone">📞</a></li>
@@ -616,6 +751,20 @@
 
     <!-- Hero -->
     <section class="hero">
+        <!--
+          Background reel. Uses the same media/reel.mp4 as the showreel below,
+          so it costs one download, not two. The poster shows instantly and the
+          video fades in over it once buffered. Decorative only — hidden from
+          screen readers, and skipped entirely on mobile / reduced-motion /
+          data-saver (see the hero script at the end of the file).
+        -->
+        <div class="hero-media" aria-hidden="true">
+            <video id="hero-video" class="hero-video"
+                   muted loop playsinline preload="none"
+                   data-src="media/reel.mp4"></video>
+        </div>
+        <div class="hero-scrim" aria-hidden="true"></div>
+
         <div class="hero-content">
             <div class="badge">Available for bookings</div>
             <h1>Commercial <span class="highlight">Drone Services</span><br>Across London & the South East</h1>
@@ -625,9 +774,45 @@
             </p>
             <div class="hero-actions">
                 <a href="#contact" class="btn btn-primary">📩 Get a Free Quote</a>
-                <a href="https://www.youtube.com/@shiningstarmediaproductions" class="btn btn-secondary" target="_blank">🎬 View Showreel</a>
+                <a href="#showreel" class="btn btn-secondary">🎬 Watch the Showreel</a>
             </div>
         </div>
+    </section>
+
+    <!-- Showreel -->
+    <section id="showreel">
+        <div class="section-header">
+            <h2>See the Work</h2>
+            <p>Cinematic, commercial, and FPV — a look at recent work</p>
+        </div>
+        <div class="reel-stage">
+            <div class="video-wrap">
+                <!--
+                  To change the reel: drop your file at  media/reel.mp4
+                  (optional poster frame at  media/reel-poster.jpg).
+                  Nothing else needs editing. See media/README.md for the
+                  ffmpeg encode settings — +faststart is not optional.
+                -->
+                <video id="reel"
+                       poster="media/reel-poster.jpg"
+                       autoplay muted loop playsinline preload="metadata"
+                       aria-label="Shining Star Drones showreel">
+                    <source src="media/reel.mp4" type="video/mp4">
+                </video>
+
+                <button type="button" class="reel-overlay" id="reel-overlay">
+                    <span>🔊 Tap for sound</span>
+                </button>
+
+                <div class="reel-fallback" id="reel-fallback">
+                    <p>Showreel coming soon — watch the full portfolio on YouTube.</p>
+                    <a href="https://www.youtube.com/@shiningstarmediaproductions" class="btn btn-primary" target="_blank" rel="noopener">🎬 Watch on YouTube</a>
+                </div>
+            </div>
+        </div>
+        <p class="reel-caption">
+            Full portfolio: <a href="https://www.youtube.com/@shiningstarmediaproductions" target="_blank" rel="noopener">@shiningstarmediaproductions</a>
+        </p>
     </section>
 
     <!-- Services -->
@@ -710,25 +895,6 @@
         </div>
     </section>
 
-    <!-- Showreel -->
-    <section id="showreel">
-        <div class="section-header">
-            <h2>See the Work</h2>
-            <p>Cinematic, commercial, and FPV — straight from the YouTube channel</p>
-        </div>
-        <div class="showreel-grid">
-            <div class="video-wrap">
-                <iframe
-                    src="https://www.youtube.com/embed?listType=user_uploads&list=shiningstarmediaproductions&index=0"
-                    title="Shining Star Drones — Showreel"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen loading="lazy"></iframe>
-            </div>
-        </div>
-        <p style="text-align:center; color: var(--muted); margin-top: 1.5rem; font-size: 0.9rem;">
-            Full portfolio: <a href="https://www.youtube.com/@shiningstarmediaproductions" target="_blank" style="color: var(--accent);">@shiningstarmediaproductions</a>
-        </p>
-    </section>
 
     <!-- Areas Covered (local SEO) -->
     <section id="areas" class="credentials">
@@ -894,6 +1060,83 @@
             &copy; 2026 Shining Star Drones. Registered in England. All rights reserved.
         </p>
     </footer>
+
+    <script>
+    // --- Hero background reel ---------------------------------------------
+    // The hero is above the fold, so this would download for every visitor on
+    // every visit. We only opt in when it's actually appropriate; everyone
+    // else gets the poster image, which looks the same at a glance.
+    (function () {
+        var hv = document.getElementById('hero-video');
+        if (!hv) return;
+
+        var conn    = navigator.connection || {};
+        var narrow  = window.matchMedia('(max-width: 768px)').matches;
+        var reduce  = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        var thrifty = conn.saveData === true ||
+                      /^(slow-2g|2g|3g)$/.test(conn.effectiveType || '');
+
+        // Mobile: skip. Cellular data cost isn't worth a decorative loop, and
+        // iOS won't reliably autoplay a backgrounded video anyway.
+        if (narrow || reduce || thrifty) return;
+
+        hv.src = hv.dataset.src;
+        hv.addEventListener('canplay', function () { hv.classList.add('is-ready'); });
+        hv.play().catch(function () { /* autoplay blocked — poster stands in */ });
+
+        // Don't keep decoding once the hero is scrolled past.
+        if ('IntersectionObserver' in window) {
+            new IntersectionObserver(function (entries) {
+                entries.forEach(function (e) {
+                    if (e.isIntersecting) { hv.play().catch(function () {}); }
+                    else { hv.pause(); }
+                });
+            }, { threshold: 0.1 }).observe(hv);
+        }
+    })();
+
+    // --- Showreel player ---------------------------------------------------
+    (function () {
+        var reel    = document.getElementById('reel');
+        var overlay = document.getElementById('reel-overlay');
+        var missing = document.getElementById('reel-fallback');
+        if (!reel) return;
+
+        // No reel.mp4 in media/ (or it failed to decode) — show the YouTube fallback.
+        function showFallback() {
+            missing.setAttribute('data-active', '');
+            overlay.hidden = true;
+            reel.style.visibility = 'hidden';
+        }
+        reel.addEventListener('error', showFallback, true);
+        var src = reel.querySelector('source');
+        if (src) src.addEventListener('error', showFallback);
+
+        // Ambient autoplay is muted (browsers require it). One tap gives it sound,
+        // restarts from the top, and hands over to the native controls.
+        overlay.addEventListener('click', function () {
+            reel.muted = false;
+            reel.loop = false;
+            reel.controls = true;
+            reel.currentTime = 0;
+            reel.play();
+            overlay.hidden = true;
+        });
+
+        // Only run the ambient loop while it's actually on screen.
+        if ('IntersectionObserver' in window) {
+            new IntersectionObserver(function (entries) {
+                entries.forEach(function (e) {
+                    if (e.isIntersecting) {
+                        if (reel.paused && reel.muted) reel.play().catch(function () {});
+                    } else if (reel.muted) {
+                        reel.pause();
+                    }
+                });
+            }, { threshold: 0.25 }).observe(reel);
+        }
+    })();
+    </script>
 
 </body>
 </html>
