@@ -1,23 +1,37 @@
 # Site media
 
-## Changing the showreel
+## Where the video lives
 
-Drop your video here as **`reel.mp4`** — overwrite the old one, commit, push. That's it.
-No HTML edits needed; `index.html` always points at `media/reel.mp4`.
+**The reel is NOT in this repo.** It's hosted on Cloudflare R2 and referenced by
+URL from `index.html`.
 
-Then regenerate the poster frame (the still shown before the video loads):
+This is deliberate. The site deploys as a Cloudflare Worker (`npx wrangler
+deploy`), and **Workers reject any single asset over 25 MiB**. A 49 MB reel
+committed here fails the build with:
 
-```sh
-ffmpeg -y -ss 3 -i reel.mp4 -vframes 1 -vf "scale=1280:-2" -q:v 6 reel-poster.jpg
+```
+✘ [ERROR] Asset too large.
+  Cloudflare Workers supports assets with sizes of up to 25 MiB.
 ```
 
-If `reel.mp4` is missing or fails to decode, the site falls back to a
-"Watch on YouTube" card, so the page never looks broken.
+`.gitignore` blocks `media/*.mp4` so this can't happen again by accident.
 
-## Encoding it — use this command
+Only the poster frame (`reel-poster.jpg`, ~130 KB) lives in the repo.
 
-Camera-original footage is **far** too heavy to autoplay on a homepage. Run this
-on the master file before committing:
+## Changing the reel
+
+1. Encode it (see below).
+2. Upload to the R2 bucket, replacing the existing object.
+3. If the filename changed, update the `<source>` URL and the `data-src` on
+   `#hero-video` in `index.html` — two places.
+4. Regenerate the poster:
+   ```sh
+   ffmpeg -y -ss 3 -i reel.mp4 -vframes 1 -vf "scale=1280:-2" -q:v 6 reel-poster.jpg
+   ```
+
+R2 serves HTTP Range requests, so seeking and the scrub bar work correctly.
+
+## Encoding
 
 ```sh
 ffmpeg -y -i SOURCE.mp4 \
@@ -30,50 +44,40 @@ ffmpeg -y -i SOURCE.mp4 \
 
 Current reel: 1080p, 94s, 4.4 Mbps, 49 MB.
 
-Why these flags:
+Key flags:
 
-- **`-movflags +faststart` — the one you must not omit.** It moves the index to
-  the front of the file so playback starts immediately. Without it the browser
-  downloads the *entire* file before showing a single frame. Verify it landed:
+- **`-movflags +faststart` — do not omit.** Moves the index to the front so
+  playback starts immediately instead of after the whole file downloads.
+  Verify it landed (`moov` must precede `mdat`):
   ```sh
-  ffprobe -v error -show_entries format=start_time -of default=noprint_wrappers=1 reel.mp4
-  # or check moov comes before mdat:
   ffmpeg -v trace -i reel.mp4 2>&1 | grep -m2 -E "type:'(moov|mdat)'"
   ```
-- `-crf 27` — quality knob. Lower = better + bigger. This footage is high-detail
-  (foliage, gravel, motion) so it compresses poorly; CRF 23 came out at 104 MB.
-  Check the size and adjust.
-- `-maxrate/-bufsize` — caps bitrate spikes so playback doesn't stall on slower
-  connections.
-- `-pix_fmt yuv420p` — required for Safari/iOS. Non-negotiable.
-- `-map 0:v:0 -map 0:a:0` — drops extra tracks some converters add.
+- `-crf 27` — quality knob, lower = bigger. This footage is high-detail and
+  compresses poorly; CRF 23 produced 104 MB.
+- `-pix_fmt yuv420p` — required for Safari/iOS.
 
-**Don't use two-pass** unless you keep pass-1 and pass-2 flags identical — a
-mismatch makes x264 emit a file with no `moov` atom that looks fine by filesize
-and is completely unplayable. Single-pass CRF is safer here.
+**Don't use two-pass** unless pass-1 and pass-2 flags match exactly. A mismatch
+yields a file with no `moov` atom — plausible filesize, completely unplayable.
+Single-pass CRF is safer.
 
-Always verify before committing:
+Always verify before uploading:
 
 ```sh
 ffmpeg -v error -i reel.mp4 -f null /dev/null   # silence = clean decode
 ```
 
-## Hard limits
+## Quality reference
 
-The video is served from GitHub Pages, so it lives in git:
+Measured against the 49 MB master, a 21.5 MB / 1.85 Mbps encode scored
+PSNR 30.3 dB, SSIM 0.887 — visibly softer on foliage and gravel. Fine behind
+the hero scrim, noticeable in the showreel player. Don't go below ~4 Mbps for
+the full-size player.
 
-- **100 MB** — GitHub's hard per-file limit. Pushes over this are rejected.
-  The current 49 MB leaves reasonable headroom.
-- **1 GB** — soft repo limit. Every version of the reel you commit counts
-  toward it forever, even after replacement. Avoid committing many revisions;
-  get it right locally first.
-- GitHub Pages allows ~100 GB/month bandwidth, which is far more than this
-  site will use.
+## Behaviour if the video is unreachable
 
-If the reel starts changing frequently, move it to Cloudflare R2 (free tier,
-no egress charges) and point the `<source>` at that URL instead.
+The page degrades on its own: the hero falls back to `reel-poster.jpg`, and the
+showreel section swaps to a "Watch on YouTube" card. The site never shows a
+broken player.
 
-## Keep the master elsewhere
-
-Commit only the web-encoded file. The full-resolution original belongs in
-Dropbox/cloud storage, not in the repo.
+The hero video is also skipped entirely on mobile, `prefers-reduced-motion`,
+and data-saver — a large decorative autoplay isn't reasonable over cellular.
