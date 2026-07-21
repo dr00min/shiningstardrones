@@ -559,41 +559,6 @@
             object-fit: cover;
             background: #000;
         }
-        /* Click-to-unmute overlay */
-        .reel-overlay {
-            position: absolute;
-            inset: 0;
-            display: flex;
-            align-items: flex-end;
-            justify-content: center;
-            padding: 2rem;
-            background: linear-gradient(to top, rgba(0,0,0,0.55) 0%, transparent 45%);
-            transition: opacity 0.3s;
-            cursor: pointer;
-            border: none;
-            width: 100%;
-            font: inherit;
-            color: var(--text);
-        }
-        .reel-overlay[hidden] { display: none; }
-        .reel-overlay span {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.6rem;
-            background: rgba(10, 10, 15, 0.75);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.18);
-            padding: 0.75rem 1.5rem;
-            border-radius: 100px;
-            font-size: 0.95rem;
-            font-weight: 500;
-            transition: background 0.2s, border-color 0.2s, transform 0.2s;
-        }
-        .reel-overlay:hover span {
-            background: var(--accent);
-            border-color: var(--accent);
-            transform: translateY(-2px);
-        }
         .reel-caption {
             text-align: center;
             color: var(--muted);
@@ -618,9 +583,6 @@
             border-radius: 16px;
         }
         .reel-fallback p { color: var(--muted); font-size: 0.95rem; }
-        @media (prefers-reduced-motion: reduce) {
-            .reel-overlay span { transition: none; }
-        }
 
         /* Areas */
         .areas-grid {
@@ -801,14 +763,10 @@
                 -->
                 <video id="reel"
                        poster="media/reel-poster.jpg"
-                       autoplay muted loop playsinline preload="metadata"
-                       aria-label="Shining Star Drones showreel">
+                       autoplay muted loop playsinline controls preload="metadata"
+                       aria-label="Shining Star Drones showreel (no audio)">
                     <source src="https://media.shiningstardrones.co.uk/reel-web-1080p-49MB.mp4" type="video/mp4">
                 </video>
-
-                <button type="button" class="reel-overlay" id="reel-overlay">
-                    <span>🔊 Tap for sound</span>
-                </button>
 
                 <div class="reel-fallback" id="reel-fallback">
                     <p>Showreel coming soon — watch the full portfolio on YouTube.</p>
@@ -1108,38 +1066,38 @@
     // --- Showreel player ---------------------------------------------------
     (function () {
         var reel    = document.getElementById('reel');
-        var overlay = document.getElementById('reel-overlay');
         var missing = document.getElementById('reel-fallback');
         if (!reel) return;
 
         // No reel.mp4 in media/ (or it failed to decode) — show the YouTube fallback.
         function showFallback() {
             missing.setAttribute('data-active', '');
-            overlay.hidden = true;
             reel.style.visibility = 'hidden';
         }
         reel.addEventListener('error', showFallback, true);
         var src = reel.querySelector('source');
         if (src) src.addEventListener('error', showFallback);
 
-        // Ambient autoplay is muted (browsers require it). One tap gives it sound,
-        // restarts from the top, and hands over to the native controls.
-        overlay.addEventListener('click', function () {
-            reel.muted = false;
-            reel.loop = false;
-            reel.controls = true;
-            reel.currentTime = 0;
-            reel.play();
-            overlay.hidden = true;
+        // The reel has no audio track, so it just loops muted with native controls
+        // available. Once the viewer pauses it themselves, stop managing playback.
+        var autoPausing = false;
+        var userPaused  = false;
+        // The pause event is queued, not synchronous, so clear the flag in the
+        // handler rather than straight after the pause() call.
+        reel.addEventListener('pause', function () {
+            if (autoPausing) autoPausing = false;
+            else userPaused = true;
         });
+        reel.addEventListener('play', function () { userPaused = false; });
 
         // Only run the ambient loop while it's actually on screen.
         if ('IntersectionObserver' in window) {
             new IntersectionObserver(function (entries) {
                 entries.forEach(function (e) {
                     if (e.isIntersecting) {
-                        if (reel.paused && reel.muted) reel.play().catch(function () {});
-                    } else if (reel.muted) {
+                        if (reel.paused && !userPaused) reel.play().catch(function () {});
+                    } else if (!reel.paused) {
+                        autoPausing = true;
                         reel.pause();
                     }
                 });
