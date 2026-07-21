@@ -752,16 +752,16 @@
     <!-- Hero -->
     <section class="hero">
         <!--
-          Background reel. Uses the same media/reel.mp4 as the showreel below,
-          so it costs one download, not two. The poster shows instantly and the
-          video fades in over it once buffered. Decorative only — hidden from
-          screen readers, and skipped entirely on mobile / reduced-motion /
-          data-saver (see the hero script at the end of the file).
+          Background reel. Reuses the showreel's video URL (read from
+          #reel's <source> by the hero script) so the URL lives in exactly
+          one place, and the browser downloads the file once, not twice.
+          The poster shows instantly and the video fades in once buffered.
+          Decorative only — hidden from screen readers, and skipped entirely
+          on mobile / reduced-motion / data-saver.
         -->
         <div class="hero-media" aria-hidden="true">
             <video id="hero-video" class="hero-video"
-                   muted loop playsinline preload="none"
-                   data-src="media/reel.mp4"></video>
+                   muted loop playsinline preload="none"></video>
         </div>
         <div class="hero-scrim" aria-hidden="true"></div>
 
@@ -788,16 +788,22 @@
         <div class="reel-stage">
             <div class="video-wrap">
                 <!--
-                  To change the reel: drop your file at  media/reel.mp4
-                  (optional poster frame at  media/reel-poster.jpg).
-                  Nothing else needs editing. See media/README.md for the
-                  ffmpeg encode settings — +faststart is not optional.
+                  ┌───────────────────────────────────────────────────────┐
+                  │ THE REEL URL LIVES HERE, AND ONLY HERE.               │
+                  │ To change the reel: upload the new file to the R2     │
+                  │ bucket and update the <source> src below. The hero    │
+                  │ background reads this same URL automatically.         │
+                  │                                                        │
+                  │ Do NOT commit the video to this repo — Cloudflare     │
+                  │ rejects assets over 25 MiB and the deploy goes red.   │
+                  │ See media/README.md for encode settings.              │
+                  └───────────────────────────────────────────────────────┘
                 -->
                 <video id="reel"
                        poster="media/reel-poster.jpg"
                        autoplay muted loop playsinline preload="metadata"
                        aria-label="Shining Star Drones showreel">
-                    <source src="media/reel.mp4" type="video/mp4">
+                    <source src="https://media.shiningstardrones.co.uk/reel-web-1080p-49MB.mp4" type="video/mp4">
                 </video>
 
                 <button type="button" class="reel-overlay" id="reel-overlay">
@@ -1070,6 +1076,10 @@
         var hv = document.getElementById('hero-video');
         if (!hv) return;
 
+        // Single source of truth: whatever the showreel below points at.
+        var src = document.querySelector('#reel source');
+        if (!src || !src.getAttribute('src')) return;
+
         var conn    = navigator.connection || {};
         var narrow  = window.matchMedia('(max-width: 768px)').matches;
         var reduce  = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -1080,7 +1090,7 @@
         // iOS won't reliably autoplay a backgrounded video anyway.
         if (narrow || reduce || thrifty) return;
 
-        hv.src = hv.dataset.src;
+        hv.src = src.getAttribute('src');
         hv.addEventListener('canplay', function () { hv.classList.add('is-ready'); });
         hv.play().catch(function () { /* autoplay blocked — poster stands in */ });
 
