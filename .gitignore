@@ -31,3 +31,10 @@ build/
 media/*.mp4
 media/*.mov
 media/*.webm
+
+# wrangler files
+.wrangler
+.dev.vars*
+!.dev.vars.example
+.env*
+!.env.example
