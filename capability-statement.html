@@ -3,6 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Shining Star Drones — Capability Statement</title>
+<link rel="icon" href="favicon.ico" sizes="16x16 32x32 48x48">
+<link rel="icon" type="image/png" href="favicon-32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
 <style>
     @page { size: A4; margin: 12mm; }
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -20,7 +23,10 @@
     h3 { font-size: 10.5pt; color: #0a0a0f; margin: 8pt 0 3pt; }
     p { margin-bottom: 6pt; }
     .header { display: flex; justify-content: space-between; align-items: flex-start; border-bottom: 3px solid #3b82f6; padding-bottom: 12pt; margin-bottom: 14pt; }
-    .header .name { font-size: 22pt; font-weight: 800; }
+    /* This page prints on white, so it takes the dark-text wordmark.
+       17.6:1, so height drives it -- 12pt tall lands at ~212pt wide,
+       which leaves room for the contact block on an A4 line. */
+    .header .name { display: block; height: 12pt; width: auto; margin-bottom: 4pt; }
     .header .role { color: #666; font-size: 9pt; }
     .header .contact { text-align: right; font-size: 9pt; color: #333; line-height: 1.6; }
     .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10pt; }
@@ -55,7 +61,8 @@
 
     <div class="header">
         <div>
-            <div class="name">Shining Star Drones</div>
+            <img class="name" src="brand/wordmark-oneline-dark.svg"
+                 alt="Shining Star Drones" width="847" height="48">
             <div class="role">Commercial drone services · West London</div>
         </div>
         <div class="contact">
