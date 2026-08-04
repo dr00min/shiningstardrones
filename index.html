@@ -566,7 +566,7 @@ table.matrix{border-collapse:collapse; width:100%; min-width:900px; font-size:14
          can&rsquo;t stand in front of, or briefing a subcontractor on a roof. It is a visual
          model, not a measured one.</p>
     </div>
-    <span class="eyebrow sec-tag">Separate site &middot; separate mission</span>
+    <span class="eyebrow sec-tag">Drag to spin &middot; separate site</span>
   </div>
 
   <div class="bay">
@@ -965,10 +965,21 @@ table.matrix{border-collapse:collapse; width:100%; min-width:900px; font-size:14
 
         var mv = document.createElement('model-viewer');
         mv.setAttribute('src', 'media/st-mary-magdalene-building.glb');
-        mv.setAttribute('alt', 'Rotatable 3D model of St Mary Magdalene church, built from 265 aerial frames.');
+        mv.setAttribute('alt', 'Spinnable 3D model of St Mary Magdalene church, built from 265 aerial frames. Drag left or right to rotate.');
         mv.setAttribute('camera-controls', '');
         mv.setAttribute('touch-action', 'pan-y');
         mv.setAttribute('shadow-intensity', '1');
+
+        /* Yaw only. Full orbit is genuinely hard to use on a plate this size:
+           you tumble under the ground plane, pan the model off-screen with no
+           way back, and the wheel steals the page scroll. Locking phi to a
+           single angle means a horizontal drag spins it and nothing else can
+           go wrong; vertical drag and wheel fall through to the page. */
+        mv.setAttribute('camera-orbit', '-35deg 62deg auto');
+        mv.setAttribute('min-camera-orbit', 'auto 62deg auto');
+        mv.setAttribute('max-camera-orbit', 'auto 62deg auto');
+        mv.setAttribute('disable-pan', '');
+        mv.setAttribute('disable-zoom', '');
         if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
           mv.setAttribute('auto-rotate', '');
         }
