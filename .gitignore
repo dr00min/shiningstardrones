@@ -25,6 +25,12 @@ build/
 *.min.css
 *.min.js
 
+# ...but vendor/ is checked-in third-party code, not a build output. Without this
+# negation, *.min.js silently drops vendor/model-viewer.min.js from the commit:
+# the site works in local preview (served from disk) and 404s in production, and
+# the 3D model fails with no obvious cause. See vendor/README.md.
+!vendor/**
+
 # Video is hosted on Cloudflare R2, not in the repo.
 # Cloudflare Workers rejects any asset over 25 MiB, so committing a
 # reel here turns the deploy red. See media/README.md.
