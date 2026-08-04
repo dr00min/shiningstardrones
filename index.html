@@ -327,10 +327,13 @@ table.matrix{border-collapse:collapse; width:100%; min-width:900px; font-size:14
 .matrix .px{font-family:var(--mono); font-weight:500; white-space:nowrap}
 /* the two gated rows: named, not hidden, not equal — airway does this job */
 .matrix tr.gated td{background:color-mix(in srgb,var(--airway) 7%,transparent)}
-.matrix tr.gated td:first-child{box-shadow:inset 3px 0 0 var(--airway)}
+/* The 3px rule is drawn inside the cell, and cells have no left padding, so
+   without this the label and the tag sit right on top of the rule. */
+.matrix tr.gated td:first-child{box-shadow:inset 3px 0 0 var(--airway); padding-left:15px}
 .gate-tag{
-  display:inline-block; margin-top:8px; padding:3px 7px; background:var(--airway); color:var(--paper);
+  display:inline-block; margin:2px 0 0 .6em; padding:3px 7px; background:var(--airway); color:var(--paper);
   font-family:var(--mono); font-size:10px; font-weight:500; letter-spacing:.12em; text-transform:uppercase;
+  white-space:nowrap; vertical-align:1px;
 }
 :root[data-theme="dark"] .gate-tag{color:#0E1519}
 .matrix-note{font-size:14px; color:var(--slate); margin-top:14px; max-width:70ch}
