@@ -174,7 +174,7 @@ p:last-child{margin-bottom:0}
 .r-ortho .plate__frame{aspect-ratio:2400/1447}
 .r-16x9 .plate__frame{aspect-ratio:16/9}
 .r-16x10 .plate__frame{aspect-ratio:16/10}
-.r-a4 .plate__frame{aspect-ratio:1400/1994}  /* two A4 landscape pages stacked */
+.r-a4 .plate__frame{aspect-ratio:1400/1996}  /* two A4 landscape pages stacked */
 
 /* corner registration ticks, 11px — the signature detail */
 .plate__frame::before,.plate__frame::after{
@@ -198,8 +198,6 @@ p:last-child{margin-bottom:0}
   display:flex; flex-wrap:wrap; align-items:baseline; gap:10px; margin-top:9px;
   font-family:var(--mono); font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--slate);
 }
-/* accent job #4 — plate numbering is a solid magenta block */
-.plate__no{background:var(--magenta); color:var(--on-accent); padding:3px 7px; font-weight:500; letter-spacing:.1em}
 
 /* -------------------------------------------------------------- masthead */
 .masthead{border-bottom:1px solid var(--ink)}
@@ -210,7 +208,9 @@ p:last-child{margin-bottom:0}
 .masthead__mark img{width:clamp(196px,40vw,300px); height:auto}
 .masthead__strap{display:none}
 @media (min-width:900px){.masthead__strap{display:block; padding-left:14px; border-left:1px solid var(--hairline)}}
-.masthead__act{margin-left:auto; display:flex; align-items:center; gap:14px}
+/* Wraps: at 320px the toggle, the number and the CTA do not fit on one line,
+   and an unwrapped row pans the whole page sideways. */
+.masthead__act{margin-left:auto; display:flex; align-items:center; flex-wrap:wrap; justify-content:flex-end; gap:12px 14px}
 .masthead__tel{font-family:var(--mono); font-size:13px; text-decoration:none}
 .masthead__tel:hover{color:var(--magenta)}
 
@@ -414,6 +414,60 @@ table.matrix{border-collapse:collapse; width:100%; min-width:900px; font-size:14
 .foot__col a:hover{color:var(--magenta)}
 .foot__legal{width:100%; border-top:1px solid var(--hairline); padding-top:18px; font-family:var(--mono); font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--slate); display:flex; flex-wrap:wrap; gap:10px 26px}
 
+/* ============================================================= mobile
+   Measured on iPhone SE / 13 and Pixel 7, not inferred from breakpoints.
+   See .claude/skills/mobile-experience. Two separate concerns, so two
+   separate queries: WIDTH decides layout, POINTER decides hit areas. */
+
+@media (max-width:759px){
+  /* The section head is a three-item flex row: numeral, heading block, tag.
+     The tag is nowrap by design so "Ex VAT · travel included within 1 hour"
+     never breaks mid-phrase -- but in a 390px row that one item was 376px
+     wide, which pushed the page to 457px (sideways pan on every phone) and
+     starved the heading down to one word per line, with the tag printing
+     straight over it. Drop the tag to its own row instead. */
+  .sec-head{flex-wrap:wrap; row-gap:12px}
+  .sec-head__t{flex:1 1 auto}
+  .sec-tag{flex:1 0 100%; margin-left:0; padding-top:0; white-space:normal}
+
+  /* Captions carry the "demonstration capture, not client work" disclosure.
+     11px uppercase mono at .1em is legible on a desk and not in a hand. */
+  .plate__cap{font-size:12px; letter-spacing:.06em}
+
+  /* Never break a phone number across lines: it stops reading as one. */
+  .masthead__tel{white-space:nowrap}
+}
+
+@media (max-width:560px){
+  /* The toggle, the number and the CTA will not sit on one 320-390px row, and
+     the number is the last thing to drop -- a tappable phone number in the
+     header is worth more on a phone than anywhere else. So the toggle and the
+     number share a row and the CTA takes its own, full width, where it reads
+     as the deliberate primary action rather than an orphan. */
+  .masthead__act{width:100%; margin-left:0; justify-content:space-between}
+  .masthead__act .btn--go{flex:1 0 100%; text-align:center}
+}
+
+/* The pricing matrix is five columns of prose and cannot usefully compress,
+   so it scrolls inside .matrix-wrap. That is invisible on a phone unless
+   something says so. */
+.matrix-hint{display:none}
+@media (max-width:900px){
+  .matrix-hint{display:block; font-family:var(--mono); font-size:11px;
+    letter-spacing:.12em; text-transform:uppercase; color:var(--slate); margin:0 0 10px}
+}
+
+@media (pointer:coarse){
+  /* 44px minimum on anything that behaves like a control. Prose links are
+     deliberately left alone -- padding them wrecks the line boxes. */
+  .theme button{min-height:44px; padding-inline:14px}
+  .masthead__tel{display:inline-flex; align-items:center; min-height:44px}
+  .btn{padding:15px 20px}
+  .field input,.field select,.field textarea{min-height:44px}
+  .foot__col a{padding-block:11px; margin-bottom:0}
+  .aside-card p a{display:inline-block; padding-block:11px}
+}
+
 @media (prefers-reduced-motion:reduce){*{animation:none!important; transition:none!important}}
 </style>
 </head>
@@ -463,11 +517,15 @@ table.matrix{border-collapse:collapse; width:100%; min-width:900px; font-size:14
 <section class="wrap" style="padding-bottom:clamp(40px,5vw,68px)">
   <figure class="plate r-ortho">
     <div class="plate__frame">
-      <img src="media/ramblers-ortho-2026-08-03.jpg" width="2400" height="1447" fetchpriority="high"
+      <!-- The 2400px render is more than a phone can show. Both dates carry the
+           same two widths so the swipe below still compares like with like. -->
+      <img src="media/ramblers-ortho-2026-08-03.jpg"
+           srcset="media/ramblers-ortho-2026-08-03-1200.jpg 1200w,
+                   media/ramblers-ortho-2026-08-03.jpg 2400w"
+           sizes="100vw" width="2400" height="1447" fetchpriority="high"
            alt="Orthomosaic of Ramblers Car Park — a 3.88 hectare woodland car park seen from directly above, assembled from 226 aerial frames.">
     </div>
     <figcaption class="plate__cap">
-      <span class="plate__no">Plate 01</span>
       <span>Orthomosaic &middot; Demonstration capture, not client work &middot; Ramblers Car Park, 3 Aug 2026 &middot; 3.88 ha &middot; 226 frames &middot; 2.0 cm/px &middot; Visual-grade</span>
     </figcaption>
   </figure>
@@ -500,21 +558,20 @@ table.matrix{border-collapse:collapse; width:100%; min-width:900px; font-size:14
 
     <figure class="plate r-a4">
       <div class="plate__frame">
-        <img src="media/ramblers-pack-spread.jpg" width="1400" height="1994" loading="lazy"
+        <img src="media/ramblers-pack-spread.jpg" width="1400" height="1996" loading="lazy"
              alt="Two pages from the delivered PDF pack: the cover sheet, and the survey details and accuracy statement.">
       </div>
       <figcaption class="plate__cap">
-        <span class="plate__no">Plate 07</span>
         <span>Pack spread &middot; Cover and accuracy statement &middot; Ramblers Car Park, 4 Aug 2026</span>
       </figcaption>
       <p style="margin-top:14px">
-        <a class="btn" href="media/sample-progress-pack.pdf" download>Download the sample &middot; PDF, 4 pages, 9&nbsp;MB</a>
+        <a class="btn" href="media/sample-progress-pack.pdf" download>Download the sample &middot; PDF, 6 pages, 15&nbsp;MB</a>
       </p>
       <p style="margin-top:12px; font-size:14px; color:var(--slate); max-width:52ch">
         This sample comes from a demonstration flight that was nadir-only, so it carries
-        items 1, 3 and 6 of the seven &mdash; the orthomosaic, the cover sheet and the
-        accuracy statement, plus a surface model. The obliques, the labelled stills and
-        the month-to-month pair need a site visit to produce, and are not in it.
+        five of the seven &mdash; the capture record, the orthomosaic, the month-to-month
+        comparison, the cover sheet and the turnaround, plus a surface model. The obliques
+        and the labelled stills need an oblique flight to produce and are not in it.
       </p>
     </figure>
   </div>
@@ -539,17 +596,23 @@ table.matrix{border-collapse:collapse; width:100%; min-width:900px; font-size:14
     <div class="cmp__stage" id="cmp-stage">
       <figure class="plate r-ortho cmp__f" data-cmp="a">
         <div class="plate__frame">
-          <img src="media/ramblers-ortho-2026-08-03.jpg" width="2400" height="1447" loading="lazy"
+          <img src="media/ramblers-ortho-2026-08-03.jpg"
+               srcset="media/ramblers-ortho-2026-08-03-1200.jpg 1200w,
+                       media/ramblers-ortho-2026-08-03.jpg 2400w"
+               sizes="100vw" width="2400" height="1447" loading="lazy"
                alt="Orthomosaic of Ramblers Car Park on 3 August 2026, the baseline capture.">
         </div>
-        <figcaption class="plate__cap"><span class="plate__no">06A</span><span>Baseline &middot; 3 Aug 2026 &middot; 226 frames</span></figcaption>
+        <figcaption class="plate__cap"><span>Baseline &middot; 3 Aug 2026 &middot; 226 frames</span></figcaption>
       </figure>
       <figure class="plate r-ortho cmp__f" data-cmp="b">
         <div class="plate__frame">
-          <img src="media/ramblers-ortho-2026-08-04.jpg" width="2400" height="1447" loading="lazy"
+          <img src="media/ramblers-ortho-2026-08-04.jpg"
+               srcset="media/ramblers-ortho-2026-08-04-1200.jpg 1200w,
+                       media/ramblers-ortho-2026-08-04.jpg 2400w"
+               sizes="100vw" width="2400" height="1447" loading="lazy"
                alt="Orthomosaic of the same site on 4 August 2026, flown to the same saved mission.">
         </div>
-        <figcaption class="plate__cap"><span class="plate__no">06B</span><span>Repeat &middot; 4 Aug 2026 &middot; 228 frames</span></figcaption>
+        <figcaption class="plate__cap"><span>Repeat &middot; 4 Aug 2026 &middot; 228 frames</span></figcaption>
       </figure>
       <button class="cmp__handle" type="button" id="cmp-handle"
               role="slider" aria-label="Compare the two capture dates"
@@ -596,7 +659,6 @@ table.matrix{border-collapse:collapse; width:100%; min-width:900px; font-size:14
         <button class="model-go btn btn--go" type="button" id="model-go">Load the 3D model &middot; 10&nbsp;MB</button>
       </div>
       <figcaption class="plate__cap">
-        <span class="plate__no">Plate 08</span>
         <span>3D model &middot; St Mary Magdalene, a second demonstration site &middot; 6,990 faces, cropped to the building &middot; Visual-grade, not measured</span>
       </figcaption>
     </figure>
@@ -637,6 +699,7 @@ table.matrix{border-collapse:collapse; width:100%; min-width:900px; font-size:14
     <span class="eyebrow sec-tag">Ex VAT · travel included within 1 hour</span>
   </div>
 
+  <p class="matrix-hint">Scroll the table sideways &rarr;</p>
   <div class="matrix-wrap">
     <table class="matrix">
       <thead>
@@ -751,7 +814,7 @@ table.matrix{border-collapse:collapse; width:100%; min-width:900px; font-size:14
         <div><dt>Before</dt><dd>RAMS supplied ahead of the visit; works to your site induction</dd></div>
         <div><dt>On the day</dt><dd>Flight window agreed with the site manager</dd></div>
         <div><dt>Permission</dt><dd>No flight without written permission</dd></div>
-        <div><dt>Airspace</dt><dd>Pre-flight check including Heathrow-area restrictions</dd></div>
+        <div><dt>Airspace</dt><dd>Pre-flight check including Heathrow-area and Windsor restrictions</dd></div>
       </dl>
       <p class="read" style="margin-top:20px; font-size:15px; color:var(--slate)">
         Slough and West London sit under Heathrow's controlled airspace and its restriction zone.
@@ -841,7 +904,7 @@ table.matrix{border-collapse:collapse; width:100%; min-width:900px; font-size:14
           <input type="text" id="f-deadline" name="deadline" placeholder="e.g. first visit before month end"></div>
 
         <div class="field f-wide"><label for="f-site">Site address or postcode <span class="req">*</span></label>
-          <input type="text" id="f-site" name="site_address" required></div>
+          <input type="text" id="f-site" name="site_address" autocomplete="street-address" required></div>
 
         <div class="field"><label for="f-size">Approximate site size <span class="req">*</span></label>
           <input type="text" id="f-size" name="site_size" placeholder="hectares, acres, or footprint" required></div>
@@ -919,7 +982,7 @@ table.matrix{border-collapse:collapse; width:100%; min-width:900px; font-size:14
     <div class="foot__col">
       <h4>Elsewhere</h4>
       <a href="https://www.youtube.com/@ShiningStarDronesUK">YouTube</a>
-      <a href="https://www.linkedin.com/company/shining-star-media">LinkedIn</a>
+      <a href="https://www.linkedin.com/company/shining-star-drones">LinkedIn</a>
       <a href="/capability-statement">Capability statement</a>
       <a href="/privacy">Privacy notice</a>
     </div>

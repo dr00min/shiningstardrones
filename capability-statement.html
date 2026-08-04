@@ -76,7 +76,7 @@ figure{margin:0}
 figure .frame{border:1px solid var(--hairline); overflow:hidden}
 figure .frame img{width:100%}
 .frame--ortho{aspect-ratio:2400/1447}
-.frame--pack{aspect-ratio:1400/1994}
+.frame--pack{aspect-ratio:1400/1996}
 figcaption{margin-top:4pt; font-family:var(--mono); font-size:7.5pt; letter-spacing:.06em; color:var(--slate); line-height:1.5}
 
 .steps{list-style:none; counter-reset:s; margin:0; padding:0}
@@ -101,6 +101,33 @@ figcaption{margin-top:4pt; font-family:var(--mono); font-size:7.5pt; letter-spac
   .creds,.grid{grid-template-columns:1fr}
   body{font-size:12pt}
 }
+
+/* This page is laid out for A4 and then also served on the web, where
+   procurement readers open it on a phone. The print measure survives above;
+   below, screen units replace the paper ones. Verified on iPhone SE / 13. */
+.table-hint{display:none}
+@media (max-width:760px){
+  /* 10mm of padding either side is 76px of a 320px screen. */
+  .page{padding:18px 16px 28px; max-width:none}
+  /* Four columns of prose have a min-content width of ~500px and cannot
+     compress into a phone. Scroll them, rather than panning the whole page. */
+  .table-wrap{overflow-x:auto; -webkit-overflow-scrolling:touch}
+  .table-wrap table{min-width:640px}   /* 500px gave 1-2 words a line */
+  .table-hint{display:block; font-family:var(--mono); font-size:11px; letter-spacing:.12em;
+    text-transform:uppercase; color:var(--slate); margin:0 0 8px}
+  /* Point sizes that read at A4 are too small in a hand. */
+  .creds dd{font-size:14px}
+  .creds dt{font-size:10px}
+  .small,figcaption{font-size:13px}
+  .foot{font-size:12px; line-height:1.8}
+  th,td{font-size:14px}
+  thead th{font-size:11px}
+}
+
+@media (pointer:coarse){
+  /* A phone number and an email in the masthead are tap targets, not print. */
+  .masthead .contact a{display:inline-block; padding-block:13px}
+}
 </style>
 </head>
 <body>
@@ -114,8 +141,8 @@ figcaption{margin-top:4pt; font-family:var(--mono); font-size:7.5pt; letter-spac
     <div class="contact">
       <strong>Andrew Abdul-Malek</strong><br>
       Founder &amp; chief pilot<br>
-      info@shiningstardrones.co.uk<br>
-      +44 7415 502186<br>
+      <a href="mailto:info@shiningstardrones.co.uk">info@shiningstardrones.co.uk</a><br>
+      <a href="tel:+447415502186">+44 7415 502186</a><br>
       shiningstardrones.co.uk
     </div>
   </div>
@@ -140,6 +167,8 @@ figcaption{margin-top:4pt; font-family:var(--mono); font-size:7.5pt; letter-spac
   </dl>
 
   <h2>Services and rates</h2>
+  <p class="table-hint">Scroll the table sideways &rarr;</p>
+  <div class="table-wrap">
   <table>
     <thead>
       <tr><th>Service</th><th>You receive</th><th>Stated accuracy</th><th class="price">Price</th></tr>
@@ -201,6 +230,7 @@ figcaption{margin-top:4pt; font-family:var(--mono); font-size:7.5pt; letter-spac
       </tr>
     </tbody>
   </table>
+  </div>
   <p class="small" style="margin-top:6pt">All prices exclude VAT and carry a unit and a scope.
     Travel within one hour of Slough is included; beyond that, &pound;20/hr. Survey and
     inspection work is quoted per site after a short call &mdash; site address and approximate
@@ -224,14 +254,17 @@ figcaption{margin-top:4pt; font-family:var(--mono); font-size:7.5pt; letter-spac
   <h2>Demonstration capture</h2>
   <div class="grid">
     <figure>
-      <div class="frame frame--ortho"><img src="media/ramblers-ortho-2026-08-03.jpg" width="2400" height="1447"
+      <div class="frame frame--ortho"><img src="media/ramblers-ortho-2026-08-03.jpg"
+           srcset="media/ramblers-ortho-2026-08-03-1200.jpg 1200w,
+                   media/ramblers-ortho-2026-08-03.jpg 2400w"
+           sizes="(min-width:761px) 60vw, 100vw" width="2400" height="1447"
            alt="Orthomosaic of Ramblers Car Park, a 3.88 hectare site."></div>
       <figcaption>Orthomosaic &middot; Ramblers Car Park, 3 Aug 2026 &middot; 3.88&nbsp;ha &middot;
         226 frames &middot; 2.0&nbsp;cm/px &middot; DJI Mini 3 Pro at 40&nbsp;m<br>
         Demonstration capture &mdash; not client work.</figcaption>
     </figure>
     <figure>
-      <div class="frame frame--pack"><img src="media/ramblers-pack-spread.jpg" width="1400" height="1994"
+      <div class="frame frame--pack"><img src="media/ramblers-pack-spread.jpg" width="1400" height="1996"
            alt="Cover and accuracy pages from the delivered PDF pack."></div>
       <figcaption>Pack spread &middot; cover and accuracy statement, as delivered.<br>
         The full pack downloads from the homepage.</figcaption>
