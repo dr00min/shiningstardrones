@@ -17,6 +17,18 @@
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <meta name="theme-color" content="#EDF0EC">
 
+<script>
+/* Applied before first paint so a returning dark-mode visitor never sees a
+   light flash. Light is the default when nothing has been chosen. */
+(function () {
+  try {
+    if (localStorage.getItem('ssd-theme') === 'dark') {
+      document.documentElement.setAttribute('data-theme', 'dark');
+    }
+  } catch (e) {}
+})();
+</script>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@500;600&family=Public+Sans:wght@300;400;500&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -85,12 +97,13 @@
   --gut:clamp(18px,4vw,44px);
   --ledger:rgba(14,21,25,.055);
 }
-@media (prefers-color-scheme:dark){
-  :root{
-    --chart:#0E1519; --paper:#141C21; --ink:#E8EDEA; --slate:#9AA6AE;
-    --hairline:#2A363C; --magenta:#E4589A; --airway:#78A9D8; --on-accent:#0E1519;
-    --ledger:rgba(232,237,234,.05);
-  }
+/* Light is the default, deliberately and unconditionally — this business sells
+   documents that get printed, forwarded and read outdoors. Dark is opt-in via
+   the masthead toggle, not inherited from the OS. */
+:root[data-theme="dark"]{
+  --chart:#0E1519; --paper:#141C21; --ink:#E8EDEA; --slate:#9AA6AE;
+  --hairline:#2A363C; --magenta:#E4589A; --airway:#78A9D8; --on-accent:#0E1519;
+  --ledger:rgba(232,237,234,.05);
 }
 
 *,*::before,*::after{box-sizing:border-box}
@@ -197,6 +210,20 @@ p:last-child{margin-bottom:0}
 .masthead__tel{font-family:var(--mono); font-size:13px; text-decoration:none}
 .masthead__tel:hover{color:var(--magenta)}
 
+/* Theme toggle — a two-state mono switch, in the same register as the labels.
+   Both wordmark variants ship; CSS shows the one the current theme needs. */
+.theme{display:flex; border:1px solid var(--hairline); font-family:var(--mono); font-size:10px; letter-spacing:.12em; text-transform:uppercase}
+.theme button{
+  appearance:none; border:0; border-radius:0; cursor:pointer; padding:6px 9px;
+  font:inherit; letter-spacing:inherit; text-transform:inherit;
+  background:transparent; color:var(--slate);
+}
+.theme button[aria-pressed="true"]{background:var(--ink); color:var(--chart)}
+.wm-dark{display:block}
+.wm-light{display:none}
+:root[data-theme="dark"] .wm-dark{display:none}
+:root[data-theme="dark"] .wm-light{display:block}
+
 /* ------------------------------------------------------------------ hero */
 .hero{padding-block:clamp(40px,6vw,74px) clamp(26px,3vw,36px)}
 .hero h1{margin:20px 0 0; max-width:14ch}
@@ -294,7 +321,7 @@ table.matrix{border-collapse:collapse; width:100%; min-width:900px; font-size:14
   display:inline-block; margin-top:8px; padding:3px 7px; background:var(--airway); color:var(--paper);
   font-family:var(--mono); font-size:10px; font-weight:500; letter-spacing:.12em; text-transform:uppercase;
 }
-@media (prefers-color-scheme:dark){.gate-tag{color:#0E1519}}
+:root[data-theme="dark"] .gate-tag{color:#0E1519}
 .matrix-note{font-size:14px; color:var(--slate); margin-top:14px; max-width:70ch}
 
 /* ------------------------------------------- D: inverted panel (once) */
@@ -359,13 +386,15 @@ table.matrix{border-collapse:collapse; width:100%; min-width:900px; font-size:14
 <header class="masthead">
   <div class="wrap masthead__in">
     <div class="masthead__mark">
-      <picture>
-        <source srcset="brand/wordmark-oneline-white.svg" media="(prefers-color-scheme: dark)">
-        <img src="brand/wordmark-oneline-dark.svg" alt="Shining Star Drones" width="846" height="48">
-      </picture>
+      <img class="wm-dark" src="brand/wordmark-oneline-dark.svg" alt="Shining Star Drones" width="846" height="48">
+      <img class="wm-light" src="brand/wordmark-oneline-white.svg" alt="" aria-hidden="true" width="846" height="48">
       <span class="eyebrow masthead__strap">GVC · CAA Authorised · West London</span>
     </div>
     <div class="masthead__act">
+      <div class="theme" role="group" aria-label="Colour scheme">
+        <button type="button" data-theme-set="light" aria-pressed="true">Light</button>
+        <button type="button" data-theme-set="dark" aria-pressed="false">Dark</button>
+      </div>
       <a class="masthead__tel" href="tel:+447415502186">+44 7415 502186</a>
       <a class="btn btn--go" href="#enquiry">Get a quote</a>
     </div>
@@ -697,7 +726,8 @@ table.matrix{border-collapse:collapse; width:100%; min-width:900px; font-size:14
       <h3>Safe and legal on a live site</h3>
       <dl class="deflist" style="margin-top:14px">
         <div><dt>Licence</dt><dd>GVC qualified · CAA authorised for commercial operations</dd></div>
-        <div><dt>Insurance</dt><dd>£1m public liability, certificate on request</dd></div>
+        <div><dt>Insurance</dt><dd>£10m public liability, certificate on request</dd></div>
+        <div><dt>Compliance</dt><dd>Commercial operator cover meeting the CAA's requirement under Regulation (EC) 785/2004</dd></div>
         <div><dt>Operator</dt><dd>CAA Operator ID on request</dd></div>
         <div><dt>Before</dt><dd>RAMS supplied ahead of the visit; works to your site induction</dd></div>
         <div><dt>On the day</dt><dd>Flight window agreed with the site manager</dd></div>
@@ -835,7 +865,8 @@ table.matrix{border-collapse:collapse; width:100%; min-width:900px; font-size:14
       </div>
       <div class="aside-card" style="margin-top:26px">
         <h3>On file, on request</h3>
-        <p>£1m public liability certificate · CAA Operator ID · RAMS · GVC certificate.</p>
+        <p>£10m public liability certificate · EC 785/2004 compliance confirmation ·
+           CAA Operator ID · RAMS · GVC certificate.</p>
       </div>
     </div>
   </div>
@@ -857,7 +888,8 @@ table.matrix{border-collapse:collapse; width:100%; min-width:900px; font-size:14
       <h4>Credentials</h4>
       <p>GVC qualified</p>
       <p>CAA authorised, commercial</p>
-      <p>£1m public liability</p>
+      <p>£10m public liability</p>
+      <p>EC 785/2004 compliant</p>
     </div>
     <div class="foot__col">
       <h4>Elsewhere</h4>
@@ -873,6 +905,30 @@ table.matrix{border-collapse:collapse; width:100%; min-width:900px; font-size:14
 </footer>
 
 <script>
+/* Colour scheme. The head script has already applied the stored choice; this
+   only wires the control and keeps the two buttons' pressed state in sync. */
+(function () {
+  var root = document.documentElement,
+      meta = document.querySelector('meta[name="theme-color"]'),
+      btns = document.querySelectorAll('[data-theme-set]');
+
+  function apply(theme) {
+    if (theme === 'dark') root.setAttribute('data-theme', 'dark');
+    else root.removeAttribute('data-theme');
+    if (meta) meta.setAttribute('content', theme === 'dark' ? '#0E1519' : '#EDF0EC');
+    btns.forEach(function (b) {
+      b.setAttribute('aria-pressed', String(b.dataset.themeSet === theme));
+    });
+    try { localStorage.setItem('ssd-theme', theme); } catch (e) {}
+  }
+
+  btns.forEach(function (b) {
+    b.addEventListener('click', function () { apply(b.dataset.themeSet); });
+  });
+
+  apply(root.getAttribute('data-theme') === 'dark' ? 'dark' : 'light');
+})();
+
 /* Month-to-month comparison.
    The markup ships as two plates side by side and works with JS off; this
    promotes it to a draggable overlay. Pointer, touch and keyboard all drive
