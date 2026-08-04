@@ -313,12 +313,16 @@ p:last-child{margin-bottom:0}
 #model-frame>img{width:100%; height:100%; object-fit:contain; grid-area:1/1; align-self:stretch}
 #model-frame>model-viewer{width:100%; height:100%; grid-area:1/1; align-self:stretch; --poster-color:transparent}
 .model-go{grid-area:1/1; z-index:2; justify-self:center; align-self:end; margin-bottom:18px; cursor:pointer}
-.model-lock{
+.model-controls{
   grid-area:1/1; z-index:2; justify-self:end; align-self:end; margin:0 12px 12px 0;
-  appearance:none; border:1px solid var(--hairline); border-radius:0; cursor:pointer;
-  padding:6px 10px; background:var(--paper); color:var(--slate);
+  display:flex; border:1px solid var(--hairline); background:var(--paper);
+}
+.model-lock{
+  appearance:none; border:0; border-radius:0; cursor:pointer;
+  padding:6px 10px; background:transparent; color:var(--slate);
   font-family:var(--mono); font-size:10px; font-weight:500; letter-spacing:.12em; text-transform:uppercase;
 }
+.model-lock+.model-lock{border-left:1px solid var(--hairline)}
 .model-lock:hover{color:var(--ink)}
 .model-lock[aria-pressed="true"]{background:var(--magenta); border-color:var(--magenta); color:var(--on-accent)}
 
@@ -971,28 +975,51 @@ table.matrix{border-collapse:collapse; width:100%; min-width:900px; font-size:14
         var C = customElements.get('model-viewer');
         if (C && C.dracoDecoderLocation !== undefined) C.dracoDecoderLocation = 'vendor/draco/';
 
-        /* Lock is offered, not imposed. It pins the tilt to wherever the
-           viewer has already put it, so you choose the angle and then stop it
-           drifting; yaw and zoom keep working either way. */
-        var locked = false;
-        var lock = document.createElement('button');
-        lock.type = 'button';
-        lock.className = 'model-lock';
-        lock.setAttribute('aria-pressed', 'false');
-        lock.textContent = 'Lock tilt';
-        lock.addEventListener('click', function () {
-          locked = !locked;
-          if (locked) {
-            var o = mv.getCameraOrbit();
-            mv.setAttribute('min-camera-orbit', 'auto ' + o.phi + 'rad auto');
-            mv.setAttribute('max-camera-orbit', 'auto ' + o.phi + 'rad auto');
-          } else {
-            mv.setAttribute('min-camera-orbit', 'auto auto auto');
-            mv.setAttribute('max-camera-orbit', 'auto auto auto');
+        /* Two independent locks, because which axis you want frozen depends on
+           what you are looking at: freeze tilt for a turntable spin, freeze spin
+           to raise and lower the eye over one elevation, or both to hold a view.
+           Each pins its axis to wherever the camera already is, so the angle is
+           always one you chose. Zoom is never locked. */
+        var lockSpin = false, lockTilt = false;
+
+        function applyLimits() {
+          var o = mv.getCameraOrbit();
+          var t = lockSpin ? o.theta + 'rad' : 'auto';
+          var pMin = lockTilt ? o.phi + 'rad' : 'auto';
+          /* Independent of the locks: phi past 90deg puts the camera under the
+             ground plane, where the model is hollow and unreadable. There is no
+             view worth having down there, so it is clamped whatever else is set. */
+          var pMax = lockTilt ? o.phi + 'rad' : '88deg';
+          mv.setAttribute('min-camera-orbit', t + ' ' + pMin + ' auto');
+          mv.setAttribute('max-camera-orbit', t + ' ' + pMax + ' auto');
+
+          /* auto-rotate drives theta, so it fights a locked spin. */
+          if (lockSpin) mv.removeAttribute('auto-rotate');
+          else if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            mv.setAttribute('auto-rotate', '');
           }
-          lock.setAttribute('aria-pressed', String(locked));
-          lock.textContent = locked ? 'Tilt locked' : 'Lock tilt';
-        });
+        }
+
+        function makeLock(label, get, set) {
+          var b = document.createElement('button');
+          b.type = 'button';
+          b.className = 'model-lock';
+          b.setAttribute('aria-pressed', 'false');
+          b.textContent = label;
+          b.addEventListener('click', function () {
+            set(!get());
+            b.setAttribute('aria-pressed', String(get()));
+            applyLimits();
+          });
+          return b;
+        }
+
+        var controls = document.createElement('div');
+        controls.className = 'model-controls';
+        controls.appendChild(makeLock('Lock spin',
+          function () { return lockSpin; }, function (v) { lockSpin = v; }));
+        controls.appendChild(makeLock('Lock tilt',
+          function () { return lockTilt; }, function (v) { lockTilt = v; }));
 
         var mv = document.createElement('model-viewer');
         mv.setAttribute('src', 'media/st-mary-magdalene-building.glb');
@@ -1004,8 +1031,8 @@ table.matrix{border-collapse:collapse; width:100%; min-width:900px; font-size:14
         /* No camera-orbit here on purpose: model-viewer's own framing is better
            than any angle hardcoded blind. Pan stays off — it is the one control
            that can push the model off-screen with no way to recover it — but
-           tilt and zoom are free, and the lock button below constrains tilt on
-           demand rather than by default. */
+           tilt and zoom are free, and the lock buttons below constrain each axis
+           on demand rather than by default. */
         mv.setAttribute('disable-pan', '');
         if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
           mv.setAttribute('auto-rotate', '');
@@ -1013,7 +1040,8 @@ table.matrix{border-collapse:collapse; width:100%; min-width:900px; font-size:14
         mv.addEventListener('load', function () {
           go.remove();
           if (poster) poster.remove();
-          frame.appendChild(lock);
+          frame.appendChild(controls);
+          applyLimits();
         });
         mv.addEventListener('error', function () {
           go.disabled = false; go.textContent = 'Load failed \u2014 retry';
