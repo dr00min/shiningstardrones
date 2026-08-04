@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Progress packs in 48 hours — repeatable aerial site records | Shining Star Drones</title>
-<meta name="description" content="The same flight, every month. Nadir grid flown to a saved mission, plus fixed obliques, delivered as an orthomosaic, labelled stills and a month-to-month pair inside 48 hours of a successful flight. West London, Berkshire, Bucks, Surrey, Herts.">
+<meta name="description" content="The same flight, every month. Nadir grid flown to a saved mission, plus fixed obliques, delivered as an orthomosaic, labelled stills and a month-to-month pair inside 48 hours of a successful flight. Slough and Berkshire, West London, Bucks, Surrey, Herts.">
 
 <meta property="og:title" content="The same flight, every month — Shining Star Drones">
 <meta property="og:description" content="Repeatable aerial site records. Orthomosaic, labelled stills and a month-to-month comparison, delivered as a PDF pack inside 48 hours.">
@@ -46,8 +46,9 @@
   "priceRange": "££",
   "address": {
     "@type": "PostalAddress",
-    "addressLocality": "West London",
-    "addressRegion": "Greater London",
+    "addressLocality": "Slough",
+    "addressRegion": "Berkshire",
+    "postalCode": "SL1",
     "addressCountry": "GB"
   },
   "areaServed": [
@@ -306,10 +307,11 @@ p:last-child{margin-bottom:0}
 .bay__rail div{display:flex; justify-content:space-between; gap:12px; padding:11px 0; border-bottom:1px solid var(--hairline); font-family:var(--mono); font-size:12px}
 .bay__rail span:first-child{color:var(--slate); letter-spacing:.1em; text-transform:uppercase; font-size:11px}
 .bay__note{margin-top:16px; font-size:14px; color:var(--slate)}
-#model-frame{display:grid; place-items:center; background:#F4F6F3}
-:root[data-theme="dark"] #model-frame{background:#11181D}
-#model-frame>img{width:100%; height:100%; object-fit:contain; grid-area:1/1}
-#model-frame>model-viewer{width:100%; height:100%; grid-area:1/1; --poster-color:transparent}
+/* The poster render carries its own near-white ground; matching it here means
+   the plate reads as one surface instead of a picture floating on a panel. */
+#model-frame{display:grid; background:#FAFAFA}
+#model-frame>img{width:100%; height:100%; object-fit:contain; grid-area:1/1; align-self:stretch}
+#model-frame>model-viewer{width:100%; height:100%; grid-area:1/1; align-self:stretch; --poster-color:transparent}
 .model-go{grid-area:1/1; z-index:2; justify-self:center; align-self:end; margin-bottom:18px; cursor:pointer}
 
 /* ------------------------------------------------ C: full-bleed matrix */
@@ -433,7 +435,7 @@ table.matrix{border-collapse:collapse; width:100%; min-width:900px; font-size:14
       <div class="spec__c"><div class="spec__k">Turnaround</div><div class="spec__v">48 hours<small>from a successful flight</small></div></div>
       <div class="spec__c"><div class="spec__k">Output</div><div class="spec__v">Orthomosaic JPG<small>labelled stills · PDF pack</small></div></div>
       <div class="spec__c"><div class="spec__k">Typical</div><div class="spec__v">£400–£650<small>per site, per month</small></div></div>
-      <div class="spec__c"><div class="spec__k">Base</div><div class="spec__v">West London<small>1 hour travel included</small></div></div>
+      <div class="spec__c"><div class="spec__k">Base</div><div class="spec__v">Slough, Berkshire<small>1 hour travel included</small></div></div>
     </div>
   </div>
 </section>
@@ -564,7 +566,7 @@ table.matrix{border-collapse:collapse; width:100%; min-width:900px; font-size:14
         <!-- Poster first. The 10.3 MB model and the 1 MB viewer load only when the
              button is pressed, so nothing here is render-blocking on mobile.
              Uses model_3d (cropped to the church), never model_3d_full_site. -->
-        <img id="model-poster" src="media/st-mary-magdalene-preview.png" width="1000" height="1000" loading="lazy"
+        <img id="model-poster" src="media/st-mary-magdalene-preview.png" width="1600" height="1000" loading="lazy"
              alt="Untextured shaded render of the photogrammetric model: a church with a square tower and pitched nave roof.">
         <button class="model-go btn btn--go" type="button" id="model-go">Load the 3D model &middot; 10&nbsp;MB</button>
       </div>
@@ -727,13 +729,13 @@ table.matrix{border-collapse:collapse; width:100%; min-width:900px; font-size:14
         <div><dt>Airspace</dt><dd>Pre-flight check including Heathrow-area restrictions</dd></div>
       </dl>
       <p class="read" style="margin-top:20px; font-size:15px; color:var(--slate)">
-        Most of West London sits under Heathrow's controlled airspace and its restriction zone.
+        Slough and West London sit under Heathrow's controlled airspace and its restriction zone.
         Knowing exactly where that bites — and where it doesn't — is the difference between a
         booked visit and a wasted morning.</p>
 
       <h3 style="margin-top:30px">Coverage</h3>
       <dl class="deflist" style="margin-top:14px">
-        <div><dt>Base</dt><dd>West London</dd></div>
+        <div><dt>Base</dt><dd>Slough SL1, Berkshire</dd></div>
         <div><dt>Travel</dt><dd>1 hour included; beyond that &pound;20/hr</dd></div>
         <div><dt>Areas</dt><dd>Greater London · Berkshire · Buckinghamshire · Surrey · Hertfordshire</dd></div>
         <div><dt>Beyond</dt><dd>By arrangement, travel quoted separately</dd></div>
@@ -880,7 +882,7 @@ table.matrix{border-collapse:collapse; width:100%; min-width:900px; font-size:14
       <h4>Contact</h4>
       <a href="tel:+447415502186">+44 7415 502186</a>
       <a href="mailto:info@shiningstardrones.co.uk">info@shiningstardrones.co.uk</a>
-      <p>West London</p>
+      <p>Slough SL1, Berkshire</p>
     </div>
     <div class="foot__col">
       <h4>Credentials</h4>
@@ -897,7 +899,7 @@ table.matrix{border-collapse:collapse; width:100%; min-width:900px; font-size:14
       <a href="privacy.html">Privacy notice</a>
     </div>
     <div class="foot__legal">
-      <span>&copy; 2026 Shining Star Drones &middot; Sole trader, West London</span>
+      <span>&copy; 2026 Andrew Abdul-Malek trading as Shining Star Drones &middot; Slough SL1, Berkshire</span>
       <span>Greater London · Berkshire · Bucks · Surrey · Herts</span>
     </div>
   </div>
@@ -938,7 +940,8 @@ table.matrix{border-collapse:collapse; width:100%; min-width:900px; font-size:14
       poster = document.getElementById('model-poster');
   if (!go || !frame) return;
 
-  go.addEventListener('click', function () {
+  function load() {
+    if (go.disabled) return;
     go.disabled = true;
     go.textContent = 'Loading\u2026';
 
@@ -971,7 +974,24 @@ table.matrix{border-collapse:collapse; width:100%; min-width:900px; font-size:14
       });
     };
     document.head.appendChild(s);
-  });
+  }
+
+  go.addEventListener('click', load);
+
+  /* The poster is an untextured check render — honest, but a poor substitute for
+     the real thing. On a desktop-sized viewport with no data-saving signal, load
+     the textured model as soon as the section is on screen so that is what people
+     actually see. Narrow screens and save-data keep the click gate: 10 MB is not
+     something to spend on someone's behalf over cellular. */
+  var conn = navigator.connection || {},
+      slow = conn.saveData === true || /(^|\b)(2g|slow-2g)$/.test(conn.effectiveType || '');
+
+  if (!slow && window.innerWidth >= 900 && 'IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      if (entries[0].isIntersecting) { io.disconnect(); load(); }
+    }, { rootMargin: '200px' });
+    io.observe(frame);
+  }
 })();
 
 /* Month-to-month comparison.
