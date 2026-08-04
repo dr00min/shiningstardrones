@@ -113,3 +113,41 @@ empty Client, Operator and Flight altitude fields. Do not republish that one.
 `ramblers-pack-spread.jpg` is pages 1 and 4 of this PDF rendered at scale 2 and
 stacked — two A4 landscape pages make an A4 portrait spread. Regenerate it if the
 report changes, and keep the `aspect-ratio` in `.r-a4` matching its dimensions.
+
+## The 3D model was Z-up and had to be corrected
+
+`st-mary-magdalene-building.glb` arrived from the pipeline **lying on its back**.
+ODM's textured model is in a local ENU-style frame with **Z up**; `obj2glb`
+copies the vertices through without an axis remap, and glTF requires **Y up**.
+The file had one node, `{"mesh": 0}`, with no rotation and no matrix, so nothing
+corrected it.
+
+Every glTF viewer orbits about Y. With a Z-up model that means dragging **rolls
+the building like a clock face** instead of turning it about its own vertical —
+you cannot orbit it, and constraining the camera does not help, because the
+camera was never the thing that was wrong.
+
+**How to spot it without opening the file:** the vertical axis is the one whose
+bounds never cross zero, because it is an elevation above a datum rather than an
+offset from a centre. Here Z sat at 54.2..67.7 m while X and Y straddled zero.
+
+Fixed with `scripts/fix_glb_up_axis.py`, which writes a -90 degree X rotation
+into the node as a quaternion — mapping `(x, y, z) -> (x, z, -y)` — plus a
+translation so the base sits at y=0. Done as a node transform rather than by
+rewriting vertices: it costs nothing, leaves the Draco payload untouched, and
+works in every viewer instead of relying on `<model-viewer orientation>` and one
+viewer's Euler convention.
+
+**This is an upstream bug and will come back on the next model.** Re-run the
+script after any re-export:
+
+```sh
+python3 scripts/fix_glb_up_axis.py media/<model>.glb --check   # report only
+python3 scripts/fix_glb_up_axis.py media/<model>.glb           # patch in place
+```
+
+It is safe to re-run — it refuses to touch a node that already carries a
+transform, and reports and exits if the model is already Y-up.
+
+The real fix belongs in `obj2glb` / the publish step in the pipeline repo, so
+that the deliverable is correct for anyone who consumes it, not just this site.
