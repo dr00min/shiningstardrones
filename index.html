@@ -15,7 +15,7 @@
 <link rel="icon" type="image/png" href="favicon-32.png" sizes="32x32">
 <link rel="icon" type="image/png" href="icon-192.png" sizes="192x192">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
-<meta name="theme-color" content="#EDF0EC">
+<meta name="theme-color" content="#F6F8F6">
 
 <script>
 /* Applied before first paint so a returning dark-mode visitor never sees a
@@ -81,14 +81,14 @@
 <style>
 /* ------------------------------------------------------------------ tokens */
 :root{
-  --chart:#EDF0EC;      /* page ground — map paper */
-  --paper:#FBFCFA;      /* card / panel */
+  --chart:#F6F8F6;      /* page ground — map paper, halved toward white */
+  --paper:#FDFEFC;      /* card / panel */
   --ink:#0E1519;        /* body + headings */
   --slate:#5A6670;      /* secondary text, labels */
   --hairline:#C4CCC6;   /* 1px rules and borders */
   --magenta:#A81B5D;    /* the accent */
   --airway:#2A5D8F;     /* focus rings, gated-row tag */
-  --on-accent:#FBFCFA;
+  --on-accent:#FDFEFC;
 
   --sans:"Public Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
   --head:"Archivo Narrow","Archivo",-apple-system,BlinkMacSystemFont,"Segoe UI Semibold",Helvetica,Arial,sans-serif;
@@ -763,7 +763,7 @@ table.matrix{border-collapse:collapse; width:100%; min-width:900px; font-size:14
       <video controls preload="none" playsinline poster="media/reel-poster.jpg"
              aria-label="Shining Star Drones showreel">
         <source src="https://media.shiningstardrones.co.uk/reel-web-1080p-49MB.mp4" type="video/mp4">
-        <p style="padding:16px;color:#EDF0EC">Your browser can't play this video —
+        <p style="padding:16px;color:#F6F8F6">Your browser can't play this video —
           <a href="https://www.youtube.com/@shiningstarmediaproductions" style="color:#E4589A">watch it on YouTube</a>.</p>
       </video>
     </div>
@@ -916,7 +916,7 @@ table.matrix{border-collapse:collapse; width:100%; min-width:900px; font-size:14
   function apply(theme) {
     if (theme === 'dark') root.setAttribute('data-theme', 'dark');
     else root.removeAttribute('data-theme');
-    if (meta) meta.setAttribute('content', theme === 'dark' ? '#0E1519' : '#EDF0EC');
+    if (meta) meta.setAttribute('content', theme === 'dark' ? '#0E1519' : '#F6F8F6');
     btns.forEach(function (b) {
       b.setAttribute('aria-pressed', String(b.dataset.themeSet === theme));
     });
