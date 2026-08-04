@@ -1,1145 +1,929 @@
 <!DOCTYPE html>
 <html lang="en-GB">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shining Star Drones | Commercial Drone Services London</title>
-    <meta name="description" content="GVC-qualified commercial drone services in London, Buckinghamshire & the South East. Aerial surveying, inspection, mapping, cinematic filming & FPV. Fully insured & CAA authorised.">
-    <meta name="keywords" content="drone services london, commercial drone pilot london, aerial surveying london, drone inspection buckinghamshire, FPV drone filming, GVC qualified drone pilot UK, roof inspection drone, construction drone survey">
-    
-    <!-- Open Graph -->
-    <meta property="og:title" content="Shining Star Drones | Commercial Drone Services">
-    <meta property="og:description" content="GVC-qualified commercial drone services. Aerial surveying, inspection, mapping & cinematic filming across London and the South East.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://shiningstardrones.co.uk">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Progress packs in 48 hours — repeatable aerial site records | Shining Star Drones</title>
+<meta name="description" content="The same flight, every month. Nadir grid and fixed obliques flown to a saved mission, delivered as an orthomosaic, labelled stills and a month-to-month pair inside 48 hours. West London, Berkshire, Bucks, Surrey, Herts.">
 
-    <!-- Brand icons. The .ico carries 16/32/48 for older browsers; the PNGs
-         are the star on its navy plate, which keeps the gradient's pale end
-         legible on a white tab bar as well as a dark one. -->
-    <link rel="icon" href="favicon.ico" sizes="16x16 32x32 48x48">
-    <link rel="icon" type="image/png" href="favicon-32.png" sizes="32x32">
-    <link rel="icon" type="image/png" href="icon-192.png" sizes="192x192">
-    <link rel="apple-touch-icon" href="apple-touch-icon.png">
-    <meta name="theme-color" content="#0a0a0f">
+<meta property="og:title" content="The same flight, every month — Shining Star Drones">
+<meta property="og:description" content="Repeatable aerial site records. Orthomosaic, labelled stills and a month-to-month comparison, delivered as a PDF pack inside 48 hours.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://shiningstardrones.co.uk">
 
-    <!-- LocalBusiness JSON-LD (local SEO) -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "LocalBusiness",
-      "@id": "https://shiningstardrones.co.uk/#business",
-      "name": "Shining Star Drones",
-      "alternateName": "Shining Star Drones",
-      "url": "https://shiningstardrones.co.uk",
-      "email": "info@shiningstardrones.co.uk",
-      "description": "GVC-qualified commercial drone services: aerial surveying, inspection, mapping, and cinematic filming across London, Buckinghamshire, Berkshire, and Surrey.",
-      "image": "https://shiningstardrones.co.uk/og-image.jpg",
-      "priceRange": "££",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "West London",
-        "addressRegion": "Greater London",
-        "addressCountry": "GB"
-      },
-      "areaServed": [
-        {"@type": "City", "name": "London"},
-        {"@type": "AdministrativeArea", "name": "Buckinghamshire"},
-        {"@type": "AdministrativeArea", "name": "Berkshire"},
-        {"@type": "AdministrativeArea", "name": "Surrey"},
-        {"@type": "AdministrativeArea", "name": "Hertfordshire"}
-      ],
-      "serviceType": [
-        "Aerial Surveying",
-        "Aerial Inspection",
-        "Roof Inspection",
-        "Construction Site Monitoring",
-        "Topographic Surveying",
-        "3D Modelling",
-        "Thermal Imaging Survey",
-        "Aerial Photography",
-        "Aerial Videography",
-        "FPV Drone Filming"
-      ],
-      "knowsAbout": [
-        "Drone surveying",
-        "Aerial inspection",
-        "Photogrammetry",
-        "RTK GPS",
-        "GVC certification",
-        "CAA regulations"
-      ]
-    }
-    </script>
-    
-    <style>
-        :root {
-            --bg: #0a0a0f;
-            --surface: #111118;
-            --border: #1e1e2e;
-            --text: #e4e4e7;
-            --muted: #a1a1aa;
-            --accent: #3b82f6;
-            --accent-glow: rgba(59, 130, 246, 0.15);
-            --gold: #f59e0b;
-        }
-        
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+<link rel="icon" href="favicon.ico" sizes="16x16 32x32 48x48">
+<link rel="icon" type="image/png" href="favicon-32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="icon-192.png" sizes="192x192">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#EDF0EC">
 
-        /* Anchor jumps land below the fixed nav instead of under it */
-        html {
-            scroll-behavior: smooth;
-            scroll-padding-top: 5.5rem;
-        }
-        @media (prefers-reduced-motion: reduce) {
-            html { scroll-behavior: auto; }
-        }
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@500;600&family=Public+Sans:wght@300;400;500&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
 
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            line-height: 1.6;
-            -webkit-font-smoothing: antialiased;
-        }
-        
-        /* Navigation */
-        nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 100;
-            background: rgba(10, 10, 15, 0.9);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid var(--border);
-            padding: 1rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        /* Logo lockup: star mark + one-line wordmark.
-           The wordmark is 17.6:1, so it is sized by height and allowed to
-           shrink with the viewport -- at a fixed height it would run into
-           the nav links on narrow desktops. The nav is dark at every
-           breakpoint, so this is always the white-text wordmark; the
-           dark-text one is used on capability-statement.html. */
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 0.55rem;
-            text-decoration: none;
-            min-width: 0;
-            flex: 0 1 auto;
-        }
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "@id": "https://shiningstardrones.co.uk/#business",
+  "name": "Shining Star Drones",
+  "url": "https://shiningstardrones.co.uk",
+  "email": "info@shiningstardrones.co.uk",
+  "telephone": "+447415502186",
+  "description": "Repeatable aerial site records for construction, estates and property. Nadir grid and fixed obliques flown to a saved mission, delivered as an orthomosaic, labelled stills and a month-to-month pair in a PDF pack inside 48 hours.",
+  "priceRange": "££",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "West London",
+    "addressRegion": "Greater London",
+    "addressCountry": "GB"
+  },
+  "areaServed": [
+    {"@type": "City", "name": "London"},
+    {"@type": "AdministrativeArea", "name": "Berkshire"},
+    {"@type": "AdministrativeArea", "name": "Buckinghamshire"},
+    {"@type": "AdministrativeArea", "name": "Surrey"},
+    {"@type": "AdministrativeArea", "name": "Hertfordshire"}
+  ],
+  "serviceType": [
+    "Construction progress monitoring",
+    "Aerial site records",
+    "Orthomosaic capture",
+    "Roof and building inspection",
+    "Aerial photography",
+    "Aerial videography",
+    "FPV drone filming"
+  ],
+  "knowsAbout": [
+    "Photogrammetry",
+    "Orthomosaic production",
+    "Repeatable flight missions",
+    "GVC certification",
+    "CAA regulations",
+    "Site induction and RAMS"
+  ]
+}
+</script>
 
-        .logo-mark {
-            width: 1.85rem;
-            height: 1.85rem;
-            flex: none;
-        }
+<style>
+/* ------------------------------------------------------------------ tokens */
+:root{
+  --chart:#EDF0EC;      /* page ground — map paper */
+  --paper:#FBFCFA;      /* card / panel */
+  --ink:#0E1519;        /* body + headings */
+  --slate:#5A6670;      /* secondary text, labels */
+  --hairline:#C4CCC6;   /* 1px rules and borders */
+  --magenta:#A81B5D;    /* the accent */
+  --airway:#2A5D8F;     /* focus rings, gated-row tag */
+  --on-accent:#FBFCFA;
 
-        .logo-wordmark {
-            height: clamp(0.8rem, 1.9vw, 1.05rem);
-            width: auto;
-            max-width: 100%;
-            object-fit: contain;
-        }
+  --sans:"Public Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+  --head:"Archivo Narrow","Archivo",-apple-system,BlinkMacSystemFont,"Segoe UI Semibold",Helvetica,Arial,sans-serif;
+  --mono:"Roboto Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
 
-        .logo:hover .logo-wordmark { opacity: 0.85; }
+  --wide:1340px;
+  --gut:clamp(18px,4vw,44px);
+  --ledger:rgba(14,21,25,.055);
+}
+@media (prefers-color-scheme:dark){
+  :root{
+    --chart:#0E1519; --paper:#141C21; --ink:#E8EDEA; --slate:#9AA6AE;
+    --hairline:#2A363C; --magenta:#E4589A; --airway:#78A9D8; --on-accent:#0E1519;
+    --ledger:rgba(232,237,234,.05);
+  }
+}
 
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-            flex: none;
-        }
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; background:var(--chart); color:var(--ink);
+  font-family:var(--sans); font-weight:400; font-size:17px; line-height:1.6;
+  font-variant-numeric:tabular-nums; overflow-x:hidden;
+}
+img,svg,video{max-width:100%; display:block}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--airway); outline-offset:2px}
 
-        .nav-links a {
-            color: var(--muted);
-            text-decoration: none;
-            font-size: 0.9rem;
-            transition: color 0.2s;
-        }
-        
-        .nav-links a:hover { color: var(--text); }
-        
-        .nav-cta {
-            background: var(--accent);
-            color: white !important;
-            padding: 0.5rem 1.25rem;
-            border-radius: 6px;
-            font-weight: 500;
-        }
-        
-        /* Hero */
-        .hero {
-            /* section{} caps width at 1200px — the hero must be full-bleed
-               or the background reel gets letterboxed by the page gutters */
-            max-width: none;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 6rem 2rem 4rem;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .hero::before {
-            content: '';
-            position: absolute;
-            z-index: 2;
-            pointer-events: none;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(ellipse at 30% 20%, rgba(59, 130, 246, 0.08) 0%, transparent 50%),
-                        radial-gradient(ellipse at 70% 80%, rgba(245, 158, 11, 0.05) 0%, transparent 50%);
-            animation: heroGlow 15s ease-in-out infinite;
-        }
-        
-        @keyframes heroGlow {
-            0%, 100% { transform: translate(0, 0); }
-            50% { transform: translate(-5%, -3%); }
-        }
-        
-        /* Hero background reel */
-        .hero-media {
-            position: absolute;
-            inset: 0;
-            z-index: 0;
-            overflow: hidden;
-            /* Poster shows immediately; the video fades in on top of it */
-            background: #0a0a0f url('media/reel-poster.jpg') center / cover no-repeat;
-        }
-        .hero-video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-            opacity: 0;
-            transition: opacity 1.2s ease;
-        }
-        .hero-video.is-ready { opacity: 1; }
+/* ------------------------------------------------------------- primitives */
+.wrap{max-width:var(--wide); margin:0 auto; padding-inline:var(--gut)}
+.read{max-width:68ch}
+.mono{font-family:var(--mono); font-weight:400}
+.eyebrow{
+  font-family:var(--mono); font-size:11px; font-weight:500;
+  letter-spacing:.16em; text-transform:uppercase; color:var(--slate);
+}
+.rule{border:0; border-top:1px solid var(--hairline); margin:0}
+/* magenta rule separates the page's major movements — accent job #1 */
+.movement{border:0; border-top:3px solid var(--magenta); margin:0}
+h1,h2,h3{font-family:var(--head); font-weight:600; letter-spacing:-.015em; line-height:1.05; margin:0}
+h1{font-size:clamp(40px,7.2vw,86px); letter-spacing:-.03em; line-height:.96}
+h2{font-size:clamp(27px,3.4vw,44px)}
+h3{font-size:clamp(19px,1.7vw,23px); font-weight:500; letter-spacing:-.01em; line-height:1.2}
+p{margin:0 0 1em}
+p:last-child{margin-bottom:0}
 
-        /* Darkens the footage so the headline stays readable over bright shots.
-           Heavier at top and bottom to protect the nav and the fade into
-           the next section. */
-        .hero-scrim {
-            position: absolute;
-            inset: 0;
-            z-index: 1;
-            pointer-events: none;
-            background:
-                linear-gradient(to bottom,
-                    rgba(10, 10, 15, 0.88) 0%,
-                    rgba(10, 10, 15, 0.72) 30%,
-                    rgba(10, 10, 15, 0.74) 60%,
-                    rgba(10, 10, 15, 0.97) 100%),
-                radial-gradient(ellipse at center,
-                    transparent 20%, rgba(10, 10, 15, 0.55) 100%);
-        }
+.btn{
+  display:inline-block; font-family:var(--mono); font-size:12px; font-weight:500;
+  letter-spacing:.12em; text-transform:uppercase; text-decoration:none;
+  padding:14px 20px; border:1px solid var(--ink); background:transparent; color:var(--ink);
+}
+.btn:hover{background:var(--ink); color:var(--chart)}
+/* accent job #2 — the primary action */
+.btn--go{background:var(--magenta); border-color:var(--magenta); color:var(--on-accent)}
+.btn--go:hover{background:var(--ink); border-color:var(--ink); color:var(--chart)}
 
-        .hero-content {
-            position: relative;
-            z-index: 3;
-            max-width: 800px;
-        }
-        
-        .badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: var(--accent-glow);
-            border: 1px solid rgba(59, 130, 246, 0.3);
-            padding: 0.4rem 1rem;
-            border-radius: 100px;
-            font-size: 0.8rem;
-            color: var(--accent);
-            margin-bottom: 2rem;
-        }
-        
-        .badge::before {
-            content: '';
-            width: 6px;
-            height: 6px;
-            background: #22c55e;
-            border-radius: 50%;
-            animation: pulse 2s ease-in-out infinite;
-        }
-        
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.4; }
-        }
-        
-        h1 {
-            font-size: clamp(2.5rem, 6vw, 4rem);
-            font-weight: 800;
-            letter-spacing: -0.03em;
-            line-height: 1.1;
-            margin-bottom: 1.5rem;
-        }
+/* section numerals — accent job #3 */
+.sec-no{
+  font-family:var(--mono); font-weight:500; font-size:clamp(30px,4.4vw,52px);
+  line-height:.8; color:var(--magenta); letter-spacing:-.02em;
+}
+.sec-head{display:flex; align-items:flex-start; gap:clamp(14px,2.4vw,28px); padding-block:clamp(38px,5vw,62px) 22px}
+.sec-head__t{flex:1; min-width:0}
+.sec-head__t p{margin:12px 0 0; color:var(--slate); max-width:64ch; font-size:16px}
+.sec-tag{margin-left:auto; padding-top:8px; white-space:nowrap}
 
-        /* Extra separation from the moving footage behind the hero */
-        .hero .hero-content h1,
-        .hero .hero-sub {
-            text-shadow: 0 2px 24px rgba(0, 0, 0, 0.65);
-        }
-        
-        h1 .highlight {
-            background: linear-gradient(135deg, var(--accent), #818cf8);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        .hero-sub {
-            font-size: 1.2rem;
-            color: var(--muted);
-            max-width: 600px;
-            margin: 0 auto 2.5rem;
-        }
-        
-        .hero-actions {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-        
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.8rem 1.75rem;
-            border-radius: 8px;
-            font-size: 1rem;
-            font-weight: 500;
-            text-decoration: none;
-            transition: all 0.2s;
-            cursor: pointer;
-            border: none;
-        }
-        
-        .btn-primary {
-            background: var(--accent);
-            color: white;
-        }
-        
-        .btn-primary:hover {
-            background: #2563eb;
-            transform: translateY(-1px);
-        }
-        
-        .btn-secondary {
-            background: var(--surface);
-            color: var(--text);
-            border: 1px solid var(--border);
-        }
-        
-        .btn-secondary:hover {
-            border-color: var(--muted);
-        }
-        
-        /* Sections */
-        section {
-            padding: 5rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        .section-header {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-        
-        .section-header h2 {
-            font-size: 2rem;
-            font-weight: 700;
-            letter-spacing: -0.02em;
-            margin-bottom: 0.75rem;
-        }
-        
-        .section-header p {
-            color: var(--muted);
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        
-        /* Services Grid */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-        }
-        
-        .service-card {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 2rem;
-            transition: all 0.3s;
-        }
-        
-        .service-card:hover {
-            border-color: var(--accent);
-            transform: translateY(-2px);
-        }
-        
-        .service-icon {
-            font-size: 2rem;
-            margin-bottom: 1rem;
-        }
-        
-        .service-card h3 {
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-        
-        .service-card p {
-            color: var(--muted);
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
-        }
-        
-        .service-card .price {
-            color: var(--gold);
-            font-weight: 600;
-            font-size: 0.9rem;
-        }
-        
-        /* Credentials */
-        .credentials {
-            background: var(--surface);
-            border-top: 1px solid var(--border);
-            border-bottom: 1px solid var(--border);
-        }
-        
-        .credentials-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            text-align: center;
-        }
-        
-        .credential-item {
-            padding: 1.5rem;
-        }
-        
-        .credential-item .icon {
-            font-size: 2rem;
-            margin-bottom: 0.75rem;
-        }
-        
-        .credential-item h4 {
-            font-size: 0.95rem;
-            font-weight: 600;
-            margin-bottom: 0.25rem;
-        }
-        
-        .credential-item p {
-            color: var(--muted);
-            font-size: 0.85rem;
-        }
-        
-        /* Pricing */
-        .pricing-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
-        }
-        
-        .pricing-card {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 2rem;
-            position: relative;
-        }
-        
-        .pricing-card.featured {
-            border-color: var(--accent);
-        }
-        
-        .pricing-card.featured::before {
-            content: 'Most Popular';
-            position: absolute;
-            top: -12px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: var(--accent);
-            color: white;
-            padding: 0.25rem 1rem;
-            border-radius: 100px;
-            font-size: 0.75rem;
-            font-weight: 600;
-        }
-        
-        .pricing-card h3 {
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-        
-        .pricing-card .price {
-            font-size: 2.5rem;
-            font-weight: 800;
-            margin: 1rem 0;
-        }
-        
-        .pricing-card .price span {
-            font-size: 1rem;
-            font-weight: 400;
-            color: var(--muted);
-        }
-        
-        .pricing-card ul {
-            list-style: none;
-            margin: 1.5rem 0;
-        }
-        
-        .pricing-card li {
-            padding: 0.4rem 0;
-            font-size: 0.9rem;
-            color: var(--muted);
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        
-        .pricing-card li::before {
-            content: '✓';
-            color: #22c55e;
-            font-weight: 700;
-        }
-        
-        /* CTA */
-        .cta-section {
-            text-align: center;
-            background: var(--surface);
-            border-radius: 16px;
-            padding: 4rem 2rem;
-            margin: 2rem auto;
-            max-width: 800px;
-        }
-        
-        .cta-section h2 {
-            font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-        }
-        
-        .cta-section p {
-            color: var(--muted);
-            margin-bottom: 2rem;
-        }
-        
-        /* Footer */
-        footer {
-            border-top: 1px solid var(--border);
-            padding: 3rem 2rem;
-            text-align: center;
-            color: var(--muted);
-            font-size: 0.85rem;
-        }
-        
-        footer a {
-            color: var(--text);
-            text-decoration: none;
-        }
+.ledger{background-image:linear-gradient(to right,var(--ledger) 1px,transparent 1px); background-size:80px 100%}
 
-        /* Showreel — center stage */
-        #showreel {
-            max-width: 1400px;
-        }
-        .reel-stage {
-            position: relative;
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-        /* Ambient glow behind the player */
-        .reel-stage::before {
-            content: '';
-            position: absolute;
-            inset: -8% -4%;
-            background: radial-gradient(ellipse at center, var(--accent-glow) 0%, transparent 65%);
-            filter: blur(40px);
-            pointer-events: none;
-            z-index: 0;
-        }
-        .video-wrap {
-            position: relative;
-            z-index: 1;
-            aspect-ratio: 16 / 9;
-            background: #000;
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: 0 30px 80px -20px rgba(0, 0, 0, 0.8);
-        }
-        .video-wrap video {
-            display: block;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            background: #000;
-        }
-        .reel-caption {
-            text-align: center;
-            color: var(--muted);
-            margin-top: 1.75rem;
-            font-size: 0.9rem;
-        }
-        .reel-caption a { color: var(--accent); }
-        /* Shown only if media/reel.mp4 is missing or fails to load */
-        .reel-fallback { display: none; }
-        .reel-fallback[data-active] {
-            display: flex;
-            position: absolute;
-            inset: 0;
-            z-index: 2;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 1rem;
-            text-align: center;
-            padding: 2rem;
-            background: var(--surface);
-            border-radius: 16px;
-        }
-        .reel-fallback p { color: var(--muted); font-size: 0.95rem; }
+/* ---------------------------------------------------------------- plates */
+/* A plate frame keeps its aspect ratio whether it holds a real JPG or an
+   awaiting-capture slot, so dropping the image in needs no layout change. */
+.plate{margin:0}
+.plate__frame{
+  position:relative; border:1px solid var(--hairline); background:var(--paper);
+  overflow:hidden;
+}
+.plate__frame>img{width:100%; height:100%; object-fit:cover}
+.plate__frame>iframe{width:100%; height:100%; border:0; display:block}
+.r-3x2 .plate__frame{aspect-ratio:3/2}
+.r-16x9 .plate__frame{aspect-ratio:16/9}
+.r-16x10 .plate__frame{aspect-ratio:16/10}
+.r-a4 .plate__frame{aspect-ratio:1/1.414}
 
-        /* Areas */
-        .areas-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 1rem;
-            text-align: left;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-        .areas-grid > div {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 10px;
-            padding: 1.25rem 1.5rem;
-            font-size: 0.92rem;
-            line-height: 1.5;
-        }
-        .areas-grid strong {
-            color: var(--accent);
-            display: block;
-            margin-bottom: 0.4rem;
-            font-size: 1rem;
-        }
-        .areas-grid span {
-            color: var(--muted);
-            font-size: 0.85rem;
-        }
+/* corner registration ticks, 11px — the signature detail */
+.plate__frame::before,.plate__frame::after{
+  content:""; position:absolute; width:11px; height:11px; pointer-events:none; z-index:2;
+}
+.plate__frame::before{top:6px; left:6px; border-top:1px solid var(--magenta); border-left:1px solid var(--magenta)}
+.plate__frame::after{bottom:6px; right:6px; border-bottom:1px solid var(--magenta); border-right:1px solid var(--magenta)}
 
-        /* Contact form */
-        .contact-form {
-            max-width: 720px;
-            margin: 2rem auto 0;
-            text-align: left;
-        }
-        .form-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-            margin-bottom: 1rem;
-        }
-        .form-field {
-            display: flex;
-            flex-direction: column;
-            margin-bottom: 1rem;
-        }
-        .form-field label {
-            font-size: 0.8rem;
-            color: var(--muted);
-            margin-bottom: 0.35rem;
-            font-weight: 500;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-        .form-field input,
-        .form-field select,
-        .form-field textarea {
-            background: rgba(255,255,255,0.03);
-            border: 1px solid var(--border);
-            color: var(--text);
-            padding: 0.75rem 1rem;
-            border-radius: 8px;
-            font-size: 0.95rem;
-            font-family: inherit;
-            transition: border-color 0.2s, background 0.2s;
-        }
-        .form-field input:focus,
-        .form-field select:focus,
-        .form-field textarea:focus {
-            outline: none;
-            border-color: var(--accent);
-            background: rgba(59,130,246,0.05);
-        }
-        .form-field textarea {
-            resize: vertical;
-            min-height: 120px;
-        }
-        .form-fineprint {
-            text-align: center;
-            color: var(--muted);
-            font-size: 0.8rem;
-            margin-top: 0.75rem;
-        }
-        .contact-alt {
-            text-align: center;
-            margin-top: 2.5rem;
-            padding-top: 2rem;
-            border-top: 1px solid var(--border);
-        }
-        .contact-alt p {
-            color: var(--muted);
-            margin-bottom: 1rem;
-            font-size: 0.9rem;
-        }
-        .contact-alt-actions {
-            display: flex;
-            gap: 0.75rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-        @media (max-width: 600px) {
-            .form-row { grid-template-columns: 1fr; }
-        }
+/* the awaiting-capture slot: announces its own specification */
+.slot{
+  position:absolute; inset:0; display:flex; flex-direction:column; justify-content:flex-end;
+  gap:6px; padding:clamp(14px,2vw,22px);
+  background:
+    repeating-linear-gradient(-45deg,transparent 0 9px,var(--ledger) 9px 10px),
+    var(--paper);
+}
+.slot__spec{font-family:var(--mono); font-size:11px; letter-spacing:.12em; text-transform:uppercase; color:var(--slate)}
+.slot__what{font-family:var(--head); font-weight:500; font-size:clamp(15px,1.5vw,19px); color:var(--ink); line-height:1.15}
 
-        /* Responsive */
-        @media (max-width: 768px) {
-            .nav-links { display: none; }
-            .hero { padding-top: 5rem; }
-            section { padding: 3rem 1.5rem; }
-        }
-    </style>
+.plate__cap{
+  display:flex; flex-wrap:wrap; align-items:baseline; gap:10px; margin-top:9px;
+  font-family:var(--mono); font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--slate);
+}
+/* accent job #4 — plate numbering is a solid magenta block */
+.plate__no{background:var(--magenta); color:var(--on-accent); padding:3px 7px; font-weight:500; letter-spacing:.1em}
+
+/* -------------------------------------------------------------- masthead */
+.masthead{border-bottom:1px solid var(--ink)}
+.masthead__in{display:flex; align-items:center; gap:20px; flex-wrap:wrap; padding-block:16px}
+.masthead__mark{display:flex; align-items:center; gap:14px; min-width:0}
+/* Sized by width, not height: the wordmark is 846×48, so a fixed height of
+   19px computes to a 334px width and overflows the 324px content box at 360px. */
+.masthead__mark img{width:clamp(196px,40vw,300px); height:auto}
+.masthead__strap{display:none}
+@media (min-width:900px){.masthead__strap{display:block; padding-left:14px; border-left:1px solid var(--hairline)}}
+.masthead__act{margin-left:auto; display:flex; align-items:center; gap:14px}
+.masthead__tel{font-family:var(--mono); font-size:13px; text-decoration:none}
+.masthead__tel:hover{color:var(--magenta)}
+
+/* ------------------------------------------------------------------ hero */
+.hero{padding-block:clamp(40px,6vw,74px) clamp(26px,3vw,36px)}
+.hero h1{margin:20px 0 0; max-width:14ch}
+.hero__stand{margin:24px 0 0; font-size:clamp(18px,1.6vw,21px); font-weight:300; line-height:1.5; max-width:60ch; color:var(--ink)}
+.hero__reel{margin-top:18px; font-family:var(--mono); font-size:12px; letter-spacing:.08em; text-transform:uppercase}
+.hero__reel a{color:var(--magenta); text-underline-offset:4px}
+
+.spec{
+  display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  border-top:1px solid var(--ink); margin-top:clamp(28px,3.6vw,44px);
+}
+.spec__c{padding:16px 18px 16px 0; border-bottom:1px solid var(--hairline)}
+@media (min-width:760px){.spec__c+.spec__c{padding-left:18px; border-left:1px solid var(--hairline)}}
+.spec__k{font-family:var(--mono); font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:var(--slate)}
+.spec__v{margin-top:6px; font-family:var(--head); font-weight:500; font-size:clamp(17px,1.5vw,20px); line-height:1.2}
+.spec__v small{display:block; font-family:var(--sans); font-weight:400; font-size:13px; color:var(--slate); margin-top:4px; letter-spacing:0}
+
+/* ------------------------------------------------------- B: split blocks */
+.split{display:grid; gap:clamp(26px,3.4vw,52px); padding-bottom:clamp(40px,5vw,68px)}
+@media (min-width:900px){.split--pack{grid-template-columns:1.55fr 1fr; align-items:start}}
+@media (min-width:900px){.split--two{grid-template-columns:1fr 1fr; align-items:start}}
+
+.steps{list-style:none; margin:0; padding:0; border-top:1px solid var(--ink)}
+.steps li{display:grid; grid-template-columns:44px 1fr; gap:14px; padding:15px 0; border-bottom:1px solid var(--hairline)}
+.steps li::before{
+  content:counter(s,decimal-leading-zero); counter-increment:s;
+  font-family:var(--mono); font-size:13px; font-weight:500; color:var(--magenta);
+}
+.steps{counter-reset:s}
+
+.deflist{margin:0; border-top:1px solid var(--hairline)}
+.deflist div{display:flex; flex-wrap:wrap; gap:6px 16px; padding:11px 0; border-bottom:1px solid var(--hairline)}
+.deflist dt{flex:0 0 auto; font-family:var(--mono); font-size:11px; letter-spacing:.12em; text-transform:uppercase; color:var(--slate); min-width:11ch}
+.deflist dd{flex:1 1 16ch; margin:0; font-size:15px}
+
+/* ---------------------------------------------------- A: contact strip */
+.strip{display:grid; gap:14px; grid-template-columns:repeat(2,1fr); padding-bottom:clamp(40px,5vw,68px)}
+@media (min-width:980px){.strip{grid-template-columns:repeat(4,1fr)}}
+
+/* ------------------------------------------------ E: comparison slider */
+.cmp{padding-bottom:clamp(40px,5vw,68px)}
+/* no-JS / pre-enhancement: the two plates simply sit side by side */
+.cmp__stage{display:grid; gap:14px; grid-template-columns:1fr}
+@media (min-width:760px){.cmp__stage{grid-template-columns:1fr 1fr}}
+.cmp__legend{display:none}
+
+.cmp.is-live .cmp__stage{display:block; position:relative; aspect-ratio:16/9; touch-action:pan-y; cursor:ew-resize}
+.cmp.is-live .cmp__f{position:absolute; inset:0; margin:0}
+.cmp.is-live .cmp__f .plate__frame{aspect-ratio:auto; height:100%}
+.cmp.is-live .cmp__f .plate__cap{display:none}
+.cmp.is-live .cmp__f[data-cmp=b]{clip-path:inset(0 0 0 var(--pos,50%))}
+.cmp.is-live .cmp__legend{
+  display:flex; flex-wrap:wrap; justify-content:space-between; gap:10px; margin-top:9px;
+  font-family:var(--mono); font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--slate);
+}
+/* accent job #5 — the divider and its handle */
+.cmp__handle{
+  position:absolute; top:0; bottom:0; left:var(--pos,50%); width:3px; margin-left:-1.5px;
+  background:var(--magenta); z-index:3; display:none; border:0; padding:0;
+}
+.cmp.is-live .cmp__handle{display:block}
+.cmp__handle::after{
+  content:""; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
+  width:38px; height:38px; background:var(--magenta); border:2px solid var(--on-accent);
+}
+.cmp__handle:focus-visible{outline:2px solid var(--airway); outline-offset:3px}
+@media (prefers-reduced-motion:no-preference){
+  .cmp.is-live:not(.is-drag) .cmp__handle,
+  .cmp.is-live:not(.is-drag) .cmp__f[data-cmp=b]{transition:left .12s linear, clip-path .12s linear}
+}
+
+/* --------------------------------------------------------- F: model bay */
+.bay{display:grid; gap:clamp(20px,2.6vw,34px); padding-bottom:clamp(40px,5vw,68px)}
+@media (min-width:960px){.bay{grid-template-columns:1fr 300px; align-items:start}}
+.bay__rail{border-top:1px solid var(--ink)}
+.bay__rail div{display:flex; justify-content:space-between; gap:12px; padding:11px 0; border-bottom:1px solid var(--hairline); font-family:var(--mono); font-size:12px}
+.bay__rail span:first-child{color:var(--slate); letter-spacing:.1em; text-transform:uppercase; font-size:11px}
+.bay__note{margin-top:16px; font-size:14px; color:var(--slate)}
+
+/* ------------------------------------------------ C: full-bleed matrix */
+.matrix-wrap{overflow-x:auto; -webkit-overflow-scrolling:touch; padding-bottom:clamp(40px,5vw,68px)}
+table.matrix{border-collapse:collapse; width:100%; min-width:900px; font-size:14.5px}
+.matrix th,.matrix td{text-align:left; vertical-align:top; padding:16px 20px 16px 0; border-bottom:1px solid var(--hairline)}
+.matrix thead th{
+  border-bottom:1px solid var(--ink); font-family:var(--mono); font-weight:500; font-size:11px;
+  letter-spacing:.16em; text-transform:uppercase; color:var(--slate); padding-bottom:11px;
+}
+.matrix td:first-child{font-family:var(--head); font-weight:600; font-size:16px; width:19%; padding-right:24px}
+.matrix .acc{font-style:italic; color:var(--slate)}
+.matrix .px{font-family:var(--mono); font-weight:500; white-space:nowrap}
+/* the two gated rows: named, not hidden, not equal — airway does this job */
+.matrix tr.gated td{background:color-mix(in srgb,var(--airway) 7%,transparent)}
+.matrix tr.gated td:first-child{box-shadow:inset 3px 0 0 var(--airway)}
+.gate-tag{
+  display:inline-block; margin-top:8px; padding:3px 7px; background:var(--airway); color:var(--paper);
+  font-family:var(--mono); font-size:10px; font-weight:500; letter-spacing:.12em; text-transform:uppercase;
+}
+@media (prefers-color-scheme:dark){.gate-tag{color:#0E1519}}
+.matrix-note{font-size:14px; color:var(--slate); margin-top:14px; max-width:70ch}
+
+/* ------------------------------------------- D: inverted panel (once) */
+.limits{background:var(--ink); color:var(--chart)}
+.limits .wrap{padding-block:clamp(48px,6.5vw,92px)}
+.limits h2{color:var(--chart); max-width:18ch}
+.limits__body{
+  margin-top:26px; max-width:60ch; font-size:clamp(19px,1.9vw,25px); font-weight:300; line-height:1.45;
+}
+.limits__body strong{font-weight:500}
+.limits__kick{
+  margin-top:30px; padding-top:22px; border-top:1px solid var(--magenta);
+  max-width:56ch; font-family:var(--head); font-weight:500; font-size:clamp(19px,2vw,27px); line-height:1.25;
+}
+.limits .eyebrow{color:var(--magenta)}
+
+/* ------------------------------------------------------------ film band */
+.film{display:grid; gap:clamp(22px,3vw,40px); padding-bottom:clamp(40px,5vw,68px)}
+@media (min-width:900px){.film{grid-template-columns:1.6fr 1fr; align-items:start}}
+.film__player{border:1px solid var(--hairline); background:#0B0F12}
+.film__player video{width:100%; aspect-ratio:16/9; object-fit:cover; background:#0B0F12}
+.rates{margin:0; border-top:1px solid var(--ink)}
+.rates div{display:flex; justify-content:space-between; gap:14px; padding:13px 0; border-bottom:1px solid var(--hairline)}
+.rates dt{font-size:15px}
+.rates dd{margin:0; font-family:var(--mono); font-weight:500; font-size:15px; white-space:nowrap}
+
+/* -------------------------------------------------------------- enquiry */
+.enq{display:grid; gap:clamp(26px,3.4vw,52px); padding-bottom:clamp(44px,5vw,72px)}
+@media (min-width:960px){.enq{grid-template-columns:1fr 330px; align-items:start}}
+.fields{display:grid; gap:16px; grid-template-columns:1fr}
+@media (min-width:620px){.fields{grid-template-columns:1fr 1fr}}
+.f-wide{grid-column:1/-1}
+.field label{display:block; font-family:var(--mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--slate); margin-bottom:6px}
+.field .req{color:var(--magenta)}
+.field input,.field select,.field textarea{
+  width:100%; font-family:var(--sans); font-size:16px; color:var(--ink);
+  background:var(--paper); border:1px solid var(--hairline); border-radius:0; padding:11px 12px;
+}
+.field textarea{min-height:112px; resize:vertical}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--airway)}
+.hp{position:absolute; left:-9999px; width:1px; height:1px; overflow:hidden}
+.aside-card{border-top:1px solid var(--ink); padding-top:18px}
+.aside-card h3{margin-bottom:10px}
+.aside-card p{font-size:15px; color:var(--slate)}
+.aside-card a{color:var(--magenta); text-underline-offset:3px}
+
+/* --------------------------------------------------------------- footer */
+.foot{border-top:1px solid var(--ink); background:var(--paper)}
+.foot .wrap{display:flex; flex-wrap:wrap; gap:22px 40px; padding-block:32px}
+.foot__col{min-width:180px}
+.foot__col h4{margin:0 0 10px; font-family:var(--mono); font-size:11px; font-weight:500; letter-spacing:.16em; text-transform:uppercase; color:var(--slate)}
+.foot__col a,.foot__col p{display:block; font-size:14px; margin:0 0 6px; text-decoration:none}
+.foot__col a:hover{color:var(--magenta)}
+.foot__legal{width:100%; border-top:1px solid var(--hairline); padding-top:18px; font-family:var(--mono); font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--slate); display:flex; flex-wrap:wrap; gap:10px 26px}
+
+@media (prefers-reduced-motion:reduce){*{animation:none!important; transition:none!important}}
+</style>
 </head>
 <body>
 
-    <!-- Navigation -->
-    <nav>
-        <a href="#" class="logo" aria-label="Shining Star Drones — home">
-            <img class="logo-mark" src="brand/star-icon.png" alt=""
-                 width="512" height="512" decoding="async">
-            <img class="logo-wordmark" src="brand/wordmark-oneline-white.svg"
-                 alt="Shining Star Drones" width="847" height="48" decoding="async">
-        </a>
-        <ul class="nav-links">
-            <li><a href="#showreel">Showreel</a></li>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#credentials">Credentials</a></li>
-            <li><a href="#areas">Areas</a></li>
-            <li><a href="#pricing">Pricing</a></li>
-            <li><a href="tel:+447415502186" aria-label="Phone">📞</a></li>
-            <li><a href="#contact" class="nav-cta">Get a Quote</a></li>
-        </ul>
-    </nav>
+<!-- ====================================================== MASTHEAD (5.1) -->
+<header class="masthead">
+  <div class="wrap masthead__in">
+    <div class="masthead__mark">
+      <picture>
+        <source srcset="brand/wordmark-oneline-white.svg" media="(prefers-color-scheme: dark)">
+        <img src="brand/wordmark-oneline-dark.svg" alt="Shining Star Drones" width="846" height="48">
+      </picture>
+      <span class="eyebrow masthead__strap">GVC · CAA Authorised · West London</span>
+    </div>
+    <div class="masthead__act">
+      <a class="masthead__tel" href="tel:+447415502186">+44 7415 502186</a>
+      <a class="btn btn--go" href="#enquiry">Get a quote</a>
+    </div>
+  </div>
+</header>
 
-    <!-- Hero -->
-    <section class="hero">
-        <!--
-          Background reel. Reuses the showreel's video URL (read from
-          #reel's <source> by the hero script) so the URL lives in exactly
-          one place, and the browser downloads the file once, not twice.
-          The poster shows instantly and the video fades in once buffered.
-          Decorative only — hidden from screen readers, and skipped entirely
-          on mobile / reduced-motion / data-saver.
-        -->
-        <div class="hero-media" aria-hidden="true">
-            <video id="hero-video" class="hero-video"
-                   muted loop playsinline preload="none"></video>
+<main>
+
+<!-- ========================================================== HERO (5.2) -->
+<section class="ledger">
+  <div class="wrap hero">
+    <p class="eyebrow">Commercial aerial data · London · Berkshire · Bucks · Surrey</p>
+    <h1>The same flight, every month.</h1>
+    <p class="hero__stand">Nadir grid and fixed obliques flown to a saved mission, so month three is
+      directly comparable to month one. Orthomosaic, labelled stills and a month-to-month pair,
+      delivered as a PDF pack inside 48 hours.</p>
+    <p class="hero__reel">A quarter of the work is still film — <a href="#film">see the reel</a></p>
+
+    <div class="spec">
+      <div class="spec__c"><div class="spec__k">Turnaround</div><div class="spec__v">48 hours</div></div>
+      <div class="spec__c"><div class="spec__k">Output</div><div class="spec__v">Orthomosaic JPG<small>labelled stills · PDF pack</small></div></div>
+      <div class="spec__c"><div class="spec__k">Typical</div><div class="spec__v">£400–£650<small>per site, per month</small></div></div>
+      <div class="spec__c"><div class="spec__k">Base</div><div class="spec__v">West London<small>1 hour travel included</small></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ TEMPLATE A — PLATE 01, THE LOUD MOMENT -->
+<section class="wrap" style="padding-bottom:clamp(40px,5vw,68px)">
+  <figure class="plate r-3x2">
+    <div class="plate__frame">
+      <!-- DROP-IN: replace this <div class="slot"> with
+           <img src="media/plate-01-ortho.jpg" alt="Orthomosaic of the demonstration site, full footprint" width="2400" height="1600">
+           No layout change is required — the frame owns the 3:2 ratio. -->
+      <div class="slot">
+        <span class="slot__spec">Plate 01 · 3:2 · full site footprint</span>
+        <span class="slot__what">Orthomosaic of the demonstration capture — the whole site in one frame, at a size you can actually examine.</span>
+      </div>
+    </div>
+    <figcaption class="plate__cap">
+      <span class="plate__no">Plate 01</span>
+      <span>Orthomosaic · Awaiting demonstration capture · Visual-grade</span>
+    </figcaption>
+  </figure>
+</section>
+
+<hr class="movement">
+
+<!-- ================================ TEMPLATE B — WHAT'S IN A PACK (5.3) -->
+<section class="wrap">
+  <div class="sec-head">
+    <span class="sec-no">01</span>
+    <div class="sec-head__t">
+      <h2>What's in a progress pack</h2>
+      <p>Seven items, the same seven every visit, flown to the same mission file.
+         Nothing on this list depends on kit I don't own.</p>
+    </div>
+    <span class="eyebrow sec-tag">Delivered in 48 hours</span>
+  </div>
+
+  <div class="split split--pack">
+    <ol class="steps">
+      <li><span>Nadir grid over the full site footprint, 60–70% overlap</span></li>
+      <li><span>Fixed N/E/S/W obliques from identical heights and distances every visit</span></li>
+      <li><span>Orthomosaic overview, labelled visual-grade</span></li>
+      <li><span>15–30 labelled stills — key elevations and whole-site</span></li>
+      <li><span>Side-by-side comparison against the previous visit</span></li>
+      <li><span>Cover sheet: site, date, weather, flight reference, visit number</span></li>
+      <li><span>Delivered as a PDF pack within 48 hours</span></li>
+    </ol>
+
+    <figure class="plate r-a4">
+      <div class="plate__frame">
+        <!-- DROP-IN: <img src="media/plate-07-pack.jpg" alt="A spread from the delivered PDF pack"> -->
+        <div class="slot">
+          <span class="slot__spec">Plate 07 · A4 portrait</span>
+          <span class="slot__what">A spread from the pack as it is delivered.</span>
         </div>
-        <div class="hero-scrim" aria-hidden="true"></div>
+      </div>
+      <figcaption class="plate__cap">
+        <span class="plate__no">Plate 07</span>
+        <span>Pack spread · Awaiting demonstration capture</span>
+      </figcaption>
+    </figure>
+  </div>
+</section>
 
-        <div class="hero-content">
-            <div class="badge">Available for bookings</div>
-            <h1>Commercial <span class="highlight">Drone Services</span><br>Across London & the South East</h1>
-            <p class="hero-sub">
-                GVC-qualified pilot delivering aerial surveying, inspection, mapping & cinematic filming. 
-                Fully insured. CAA authorised. Data processing included.
-            </p>
-            <div class="hero-actions">
-                <a href="#contact" class="btn btn-primary">📩 Get a Free Quote</a>
-                <a href="#showreel" class="btn btn-secondary">🎬 Watch the Showreel</a>
-            </div>
+<!-- =================================== TEMPLATE A — THE OBLIQUES (5.4) -->
+<section class="wrap">
+  <div class="sec-head">
+    <span class="sec-no">02</span>
+    <div class="sec-head__t">
+      <h2>Four fixed positions</h2>
+      <p>The four oblique positions don't move, so the same corner of the site is framed
+         the same way every month. Comparison is the point; framing drift destroys it.</p>
+    </div>
+    <span class="eyebrow sec-tag">Plates 02–05</span>
+  </div>
+
+  <div class="strip">
+    <figure class="plate r-16x9">
+      <div class="plate__frame">
+        <!-- DROP-IN: <img src="media/plate-02-oblique-n.jpg" alt="North oblique"> -->
+        <div class="slot"><span class="slot__spec">Plate 02 · 16:9</span><span class="slot__what">North oblique</span></div>
+      </div>
+      <figcaption class="plate__cap"><span class="plate__no">02</span><span>Oblique N · Awaiting capture</span></figcaption>
+    </figure>
+    <figure class="plate r-16x9">
+      <div class="plate__frame">
+        <!-- DROP-IN: <img src="media/plate-03-oblique-e.jpg" alt="East oblique"> -->
+        <div class="slot"><span class="slot__spec">Plate 03 · 16:9</span><span class="slot__what">East oblique</span></div>
+      </div>
+      <figcaption class="plate__cap"><span class="plate__no">03</span><span>Oblique E · Awaiting capture</span></figcaption>
+    </figure>
+    <figure class="plate r-16x9">
+      <div class="plate__frame">
+        <!-- DROP-IN: <img src="media/plate-04-oblique-s.jpg" alt="South oblique"> -->
+        <div class="slot"><span class="slot__spec">Plate 04 · 16:9</span><span class="slot__what">South oblique</span></div>
+      </div>
+      <figcaption class="plate__cap"><span class="plate__no">04</span><span>Oblique S · Awaiting capture</span></figcaption>
+    </figure>
+    <figure class="plate r-16x9">
+      <div class="plate__frame">
+        <!-- DROP-IN: <img src="media/plate-05-oblique-w.jpg" alt="West oblique"> -->
+        <div class="slot"><span class="slot__spec">Plate 05 · 16:9</span><span class="slot__what">West oblique</span></div>
+      </div>
+      <figcaption class="plate__cap"><span class="plate__no">05</span><span>Oblique W · Awaiting capture</span></figcaption>
+    </figure>
+  </div>
+</section>
+
+<hr class="movement">
+
+<!-- ============================ TEMPLATE E — MONTH TO MONTH (5.5) -->
+<section class="wrap">
+  <div class="sec-head">
+    <span class="sec-no">03</span>
+    <div class="sec-head__t">
+      <h2>Month to month</h2>
+      <p>The same vantage, two different dates. Drag the divider — this is the whole
+         product in one control, and it is why the flight is saved rather than improvised.</p>
+    </div>
+    <span class="eyebrow sec-tag">Drag · or use arrow keys</span>
+  </div>
+
+  <div class="cmp" id="cmp">
+    <div class="cmp__stage" id="cmp-stage">
+      <figure class="plate r-16x9 cmp__f" data-cmp="a">
+        <div class="plate__frame">
+          <!-- DROP-IN: <img src="media/plate-06a-before.jpg" alt="Site on the first visit"> -->
+          <div class="slot"><span class="slot__spec">Plate 06A · 16:9</span><span class="slot__what">Fixed vantage, visit one</span></div>
         </div>
-    </section>
-
-    <!-- Showreel -->
-    <section id="showreel">
-        <div class="section-header">
-            <h2>See the Work</h2>
-            <p>Cinematic, commercial, and FPV — a look at recent work</p>
+        <figcaption class="plate__cap"><span class="plate__no">06A</span><span>Visit one · Awaiting capture</span></figcaption>
+      </figure>
+      <figure class="plate r-16x9 cmp__f" data-cmp="b">
+        <div class="plate__frame">
+          <!-- DROP-IN: <img src="media/plate-06b-after.jpg" alt="Same vantage on a later visit"> -->
+          <div class="slot"><span class="slot__spec">Plate 06B · 16:9</span><span class="slot__what">Same vantage, later date</span></div>
         </div>
-        <div class="reel-stage">
-            <div class="video-wrap">
-                <!--
-                  ┌───────────────────────────────────────────────────────┐
-                  │ THE REEL URL LIVES HERE, AND ONLY HERE.               │
-                  │ To change the reel: upload the new file to the R2     │
-                  │ bucket and update the <source> src below. The hero    │
-                  │ background reads this same URL automatically.         │
-                  │                                                        │
-                  │ Do NOT commit the video to this repo — Cloudflare     │
-                  │ rejects assets over 25 MiB and the deploy goes red.   │
-                  │ See media/README.md for encode settings.              │
-                  └───────────────────────────────────────────────────────┘
-                -->
-                <video id="reel"
-                       poster="media/reel-poster.jpg"
-                       autoplay muted loop playsinline controls preload="metadata"
-                       aria-label="Shining Star Drones showreel (no audio)">
-                    <source src="https://media.shiningstardrones.co.uk/reel-web-1080p-49MB.mp4" type="video/mp4">
-                </video>
+        <figcaption class="plate__cap"><span class="plate__no">06B</span><span>Later visit · Awaiting capture</span></figcaption>
+      </figure>
+      <button class="cmp__handle" type="button" id="cmp-handle"
+              role="slider" aria-label="Compare the two visits"
+              aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" aria-valuetext="50% — showing visit one"></button>
+    </div>
+    <div class="cmp__legend">
+      <span>◀ Plate 06A · Visit one</span>
+      <span>Plate 06B · Later visit ▶</span>
+    </div>
+  </div>
+</section>
 
-                <div class="reel-fallback" id="reel-fallback">
-                    <p>Showreel coming soon — watch the full portfolio on YouTube.</p>
-                    <a href="https://www.youtube.com/@shiningstarmediaproductions" class="btn btn-primary" target="_blank" rel="noopener">🎬 Watch on YouTube</a>
-                </div>
-            </div>
+<!-- ================================== TEMPLATE F — THE MODEL BAY -->
+<section class="ledger">
+ <div class="wrap">
+  <div class="sec-head">
+    <span class="sec-no">04</span>
+    <div class="sec-head__t">
+      <h2>The site as a model</h2>
+      <p>The same set of frames also builds a navigable photogrammetric model — useful for
+         showing a client an elevation they can't stand in front of, or briefing a
+         subcontractor on a roof. It is a visual model, not a measured one.</p>
+    </div>
+    <span class="eyebrow sec-tag">From the same capture</span>
+  </div>
+
+  <div class="bay">
+    <figure class="plate r-16x10">
+      <div class="plate__frame">
+        <!-- DROP-IN, either route, no layout change:
+             hosted viewer →  <iframe src="…" title="3D model of the demonstration building" loading="lazy" allowfullscreen></iframe>
+             still frame   →  <img src="media/plate-08-model.jpg" alt="Photogrammetric model of the demonstration building"> -->
+        <div class="slot">
+          <span class="slot__spec">Plate 08 · 16:10 · model view</span>
+          <span class="slot__what">Photogrammetric model of the demonstration building.</span>
         </div>
-        <p class="reel-caption">
-            Full portfolio: <a href="https://www.youtube.com/@shiningstarmediaproductions" target="_blank" rel="noopener">@shiningstarmediaproductions</a>
-        </p>
-    </section>
+      </div>
+      <figcaption class="plate__cap">
+        <span class="plate__no">Plate 08</span>
+        <span>3D model · Awaiting demonstration capture · Visual-grade, not measured</span>
+      </figcaption>
+    </figure>
 
-    <!-- Services -->
-    <section id="services">
-        <div class="section-header">
-            <h2>What We Do</h2>
-            <p>Two distinct service lines — commercial data capture and cinematic production</p>
-        </div>
-        
-        <div class="services-grid">
-            <!-- Commercial Services -->
-            <div class="service-card">
-                <div class="service-icon">🏗️</div>
-                <h3>Construction Monitoring</h3>
-                <p>Progress tracking, site overviews, earthwork volumetrics & as-built documentation. Monthly retainer available.</p>
-                <div class="price">From £500/visit</div>
-            </div>
-            
-            <div class="service-card">
-                <div class="service-icon">🏠</div>
-                <h3>Roof & Building Inspection</h3>
-                <p>Safe, fast inspection of roofs, facades & structures without scaffolding. Detailed reports with annotated imagery.</p>
-                <div class="price">From £300/inspection</div>
-            </div>
-            
-            <div class="service-card">
-                <div class="service-icon">🗺️</div>
-                <h3>Surveying & Mapping</h3>
-                <p>Topographic surveys, orthomosaics, 3D models & digital twins. RTK-accurate data processing included.</p>
-                <div class="price">From £1,000/project</div>
-            </div>
-            
-            <div class="service-card">
-                <div class="service-icon">🌡️</div>
-                <h3>Thermal Imaging</h3>
-                <p>Solar panel inspection, building heat loss analysis, water leak detection. FLIR-grade thermal data.</p>
-                <div class="price">From £500/site</div>
-            </div>
-            
-            <!-- Creative Services -->
-            <div class="service-card">
-                <div class="service-icon">🎥</div>
-                <h3>Cinematic Filming</h3>
-                <p>Broadcast-quality aerial footage for film, TV, brands & real estate. Smooth, cinematic camera work.</p>
-                <div class="price">From £400/half day</div>
-            </div>
-            
-            <div class="service-card">
-                <div class="service-icon">🚀</div>
-                <h3>FPV Drone Filming</h3>
-                <p>High-speed, immersive FPV footage through buildings, landscapes & tight spaces. GoPro 12 quality.</p>
-                <div class="price">From £700/day</div>
-            </div>
-        </div>
-    </section>
+    <div>
+      <div class="bay__rail">
+        <div><span>Built from</span><span>Nadir grid + obliques</span></div>
+        <div><span>Aircraft</span><span>DJI Mini 3 Pro</span></div>
+        <div><span>Grade</span><span>Visual</span></div>
+        <div><span>Scale</span><span>Relative, uncontrolled</span></div>
+        <div><span>Use</span><span>Show, brief, record</span></div>
+      </div>
+      <p class="bay__note">No ground control was set on this capture, so the model carries no
+        stated coordinate accuracy and nothing should be measured off it. Where a job needs
+        measurement, see the accuracy panel below.</p>
+    </div>
+  </div>
+ </div>
+</section>
 
-    <!-- Credentials -->
-    <section id="credentials" class="credentials">
-        <div class="credentials-grid">
-            <div class="credential-item">
-                <div class="icon">✅</div>
-                <h4>GVC Qualified</h4>
-                <p>General VLOS Certificate — CAA approved for commercial operations</p>
-            </div>
-            <div class="credential-item">
-                <div class="icon">🛡️</div>
-                <h4>£1m Public Liability</h4>
-                <p>Fully insured for commercial drone operations (CAA Operator ID on request)</p>
-            </div>
-            <div class="credential-item">
-                <div class="icon">📍</div>
-                <h4>London & South East</h4>
-                <p>Covering Greater London, Buckinghamshire, Berkshire, Surrey & beyond</p>
-            </div>
-            <div class="credential-item">
-                <div class="icon">📊</div>
-                <h4>Data Processing</h4>
-                <p>Full data pipeline — from capture to deliverable. Not just raw footage.</p>
-            </div>
-        </div>
-    </section>
+<hr class="movement">
 
+<!-- ============================ TEMPLATE C — WHAT YOU RECEIVE (5.6) -->
+<section class="wrap">
+  <div class="sec-head">
+    <span class="sec-no">05</span>
+    <div class="sec-head__t">
+      <h2>What you receive, and what it costs</h2>
+      <p>Every price carries a unit and a scope. The two rows marked <em>hired kit</em> are
+         real services quoted per job — they are not flown on my own aircraft, and I don't
+         price them as though they were.</p>
+    </div>
+    <span class="eyebrow sec-tag">Ex VAT · travel included within 1 hour</span>
+  </div>
 
-    <!-- Areas Covered (local SEO) -->
-    <section id="areas" class="credentials">
-        <div class="section-header" style="margin-bottom:2rem;">
-            <h2>Areas We Cover</h2>
-            <p>Service-area business — we come to you across the Home Counties</p>
-        </div>
-        <div class="areas-grid">
-            <div><strong>West London</strong><br><span>Chiswick · Ealing · Hammersmith · Fulham · Kensington · Chelsea</span></div>
-            <div><strong>Greater London</strong><br><span>All boroughs by appointment</span></div>
-            <div><strong>Buckinghamshire</strong><br><span>Windsor · Maidenhead · High Wycombe · Aylesbury · Beaconsfield</span></div>
-            <div><strong>Berkshire</strong><br><span>Slough · Reading · Bracknell · Wokingham · Newbury</span></div>
-            <div><strong>Surrey</strong><br><span>Woking · Guildford · Staines · Egham · Camberley</span></div>
-            <div><strong>Hertfordshire</strong><br><span>Watford · St Albans · Hemel Hempstead · Stevenage</span></div>
-        </div>
-    </section>
+  <div class="matrix-wrap">
+    <table class="matrix">
+      <thead>
+        <tr><th scope="col">Job</th><th scope="col">Flown as</th><th scope="col">You receive</th><th scope="col">Stated accuracy</th><th scope="col">Typical price</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Construction progress pack</td>
+          <td>Nadir grid + fixed obliques, saved mission</td>
+          <td>Orthomosaic JPG, 15–30 labelled stills, month-to-month pair, PDF pack</td>
+          <td class="acc">Visual record, not survey-grade</td>
+          <td class="px">£350–£500 one-off<br>£400–£650 per site per month</td>
+        </tr>
+        <tr>
+          <td>Roof &amp; building inspection</td>
+          <td>Manual obliques and close passes, no contact</td>
+          <td>Labelled 4K stills + PDF defect sheet, numbered and located on a plan</td>
+          <td class="acc">Visual condition record, not a structural survey</td>
+          <td class="px">From £300 per building<br>one visit</td>
+        </tr>
+        <tr>
+          <td>Site overview &amp; marketing stills</td>
+          <td>Obliques + panorama</td>
+          <td>Graded stills, optional short cut</td>
+          <td class="acc">—</td>
+          <td class="px">From £300 per site visit</td>
+        </tr>
+        <tr class="gated">
+          <td>Topographic survey / stockpile volumes<span class="gate-tag">Hired kit</span></td>
+          <td>Hired RTK aircraft + ground control</td>
+          <td>GeoTIFF, point cloud, DXF linework, written accuracy statement</td>
+          <td class="acc">Quoted per job with the accuracy spec attached</td>
+          <td class="px">POA</td>
+        </tr>
+        <tr class="gated">
+          <td>Thermal / solar inspection<span class="gate-tag">Hired kit</span></td>
+          <td>Hired thermal payload</td>
+          <td>Radiometric imagery, per-panel fault map</td>
+          <td class="acc">Quoted per job</td>
+          <td class="px">POA</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="matrix-note">Send a site address and roughly how big it is and the reply is a price,
+    not a question. Monthly work is booked as a standing visit, not a contract you can't leave.</p>
+</section>
 
-    <!-- Pricing -->
-    <section id="pricing">
-        <div class="section-header">
-            <h2>Transparent Pricing</h2>
-            <p>No hidden fees. Travel included within 1 hour. VAT applicable.</p>
-        </div>
-        
-        <div class="pricing-grid">
-            <div class="pricing-card">
-                <h3>Half Day Filming</h3>
-                <div class="price">£400 <span>/ 4 hours</span></div>
-                <ul>
-                    <li>4 hours on-site filming</li>
-                    <li>1 hour travel included</li>
-                    <li>DJI Mini 3 Pro or FPV</li>
-                    <li>Raw footage delivery</li>
-                    <li>Up to 2 additional hours available</li>
-                </ul>
-                <a href="#contact" class="btn btn-secondary" style="width:100%;justify-content:center;">Enquire</a>
-            </div>
-            
-            <div class="pricing-card featured">
-                <h3>Full Day Filming</h3>
-                <div class="price">£700 <span>/ 8 hours</span></div>
-                <ul>
-                    <li>8 hours on-site filming</li>
-                    <li>1 hour travel included</li>
-                    <li>Any drone in our fleet</li>
-                    <li>Raw footage delivery</li>
-                    <li>Best value for productions</li>
-                </ul>
-                <a href="#contact" class="btn btn-primary" style="width:100%;justify-content:center;">Book Now</a>
-            </div>
-            
-            <div class="pricing-card">
-                <h3>Editing Package</h3>
-                <div class="price">£250 <span>/ project</span></div>
-                <ul>
-                    <li>2-min horizontal edit</li>
-                    <li>Two 45-sec vertical edits</li>
-                    <li>2 revisions included</li>
-                    <li>Colour grading & sound design</li>
-                    <li>Turnaround: 3-5 working days</li>
-                </ul>
-                <a href="#contact" class="btn btn-secondary" style="width:100%;justify-content:center;">Enquire</a>
-            </div>
-        </div>
-        
-        <p style="text-align:center; color: var(--muted); margin-top: 2rem; font-size: 0.9rem;">
-            Commercial surveying, inspection & mapping projects are quoted individually. 
-            <a href="#contact" style="color: var(--accent);">Get in touch</a> for a free assessment.
-        </p>
-    </section>
+<!-- ================= TEMPLATE D — ACCURACY AND LIMITS (5.7, used once) -->
+<section class="limits">
+  <div class="wrap">
+    <p class="eyebrow">The part most suppliers leave out</p>
+    <h2>What this kit will and won't tell you</h2>
+    <p class="limits__body">Standard visits fly a <strong>DJI Mini 3 Pro</strong>. That gives a clean,
+      geometrically consistent visual record — enough to see what changed, check a roof, brief a
+      client and show an investor. <strong>It is not survey-grade.</strong> It will not give you
+      certified volumes or centimetre accuracy, and I won't put a number on a stockpile from it.
+      Where a job needs that, I hire an RTK aircraft, set ground control, and the accuracy
+      statement comes with the file.</p>
+    <p class="limits__kick">If a supplier quotes you survey accuracy off a sub-250 g drone,
+      ask them for the accuracy statement.</p>
+  </div>
+</section>
 
-    <!-- CTA / Contact -->
-    <section id="contact">
-        <div class="cta-section">
-            <h2>Get a Quote</h2>
-            <p>Tell us about your project. We reply within 24 hours with a tailored quote.</p>
+<!-- ================= TEMPLATE B — METHOD, CONDUCT AND COVERAGE (5.8/5.9) -->
+<section class="wrap">
+  <div class="sec-head">
+    <span class="sec-no">06</span>
+    <div class="sec-head__t">
+      <h2>Why month three compares to month one</h2>
+      <p>The reason the comparison holds is procedural, not equipment.</p>
+    </div>
+  </div>
 
-            <form id="contact-form" class="contact-form" action="https://formspree.io/f/mbdeaqgg" method="POST">
-                <div class="form-row">
-                    <div class="form-field">
-                        <label for="cf-name">Name *</label>
-                        <input type="text" id="cf-name" name="name" required autocomplete="name">
-                    </div>
-                    <div class="form-field">
-                        <label for="cf-company">Company</label>
-                        <input type="text" id="cf-company" name="company" autocomplete="organization">
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-field">
-                        <label for="cf-email">Email *</label>
-                        <input type="email" id="cf-email" name="email" required autocomplete="email">
-                    </div>
-                    <div class="form-field">
-                        <label for="cf-phone">Phone</label>
-                        <input type="tel" id="cf-phone" name="phone" autocomplete="tel">
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-field">
-                        <label for="cf-service">Service *</label>
-                        <select id="cf-service" name="service" required>
-                            <option value="">Select a service…</option>
-                            <option>Roof / building inspection</option>
-                            <option>Construction progress monitoring</option>
-                            <option>Topographic / site survey</option>
-                            <option>Volumetric / earthworks</option>
-                            <option>Thermal imaging survey</option>
-                            <option>3D model / digital twin</option>
-                            <option>Solar panel inspection</option>
-                            <option>Cinematic filming (half day)</option>
-                            <option>Cinematic filming (full day)</option>
-                            <option>FPV drone filming</option>
-                            <option>Real estate photography</option>
-                            <option>Other / not sure</option>
-                        </select>
-                    </div>
-                    <div class="form-field">
-                        <label for="cf-location">Site location</label>
-                        <input type="text" id="cf-location" name="location" placeholder="e.g. Slough, West London">
-                    </div>
-                </div>
-                <div class="form-field">
-                    <label for="cf-message">Tell us about the project</label>
-                    <textarea id="cf-message" name="message" rows="5" placeholder="Size of site, deadlines, access notes, what's been done before…"></textarea>
-                </div>
-                <!-- honeypot -->
-                <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px" aria-hidden="true">
-                <!-- redirect back to the homepage contact section after Formspree's thank-you page -->
-                <input type="hidden" name="_next" value="https://shiningstardrones.co.uk/#contact">
-                <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;font-size:1.05rem;">
-                    Send Enquiry →
-                </button>
-                <p class="form-fineprint">
-                    Submissions go to <strong>info@shiningstardrones.co.uk</strong>. We'll never share your details.
-                </p>
-            </form>
+  <div class="split split--two">
+    <div>
+      <p class="read">Saved mission, identical waypoints, heights and camera angles every visit.
+        Obliques from the same four fixed positions at the same distances. Visits booked for the
+        same time of day where weather allows, so shadows fall the same way. Same labels, same
+        file naming, month to month.</p>
+      <p class="read">A site that changes is easy to photograph. A site you can <em>compare</em>
+        needs the flight to stop being a decision.</p>
 
-            <div class="contact-alt">
-                <p>Prefer email or a quick call?</p>
-                <div class="contact-alt-actions">
-                    <a href="mailto:info@shiningstardrones.co.uk" class="btn btn-secondary">📧 info@shiningstardrones.co.uk</a>
-                    <a href="tel:+447415502186" class="btn btn-secondary">📞 +44 7415 502186</a>
-                </div>
-            </div>
-        </div>
-    </section>
+      <h3 style="margin-top:30px">Who this is for</h3>
+      <dl class="deflist" style="margin-top:14px">
+        <div><dt>Survey practice</dt><dd>Subcontract or white-label capture — you keep the client, I fly the grid.</dd></div>
+        <div><dt>Quarry &amp; waste</dt><dd>A repeatable per-visit visual record of stock and cell movement.</dd></div>
+        <div><dt>Main contractor</dt><dd>Monthly progress evidence for valuations, and a record when a programme is disputed.</dd></div>
+        <div><dt>Solar O&amp;M</dt><dd>Array condition; thermal fault-finding on hired payload, quoted per job.</dd></div>
+        <div><dt>FM &amp; estates</dt><dd>Roof and facade condition record that fits a planned-maintenance cycle.</dd></div>
+      </dl>
+    </div>
 
-    <!-- Footer -->
-    <footer>
-        <p><strong>Shining Star Drones</strong></p>
-        <p style="margin-top:0.25rem;">West London · info@shiningstardrones.co.uk · +44 7415 502186</p>
-        <p style="margin-top: 0.75rem; font-size: 0.8rem;">
-            GVC Qualified · CAA Authorised · £1m Public Liability Insurance
-        </p>
-        <p style="margin-top: 1.5rem;">
-            <a href="https://www.youtube.com/@shiningstarmediaproductions" target="_blank" rel="noopener">YouTube</a> ·
-            <a href="https://www.linkedin.com/company/shining-star-media" target="_blank" rel="noopener">LinkedIn</a> ·
-            <a href="mailto:info@shiningstardrones.co.uk">Email</a> ·
-            <a href="tel:+447415502186">Call</a>
-        </p>
-        <p style="margin-top: 1.5rem; font-size:0.75rem; opacity:0.6;">
-            &copy; 2026 Shining Star Drones. Registered in England. All rights reserved.
-        </p>
-    </footer>
+    <div>
+      <h3>Safe and legal on a live site</h3>
+      <dl class="deflist" style="margin-top:14px">
+        <div><dt>Licence</dt><dd>GVC qualified · CAA authorised for commercial operations</dd></div>
+        <div><dt>Insurance</dt><dd>£1m public liability, certificate on request</dd></div>
+        <div><dt>Operator</dt><dd>CAA Operator ID on request</dd></div>
+        <div><dt>Before</dt><dd>RAMS supplied ahead of the visit; works to your site induction</dd></div>
+        <div><dt>On the day</dt><dd>Flight window agreed with the site manager</dd></div>
+        <div><dt>Permission</dt><dd>No flight without written permission</dd></div>
+        <div><dt>Airspace</dt><dd>Pre-flight check including Heathrow-area restrictions</dd></div>
+      </dl>
+      <p class="read" style="margin-top:20px; font-size:15px; color:var(--slate)">
+        Most of West London sits under Heathrow's controlled airspace and its restriction zone.
+        Knowing exactly where that bites — and where it doesn't — is the difference between a
+        booked visit and a wasted morning.</p>
 
-    <script>
-    // --- Hero background reel ---------------------------------------------
-    // The hero is above the fold, so this would download for every visitor on
-    // every visit. We only opt in when it's actually appropriate; everyone
-    // else gets the poster image, which looks the same at a glance.
-    (function () {
-        var hv = document.getElementById('hero-video');
-        if (!hv) return;
+      <h3 style="margin-top:30px">Coverage</h3>
+      <dl class="deflist" style="margin-top:14px">
+        <div><dt>Base</dt><dd>West London</dd></div>
+        <div><dt>Travel</dt><dd>1 hour included</dd></div>
+        <div><dt>Areas</dt><dd>Greater London · Berkshire · Buckinghamshire · Surrey · Hertfordshire</dd></div>
+        <div><dt>Beyond</dt><dd>By arrangement, travel quoted separately</dd></div>
+      </dl>
+    </div>
+  </div>
+</section>
 
-        // Single source of truth: whatever the showreel below points at.
-        var src = document.querySelector('#reel source');
-        if (!src || !src.getAttribute('src')) return;
+<hr class="movement">
 
-        var conn    = navigator.connection || {};
-        var narrow  = window.matchMedia('(max-width: 768px)').matches;
-        var reduce  = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-        var thrifty = conn.saveData === true ||
-                      /^(slow-2g|2g|3g)$/.test(conn.effectiveType || '');
+<!-- ================================== THE FILM SIDE (5.10) -->
+<section class="wrap" id="film">
+  <div class="sec-head">
+    <span class="sec-no">07</span>
+    <div class="sec-head__t">
+      <h2>The film side</h2>
+      <p>A quarter of the work is still cinematic — brand films, property, FPV. Same airframe
+         discipline, and it's where the business started.</p>
+    </div>
+    <span class="eyebrow sec-tag">25% of the work</span>
+  </div>
 
-        // Mobile: skip. Cellular data cost isn't worth a decorative loop, and
-        // iOS won't reliably autoplay a backgrounded video anyway.
-        if (narrow || reduce || thrifty) return;
+  <div class="film">
+    <div class="film__player">
+      <video controls preload="none" playsinline poster="media/reel-poster.jpg"
+             aria-label="Shining Star Drones showreel">
+        <source src="https://media.shiningstardrones.co.uk/reel-web-1080p-49MB.mp4" type="video/mp4">
+        <p style="padding:16px;color:#EDF0EC">Your browser can't play this video —
+          <a href="https://www.youtube.com/@shiningstarmediaproductions" style="color:#E4589A">watch it on YouTube</a>.</p>
+      </video>
+    </div>
+    <div>
+      <dl class="rates">
+        <div><dt>Half day, on location</dt><dd>£400</dd></div>
+        <div><dt>Full day, on location</dt><dd>£700</dd></div>
+        <div><dt>Edit package</dt><dd>£250</dd></div>
+      </dl>
+      <p style="margin-top:18px; font-size:15px; color:var(--slate)">
+        Aerial and FPV, shot to an agreed list. The edit package covers a graded horizontal
+        master and vertical cutdowns.</p>
+      <p style="margin-top:14px"><a class="btn" href="https://www.youtube.com/@shiningstarmediaproductions">More on YouTube</a></p>
+    </div>
+  </div>
+</section>
 
-        hv.src = src.getAttribute('src');
-        hv.addEventListener('canplay', function () { hv.classList.add('is-ready'); });
-        hv.play().catch(function () { /* autoplay blocked — poster stands in */ });
+<!-- ========================================================= ENQUIRY (5.11) -->
+<section class="ledger" id="enquiry">
+ <div class="wrap">
+  <div class="sec-head">
+    <span class="sec-no">08</span>
+    <div class="sec-head__t">
+      <h2>Enough detail here and the reply is a price, not a question.</h2>
+      <p>I read these myself and answer within one working day.</p>
+    </div>
+  </div>
 
-        // Don't keep decoding once the hero is scrolled past.
-        if ('IntersectionObserver' in window) {
-            new IntersectionObserver(function (entries) {
-                entries.forEach(function (e) {
-                    if (e.isIntersecting) { hv.play().catch(function () {}); }
-                    else { hv.pause(); }
-                });
-            }, { threshold: 0.1 }).observe(hv);
-        }
-    })();
+  <div class="enq">
+    <form action="https://formspree.io/f/mbdeaqgg" method="POST">
+      <input type="hidden" name="_next" value="https://shiningstardrones.co.uk/#enquiry">
+      <input type="hidden" name="_subject" value="Site enquiry from shiningstardrones.co.uk">
+      <div class="hp" aria-hidden="true">
+        <label for="company-website">Leave this field empty</label>
+        <input type="text" id="company-website" name="_gotcha" tabindex="-1" autocomplete="off">
+      </div>
 
-    // --- Showreel player ---------------------------------------------------
-    (function () {
-        var reel    = document.getElementById('reel');
-        var missing = document.getElementById('reel-fallback');
-        if (!reel) return;
+      <div class="fields">
+        <div class="field"><label for="f-name">Name <span class="req">*</span></label>
+          <input type="text" id="f-name" name="name" autocomplete="name" required></div>
+        <div class="field"><label for="f-company">Company</label>
+          <input type="text" id="f-company" name="company" autocomplete="organization"></div>
+        <div class="field"><label for="f-role">Role</label>
+          <input type="text" id="f-role" name="role" autocomplete="organization-title"></div>
+        <div class="field"><label for="f-email">Email <span class="req">*</span></label>
+          <input type="email" id="f-email" name="email" autocomplete="email" required></div>
+        <div class="field"><label for="f-phone">Phone</label>
+          <input type="tel" id="f-phone" name="phone" autocomplete="tel"></div>
+        <div class="field"><label for="f-deadline">Deadline</label>
+          <input type="text" id="f-deadline" name="deadline" placeholder="e.g. first visit before month end"></div>
 
-        // No reel.mp4 in media/ (or it failed to decode) — show the YouTube fallback.
-        function showFallback() {
-            missing.setAttribute('data-active', '');
-            reel.style.visibility = 'hidden';
-        }
-        reel.addEventListener('error', showFallback, true);
-        var src = reel.querySelector('source');
-        if (src) src.addEventListener('error', showFallback);
+        <div class="field f-wide"><label for="f-site">Site address or postcode <span class="req">*</span></label>
+          <input type="text" id="f-site" name="site_address" required></div>
 
-        // The reel has no audio track, so it just loops muted with native controls
-        // available. Once the viewer pauses it themselves, stop managing playback.
-        var autoPausing = false;
-        var userPaused  = false;
-        // The pause event is queued, not synchronous, so clear the flag in the
-        // handler rather than straight after the pause() call.
-        reel.addEventListener('pause', function () {
-            if (autoPausing) autoPausing = false;
-            else userPaused = true;
-        });
-        reel.addEventListener('play', function () { userPaused = false; });
+        <div class="field"><label for="f-size">Approximate site size <span class="req">*</span></label>
+          <input type="text" id="f-size" name="site_size" placeholder="hectares, acres, or footprint" required></div>
+        <div class="field"><label for="f-cadence">How often <span class="req">*</span></label>
+          <select id="f-cadence" name="cadence" required>
+            <option value="">Choose…</option>
+            <option>One-off</option>
+            <option>Monthly</option>
+            <option>Quarterly</option>
+          </select></div>
 
-        // Only run the ambient loop while it's actually on screen.
-        if ('IntersectionObserver' in window) {
-            new IntersectionObserver(function (entries) {
-                entries.forEach(function (e) {
-                    if (e.isIntersecting) {
-                        if (reel.paused && !userPaused) reel.play().catch(function () {});
-                    } else if (!reel.paused) {
-                        autoPausing = true;
-                        reel.pause();
-                    }
-                });
-            }, { threshold: 0.25 }).observe(reel);
-        }
-    })();
-    </script>
+        <div class="field f-wide"><label for="f-output">Output needed <span class="req">*</span></label>
+          <select id="f-output" name="output" required>
+            <option value="">Choose…</option>
+            <option>Progress pack</option>
+            <option>Inspection record</option>
+            <option>Stills</option>
+            <option>Topographic survey or volumes (hired RTK)</option>
+            <option>Thermal (hired payload)</option>
+            <option>Film</option>
+          </select></div>
 
+        <div class="field f-wide"><label for="f-notes">Notes</label>
+          <textarea id="f-notes" name="notes" placeholder="Access, induction requirements, what you need the record to settle."></textarea></div>
+
+        <div class="f-wide"><button class="btn btn--go" type="submit" style="cursor:pointer">Send enquiry</button></div>
+      </div>
+    </form>
+
+    <div>
+      <div class="aside-card">
+        <h3>Rather talk first?</h3>
+        <p><a href="tel:+447415502186">+44 7415 502186</a><br>
+           <a href="mailto:info@shiningstardrones.co.uk">info@shiningstardrones.co.uk</a></p>
+      </div>
+      <div class="aside-card" style="margin-top:26px">
+        <h3>Capability statement</h3>
+        <p>The one-page version for procurement and pre-qualification —
+           <a href="capability-statement.html">read it here</a>.</p>
+      </div>
+      <div class="aside-card" style="margin-top:26px">
+        <h3>On file, on request</h3>
+        <p>£1m public liability certificate · CAA Operator ID · RAMS · GVC certificate.</p>
+      </div>
+    </div>
+  </div>
+ </div>
+</section>
+
+</main>
+
+<!-- ========================================================== FOOTER (5.12) -->
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot__col">
+      <h4>Contact</h4>
+      <a href="tel:+447415502186">+44 7415 502186</a>
+      <a href="mailto:info@shiningstardrones.co.uk">info@shiningstardrones.co.uk</a>
+      <p>West London</p>
+    </div>
+    <div class="foot__col">
+      <h4>Credentials</h4>
+      <p>GVC qualified</p>
+      <p>CAA authorised, commercial</p>
+      <p>£1m public liability</p>
+    </div>
+    <div class="foot__col">
+      <h4>Elsewhere</h4>
+      <a href="https://www.youtube.com/@shiningstarmediaproductions">YouTube</a>
+      <a href="https://www.linkedin.com/company/shining-star-media">LinkedIn</a>
+      <a href="capability-statement.html">Capability statement</a>
+    </div>
+    <div class="foot__legal">
+      <span>© 2026 Shining Star Drones · Registered in England</span>
+      <span>Greater London · Berkshire · Bucks · Surrey · Herts</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* Month-to-month comparison.
+   The markup ships as two plates side by side and works with JS off; this
+   promotes it to a draggable overlay. Pointer, touch and keyboard all drive
+   the same setPos(). */
+(function () {
+  var cmp = document.getElementById('cmp'),
+      stage = document.getElementById('cmp-stage'),
+      handle = document.getElementById('cmp-handle');
+  if (!cmp || !stage || !handle) return;
+
+  var pos = 50;
+
+  function setPos(next) {
+    pos = Math.max(0, Math.min(100, next));
+    cmp.style.setProperty('--pos', pos + '%');
+    handle.setAttribute('aria-valuenow', Math.round(pos));
+    handle.setAttribute('aria-valuetext',
+      Math.round(pos) + '% — ' + (pos < 50 ? 'showing the later visit' : 'showing visit one'));
+  }
+
+  function fromEvent(e) {
+    var r = stage.getBoundingClientRect();
+    if (!r.width) return;
+    setPos(((e.clientX - r.left) / r.width) * 100);
+  }
+
+  cmp.classList.add('is-live');
+  setPos(50);
+
+  stage.addEventListener('pointerdown', function (e) {
+    if (e.button !== undefined && e.button !== 0) return;
+    cmp.classList.add('is-drag');
+    handle.focus({ preventScroll: true });
+    stage.setPointerCapture(e.pointerId);
+    fromEvent(e);
+    e.preventDefault();
+  });
+  stage.addEventListener('pointermove', function (e) {
+    if (cmp.classList.contains('is-drag')) fromEvent(e);
+  });
+  ['pointerup', 'pointercancel'].forEach(function (t) {
+    stage.addEventListener(t, function () { cmp.classList.remove('is-drag'); });
+  });
+
+  handle.addEventListener('keydown', function (e) {
+    var step = { ArrowLeft: -2, ArrowRight: 2, PageDown: -10, PageUp: 10 }[e.key];
+    if (step !== undefined) { setPos(pos + step); e.preventDefault(); return; }
+    if (e.key === 'Home') { setPos(0); e.preventDefault(); }
+    if (e.key === 'End') { setPos(100); e.preventDefault(); }
+  });
+})();
+</script>
 </body>
 </html>
