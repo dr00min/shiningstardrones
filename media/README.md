@@ -145,6 +145,35 @@ print(out.size)
 PY
 ```
 
+## Orthomosaic widths — regenerate all three together
+
+Each date ships at **1200w, 1800w and 2400w**, wired up with `srcset` on the
+homepage and the capability statement. Measured cold load: 2.10 MB -> 0.82 MB on
+a phone, 2.10 MB -> 1.32 MB on an iPad Mini.
+
+**Both dates must be resized to the SAME integer pixel size at every width.**
+The pipeline renders the two orthophotos onto one shared grid so they are
+co-registered pixel for pixel (`HANDOVER.md` 3) -- that is the whole reason the
+before/after swipe is honest. Resize them to different sizes and the divider
+shows apparent movement that is not real.
+
+```sh
+python3 - <<'PY'
+from PIL import Image
+for d in ("03", "04"):
+    im = Image.open(f"ramblers-ortho-2026-08-{d}.jpg")           # 2400 x 1447
+    for w, h in ((1200, 724), (1800, 1085)):
+        out = im.resize((w, h), Image.LANCZOS).convert("RGB")
+        out.save(f"ramblers-ortho-2026-08-{d}-{w}.jpg",
+                 quality=84, optimize=True, progressive=True)
+PY
+```
+
+`sizes` is left at a plain `100vw`, which slightly over-declares the plate's real
+width. That is deliberate: over-declaring can only pick a larger candidate,
+never too small a one. A phone held in landscape at DPR 3 needs ~1900px and so
+still takes the 2400w -- correctly, not as a bug to chase.
+
 ## The 3D model was Z-up and had to be corrected
 
 `st-mary-magdalene-building.glb` arrived from the pipeline **lying on its back**.
