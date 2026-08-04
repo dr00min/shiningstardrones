@@ -317,9 +317,13 @@ p:last-child{margin-bottom:0}
   grid-area:1/1; z-index:2; justify-self:end; align-self:end; margin:0 12px 12px 0;
   display:flex; border:1px solid var(--hairline); background:var(--paper);
 }
+.model-controls__k{
+  padding:6px 8px; color:var(--slate); border-right:1px solid var(--hairline);
+  font-family:var(--mono); font-size:10px; font-weight:500; letter-spacing:.12em; text-transform:uppercase;
+}
 .model-lock{
   appearance:none; border:0; border-radius:0; cursor:pointer;
-  padding:6px 10px; background:transparent; color:var(--slate);
+  padding:6px 9px; background:transparent; color:var(--slate);
   font-family:var(--mono); font-size:10px; font-weight:500; letter-spacing:.12em; text-transform:uppercase;
 }
 .model-lock+.model-lock{border-left:1px solid var(--hairline)}
@@ -980,18 +984,22 @@ table.matrix{border-collapse:collapse; width:100%; min-width:900px; font-size:14
            to raise and lower the eye over one elevation, or both to hold a view.
            Each pins its axis to wherever the camera already is, so the angle is
            always one you chose. Zoom is never locked. */
-        var lockSpin = false, lockTilt = false;
+        var lockSpin = false, lockTilt = false, lockZoom = false;
 
         function applyLimits() {
           var o = mv.getCameraOrbit();
+          /* The three components of camera-orbit are the three axes there are:
+             theta spins, phi tilts, radius zooms. Each pins to wherever the
+             camera already is, so a lock always holds a view you chose. */
           var t = lockSpin ? o.theta + 'rad' : 'auto';
           var pMin = lockTilt ? o.phi + 'rad' : 'auto';
           /* Independent of the locks: phi past 90deg puts the camera under the
              ground plane, where the model is hollow and unreadable. There is no
              view worth having down there, so it is clamped whatever else is set. */
           var pMax = lockTilt ? o.phi + 'rad' : '88deg';
-          mv.setAttribute('min-camera-orbit', t + ' ' + pMin + ' auto');
-          mv.setAttribute('max-camera-orbit', t + ' ' + pMax + ' auto');
+          var r = lockZoom ? o.radius + 'm' : 'auto';
+          mv.setAttribute('min-camera-orbit', t + ' ' + pMin + ' ' + r);
+          mv.setAttribute('max-camera-orbit', t + ' ' + pMax + ' ' + r);
 
           /* auto-rotate drives theta, so it fights a locked spin. */
           if (lockSpin) mv.removeAttribute('auto-rotate');
@@ -1005,6 +1013,7 @@ table.matrix{border-collapse:collapse; width:100%; min-width:900px; font-size:14
           b.type = 'button';
           b.className = 'model-lock';
           b.setAttribute('aria-pressed', 'false');
+          b.setAttribute('aria-label', 'Lock ' + label.toLowerCase());
           b.textContent = label;
           b.addEventListener('click', function () {
             set(!get());
@@ -1016,10 +1025,16 @@ table.matrix{border-collapse:collapse; width:100%; min-width:900px; font-size:14
 
         var controls = document.createElement('div');
         controls.className = 'model-controls';
-        controls.appendChild(makeLock('Lock spin',
+        var caption = document.createElement('span');
+        caption.className = 'model-controls__k';
+        caption.textContent = 'Lock';
+        controls.appendChild(caption);
+        controls.appendChild(makeLock('Spin',
           function () { return lockSpin; }, function (v) { lockSpin = v; }));
-        controls.appendChild(makeLock('Lock tilt',
+        controls.appendChild(makeLock('Tilt',
           function () { return lockTilt; }, function (v) { lockTilt = v; }));
+        controls.appendChild(makeLock('Zoom',
+          function () { return lockZoom; }, function (v) { lockZoom = v; }));
 
         var mv = document.createElement('model-viewer');
         mv.setAttribute('src', 'media/st-mary-magdalene-building.glb');
