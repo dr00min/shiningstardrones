@@ -81,3 +81,35 @@ broken player.
 
 The hero video is also skipped entirely on mobile, `prefers-reduced-motion`,
 and data-saver — a large decorative autoplay isn't reasonable over cellular.
+
+## The progress pack sample
+
+`sample-progress-pack.pdf` (9.0 MB) is offered as a download from the homepage.
+
+It is regenerated, not hand-edited. To rebuild it:
+
+```sh
+cd /mnt/c/Users/dr00/Dropbox/Claude/drone-delivery-tool
+PYTHONPATH=. python3 -m ddt report \
+  --task 391a98fc-b36d-4953-8e80-0c398abbcf55 \
+  --site "Ramblers Car Park" \
+  --client "Demonstration capture — not client work" \
+  --date 2026-08-04 --aircraft "DJI Mini 3 Pro" --altitude 40 \
+  --company "Shining Star Drones" --accent "#A81B5D" \
+  --operator "GBR-OP-335BHXRJHNYT" \
+  --contact "info@shiningstardrones.co.uk  ·  +44 7415 502186" \
+  --out report.pdf
+```
+
+**Do not pass `--baseline`.** It adds an elevation-change page, and Ramblers Car
+Park is a validation site where *nothing changed between the two dates* — so that
+page can only ever display measurement error. See `CORRECTIONS.md` §5B in the
+pipeline repo. A change map goes in the pack only once a site with real change
+has been flown twice.
+
+The version that shipped before 2026-08-04 was branded **"Ramblers Aerial"** with
+empty Client, Operator and Flight altitude fields. Do not republish that one.
+
+`ramblers-pack-spread.jpg` is pages 1 and 4 of this PDF rendered at scale 2 and
+stacked — two A4 landscape pages make an A4 portrait spread. Regenerate it if the
+report changes, and keep the `aspect-ratio` in `.r-a4` matching its dimensions.

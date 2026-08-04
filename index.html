@@ -173,7 +173,7 @@ p:last-child{margin-bottom:0}
 .r-ortho .plate__frame{aspect-ratio:2400/1447}
 .r-16x9 .plate__frame{aspect-ratio:16/9}
 .r-16x10 .plate__frame{aspect-ratio:16/10}
-.r-a4 .plate__frame{aspect-ratio:1/1.414}
+.r-a4 .plate__frame{aspect-ratio:1400/1994}  /* two A4 landscape pages stacked */
 
 /* corner registration ticks, 11px — the signature detail */
 .plate__frame::before,.plate__frame::after{
@@ -474,21 +474,16 @@ table.matrix{border-collapse:collapse; width:100%; min-width:900px; font-size:14
 
     <figure class="plate r-a4">
       <div class="plate__frame">
-        <!-- DROP-IN once the report is regenerated under the right company name:
-             render p1 (cover) + p5 (accuracy) stacked — two A4 landscape pages make an
-             A4 portrait spread. The current PDF is branded "Ramblers Aerial", has empty
-             Client/Operator/Altitude fields, and its p4 is the change map that must not
-             be published (see CORRECTIONS.md §5B). Regenerate with:
-             publish_site.py ramblers-carpark --company "Shining Star Drones" -->
-        <div class="slot">
-          <span class="slot__spec">Plate 07 &middot; A4 portrait</span>
-          <span class="slot__what">A spread from the pack as it is delivered &mdash; cover and accuracy statement.</span>
-        </div>
+        <img src="media/ramblers-pack-spread.jpg" width="1400" height="1994" loading="lazy"
+             alt="Two pages from the delivered PDF pack: the cover sheet, and the survey details and accuracy statement.">
       </div>
       <figcaption class="plate__cap">
         <span class="plate__no">Plate 07</span>
-        <span>Pack spread &middot; Awaiting a report rebuild</span>
+        <span>Pack spread &middot; Cover and accuracy statement &middot; Ramblers Car Park, 4 Aug 2026</span>
       </figcaption>
+      <p style="margin-top:14px">
+        <a class="btn" href="media/sample-progress-pack.pdf" download>Download the whole pack &middot; PDF, 9&nbsp;MB</a>
+      </p>
     </figure>
   </div>
 </section>
