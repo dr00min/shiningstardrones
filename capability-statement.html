@@ -1,157 +1,258 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-GB">
 <head>
-<meta charset="UTF-8">
-<title>Shining Star Drones — Capability Statement</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Capability statement — Shining Star Drones</title>
+<meta name="description" content="Capability statement for procurement and pre-qualification: credentials, insurance, deliverables, accuracy statement and rates. Shining Star Drones, West London.">
+<meta name="robots" content="index,follow">
 <link rel="icon" href="favicon.ico" sizes="16x16 32x32 48x48">
 <link rel="icon" type="image/png" href="favicon-32.png" sizes="32x32">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@500;600&family=Public+Sans:wght@300;400;500&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+
 <style>
-    @page { size: A4; margin: 12mm; }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-        font-family: -apple-system, "Segoe UI", system-ui, sans-serif;
-        color: #0a0a0f;
-        background: #fff;
-        line-height: 1.45;
-        font-size: 10.5pt;
-    }
-    .page { padding: 8mm; }
-    h1 { font-size: 22pt; color: #0a0a0f; margin-bottom: 2pt; letter-spacing: -0.02em; }
-    .tagline { color: #3b82f6; font-size: 11pt; font-weight: 500; margin-bottom: 16pt; }
-    h2 { font-size: 12pt; color: #0a0a0f; border-bottom: 2px solid #3b82f6; padding-bottom: 3pt; margin: 14pt 0 6pt; text-transform: uppercase; letter-spacing: 0.05em; }
-    h3 { font-size: 10.5pt; color: #0a0a0f; margin: 8pt 0 3pt; }
-    p { margin-bottom: 6pt; }
-    .header { display: flex; justify-content: space-between; align-items: flex-start; border-bottom: 3px solid #3b82f6; padding-bottom: 12pt; margin-bottom: 14pt; }
-    /* This page prints on white, so it takes the dark-text wordmark.
-       17.6:1, so height drives it -- 12pt tall lands at ~212pt wide,
-       which leaves room for the contact block on an A4 line. */
-    .header .name { display: block; height: 12pt; width: auto; margin-bottom: 4pt; }
-    .header .role { color: #666; font-size: 9pt; }
-    .header .contact { text-align: right; font-size: 9pt; color: #333; line-height: 1.6; }
-    .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10pt; }
-    .credentials { background: #f5f7fa; border-left: 3px solid #3b82f6; padding: 8pt 10pt; }
-    .credentials ul { list-style: none; }
-    .credentials li { padding: 2pt 0; font-size: 9.5pt; }
-    .credentials li strong { color: #0a0a0f; }
-    table { width: 100%; border-collapse: collapse; margin: 6pt 0; font-size: 9.5pt; }
-    th, td { padding: 4pt 6pt; text-align: left; border-bottom: 1px solid #e5e7eb; }
-    th { background: #f9fafb; font-weight: 600; color: #374151; }
-    .price { font-weight: 600; color: #0a0a0f; text-align: right; }
-    .placeholder { background: #fef3c7; padding: 2pt 4pt; border-radius: 2pt; font-family: monospace; font-size: 8.5pt; }
-    .footer { margin-top: 16pt; padding-top: 8pt; border-top: 1px solid #e5e7eb; font-size: 8pt; color: #666; }
-    .sample-img {
-        background: #e5e7eb;
-        border: 1px solid #d1d5db;
-        border-radius: 4pt;
-        height: 100pt;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: #6b7280;
-        font-size: 9pt;
-    }
-    .deliverables { list-style: none; counter-reset: d; }
-    .deliverables li { padding: 2pt 0 2pt 18pt; position: relative; }
-    .deliverables li::before { counter-increment: d; content: counter(d); position: absolute; left: 0; top: 2pt; width: 14pt; height: 14pt; background: #3b82f6; color: #fff; border-radius: 50%; font-size: 8pt; font-weight: 600; display: flex; align-items: center; justify-content: center; }
+/* This page exists to be printed and forwarded, so it is white-ground only —
+   no dark scheme. It mirrors the homepage's type and accent, at A4 measure. */
+@page{ size:A4; margin:12mm }
+:root{
+  --ink:#0E1519; --slate:#5A6670; --hairline:#C4CCC6; --rule:#E2E7E3;
+  --magenta:#A81B5D; --airway:#2A5D8F; --wash:#F4F6F3;
+  --sans:"Public Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+  --head:"Archivo Narrow","Archivo",-apple-system,"Segoe UI Semibold",Helvetica,Arial,sans-serif;
+  --mono:"Roboto Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+}
+*,*::before,*::after{box-sizing:border-box}
+body{
+  margin:0; background:#fff; color:var(--ink); font-family:var(--sans);
+  font-size:10.5pt; line-height:1.5; font-variant-numeric:tabular-nums;
+}
+.page{max-width:200mm; margin:0 auto; padding:10mm}
+img{max-width:100%; display:block}
+a{color:var(--magenta)}
+
+h1{font-family:var(--head); font-weight:600; font-size:23pt; letter-spacing:-.02em; line-height:1.05; margin:0}
+h2{
+  font-family:var(--mono); font-weight:500; font-size:8.5pt; letter-spacing:.16em;
+  text-transform:uppercase; color:var(--magenta);
+  border-bottom:1px solid var(--magenta); padding-bottom:3pt; margin:16pt 0 7pt;
+}
+h3{font-family:var(--head); font-weight:500; font-size:11pt; margin:0 0 3pt}
+p{margin:0 0 6pt}
+.lede{font-size:12pt; font-weight:300; line-height:1.45; color:var(--ink); max-width:62ch; margin-top:6pt}
+.small{font-size:8.5pt; color:var(--slate)}
+.mono{font-family:var(--mono)}
+
+.masthead{display:flex; justify-content:space-between; align-items:flex-start; gap:14pt;
+  border-bottom:2.5pt solid var(--ink); padding-bottom:9pt; margin-bottom:12pt}
+.masthead img{height:13pt; width:auto; margin-bottom:4pt}
+.masthead .role{font-family:var(--mono); font-size:8pt; letter-spacing:.1em; text-transform:uppercase; color:var(--slate)}
+.masthead .contact{text-align:right; font-family:var(--mono); font-size:8.5pt; line-height:1.65; color:var(--ink)}
+
+.creds{display:grid; grid-template-columns:1fr 1fr; gap:0 16pt; background:var(--wash);
+  border-left:2.5pt solid var(--magenta); padding:9pt 12pt; margin:0}
+.creds div{display:flex; gap:8pt; padding:2.5pt 0; border-bottom:1px solid var(--rule)}
+.creds dt{flex:0 0 78pt; font-family:var(--mono); font-size:7.5pt; letter-spacing:.1em;
+  text-transform:uppercase; color:var(--slate); padding-top:1.5pt}
+.creds dd{margin:0; flex:1; font-size:9.5pt}
+
+table{width:100%; border-collapse:collapse; font-size:9.5pt; margin:0}
+th,td{text-align:left; vertical-align:top; padding:5pt 8pt 5pt 0; border-bottom:1px solid var(--rule)}
+thead th{font-family:var(--mono); font-weight:500; font-size:7.5pt; letter-spacing:.14em;
+  text-transform:uppercase; color:var(--slate); border-bottom:1px solid var(--ink)}
+td:first-child{font-weight:500; width:27%}
+.price{font-family:var(--mono); font-weight:500; white-space:nowrap; text-align:right; width:23%}
+.scope{font-style:italic; color:var(--slate)}
+tr.gated td{background:rgba(42,93,143,.07)}
+tr.gated td:first-child{box-shadow:inset 2.5pt 0 0 var(--airway)}
+.tag{display:inline-block; margin-left:4pt; padding:1pt 4pt; background:var(--airway); color:#fff;
+  font-family:var(--mono); font-size:6.5pt; letter-spacing:.1em; text-transform:uppercase; vertical-align:1pt}
+
+.grid{display:grid; grid-template-columns:1fr 1fr; gap:12pt}
+figure{margin:0}
+figure .frame{border:1px solid var(--hairline); overflow:hidden}
+figcaption{margin-top:4pt; font-family:var(--mono); font-size:7.5pt; letter-spacing:.06em; color:var(--slate); line-height:1.5}
+
+.steps{list-style:none; counter-reset:s; margin:0; padding:0}
+.steps li{display:grid; grid-template-columns:20pt 1fr; gap:6pt; padding:3.5pt 0; border-bottom:1px solid var(--rule)}
+.steps li::before{content:counter(s,decimal-leading-zero); counter-increment:s;
+  font-family:var(--mono); font-size:8.5pt; font-weight:500; color:var(--magenta)}
+
+.limits{border:1.5pt solid var(--ink); padding:10pt 12pt; margin-top:4pt}
+.limits .fig{font-family:var(--head); font-weight:500; font-size:13pt; line-height:1.3; margin:0 0 6pt}
+.limits .fig strong{color:var(--magenta); font-weight:600}
+
+.foot{margin-top:18pt; padding-top:8pt; border-top:1px solid var(--ink);
+  font-family:var(--mono); font-size:7.5pt; line-height:1.7; color:var(--slate)}
+
+@media print{
+  .page{padding:0; max-width:none}
+  h2{break-after:avoid} table,figure,.limits,.creds{break-inside:avoid}
+  a{color:var(--ink); text-decoration:none}
+}
+@media (max-width:640px){
+  .masthead{flex-direction:column} .masthead .contact{text-align:left}
+  .creds,.grid{grid-template-columns:1fr}
+  body{font-size:12pt}
+}
 </style>
 </head>
 <body>
 <div class="page">
 
-    <div class="header">
-        <div>
-            <img class="name" src="brand/wordmark-oneline-dark.svg"
-                 alt="Shining Star Drones" width="847" height="48">
-            <div class="role">Commercial drone services · West London</div>
-        </div>
-        <div class="contact">
-            <strong>[Your Name]</strong><br>
-            Founder & Chief Pilot<br>
-            <a>info@shiningstardrones.co.uk</a><br>
-            +44 7415 502186<br>
-            <a>https://shiningstardrones.co.uk</a>
-        </div>
+  <div class="masthead">
+    <div>
+      <img src="brand/wordmark-oneline-dark.svg" alt="Shining Star Drones" width="847" height="48">
+      <div class="role">Capability statement &middot; Issued 4 August 2026</div>
     </div>
-
-    <h1>Aerial data, delivered.</h1>
-    <p class="tagline">GVC-qualified commercial drone services for surveying, inspection, and cinematic work across London and the South East.</p>
-
-    <h2>Credentials & Assurance</h2>
-    <div class="credentials">
-        <ul>
-            <li><strong>CAA General VLOS Certificate (GVC)</strong> — UK commercial drone authorisation</li>
-            <li><strong>CAA Operator ID:</strong> <span class="placeholder">[INSERT]</span></li>
-            <li><strong>Public liability insurance:</strong> £1,000,000 (certificate on request)</li>
-            <li><strong>Coverage:</strong> Greater London, Buckinghamshire, Berkshire, Surrey, Hertfordshire</li>
-            <li><strong>Fleet:</strong> DJI Mini 3 Pro · custom FPV rigs (GoPro 12) · RTK/thermal aircraft deployed per project</li>
-            <li><strong>Data handling:</strong> In-house processing — orthomosaics, point clouds, 3D models, volumetric analysis</li>
-        </ul>
+    <div class="contact">
+      Founder &amp; chief pilot<br>
+      info@shiningstardrones.co.uk<br>
+      +44 7415 502186<br>
+      shiningstardrones.co.uk
     </div>
+  </div>
 
-    <h2>Services & Indicative Pricing</h2>
-    <table>
-        <thead>
-            <tr>
-                <th>Service</th>
-                <th>Typical deliverable</th>
-                <th>From</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr><td>Roof &amp; building inspection</td><td>4K stills + annotated PDF report</td><td class="price">£300</td></tr>
-            <tr><td>Construction progress monitoring (per visit)</td><td>Orthomosaic, set of comparison stills, optional cut/fill</td><td class="price">£500</td></tr>
-            <tr><td>Topographic / site survey (RTK)</td><td>GeoTIFF, point cloud, linework DXF</td><td class="price">£1,200</td></tr>
-            <tr><td>Volumetric / earthworks</td><td>Cut/fill report, stockpile volumes</td><td class="price">£800</td></tr>
-            <tr><td>Thermal imaging survey</td><td>RGB + radiometric orthomosaic, defect flags</td><td class="price">£600</td></tr>
-            <tr><td>3D model / digital twin</td><td>Web-viewable 3D model + downloadable mesh</td><td class="price">£1,500</td></tr>
-            <tr><td>Solar panel inspection</td><td>Per-panel fault map, severity ranking</td><td class="price">£500</td></tr>
-            <tr><td>Cinematic filming — half day (4h)</td><td>Raw footage, colour-graded</td><td class="price">£400</td></tr>
-            <tr><td>Cinematic filming — full day (8h)</td><td>Raw footage, colour-graded</td><td class="price">£700</td></tr>
-            <tr><td>FPV drone filming (per day)</td><td>High-speed immersive GoPro 12 footage</td><td class="price">£750</td></tr>
-            <tr><td>Editing package</td><td>2-min horizontal + two 45-sec vertical edits</td><td class="price">£250</td></tr>
-        </tbody>
-    </table>
-    <p style="font-size:8.5pt; color:#6b7280;">All prices exclude VAT. Commercial surveying and inspection projects are quoted individually based on site size, complexity, and deliverable requirements. Travel within 1 hour included; extended travel at £20/hr.</p>
+  <h1>Repeatable aerial site records.</h1>
+  <p class="lede">A one-pilot operation based in West London, flying the same saved mission over
+    the same site month after month, and processing it in-house into a record you can compare
+    period to period. Prices, formats and the limits of the kit are all stated below.</p>
 
-    <h2>Sample Deliverables</h2>
-    <div class="grid">
-        <div>
-            <h3>Sample orthomosaic crop</h3>
-            <div class="sample-img">[REPLACE: orthomosaic crop, ~150pt square]</div>
-            <p style="font-size:8.5pt; color:#6b7280;">Construction site, 0.4 ha · Phantom 4 RTK · 49 MP · 2.1 cm/px GSD</p>
-        </div>
-        <div>
-            <h3>Sample inspection report</h3>
-            <div class="sample-img">[REPLACE: annotated inspection still]</div>
-            <p style="font-size:8.5pt; color:#6b7280;">Roof condition survey, 4-bed detached · 18 defect callouts</p>
-        </div>
-    </div>
+  <h2>Credentials &amp; assurance</h2>
+  <dl class="creds">
+    <div><dt>Certification</dt><dd>CAA General VLOS Certificate (GVC), authorised for commercial operations</dd></div>
+    <div><dt>Operator ID</dt><dd class="mono">GBR-OP-335BHXRJHNYT</dd></div>
+    <div><dt>Insurance</dt><dd>&pound;10m public liability &mdash; certificate on request</dd></div>
+    <div><dt>Compliance</dt><dd>Commercial operator cover meeting the CAA&rsquo;s requirement under Regulation (EC) 785/2004</dd></div>
+    <div><dt>Aircraft</dt><dd>DJI Mini 3 Pro (sub-250&nbsp;g) &middot; custom FPV rigs with GoPro 12</dd></div>
+    <div><dt>Hired kit</dt><dd>RTK aircraft and thermal payloads are hired in per job, quoted per job &mdash; not owned, and not priced as though they were</dd></div>
+    <div><dt>Processing</dt><dd>In-house: orthomosaics, surface models, labelled stills, PDF packs</dd></div>
+    <div><dt>Coverage</dt><dd>Greater London, Berkshire, Buckinghamshire, Surrey, Hertfordshire</dd></div>
+    <div><dt>Site conduct</dt><dd>RAMS before the visit &middot; works to site induction &middot; flight window agreed with the site manager &middot; no flight without written permission</dd></div>
+    <div><dt>Airspace</dt><dd>Pre-flight check including Heathrow-area and Windsor restrictions</dd></div>
+  </dl>
 
-    <h2>How We Work</h2>
-    <ol class="deliverables">
-        <li><strong>Brief.</strong> 20-min call to understand the site, access, deliverable, deadline.</li>
-        <li><strong>Quote.</strong> Fixed-price or day-rate quote in writing within 24 hours.</li>
-        <li><strong>Flight.</strong> CAA-compliant operation, weather/permission check on the day.</li>
-        <li><strong>Process.</strong> In-house: orthomosaic, point cloud, volumetrics, annotations as required.</li>
-        <li><strong>Deliver.</strong> Report + data files delivered to your inbox, typically 48h post-flight.</li>
-    </ol>
+  <h2>Services and rates</h2>
+  <table>
+    <thead>
+      <tr><th>Service</th><th>You receive</th><th>Stated accuracy</th><th class="price">Price</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Construction progress pack</td>
+        <td>Orthomosaic JPG, 15&ndash;30 labelled stills, month-to-month pair, PDF pack</td>
+        <td class="scope">Visual record, not survey-grade</td>
+        <td class="price">&pound;350&ndash;&pound;500 one-off<br>&pound;400&ndash;&pound;650 per site per month</td>
+      </tr>
+      <tr>
+        <td>Roof &amp; building inspection</td>
+        <td>Labelled 4K stills + PDF defect sheet, numbered and located on a plan</td>
+        <td class="scope">Visual condition record, not a structural survey</td>
+        <td class="price">From &pound;300 per building<br>one visit</td>
+      </tr>
+      <tr>
+        <td>Site overview &amp; marketing stills</td>
+        <td>Graded stills, optional short cut</td>
+        <td class="scope">&mdash;</td>
+        <td class="price">From &pound;300 per site visit</td>
+      </tr>
+      <tr>
+        <td>3D model</td>
+        <td>Textured mesh, web-viewable; built from a five-angle mission</td>
+        <td class="scope">Visual model, uncontrolled scale &mdash; not measurable</td>
+        <td class="price">Quoted per job</td>
+      </tr>
+      <tr class="gated">
+        <td>Topographic survey / stockpile volumes<span class="tag">Hired kit</span></td>
+        <td>GeoTIFF, point cloud, DXF linework, written accuracy statement</td>
+        <td class="scope">Quoted per job with the accuracy spec attached</td>
+        <td class="price">POA</td>
+      </tr>
+      <tr class="gated">
+        <td>Thermal / solar inspection<span class="tag">Hired kit</span></td>
+        <td>Radiometric imagery, per-panel fault map</td>
+        <td class="scope">Quoted per job</td>
+        <td class="price">POA</td>
+      </tr>
+      <tr>
+        <td>Cinematic &mdash; half day</td>
+        <td>Aerial and FPV to an agreed shot list, raw or graded</td>
+        <td class="scope">&mdash;</td>
+        <td class="price">&pound;400</td>
+      </tr>
+      <tr>
+        <td>Cinematic &mdash; full day</td>
+        <td>As above, full day on location</td>
+        <td class="scope">&mdash;</td>
+        <td class="price">&pound;700</td>
+      </tr>
+      <tr>
+        <td>Edit package</td>
+        <td>Graded horizontal master plus vertical cutdowns</td>
+        <td class="scope">&mdash;</td>
+        <td class="price">&pound;250</td>
+      </tr>
+    </tbody>
+  </table>
+  <p class="small" style="margin-top:6pt">All prices exclude VAT and carry a unit and a scope.
+    Travel within one hour of West London is included; beyond that, &pound;20/hr. Survey and
+    inspection work is quoted per site after a short call &mdash; site address and approximate
+    size are enough to get a price rather than a question.</p>
 
-    <h2>Recent / Representative Work</h2>
-    <table>
-        <thead><tr><th>Client / project</th><th>Service</th><th>Deliverable</th></tr></thead>
-        <tbody>
-            <tr><td><span class="placeholder">[INSERT]</span></td><td>Construction monitoring</td><td>Monthly orthomosaics, 6 months</td></tr>
-            <tr><td><span class="placeholder">[INSERT]</span></td><td>Roof inspection</td><td>Annotated report, 4 defects flagged</td></tr>
-            <tr><td><span class="placeholder">[INSERT]</span></td><td>FPV brand film</td><td>90-sec social cut + 3-min hero</td></tr>
-        </tbody>
-    </table>
+  <h2>Accuracy, and what this kit will not do</h2>
+  <div class="limits">
+    <p class="fig">On bare, hard ground, repeat surveys of the same site agree to within
+      <strong>0.24&nbsp;m for 90%</strong> of the surface and <strong>0.31&nbsp;m for 95%</strong>.</p>
+    <p class="small" style="margin-bottom:8pt">Measured on a validation site on 4 August 2026 by flying
+      it twice and comparing. Bare and hard ground only &mdash; vegetation and tree canopy are several
+      times worse. Percentiles, not RMS: the error distribution has heavy tails. Change is quoted
+      relative to the baseline survey, never as absolute levels or heights AOD.</p>
+    <p style="margin:0">Standard visits fly a DJI Mini 3 Pro. Georeferencing is GNSS-only &mdash; no RTK,
+      no PPK, no ground control. <strong>These outputs are not survey-grade</strong>, must not be used
+      for setting out or boundary determination, and I will not put a number on a stockpile from them.
+      Where a job needs that, I hire an RTK aircraft, set ground control, and the written accuracy
+      statement comes with the file.</p>
+  </div>
 
-    <div class="footer">
-        <strong>Shining Star Drones</strong> · [Business Address] · Company No. [if applicable] · VAT No. [if applicable]<br>
-        GVC Qualified · CAA Operator ID [INSERT] · £1m Public Liability Insurance<br>
-        Coverage: Greater London · Buckinghamshire · Berkshire · Surrey · Hertfordshire
-    </div>
+  <h2>Demonstration capture</h2>
+  <div class="grid">
+    <figure>
+      <div class="frame"><img src="media/ramblers-ortho-2026-08-03.jpg" width="2400" height="1447"
+           alt="Orthomosaic of Ramblers Car Park, a 3.88 hectare site."></div>
+      <figcaption>Orthomosaic &middot; Ramblers Car Park, 3 Aug 2026 &middot; 3.88&nbsp;ha &middot;
+        226 frames &middot; 2.0&nbsp;cm/px &middot; DJI Mini 3 Pro at 40&nbsp;m<br>
+        Demonstration capture &mdash; not client work.</figcaption>
+    </figure>
+    <figure>
+      <div class="frame"><img src="media/ramblers-pack-spread.jpg" width="1400" height="1994"
+           alt="Cover and accuracy pages from the delivered PDF pack."></div>
+      <figcaption>Pack spread &middot; cover and accuracy statement, as delivered.<br>
+        The full pack downloads from the homepage.</figcaption>
+    </figure>
+  </div>
+  <p class="small" style="margin-top:7pt">These are my own captures, flown to demonstrate the product.
+    No client work is shown because there is none to show yet &mdash; this is a new operation, and a
+    fabricated track record is the easiest thing in this trade to get caught on.</p>
+
+  <h2>How the work runs</h2>
+  <ol class="steps">
+    <li><span><strong>Brief.</strong> A short call: site, access, induction requirements, what the record needs to settle.</span></li>
+    <li><span><strong>Quote.</strong> Fixed price in writing, per site, within one working day.</span></li>
+    <li><span><strong>Plan.</strong> RAMS supplied, airspace and permissions checked, flight window agreed with the site manager.</span></li>
+    <li><span><strong>Fly.</strong> A saved mission &mdash; identical waypoints, heights and camera angles every visit, so month three compares to month one.</span></li>
+    <li><span><strong>Process.</strong> In-house: orthomosaic, labelled stills, comparison against the previous visit.</span></li>
+    <li><span><strong>Deliver.</strong> PDF pack within 48 hours of a successful flight.</span></li>
+  </ol>
+
+  <div class="foot">
+    <strong>Shining Star Drones</strong> &middot; sole trader &middot; West London, United Kingdom &middot;
+    info@shiningstardrones.co.uk &middot; +44 7415 502186<br>
+    GVC qualified &middot; CAA Operator ID GBR-OP-335BHXRJHNYT &middot; &pound;10m public liability &middot;
+    EC 785/2004 compliant<br>
+    Coverage: Greater London &middot; Berkshire &middot; Buckinghamshire &middot; Surrey &middot; Hertfordshire
+  </div>
 
 </div>
 </body>
