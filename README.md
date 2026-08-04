@@ -7,11 +7,18 @@ Static marketing site for [shiningstardrones.co.uk](https://shiningstardrones.co
 | File | Purpose |
 |---|---|
 | `index.html` | Landing page (services, showreel, areas, pricing, contact form) |
-| `quote-generator.html` | Interactive quote calculator with copy-to-clipboard output |
 | `capability-statement.html` | One-page proof artifact for procurement teams |
-| `CNAME` | Custom domain mapping for GitHub Pages / Netlify |
+| `CNAME` | Vestigial. The live site is a Cloudflare Worker, not GitHub Pages. |
 | `robots.txt` | Crawler directives |
 | `sitemap.xml` | Search-engine sitemap |
+
+**`quote-generator.html` was removed from this repo on 2026-08-04 and must not come
+back.** It is an internal pricing calculator — it exposes the rate card, assistant and
+travel costs, multi-site multipliers and deposit terms, it carried a "Manual Price
+Override" control, and it was branded "Shining Star Media" rather than "Shining Star
+Drones". Nothing linked to it, but it was listed in `sitemap.xml` with no `noindex`, so
+it was reachable and indexable. It now lives at `quotes/quote-generator.html` in the
+pipeline repo.
 
 The site is **fully static** — no build step, no dependencies. Open `index.html` in a browser to preview locally.
 
