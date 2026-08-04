@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Progress packs in 48 hours — repeatable aerial site records | Shining Star Drones</title>
-<meta name="description" content="The same flight, every month. Nadir grid and fixed obliques flown to a saved mission, delivered as an orthomosaic, labelled stills and a month-to-month pair inside 48 hours. West London, Berkshire, Bucks, Surrey, Herts.">
+<meta name="description" content="The same flight, every month. Nadir grid flown to a saved mission, plus fixed obliques, delivered as an orthomosaic, labelled stills and a month-to-month pair inside 48 hours of a successful flight. West London, Berkshire, Bucks, Surrey, Herts.">
 
 <meta property="og:title" content="The same flight, every month — Shining Star Drones">
 <meta property="og:description" content="Repeatable aerial site records. Orthomosaic, labelled stills and a month-to-month comparison, delivered as a PDF pack inside 48 hours.">
@@ -42,7 +42,7 @@
   "url": "https://shiningstardrones.co.uk",
   "email": "info@shiningstardrones.co.uk",
   "telephone": "+447415502186",
-  "description": "Repeatable aerial site records for construction, estates and property. Nadir grid and fixed obliques flown to a saved mission, delivered as an orthomosaic, labelled stills and a month-to-month pair in a PDF pack inside 48 hours.",
+  "description": "Repeatable aerial site records for construction, estates and property. Nadir grid flown to a saved mission, plus fixed obliques, delivered as an orthomosaic, labelled stills and a month-to-month pair in a PDF pack inside 48 hours of a successful flight.",
   "priceRange": "££",
   "address": {
     "@type": "PostalAddress",
@@ -168,6 +168,9 @@ p:last-child{margin-bottom:0}
 .plate__frame>img{width:100%; height:100%; object-fit:cover}
 .plate__frame>iframe{width:100%; height:100%; border:0; display:block}
 .r-3x2 .plate__frame{aspect-ratio:3/2}
+/* The real orthomosaic grid: 2400 × 1447 at 0.105 m/px. Baseline, latest and
+   change map are all rendered on it, so a swipe between them is valid. */
+.r-ortho .plate__frame{aspect-ratio:2400/1447}
 .r-16x9 .plate__frame{aspect-ratio:16/9}
 .r-16x10 .plate__frame{aspect-ratio:16/10}
 .r-a4 .plate__frame{aspect-ratio:1/1.414}
@@ -270,7 +273,8 @@ p:last-child{margin-bottom:0}
 @media (min-width:760px){.cmp__stage{grid-template-columns:1fr 1fr}}
 .cmp__legend{display:none}
 
-.cmp.is-live .cmp__stage{display:block; position:relative; aspect-ratio:16/9; touch-action:pan-y; cursor:ew-resize}
+/* Must match the plates it holds (2400 x 1447), or object-fit:cover crops them. */
+.cmp.is-live .cmp__stage{display:block; position:relative; aspect-ratio:2400/1447; touch-action:pan-y; cursor:ew-resize}
 .cmp.is-live .cmp__f{position:absolute; inset:0; margin:0}
 .cmp.is-live .cmp__f .plate__frame{aspect-ratio:auto; height:100%}
 .cmp.is-live .cmp__f .plate__cap{display:none}
@@ -337,6 +341,13 @@ table.matrix{border-collapse:collapse; width:100%; min-width:900px; font-size:14
   max-width:56ch; font-family:var(--head); font-weight:500; font-size:clamp(19px,2vw,27px); line-height:1.25;
 }
 .limits .eyebrow{color:var(--magenta)}
+.figure{margin-top:34px; padding:26px 0 0; border-top:1px solid var(--magenta); max-width:62ch}
+.figure__k{font-family:var(--mono); font-size:11px; font-weight:500; letter-spacing:.16em; text-transform:uppercase; color:var(--magenta); margin:0 0 12px}
+.figure__v{font-family:var(--head); font-weight:500; font-size:clamp(21px,2.3vw,31px); line-height:1.25; margin:0}
+.figure__v strong{font-weight:600; color:var(--magenta); font-variant-numeric:tabular-nums}
+/* The panel inverts between schemes, so this must derive from the panel's own
+   text colour — a fixed grey passes on the dark ground and fails on the light one. */
+.figure__c{margin:16px 0 0; font-size:14.5px; line-height:1.55; color:var(--chart); opacity:.72; max-width:66ch}
 
 /* ------------------------------------------------------------ film band */
 .film{display:grid; gap:clamp(22px,3vw,40px); padding-bottom:clamp(40px,5vw,68px)}
@@ -408,13 +419,13 @@ table.matrix{border-collapse:collapse; width:100%; min-width:900px; font-size:14
   <div class="wrap hero">
     <p class="eyebrow">Commercial aerial data · London · Berkshire · Bucks · Surrey</p>
     <h1>The same flight, every month.</h1>
-    <p class="hero__stand">Nadir grid and fixed obliques flown to a saved mission, so month three is
+    <p class="hero__stand">Nadir grid flown to a saved mission, so month three is
       directly comparable to month one. Orthomosaic, labelled stills and a month-to-month pair,
       delivered as a PDF pack inside 48 hours.</p>
     <p class="hero__reel">A quarter of the work is still film — <a href="#film">see the reel</a></p>
 
     <div class="spec">
-      <div class="spec__c"><div class="spec__k">Turnaround</div><div class="spec__v">48 hours</div></div>
+      <div class="spec__c"><div class="spec__k">Turnaround</div><div class="spec__v">48 hours<small>from a successful flight</small></div></div>
       <div class="spec__c"><div class="spec__k">Output</div><div class="spec__v">Orthomosaic JPG<small>labelled stills · PDF pack</small></div></div>
       <div class="spec__c"><div class="spec__k">Typical</div><div class="spec__v">£400–£650<small>per site, per month</small></div></div>
       <div class="spec__c"><div class="spec__k">Base</div><div class="spec__v">West London<small>1 hour travel included</small></div></div>
@@ -424,19 +435,14 @@ table.matrix{border-collapse:collapse; width:100%; min-width:900px; font-size:14
 
 <!-- ============================ TEMPLATE A — PLATE 01, THE LOUD MOMENT -->
 <section class="wrap" style="padding-bottom:clamp(40px,5vw,68px)">
-  <figure class="plate r-3x2">
+  <figure class="plate r-ortho">
     <div class="plate__frame">
-      <!-- DROP-IN: replace this <div class="slot"> with
-           <img src="media/plate-01-ortho.jpg" alt="Orthomosaic of the demonstration site, full footprint" width="2400" height="1600">
-           No layout change is required — the frame owns the 3:2 ratio. -->
-      <div class="slot">
-        <span class="slot__spec">Plate 01 · 3:2 · full site footprint</span>
-        <span class="slot__what">Orthomosaic of the demonstration capture — the whole site in one frame, at a size you can actually examine.</span>
-      </div>
+      <img src="media/ramblers-ortho-2026-08-04.jpg" width="2400" height="1447" fetchpriority="high"
+           alt="Orthomosaic of Ramblers Car Park — a 3.88 hectare woodland car park seen from directly above, assembled from 228 aerial frames.">
     </div>
     <figcaption class="plate__cap">
       <span class="plate__no">Plate 01</span>
-      <span>Orthomosaic · Awaiting demonstration capture · Visual-grade</span>
+      <span>Orthomosaic · Demonstration capture, not client work · Ramblers Car Park, 4 Aug 2026 · 3.88 ha · 228 frames · 2.0 cm/px · Visual-grade</span>
     </figcaption>
   </figure>
 </section>
@@ -452,76 +458,37 @@ table.matrix{border-collapse:collapse; width:100%; min-width:900px; font-size:14
       <p>Seven items, the same seven every visit, flown to the same mission file.
          Nothing on this list depends on kit I don't own.</p>
     </div>
-    <span class="eyebrow sec-tag">Delivered in 48 hours</span>
+    <span class="eyebrow sec-tag">Delivered in 48 hours of a successful flight</span>
   </div>
 
   <div class="split split--pack">
     <ol class="steps">
-      <li><span>Nadir grid over the full site footprint, 60–70% overlap</span></li>
-      <li><span>Fixed N/E/S/W obliques from identical heights and distances every visit</span></li>
+      <li><span>Nadir grid over the full site footprint, 70% side / 80% forward overlap</span></li>
+      <li><span>Fixed N/E/S/W obliques flown from four marked positions</span></li>
       <li><span>Orthomosaic overview, labelled visual-grade</span></li>
       <li><span>15–30 labelled stills — key elevations and whole-site</span></li>
       <li><span>Side-by-side comparison against the previous visit</span></li>
       <li><span>Cover sheet: site, date, weather, flight reference, visit number</span></li>
-      <li><span>Delivered as a PDF pack within 48 hours</span></li>
+      <li><span>Delivered as a PDF pack within 48 hours of a successful flight</span></li>
     </ol>
 
     <figure class="plate r-a4">
       <div class="plate__frame">
-        <!-- DROP-IN: <img src="media/plate-07-pack.jpg" alt="A spread from the delivered PDF pack"> -->
+        <!-- DROP-IN once the report is regenerated under the right company name:
+             render p1 (cover) + p5 (accuracy) stacked — two A4 landscape pages make an
+             A4 portrait spread. The current PDF is branded "Ramblers Aerial", has empty
+             Client/Operator/Altitude fields, and its p4 is the change map that must not
+             be published (see CORRECTIONS.md §5B). Regenerate with:
+             publish_site.py ramblers-carpark --company "Shining Star Drones" -->
         <div class="slot">
-          <span class="slot__spec">Plate 07 · A4 portrait</span>
-          <span class="slot__what">A spread from the pack as it is delivered.</span>
+          <span class="slot__spec">Plate 07 &middot; A4 portrait</span>
+          <span class="slot__what">A spread from the pack as it is delivered &mdash; cover and accuracy statement.</span>
         </div>
       </div>
       <figcaption class="plate__cap">
         <span class="plate__no">Plate 07</span>
-        <span>Pack spread · Awaiting demonstration capture</span>
+        <span>Pack spread &middot; Awaiting a report rebuild</span>
       </figcaption>
-    </figure>
-  </div>
-</section>
-
-<!-- =================================== TEMPLATE A — THE OBLIQUES (5.4) -->
-<section class="wrap">
-  <div class="sec-head">
-    <span class="sec-no">02</span>
-    <div class="sec-head__t">
-      <h2>Four fixed positions</h2>
-      <p>The four oblique positions don't move, so the same corner of the site is framed
-         the same way every month. Comparison is the point; framing drift destroys it.</p>
-    </div>
-    <span class="eyebrow sec-tag">Plates 02–05</span>
-  </div>
-
-  <div class="strip">
-    <figure class="plate r-16x9">
-      <div class="plate__frame">
-        <!-- DROP-IN: <img src="media/plate-02-oblique-n.jpg" alt="North oblique"> -->
-        <div class="slot"><span class="slot__spec">Plate 02 · 16:9</span><span class="slot__what">North oblique</span></div>
-      </div>
-      <figcaption class="plate__cap"><span class="plate__no">02</span><span>Oblique N · Awaiting capture</span></figcaption>
-    </figure>
-    <figure class="plate r-16x9">
-      <div class="plate__frame">
-        <!-- DROP-IN: <img src="media/plate-03-oblique-e.jpg" alt="East oblique"> -->
-        <div class="slot"><span class="slot__spec">Plate 03 · 16:9</span><span class="slot__what">East oblique</span></div>
-      </div>
-      <figcaption class="plate__cap"><span class="plate__no">03</span><span>Oblique E · Awaiting capture</span></figcaption>
-    </figure>
-    <figure class="plate r-16x9">
-      <div class="plate__frame">
-        <!-- DROP-IN: <img src="media/plate-04-oblique-s.jpg" alt="South oblique"> -->
-        <div class="slot"><span class="slot__spec">Plate 04 · 16:9</span><span class="slot__what">South oblique</span></div>
-      </div>
-      <figcaption class="plate__cap"><span class="plate__no">04</span><span>Oblique S · Awaiting capture</span></figcaption>
-    </figure>
-    <figure class="plate r-16x9">
-      <div class="plate__frame">
-        <!-- DROP-IN: <img src="media/plate-05-oblique-w.jpg" alt="West oblique"> -->
-        <div class="slot"><span class="slot__spec">Plate 05 · 16:9</span><span class="slot__what">West oblique</span></div>
-      </div>
-      <figcaption class="plate__cap"><span class="plate__no">05</span><span>Oblique W · Awaiting capture</span></figcaption>
     </figure>
   </div>
 </section>
@@ -531,84 +498,100 @@ table.matrix{border-collapse:collapse; width:100%; min-width:900px; font-size:14
 <!-- ============================ TEMPLATE E — MONTH TO MONTH (5.5) -->
 <section class="wrap">
   <div class="sec-head">
-    <span class="sec-no">03</span>
+    <span class="sec-no">02</span>
     <div class="sec-head__t">
-      <h2>Month to month</h2>
-      <p>The same vantage, two different dates. Drag the divider — this is the whole
-         product in one control, and it is why the flight is saved rather than improvised.</p>
+      <h2>The same mission, flown twice</h2>
+      <p>Two real captures of the same site, flown to the same saved mission. Drag the
+         divider. The two dates are a day apart, not a month — what is being demonstrated
+         here is that the flight repeats, which is the part a monthly record depends on.</p>
     </div>
-    <span class="eyebrow sec-tag">Drag · or use arrow keys</span>
+    <span class="eyebrow sec-tag">Drag &middot; or use arrow keys</span>
   </div>
 
   <div class="cmp" id="cmp">
     <div class="cmp__stage" id="cmp-stage">
-      <figure class="plate r-16x9 cmp__f" data-cmp="a">
+      <figure class="plate r-ortho cmp__f" data-cmp="a">
         <div class="plate__frame">
-          <!-- DROP-IN: <img src="media/plate-06a-before.jpg" alt="Site on the first visit"> -->
-          <div class="slot"><span class="slot__spec">Plate 06A · 16:9</span><span class="slot__what">Fixed vantage, visit one</span></div>
+          <img src="media/ramblers-ortho-2026-08-03.jpg" width="2400" height="1447" loading="lazy"
+               alt="Orthomosaic of Ramblers Car Park on 3 August 2026, the baseline capture.">
         </div>
-        <figcaption class="plate__cap"><span class="plate__no">06A</span><span>Visit one · Awaiting capture</span></figcaption>
+        <figcaption class="plate__cap"><span class="plate__no">06A</span><span>Baseline &middot; 3 Aug 2026 &middot; 226 frames</span></figcaption>
       </figure>
-      <figure class="plate r-16x9 cmp__f" data-cmp="b">
+      <figure class="plate r-ortho cmp__f" data-cmp="b">
         <div class="plate__frame">
-          <!-- DROP-IN: <img src="media/plate-06b-after.jpg" alt="Same vantage on a later visit"> -->
-          <div class="slot"><span class="slot__spec">Plate 06B · 16:9</span><span class="slot__what">Same vantage, later date</span></div>
+          <img src="media/ramblers-ortho-2026-08-04.jpg" width="2400" height="1447" loading="lazy"
+               alt="Orthomosaic of the same site on 4 August 2026, flown to the same saved mission.">
         </div>
-        <figcaption class="plate__cap"><span class="plate__no">06B</span><span>Later visit · Awaiting capture</span></figcaption>
+        <figcaption class="plate__cap"><span class="plate__no">06B</span><span>Repeat &middot; 4 Aug 2026 &middot; 228 frames</span></figcaption>
       </figure>
       <button class="cmp__handle" type="button" id="cmp-handle"
-              role="slider" aria-label="Compare the two visits"
-              aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" aria-valuetext="50% — showing visit one"></button>
+              role="slider" aria-label="Compare the two capture dates"
+              aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" aria-valuetext="50% \u2014 showing the 3 August baseline"></button>
     </div>
     <div class="cmp__legend">
-      <span>◀ Plate 06A · Visit one</span>
-      <span>Plate 06B · Later visit ▶</span>
+      <span>&#9664; 3 Aug 2026 &middot; baseline</span>
+      <span>Demonstration capture &middot; Ramblers Car Park &middot; not client work</span>
+      <span>4 Aug 2026 &middot; repeat &#9654;</span>
     </div>
   </div>
+
+  <p style="margin-top:18px; font-size:15px; color:var(--slate); max-width:74ch">
+    Both captures reproduced line spacing to within 2&nbsp;cm (16.57&nbsp;m and 16.43&nbsp;m),
+    on identical bearings, at the same 40&nbsp;m altitude, with gimbal, ISO, shutter and white
+    balance fixed. Both orthomosaics are rendered on one shared grid at 0.105&nbsp;m/px, so the
+    divider above compares like with like rather than two independently-framed maps.
+  </p>
 </section>
 
 <!-- ================================== TEMPLATE F — THE MODEL BAY -->
 <section class="ledger">
  <div class="wrap">
   <div class="sec-head">
-    <span class="sec-no">04</span>
+    <span class="sec-no">03</span>
     <div class="sec-head__t">
-      <h2>The site as a model</h2>
-      <p>The same set of frames also builds a navigable photogrammetric model — useful for
-         showing a client an elevation they can't stand in front of, or briefing a
-         subcontractor on a roof. It is a visual model, not a measured one.</p>
+      <h2>A building as a model</h2>
+      <p>Flown as a five-angle mission rather than a nadir grid, the same aircraft builds a
+         navigable photogrammetric model &mdash; useful for showing a client an elevation they
+         can&rsquo;t stand in front of, or briefing a subcontractor on a roof. It is a visual
+         model, not a measured one.</p>
     </div>
-    <span class="eyebrow sec-tag">From the same capture</span>
+    <span class="eyebrow sec-tag">Separate site &middot; separate mission</span>
   </div>
 
   <div class="bay">
     <figure class="plate r-16x10">
       <div class="plate__frame">
-        <!-- DROP-IN, either route, no layout change:
-             hosted viewer →  <iframe src="…" title="3D model of the demonstration building" loading="lazy" allowfullscreen></iframe>
-             still frame   →  <img src="media/plate-08-model.jpg" alt="Photogrammetric model of the demonstration building"> -->
+        <!-- DROP-IN once the .glb is on R2 (56 MB — it exceeds the Worker's 25 MiB
+             per-asset cap and must NOT be committed here):
+             <model-viewer src="https://media.shiningstardrones.co.uk/st-mary-magdalene.glb"
+                           poster="media/st-mary-magdalene-poster.jpg" loading="lazy"
+                           camera-controls auto-rotate shadow-intensity="1"></model-viewer>
+             KHR_draco_mesh_compression is required; <model-viewer> ships the decoder.
+             CESIUM_RTC is declared but not required — ignore it, the vertices are local. -->
         <div class="slot">
-          <span class="slot__spec">Plate 08 · 16:10 · model view</span>
-          <span class="slot__what">Photogrammetric model of the demonstration building.</span>
+          <span class="slot__spec">Plate 08 &middot; 16:10 &middot; model view</span>
+          <span class="slot__what">St Mary Magdalene &mdash; 351,717 triangles from 265 frames. Awaiting upload to the media host.</span>
         </div>
       </div>
       <figcaption class="plate__cap">
         <span class="plate__no">Plate 08</span>
-        <span>3D model · Awaiting demonstration capture · Visual-grade, not measured</span>
+        <span>3D model &middot; St Mary Magdalene, a second demonstration site &middot; Visual-grade, not measured</span>
       </figcaption>
     </figure>
 
     <div>
       <div class="bay__rail">
-        <div><span>Built from</span><span>Nadir grid + obliques</span></div>
+        <div><span>Site</span><span>Not the car park</span></div>
+        <div><span>Flown as</span><span>Five-angle mission</span></div>
+        <div><span>Frames</span><span>265</span></div>
         <div><span>Aircraft</span><span>DJI Mini 3 Pro</span></div>
         <div><span>Grade</span><span>Visual</span></div>
         <div><span>Scale</span><span>Relative, uncontrolled</span></div>
-        <div><span>Use</span><span>Show, brief, record</span></div>
       </div>
-      <p class="bay__note">No ground control was set on this capture, so the model carries no
-        stated coordinate accuracy and nothing should be measured off it. Where a job needs
-        measurement, see the accuracy panel below.</p>
+      <p class="bay__note">This is a different site from the car park above, flown on a
+        different mission &mdash; a model and a map want opposite things from a flight, so a
+        site that needs both needs both flown. No ground control was set, so the model carries
+        no stated coordinate accuracy and nothing should be measured off it.</p>
     </div>
   </div>
  </div>
@@ -619,7 +602,7 @@ table.matrix{border-collapse:collapse; width:100%; min-width:900px; font-size:14
 <!-- ============================ TEMPLATE C — WHAT YOU RECEIVE (5.6) -->
 <section class="wrap">
   <div class="sec-head">
-    <span class="sec-no">05</span>
+    <span class="sec-no">04</span>
     <div class="sec-head__t">
       <h2>What you receive, and what it costs</h2>
       <p>Every price carries a unit and a scope. The two rows marked <em>hired kit</em> are
@@ -637,7 +620,7 @@ table.matrix{border-collapse:collapse; width:100%; min-width:900px; font-size:14
       <tbody>
         <tr>
           <td>Construction progress pack</td>
-          <td>Nadir grid + fixed obliques, saved mission</td>
+          <td>Nadir grid flown to a saved mission, plus obliques from four marked positions</td>
           <td>Orthomosaic JPG, 15–30 labelled stills, month-to-month pair, PDF pack</td>
           <td class="acc">Visual record, not survey-grade</td>
           <td class="px">£350–£500 one-off<br>£400–£650 per site per month</td>
@@ -688,6 +671,17 @@ table.matrix{border-collapse:collapse; width:100%; min-width:900px; font-size:14
       certified volumes or centimetre accuracy, and I won't put a number on a stockpile from it.
       Where a job needs that, I hire an RTK aircraft, set ground control, and the accuracy
       statement comes with the file.</p>
+    <div class="figure">
+      <p class="figure__k">Here is mine.</p>
+      <p class="figure__v">On bare, hard ground, repeat surveys of the same site agree to within
+        <strong>0.24&nbsp;m for 90%</strong> of the surface and <strong>0.31&nbsp;m for 95%</strong>.</p>
+      <p class="figure__c">Measured on a validation site, 4 August 2026, by flying it twice and
+        comparing. Bare and hard ground only &mdash; vegetation and tree canopy are several times
+        worse. Percentiles, not RMS: the error distribution has heavy tails. Change is quoted
+        relative to the baseline survey, never as absolute levels. Not survey-grade, and not for
+        setting out.</p>
+    </div>
+
     <p class="limits__kick">If a supplier quotes you survey accuracy off a sub-250 g drone,
       ask them for the accuracy statement.</p>
   </div>
@@ -696,7 +690,7 @@ table.matrix{border-collapse:collapse; width:100%; min-width:900px; font-size:14
 <!-- ================= TEMPLATE B — METHOD, CONDUCT AND COVERAGE (5.8/5.9) -->
 <section class="wrap">
   <div class="sec-head">
-    <span class="sec-no">06</span>
+    <span class="sec-no">05</span>
     <div class="sec-head__t">
       <h2>Why month three compares to month one</h2>
       <p>The reason the comparison holds is procedural, not equipment.</p>
@@ -706,7 +700,7 @@ table.matrix{border-collapse:collapse; width:100%; min-width:900px; font-size:14
   <div class="split split--two">
     <div>
       <p class="read">Saved mission, identical waypoints, heights and camera angles every visit.
-        Obliques from the same four fixed positions at the same distances. Visits booked for the
+        Obliques from four marked positions, flown at the same distances. Visits booked for the
         same time of day where weather allows, so shadows fall the same way. Same labels, same
         file naming, month to month.</p>
       <p class="read">A site that changes is easy to photograph. A site you can <em>compare</em>
@@ -755,7 +749,7 @@ table.matrix{border-collapse:collapse; width:100%; min-width:900px; font-size:14
 <!-- ================================== THE FILM SIDE (5.10) -->
 <section class="wrap" id="film">
   <div class="sec-head">
-    <span class="sec-no">07</span>
+    <span class="sec-no">06</span>
     <div class="sec-head__t">
       <h2>The film side</h2>
       <p>A quarter of the work is still cinematic — brand films, property, FPV. Same airframe
@@ -791,7 +785,7 @@ table.matrix{border-collapse:collapse; width:100%; min-width:900px; font-size:14
 <section class="ledger" id="enquiry">
  <div class="wrap">
   <div class="sec-head">
-    <span class="sec-no">08</span>
+    <span class="sec-no">07</span>
     <div class="sec-head__t">
       <h2>Enough detail here and the reply is a price, not a question.</h2>
       <p>I read these myself and answer within one working day.</p>
