@@ -48,6 +48,10 @@ p{margin:0 0 6pt}
 .masthead{display:flex; justify-content:space-between; align-items:flex-start; gap:14pt;
   border-bottom:2.5pt solid var(--ink); padding-bottom:9pt; margin-bottom:12pt}
 .masthead img{height:13pt; width:auto; margin-bottom:4pt}
+/* block, so wrapping the wordmark in a link does not put it on a line box and
+   add descender space under it; no underline, because the base `a` rule sets a
+   colour but leaves the browser default decoration on. */
+.masthead__home{display:block; text-decoration:none}
 .masthead .role{font-family:var(--mono); font-size:8pt; letter-spacing:.1em; text-transform:uppercase; color:var(--slate)}
 .masthead .contact{text-align:right; font-family:var(--mono); font-size:8.5pt; line-height:1.65; color:var(--ink)}
 
@@ -125,8 +129,11 @@ figcaption{margin-top:4pt; font-family:var(--mono); font-size:7.5pt; letter-spac
 }
 
 @media (pointer:coarse){
-  /* A phone number and an email in the masthead are tap targets, not print. */
+  /* A phone number and an email in the masthead are tap targets, not print.
+     So is the wordmark now that it links home — 17pt of artwork is not a
+     thumb-sized target. */
   .masthead .contact a{display:inline-block; padding-block:13px}
+  .masthead__home{display:flex; align-items:center; min-height:44px}
 }
 </style>
 </head>
@@ -135,7 +142,12 @@ figcaption{margin-top:4pt; font-family:var(--mono); font-size:7.5pt; letter-spac
 
   <div class="masthead">
     <div>
-      <img src="brand/wordmark-oneline-dark.svg" alt="Shining Star Drones" width="847" height="48">
+      <!-- Absolute, not "/": this page is meant to be printed and handed on as a
+           PDF, and a root-relative link resolves against wherever the file ends
+           up, which for a saved PDF is nowhere. -->
+      <a class="masthead__home" href="https://shiningstardrones.co.uk/">
+        <img src="brand/wordmark-oneline-dark.svg" alt="Shining Star Drones" width="847" height="48">
+      </a>
       <div class="role">Capability statement &middot; Issued 4 August 2026</div>
     </div>
     <div class="contact">

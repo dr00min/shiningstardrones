@@ -206,6 +206,10 @@ p:last-child{margin-bottom:0}
 /* Sized by width, not height: the wordmark is 846×48, so a fixed height of
    19px computes to a 334px width and overflows the 324px content box at 360px. */
 .masthead__mark img{width:clamp(196px,40vw,300px); height:auto}
+/* flex, so the anchor hugs the wordmark instead of adding the inline baseline
+   gap that would push the strap out of alignment. min-width:0 keeps it able to
+   shrink inside the flex row at 320px. */
+.masthead__home{display:flex; align-items:center; min-width:0; text-decoration:none}
 .masthead__strap{display:none}
 @media (min-width:900px){.masthead__strap{display:block; padding-left:14px; border-left:1px solid var(--hairline)}}
 /* Wraps: at 320px the toggle, the number and the CTA do not fit on one line,
@@ -461,6 +465,9 @@ table.matrix{border-collapse:collapse; width:100%; min-width:900px; font-size:14
   /* 44px minimum on anything that behaves like a control. Prose links are
      deliberately left alone -- padding them wrecks the line boxes. */
   .theme button{min-height:44px; padding-inline:14px}
+  /* The wordmark is 11px tall at 360px, so the home link needs the box even
+     though the artwork does not fill it. */
+  .masthead__home{min-height:44px}
   .masthead__tel{display:inline-flex; align-items:center; min-height:44px}
   .btn{padding:15px 20px}
   .field input,.field select,.field textarea{min-height:44px}
@@ -477,8 +484,15 @@ table.matrix{border-collapse:collapse; width:100%; min-width:900px; font-size:14
 <header class="masthead">
   <div class="wrap masthead__in">
     <div class="masthead__mark">
-      <img class="wm-dark" src="brand/wordmark-oneline-dark.svg" alt="Shining Star Drones" width="846" height="48">
-      <img class="wm-light" src="brand/wordmark-oneline-white.svg" alt="" aria-hidden="true" width="846" height="48">
+      <!-- aria-label rather than leaning on the alt text: only one of these two
+           wordmarks is display:none at a time, and display:none takes it out of
+           the accessibility tree, so in dark mode the only named image is the
+           hidden one. Without the label the link would announce as unnamed to
+           exactly the users who need the name. -->
+      <a class="masthead__home" href="/" aria-label="Shining Star Drones — home">
+        <img class="wm-dark" src="brand/wordmark-oneline-dark.svg" alt="Shining Star Drones" width="846" height="48">
+        <img class="wm-light" src="brand/wordmark-oneline-white.svg" alt="" aria-hidden="true" width="846" height="48">
+      </a>
       <span class="eyebrow masthead__strap">GVC · CAA Authorised · £10m PL</span>
     </div>
     <div class="masthead__act">
