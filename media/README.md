@@ -216,26 +216,39 @@ that the deliverable is correct for anyone who consumes it, not just this site.
 sha256 `4602cf58…`, matching the deliverable manifest) arrived Z-up again, Z at
 54.2..67.7 m, and was patched with the same script before being committed.
 
-That re-export also changed how the texture is packed: **1002 primitives /
-materials / images, against the old model's 107.** Counter-intuitively this is
-the cheaper model on a phone, and it is the reason to prefer it —
+**That re-export was then rolled back — it has holes in the geometry.** It
+shipped in `ee0c08e` and was reverted in the commit that added this paragraph.
+The live model is the older 10,840,812-byte one. Do not re-apply the newer file
+until the missing parts are fixed upstream.
 
-| | old | new |
+It is worth recording why it looked like an upgrade, because the same reasoning
+will come round again. The re-export repacked the texture as **1002 primitives /
+materials / images against the old model's 107**, and on every metric that gets
+measured automatically it won —
+
+| | old (live) | rolled-back re-export |
 |---|---|---|
 | file | 10.3 MiB | 12.8 MiB |
 | textures | 107 | 1002 |
 | largest texture | 3514x3337 | 302x302 |
 | total texels | 58.3 M | 32.0 M |
-| **decoded GPU memory** | **~233 MB** | **~128 MB** |
+| decoded GPU memory | ~233 MB | ~128 MB |
+| **geometry** | **complete** | **holes** |
 
-The old model's handful of huge atlases (one 3514x3337) dominated GPU memory
-even though the *file* was smaller, because a JPEG's compressed size says
-nothing about what it costs once decoded to RGBA. The new packing costs 2.5 MB
-more download and ~1000 draw calls, and saves ~105 MB of texture memory — the
-right trade on mobile, where the texture budget runs out long before the draw
-call budget does.
+The GPU-memory finding is real and still true: the old model's few huge atlases
+(one 3514x3337) cost far more decoded to RGBA than their JPEG size suggests, and
+a texel count predicts phone memory where a byte count does not. It was simply
+not the thing that mattered. A model with missing walls is not improved by being
+cheaper to draw, and no amount of load-time instrumentation says so — the
+headless check reported `loaded`, zero console errors, and correct bounding-box
+dimensions for a model with holes in it, because a hole changes none of those.
 
-Verify a re-export the same way: serve a `git archive` checkout and load it in a
-real browser, checking that `getDimensions().y` is the **13.6 m** vertical extent
-and not one of the horizontal ones. If y comes back as ~29 m or ~23 m, the axis
-patch did not apply.
+So: **a clean load is not a correct model.** The automated checks below are
+necessary and not sufficient. Look at the thing, and orbit it — the missing
+parts here were not visible from the default camera angle that the verification
+screenshot happened to capture.
+
+Verify a re-export by serving a `git archive` checkout and loading it in a real
+browser. Check that `getDimensions().y` is the **13.6 m** vertical extent and
+not one of the horizontal ones — if y comes back as ~29 m or ~23 m, the axis
+patch did not apply. Then spin it through a full rotation and look at it.

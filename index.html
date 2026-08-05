@@ -659,7 +659,7 @@ table.matrix{border-collapse:collapse; width:100%; min-width:900px; font-size:14
              Uses model_3d (cropped to the church), never model_3d_full_site. -->
         <img id="model-poster" src="media/st-mary-magdalene-preview.png" width="1600" height="1000" loading="lazy"
              alt="Untextured shaded render of the photogrammetric model: a church with a square tower and pitched nave roof.">
-        <button class="model-go btn btn--go" type="button" id="model-go">Load the 3D model &middot; 13&nbsp;MB</button>
+        <button class="model-go btn btn--go" type="button" id="model-go">Load the 3D model &middot; 10&nbsp;MB</button>
       </div>
       <figcaption class="plate__cap">
         <span>3D model &middot; St Mary Magdalene, a second demonstration site &middot; 6,990 faces, cropped to the building &middot; Visual-grade, not measured</span>
@@ -1138,7 +1138,7 @@ table.matrix{border-collapse:collapse; width:100%; min-width:900px; font-size:14
   /* The poster is an untextured check render — honest, but a poor substitute for
      the real thing. On a desktop-sized viewport with no data-saving signal, load
      the textured model as soon as the section is on screen so that is what people
-     actually see. Narrow screens and save-data keep the click gate: 13 MB is not
+     actually see. Narrow screens and save-data keep the click gate: 10 MB is not
      something to spend on someone's behalf over cellular. */
   var conn = navigator.connection || {},
       slow = conn.saveData === true || /(^|\b)(2g|slow-2g)$/.test(conn.effectiveType || '');
