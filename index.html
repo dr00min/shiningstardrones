@@ -4,10 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Progress packs in 48 hours — repeatable aerial site records | Shining Star Drones</title>
-<meta name="description" content="The same flight, every month. Nadir grid flown to a saved mission, plus fixed obliques, delivered as an orthomosaic, labelled stills and a month-to-month pair inside 48 hours of a successful flight. Slough and Berkshire, West London, Bucks, Surrey, Herts.">
+<meta name="description" content="Monthly construction progress monitoring from Slough: the same flight every visit, orthomosaic and month-to-month comparison as a PDF pack within 48 hours. Visual record, not survey-grade. Berkshire, Bucks, Surrey, M4 corridor and Greater London.">
 
 <meta property="og:title" content="The same flight, every month — Shining Star Drones">
-<meta property="og:description" content="Repeatable aerial site records. Orthomosaic, labelled stills and a month-to-month comparison, delivered as a PDF pack inside 48 hours.">
+<meta property="og:description" content="Construction progress packs — orthomosaic, labelled stills and a month-to-month comparison, delivered inside 48 hours. Visual record for site meetings and programme evidence, not survey-grade.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://shiningstardrones.co.uk">
 
@@ -42,7 +42,7 @@
   "url": "https://shiningstardrones.co.uk",
   "email": "info@shiningstardrones.co.uk",
   "telephone": "+447415502186",
-  "description": "Repeatable aerial site records for construction, estates and property. Nadir grid flown to a saved mission, plus fixed obliques, delivered as an orthomosaic, labelled stills and a month-to-month pair in a PDF pack inside 48 hours of a successful flight.",
+  "description": "Monthly construction progress monitoring and dated aerial site records. Nadir grid flown to a saved mission, delivered as an orthomosaic, labelled stills and a month-to-month pair in a PDF pack inside 48 hours of a successful flight. Visual record, not survey-grade.",
   "priceRange": "££",
   "address": {
     "@type": "PostalAddress",
@@ -52,14 +52,17 @@
     "addressCountry": "GB"
   },
   "areaServed": [
-    {"@type": "City", "name": "London"},
+    {"@type": "City", "name": "Slough"},
+    {"@type": "City", "name": "Maidenhead"},
     {"@type": "AdministrativeArea", "name": "Berkshire"},
     {"@type": "AdministrativeArea", "name": "Buckinghamshire"},
     {"@type": "AdministrativeArea", "name": "Surrey"},
-    {"@type": "AdministrativeArea", "name": "Hertfordshire"}
+    {"@type": "AdministrativeArea", "name": "Hertfordshire"},
+    {"@type": "City", "name": "London"}
   ],
   "serviceType": [
     "Construction progress monitoring",
+    "Construction progress documentation",
     "Aerial site records",
     "Orthomosaic capture",
     "Roof and building inspection",
@@ -265,9 +268,9 @@ p:last-child{margin-bottom:0}
 /* One grid for the whole list, not a flex row per item. Each row being its own
    formatting context is why the definitions used to start at four different
    left edges in "Who this is for" -- a row can only size its label column to
-   its own label, so "Solar O&M" set a narrow column and "Main contractor" a
-   wide one, 46px apart. A single grid sizes the column once, off the longest
-   label, and every definition lines up under the one above it.
+   its own label, so a short label and "Main contractor / PM" used to sit
+   46px apart. A single grid sizes the column once, off the longest label,
+   and every definition lines up under the one above it.
    min-width on the dt keeps the old 11ch floor, and it has to live on the dt
    rather than in the track: `ch` on the grid resolves against the list's body
    font, but the label is mono, so 11ch means two different widths. */
@@ -540,12 +543,13 @@ table.matrix{border-collapse:collapse; width:100%; min-width:900px; font-size:14
 <!-- ========================================================== HERO (5.2) -->
 <section class="ledger">
   <div class="wrap hero">
-    <p class="eyebrow">Commercial aerial data · London · Berkshire · Bucks · Surrey</p>
+    <p class="eyebrow">Construction progress monitoring · Slough · Berkshire · M4 corridor</p>
     <h1>The same flight, every month.</h1>
     <p class="hero__stand">Nadir grid flown to a saved mission, so month three is
-      directly comparable to month one. Orthomosaic, labelled stills and a month-to-month pair,
+      directly comparable to month one. A dated site record for progress meetings and
+      programme evidence — orthomosaic, labelled stills and a month-to-month pair,
       delivered as a PDF pack inside 48 hours.</p>
-    <p class="hero__reel">A quarter of the work is still film — <a href="#film">see the reel</a></p>
+    <p class="hero__reel">Cinematic and FPV still available — <a href="#film">see the reel</a></p>
 
     <div class="spec">
       <div class="spec__c"><div class="spec__k">Turnaround</div><div class="spec__v">48 hours<small>from a successful flight</small></div></div>
@@ -570,7 +574,7 @@ table.matrix{border-collapse:collapse; width:100%; min-width:900px; font-size:14
            alt="Orthomosaic of Ramblers Car Park — a 3.88 hectare woodland car park seen from directly above, assembled from 226 aerial frames.">
     </div>
     <figcaption class="plate__cap">
-      <span>Orthomosaic &middot; Demonstration capture, not client work &middot; Ramblers Car Park, 3 Aug 2026 &middot; 3.88 ha &middot; 226 frames &middot; 2.0 cm/px &middot; Visual-grade</span>
+      <span>Orthomosaic &middot; Demonstration capture, not client work &middot; Ramblers Car Park, 3 Aug 2026 &middot; 3.88 ha &middot; 226 frames &middot; 2.0 cm/px &middot; Visual record, not survey-grade</span>
     </figcaption>
   </figure>
 </section>
@@ -593,7 +597,7 @@ table.matrix{border-collapse:collapse; width:100%; min-width:900px; font-size:14
     <ol class="steps">
       <li><span>Nadir grid over the full site footprint, 70% side / 80% forward overlap</span></li>
       <li><span>Fixed N/E/S/W obliques flown from four marked positions</span></li>
-      <li><span>Orthomosaic overview, labelled visual-grade</span></li>
+      <li><span>Orthomosaic overview — visual record, not survey-grade</span></li>
       <li><span>15–30 labelled stills — key elevations and whole-site</span></li>
       <li><span>Side-by-side comparison against the previous visit</span></li>
       <li><span>Cover sheet: site, date, weather, flight reference, visit number</span></li>
@@ -705,7 +709,7 @@ table.matrix{border-collapse:collapse; width:100%; min-width:900px; font-size:14
         <button class="model-go btn btn--go" type="button" id="model-go">Load the 3D model &middot; 10&nbsp;MB</button>
       </div>
       <figcaption class="plate__cap">
-        <span>3D model &middot; St Mary Magdalene, a second demonstration site &middot; 6,990 faces, cropped to the building &middot; Visual-grade, not measured</span>
+        <span>3D model &middot; St Mary Magdalene, a second demonstration site &middot; 6,990 faces, cropped to the building &middot; Visual model, not measured</span>
       </figcaption>
     </figure>
 
@@ -716,7 +720,7 @@ table.matrix{border-collapse:collapse; width:100%; min-width:900px; font-size:14
         <div><span>Frames</span><span>265</span></div>
         <div><span>Aircraft</span><span>DJI Mini 3 Pro</span></div>
         <div><span>Mesh</span><span>6,990 faces, cropped</span></div>
-        <div><span>Grade</span><span>Visual</span></div>
+        <div><span>Grade</span><span>Visual only</span></div>
         <div><span>Scale</span><span>Relative, uncontrolled</span></div>
       </div>
       <p class="bay__note">This is a different site from the car park above, flown on a
@@ -800,10 +804,10 @@ table.matrix{border-collapse:collapse; width:100%; min-width:900px; font-size:14
     <p class="eyebrow">The part most suppliers leave out</p>
     <h2>What this kit will and won't tell you</h2>
     <p class="limits__body">Standard visits fly a <strong>DJI Mini 3 Pro</strong>. That gives a clean,
-      geometrically consistent visual record — enough to see what changed, check a roof, brief a
-      client and show an investor. <strong>It is not survey-grade.</strong> It will not give you
-      certified volumes or centimetre accuracy, and I won't put a number on a stockpile from it.
-      Where a job needs that, I hire an RTK aircraft, set ground control, and the accuracy
+      geometrically consistent visual record — enough for a progress meeting, a programme dispute,
+      a roof condition check, or briefing a client. <strong>It is not survey-grade.</strong> It will
+      not give you certified volumes or centimetre accuracy, and I won't put a number on a stockpile
+      from it. Where a job needs that, I hire an RTK aircraft, set ground control, and the accuracy
       statement comes with the file.</p>
     <div class="figure">
       <p class="figure__k">Here is mine.</p>
@@ -842,11 +846,12 @@ table.matrix{border-collapse:collapse; width:100%; min-width:900px; font-size:14
 
       <h3 style="margin-top:30px">Who this is for</h3>
       <dl class="deflist" style="margin-top:14px">
-        <div><dt>Survey practice</dt><dd>Subcontract or white-label capture — you keep the client, I fly the grid.</dd></div>
-        <div><dt>Quarry &amp; waste</dt><dd>A repeatable per-visit visual record of stock and cell movement.</dd></div>
-        <div><dt>Main contractor</dt><dd>Monthly progress evidence for valuations, and a record when a programme is disputed.</dd></div>
-        <div><dt>Solar O&amp;M</dt><dd>Array condition; thermal fault-finding on hired payload, quoted per job.</dd></div>
-        <div><dt>FM &amp; estates</dt><dd>Roof and facade condition record that fits a planned-maintenance cycle.</dd></div>
+        <div><dt>Main contractor / PM</dt><dd>Monthly progress pack for site meetings and programme disputes — supporting material for interim applications, not a substitute for the QS measure.</dd></div>
+        <div><dt>Groundworks</dt><dd>Earthworks progress and a dated record that travels with you between sites.</dd></div>
+        <div><dt>QS / commercial</dt><dd>White-label or supporting capture for claims packs and applications — you keep the client relationship.</dd></div>
+        <div><dt>Survey practice</dt><dd>Subcontract capture on a saved mission; you keep the client, I fly the grid.</dd></div>
+        <div><dt>Quarry ops</dt><dd>A per-visit visual record of stock and cell movement only — not for audited volumes or accounts (that needs hired RTK and a different accuracy statement).</dd></div>
+        <div><dt>FM &amp; estates</dt><dd>Roof and facade condition record for planned maintenance — usually one-off, not a monthly series.</dd></div>
       </dl>
     </div>
 
@@ -863,15 +868,16 @@ table.matrix{border-collapse:collapse; width:100%; min-width:900px; font-size:14
         <div><dt>Airspace</dt><dd>Pre-flight check including Heathrow-area and Windsor restrictions</dd></div>
       </dl>
       <p class="read" style="margin-top:20px; font-size:15px; color:var(--slate)">
-        Slough and West London sit under Heathrow's controlled airspace and its restriction zone.
+        The base sits under Heathrow's controlled airspace and near Windsor restrictions.
         Knowing exactly where that bites — and where it doesn't — is the difference between a
-        booked visit and a wasted morning.</p>
+        booked visit and a wasted morning. Windsor town and Eton are closed; Slough,
+        Maidenhead and the M4 industrial belt are the working catchment.</p>
 
       <h3 style="margin-top:30px">Coverage</h3>
       <dl class="deflist" style="margin-top:14px">
         <div><dt>Base</dt><dd>Slough SL1, Berkshire</dd></div>
         <div><dt>Travel</dt><dd>1 hour included; beyond that &pound;20/hr</dd></div>
-        <div><dt>Areas</dt><dd>Greater London · Berkshire · Buckinghamshire · Surrey · Hertfordshire</dd></div>
+        <div><dt>Areas</dt><dd>Berkshire · Bucks · Slough–Maidenhead–M4 · Surrey · Herts · Greater London</dd></div>
         <div><dt>Beyond</dt><dd>By arrangement, travel quoted separately</dd></div>
       </dl>
     </div>
@@ -886,10 +892,10 @@ table.matrix{border-collapse:collapse; width:100%; min-width:900px; font-size:14
     <span class="sec-no">06</span>
     <div class="sec-head__t">
       <h2>The film side</h2>
-      <p>A quarter of the work is still cinematic — brand films, property, FPV. Same airframe
-         discipline, and it's where the business started.</p>
+      <p>Brand films, property and FPV are still available — same airframe discipline,
+         and where the business started. Progress packs are the core offer above.</p>
     </div>
-    <span class="eyebrow sec-tag">25% of the work</span>
+    <span class="eyebrow sec-tag">Also available</span>
   </div>
 
   <div class="film">
@@ -974,7 +980,7 @@ table.matrix{border-collapse:collapse; width:100%; min-width:900px; font-size:14
           </select></div>
 
         <div class="field f-wide"><label for="f-notes">Notes</label>
-          <textarea id="f-notes" name="notes" placeholder="Access, induction requirements, what you need the record to settle."></textarea></div>
+          <textarea id="f-notes" name="notes" placeholder="Access, induction, what the record is for — site meetings, programme evidence, claims pack, roof condition…"></textarea></div>
 
         <div class="f-wide">
           <button class="btn btn--go" type="submit" style="cursor:pointer">Send enquiry</button>
@@ -1034,7 +1040,7 @@ table.matrix{border-collapse:collapse; width:100%; min-width:900px; font-size:14
     </div>
     <div class="foot__legal">
       <span>&copy; 2026 Andrew Abdul-Malek trading as Shining Star Drones &middot; Slough SL1, Berkshire</span>
-      <span>Greater London · Berkshire · Bucks · Surrey · Herts</span>
+      <span>Berkshire · Bucks · Slough–Maidenhead–M4 · Surrey · Herts · Greater London</span>
     </div>
   </div>
 </footer>

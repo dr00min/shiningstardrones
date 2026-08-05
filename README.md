@@ -1,6 +1,6 @@
 # Shining Star Drones — Website
 
-Static marketing site for [shiningstardrones.co.uk](https://shiningstardrones.co.uk) — GVC-qualified commercial drone services across West London, Greater London, Buckinghamshire, and the South East.
+Static marketing site for [shiningstardrones.co.uk](https://shiningstardrones.co.uk) — GVC-qualified construction progress monitoring and aerial site records from Slough across Berkshire, Bucks, the M4 corridor, and Greater London.
 
 ## What's here
 
