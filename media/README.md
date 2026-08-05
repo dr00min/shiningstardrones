@@ -211,3 +211,31 @@ transform, and reports and exits if the model is already Y-up.
 
 The real fix belongs in `obj2glb` / the publish step in the pipeline repo, so
 that the deliverable is correct for anyone who consumes it, not just this site.
+
+**It came back, as predicted.** The 2026-08-05 re-export (13,466,712 bytes,
+sha256 `4602cf58…`, matching the deliverable manifest) arrived Z-up again, Z at
+54.2..67.7 m, and was patched with the same script before being committed.
+
+That re-export also changed how the texture is packed: **1002 primitives /
+materials / images, against the old model's 107.** Counter-intuitively this is
+the cheaper model on a phone, and it is the reason to prefer it —
+
+| | old | new |
+|---|---|---|
+| file | 10.3 MiB | 12.8 MiB |
+| textures | 107 | 1002 |
+| largest texture | 3514x3337 | 302x302 |
+| total texels | 58.3 M | 32.0 M |
+| **decoded GPU memory** | **~233 MB** | **~128 MB** |
+
+The old model's handful of huge atlases (one 3514x3337) dominated GPU memory
+even though the *file* was smaller, because a JPEG's compressed size says
+nothing about what it costs once decoded to RGBA. The new packing costs 2.5 MB
+more download and ~1000 draw calls, and saves ~105 MB of texture memory — the
+right trade on mobile, where the texture budget runs out long before the draw
+call budget does.
+
+Verify a re-export the same way: serve a `git archive` checkout and load it in a
+real browser, checking that `getDimensions().y` is the **13.6 m** vertical extent
+and not one of the horizontal ones. If y comes back as ~29 m or ~23 m, the axis
+patch did not apply.
