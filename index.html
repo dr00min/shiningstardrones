@@ -262,10 +262,39 @@ p:last-child{margin-bottom:0}
 }
 .steps{counter-reset:s}
 
-.deflist{margin:0; border-top:1px solid var(--hairline)}
-.deflist div{display:flex; flex-wrap:wrap; gap:6px 16px; padding:11px 0; border-bottom:1px solid var(--hairline)}
-.deflist dt{flex:0 0 auto; font-family:var(--mono); font-size:11px; letter-spacing:.12em; text-transform:uppercase; color:var(--slate); min-width:11ch}
-.deflist dd{flex:1 1 16ch; margin:0; font-size:15px}
+/* One grid for the whole list, not a flex row per item. Each row being its own
+   formatting context is why the definitions used to start at four different
+   left edges in "Who this is for" -- a row can only size its label column to
+   its own label, so "Solar O&M" set a narrow column and "Main contractor" a
+   wide one, 46px apart. A single grid sizes the column once, off the longest
+   label, and every definition lines up under the one above it.
+   min-width on the dt keeps the old 11ch floor, and it has to live on the dt
+   rather than in the track: `ch` on the grid resolves against the list's body
+   font, but the label is mono, so 11ch means two different widths. */
+.deflist{margin:0; border-top:1px solid var(--hairline);
+  display:grid; grid-template-columns:max-content minmax(16ch,1fr)}
+/* No align-items:baseline here, tempting as it is. Baseline alignment stops the
+   two cells stretching to the row height, so a one-line label and a two-line
+   definition end up carrying their border-bottoms at different heights and the
+   row rule breaks into two steps. Stretch keeps both borders on the row's
+   bottom edge, which is what makes it read as one line. */
+.deflist > div{display:contents}
+/* The row rule moves onto the cells, because display:contents leaves no box to
+   carry a border. That means no column-gap: a gap here would cut each rule into
+   two floating segments. The 16px gutter is padding inside the label instead, so
+   the two borders meet and the rule stays one line across the row. */
+.deflist dt,.deflist dd{padding:11px 0; border-bottom:1px solid var(--hairline)}
+.deflist dt{font-family:var(--mono); font-size:11px; letter-spacing:.12em; text-transform:uppercase; color:var(--slate); padding-right:16px; min-width:calc(11ch + 16px)}
+.deflist dd{margin:0; font-size:15px}
+/* Narrow: a 15ch label column beside a 16ch definition leaves neither enough
+   room, so the label goes above its definition and the grid collapses to one
+   column. The pair still reads as a unit because only the definition carries
+   the rule. */
+@media (max-width:560px){
+  .deflist{grid-template-columns:1fr}
+  .deflist dt{padding:11px 0 0; border-bottom:0}
+  .deflist dd{padding:2px 0 11px}
+}
 
 /* ---------------------------------------------------- A: contact strip */
 .strip{display:grid; gap:14px; grid-template-columns:repeat(2,1fr); padding-bottom:clamp(40px,5vw,68px)}
