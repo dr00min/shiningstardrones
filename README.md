@@ -11,6 +11,7 @@ Static marketing site for [shiningstardrones.co.uk](https://shiningstardrones.co
 | `CNAME` | Vestigial. The live site is a Cloudflare Worker, not GitHub Pages. |
 | `robots.txt` | Crawler directives |
 | `sitemap.xml` | Search-engine sitemap |
+| `SEO.md` | SEO audit, scorecard, and implementation backlog (checkboxes) |
 
 **`quote-generator.html` was removed from this repo on 2026-08-04 and must not come
 back.** It is an internal pricing calculator — it exposes the rate card, assistant and
