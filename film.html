@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Brand film, property and FPV — Shining Star Drones</title>
+<meta name="description" content="Aerial and FPV filming from Slough — brand films, property and event coverage, shot to an agreed list. Half day £400, full day £700, edit package £250. Berkshire, Bucks, M4 corridor and Greater London.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://shiningstardrones.co.uk/film">
+
+<meta property="og:title" content="Brand film, property and FPV — Shining Star Drones">
+<meta property="og:description" content="Aerial and FPV filming from Slough, shot to an agreed list. Where the business started.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://shiningstardrones.co.uk/film">
+
+<link rel="icon" href="favicon.ico" sizes="16x16 32x32 48x48">
+<link rel="icon" type="image/png" href="favicon-32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="icon-192.png" sizes="192x192">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F6F8F6">
+
+<script>
+/* Applied before first paint so a returning dark-mode visitor never sees a
+   light flash. Shares the ssd-theme key with the home page. */
+(function () {
+  try {
+    if (localStorage.getItem('ssd-theme') === 'dark') {
+      document.documentElement.setAttribute('data-theme', 'dark');
+    }
+  } catch (e) {}
+})();
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@500;600&family=Public+Sans:wght@300;400;500&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+/* Same tokens as the home page, but only the rules this page actually uses.
+   The site has no build step, so each page carries its own sheet — the pattern
+   capability-statement.html already follows. */
+:root{
+  --chart:#F6F8F6; --paper:#FDFEFC; --ink:#0E1519; --slate:#5A6670;
+  --hairline:#C4CCC6; --magenta:#A81B5D; --airway:#2A5D8F; --on-accent:#FDFEFC;
+  --sans:"Public Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+  --head:"Archivo Narrow","Archivo",-apple-system,BlinkMacSystemFont,"Segoe UI Semibold",Helvetica,Arial,sans-serif;
+  --mono:"Roboto Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  --wide:1340px; --gut:clamp(18px,4vw,44px); --ledger:rgba(14,21,25,.055);
+}
+:root[data-theme="dark"]{
+  --chart:#0E1519; --paper:#141C21; --ink:#E8EDEA; --slate:#9AA6AE;
+  --hairline:#2A363C; --magenta:#E4589A; --airway:#78A9D8; --on-accent:#0E1519;
+  --ledger:rgba(232,237,234,.05);
+}
+*,*::before,*::after{box-sizing:border-box}
+body{
+  margin:0; background:var(--chart); color:var(--ink); font-family:var(--sans);
+  font-weight:300; font-size:17px; line-height:1.62; font-variant-numeric:tabular-nums;
+  -webkit-font-smoothing:antialiased;
+}
+img,video{max-width:100%; height:auto; display:block}
+a{color:var(--magenta)}
+:focus-visible{outline:2px solid var(--airway); outline-offset:2px}
+.wrap{max-width:var(--wide); margin:0 auto; padding-inline:var(--gut)}
+
+.eyebrow{
+  font-family:var(--mono); font-size:12px; font-weight:500; letter-spacing:.16em;
+  text-transform:uppercase; color:var(--slate); margin:0;
+}
+h1{
+  font-family:var(--head); font-weight:600; letter-spacing:-.02em; line-height:1.02;
+  font-size:clamp(38px,6.4vw,74px); margin:14px 0 0;
+}
+h2{
+  font-family:var(--head); font-weight:600; letter-spacing:-.015em; line-height:1.1;
+  font-size:clamp(25px,3vw,36px); margin:0 0 10px;
+}
+p{margin:0 0 16px; max-width:66ch}
+
+.masthead{border-bottom:1px solid var(--hairline); background:var(--paper)}
+.masthead__in{display:flex; align-items:center; justify-content:space-between; gap:20px; flex-wrap:wrap; padding-block:16px}
+.masthead__home{display:inline-block; min-height:44px}
+.masthead__home img{height:26px; width:auto}
+.wm-light{display:none}
+:root[data-theme="dark"] .wm-dark{display:none}
+:root[data-theme="dark"] .wm-light{display:block}
+.masthead__strap{display:block; margin-top:5px}
+.masthead__act{display:flex; align-items:center; gap:14px; flex-wrap:wrap}
+.masthead__tel{display:inline-flex; align-items:center; min-height:44px; color:var(--ink); text-decoration:none; font-family:var(--mono); font-size:14px}
+.theme{display:inline-flex; border:1px solid var(--hairline); border-radius:2px; overflow:hidden}
+.theme button{
+  font:500 12px/1 var(--mono); letter-spacing:.1em; text-transform:uppercase;
+  padding:9px 11px; background:transparent; color:var(--slate); border:0; cursor:pointer;
+}
+.theme button[aria-pressed="true"]{background:var(--ink); color:var(--chart)}
+.btn{
+  display:inline-block; font-family:var(--mono); font-size:13px; font-weight:500;
+  letter-spacing:.08em; text-transform:uppercase; text-decoration:none;
+  padding:13px 18px; border:1px solid var(--ink); color:var(--ink); border-radius:2px;
+}
+.btn--go{background:var(--magenta); border-color:var(--magenta); color:var(--on-accent)}
+
+.hero{padding-block:clamp(38px,6vw,74px)}
+.ledger{background:var(--ledger)}
+.stand{font-size:clamp(18px,2vw,22px); font-weight:300; margin-top:18px; max-width:60ch}
+
+.film{
+  display:grid; gap:clamp(22px,3vw,44px); align-items:start;
+  grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);
+  padding-block:clamp(38px,5vw,64px);
+}
+@media (max-width:840px){ .film{grid-template-columns:1fr} }
+.film__player{background:#0E1519; border:1px solid var(--hairline); border-radius:2px; overflow:hidden}
+.rates{margin:0; border-top:1px solid var(--hairline)}
+.rates > div{display:flex; justify-content:space-between; gap:16px; border-bottom:1px solid var(--hairline); padding:13px 0}
+.rates dt{font-weight:400}
+.rates dd{margin:0; font-family:var(--mono); font-size:15px; white-space:nowrap}
+
+.back{padding-block:clamp(30px,4vw,52px); border-top:1px solid var(--hairline)}
+
+.foot{background:var(--paper); border-top:1px solid var(--hairline); margin-top:clamp(30px,4vw,52px)}
+.foot .wrap{display:grid; gap:26px; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); padding-block:36px}
+.foot h4{font-family:var(--mono); font-size:12px; font-weight:500; letter-spacing:.16em; text-transform:uppercase; color:var(--slate); margin:0 0 10px}
+.foot a{display:block; color:var(--ink); text-decoration:none; margin-bottom:7px; font-size:15px}
+.foot a:hover{color:var(--magenta)}
+.foot p{margin:0 0 7px; font-size:15px}
+.foot__legal{grid-column:1/-1; border-top:1px solid var(--hairline); padding-top:18px; display:flex; flex-wrap:wrap; gap:10px 26px; font-size:13px; color:var(--slate)}
+
+@media (max-width:600px){ .btn{padding:15px 20px} .foot a{padding-block:11px; margin-bottom:0} }
+@media (prefers-reduced-motion:reduce){*{animation:none!important; transition:none!important}}
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="wrap masthead__in">
+    <div>
+      <a class="masthead__home" href="/" aria-label="Shining Star Drones — home">
+        <img class="wm-dark" src="brand/wordmark-oneline-dark.svg" alt="Shining Star Drones" width="846" height="48">
+        <img class="wm-light" src="brand/wordmark-oneline-white.svg" alt="" aria-hidden="true" width="846" height="48">
+      </a>
+      <span class="eyebrow masthead__strap">GVC · CAA Authorised · £10m PL</span>
+    </div>
+    <div class="masthead__act">
+      <div class="theme" role="group" aria-label="Colour scheme">
+        <button type="button" data-theme-set="light" aria-pressed="true">Light</button>
+        <button type="button" data-theme-set="dark" aria-pressed="false">Dark</button>
+      </div>
+      <a class="masthead__tel" href="tel:+447415502186">+44 7415 502186</a>
+      <a class="btn btn--go" href="/#enquiry">Get a quote</a>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<section class="ledger">
+  <div class="wrap hero">
+    <p class="eyebrow">Aerial &amp; FPV film · Slough · Berkshire · M4 corridor</p>
+    <h1>The film side.</h1>
+    <p class="stand">Brand films, property and FPV — same airframe discipline as the survey
+      work, and where the business started. Shot to an agreed list, delivered graded.</p>
+  </div>
+</section>
+
+<section class="wrap">
+  <div class="film">
+    <div class="film__player">
+      <video controls preload="none" playsinline poster="media/reel-poster.jpg"
+             aria-label="Shining Star Drones showreel">
+        <source src="https://media.shiningstardrones.co.uk/reel-web-1080p-49MB.mp4" type="video/mp4">
+        <p style="padding:16px;color:#F6F8F6">Your browser can't play this video —
+          <a href="https://www.youtube.com/@ShiningStarDronesUK" style="color:#E4589A">watch it on YouTube</a>.</p>
+      </video>
+    </div>
+    <div>
+      <h2>Rates</h2>
+      <dl class="rates">
+        <div><dt>Half day, on location</dt><dd>£400</dd></div>
+        <div><dt>Full day, on location</dt><dd>£700</dd></div>
+        <div><dt>Edit package</dt><dd>£250</dd></div>
+      </dl>
+      <p style="margin-top:18px; font-size:15px; color:var(--slate)">
+        Ex VAT · travel included within 1 hour of Slough. Aerial and FPV, shot to an agreed
+        list. The edit package covers a graded horizontal master and vertical cutdowns.</p>
+      <p style="margin-top:14px">
+        <a class="btn" href="https://www.youtube.com/@ShiningStarDronesUK">More on YouTube</a>
+        <a class="btn btn--go" href="/#enquiry" style="margin-left:8px">Enquire</a>
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="wrap back">
+  <h2>Looking for the survey side?</h2>
+  <p>Monthly construction progress packs — the same flight every visit, orthomosaic and a
+    month-to-month comparison, on your desk by the third working day. That is the core of the
+    business now, and it lives on the <a href="/">home page</a>.</p>
+  <p><a class="btn" href="/">Construction progress monitoring</a></p>
+</section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div>
+      <h4>Contact</h4>
+      <a href="tel:+447415502186">+44 7415 502186</a>
+      <a href="mailto:info@shiningstardrones.co.uk">info@shiningstardrones.co.uk</a>
+      <p>Slough SL1, Berkshire</p>
+    </div>
+    <div>
+      <h4>Credentials</h4>
+      <p>GVC qualified</p>
+      <p>CAA authorised, commercial</p>
+      <p>£10m public liability</p>
+      <p>EC 785/2004 compliant</p>
+    </div>
+    <div>
+      <h4>Elsewhere</h4>
+      <a href="/">Progress monitoring</a>
+      <a href="https://www.youtube.com/@ShiningStarDronesUK">YouTube</a>
+      <a href="https://www.linkedin.com/company/shining-star-drones">LinkedIn</a>
+      <a href="/capability-statement">Capability statement</a>
+      <a href="/privacy">Privacy notice</a>
+    </div>
+    <div class="foot__legal">
+      <span>&copy; 2026 Andrew Abdul-Malek trading as Shining Star Drones &middot; Slough SL1, Berkshire</span>
+      <span>Berkshire · Bucks · Slough–Maidenhead–M4 · Surrey · Herts · Greater London</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var root = document.documentElement,
+      meta = document.querySelector('meta[name="theme-color"]'),
+      btns = document.querySelectorAll('[data-theme-set]');
+
+  function apply(theme) {
+    if (theme === 'dark') root.setAttribute('data-theme', 'dark');
+    else root.removeAttribute('data-theme');
+    if (meta) meta.setAttribute('content', theme === 'dark' ? '#0E1519' : '#F6F8F6');
+    btns.forEach(function (b) {
+      b.setAttribute('aria-pressed', String(b.dataset.themeSet === theme));
+    });
+    try { localStorage.setItem('ssd-theme', theme); } catch (e) {}
+  }
+
+  btns.forEach(function (b) {
+    b.addEventListener('click', function () { apply(b.dataset.themeSet); });
+  });
+
+  apply(root.getAttribute('data-theme') === 'dark' ? 'dark' : 'light');
+})();
+</script>
+
+</body>
+</html>

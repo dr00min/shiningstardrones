@@ -61,18 +61,22 @@ Track here. Check boxes when shipped and verified live.
 
 ### P1 — head tags, social, schema
 
-- [ ] **Self-referential `rel=canonical`** on all three pages  
+- [x] **Self-referential `rel=canonical`** on all four pages — done 2026-08-07  
   - `https://shiningstardrones.co.uk/`  
+  - `https://shiningstardrones.co.uk/film` *(new)*  
   - `https://shiningstardrones.co.uk/capability-statement`  
   - `https://shiningstardrones.co.uk/privacy`
 - [ ] **`og:image` + dimensions** (absolute HTTPS URL, ~1200×630)  
   Candidate source: Ramblers orthomosaic + wordmark lockup → e.g. `media/og-default.jpg`
 - [ ] **Twitter card** `summary_large_image` + title/description/image on all indexable pages
 - [ ] **Full OG bundle** on capability-statement + privacy (`og:title`, `og:description`, `og:url`, `og:type`, `og:image`)
-- [ ] **Shorten home title** (~50–60 visible chars)  
-  Candidate: `Construction progress packs in 48h | Shining Star Drones`
-- [ ] **Shorten home meta description** (~140–160 chars)  
-  Candidate: `Repeatable drone progress packs from Slough: same mission monthly, orthomosaic + comparison PDF within 48 hours. Visual record, not survey-grade. Berks, Bucks, M4 & London.`
+- [x] **Shorten home title** — done 2026-08-07, now `Progress packs by the 3rd working day | Shining Star Drones` (58 chars).  
+  Note the clock changed with the repositioning: the promise is a **calendar date the buyer
+  already keeps**, not a duration. 48 h is now a capability line, not the headline — see
+  `PLAN-CONSTRUCTION-2026-08.md` P1.2. Any future title candidate should follow that.
+- [ ] **Shorten home meta description** (~140–160 chars; currently ~300 after the 2026-08-07
+  repositioning)  
+  Candidate: `Monthly construction progress packs from Slough: the same mission every visit, orthomosaic and month-to-month comparison on your desk by the 3rd working day. Not survey-grade.`
 - [ ] **Shorten capability-statement meta description** (currently ~212 chars)
 - [ ] **Enrich JSON-LD graph** (only true facts):  
   - `sameAs` → YouTube + LinkedIn (footer already links them)  
@@ -95,7 +99,11 @@ Track here. Check boxes when shipped and verified live.
 - [ ] `/construction-progress-monitoring` — method, pack, cadence, audiences  
 - [ ] `/roof-and-building-inspection` — one-off FM/estates  
 - [ ] Case study URL (Ramblers demo or real client when allowed)  
-- [ ] Optional film/FPV page so film queries do not dilute homepage  
+  **Now the highest-value page on this list** — see `PLAN-CONSTRUCTION-2026-08.md` P2.2.
+  Construction buys on reference and there is no client work on the site yet.
+- [x] **`/film` — film/FPV page so film queries do not dilute the homepage** — done 2026-08-07.
+  Also a positioning fix, not just SEO: FPV rates beside a progress pack invite a commercial
+  manager to price the operator as a videographer.  
   No city-doorway clones. Each page: own title, H1, canonical, internal links to `#enquiry`.
 
 ### Ops / measurement
