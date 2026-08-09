@@ -66,10 +66,16 @@ Track here. Check boxes when shipped and verified live.
   - `https://shiningstardrones.co.uk/film` *(new)*  
   - `https://shiningstardrones.co.uk/capability-statement`  
   - `https://shiningstardrones.co.uk/privacy`
-- [ ] **`og:image` + dimensions** (absolute HTTPS URL, ~1200×630)  
-  Candidate source: Ramblers orthomosaic + wordmark lockup → e.g. `media/og-default.jpg`
-- [ ] **Twitter card** `summary_large_image` + title/description/image on all indexable pages
-- [ ] **Full OG bundle** on capability-statement + privacy (`og:title`, `og:description`, `og:url`, `og:type`, `og:image`)
+- [x] **`og:image` + dimensions** — done 2026-08-09. Two 1200×630 cards built from the real
+  Ramblers orthomosaic by `scripts/make_og_cards.py`: `media/og-default.jpg` (home, `/film`,
+  `/articles/`, capability statement, privacy) and `media/og-accuracy-study.jpg` (the accuracy
+  article, carrying its three headline figures). Absolute HTTPS URLs, `og:image:width/height`
+  and `og:image:alt` on every page. **The cards state live facts — rate band, delivery promise,
+  accuracy figures — so re-run the script when any of those change on the site.**
+- [x] **Twitter card** `summary_large_image` on all indexable pages — done 2026-08-09.
+  Home, `/film` and both article pages also carry `twitter:title` / `twitter:description`;
+  capability-statement and privacy inherit theirs from the OG tags.
+- [x] **Full OG bundle** on capability-statement + privacy — done 2026-08-09.
 - [x] **Shorten home title** — done 2026-08-07, now `Progress packs by the 3rd working day | Shining Star Drones` (58 chars).  
   Note the clock changed with the repositioning: the promise is a **calendar date the buyer
   already keeps**, not a duration. 48 h is now a capability line, not the headline — see
@@ -108,8 +114,8 @@ Track here. Check boxes when shipped and verified live.
   else in this market publishes an error bar at all. Both pages carry canonical, OG tags and
   JSON-LD (`BlogPosting` + `BreadcrumbList`, `CollectionPage` on the index); both are in
   `sitemap.xml`; the home page links in from the accuracy section and the footer.
-  **Still owed:** `og:image` for the article, and an update when the datum-shift correction
-  is built — the page promises the measurement, not the promise.
+  **Still owed:** an update when the datum-shift correction is built — the page promises the
+  measurement, not the promise. (`og:image` shipped the same day, see below.)
 - [x] **`/film` — film/FPV page so film queries do not dilute the homepage** — done 2026-08-07.
   Also a positioning fix, not just SEO: FPV rates beside a progress pack invite a commercial
   manager to price the operator as a videographer.  

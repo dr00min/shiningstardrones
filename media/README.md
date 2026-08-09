@@ -145,6 +145,36 @@ print(out.size)
 PY
 ```
 
+## The Open Graph cards — generated, not hand-made
+
+`og-default.jpg` and `og-accuracy-study.jpg` are the 1200x630 share cards, built
+by `scripts/make_og_cards.py` from the real 03 Aug orthomosaic plus the brand's
+own three typefaces (fetched as variable TTFs into `/tmp` on first run — PIL
+cannot read the woff2 files the CSS uses).
+
+```sh
+python3 scripts/make_og_cards.py        # from the repo root
+```
+
+**They carry live facts, so they go stale.** The default card states the rate
+band and the third-working-day promise; the accuracy card states 0.24 m, 0.033 m
+and the 2.7x volume over-read. Change any of those on the site and re-run the
+script — the figures are in one place at the bottom of it. Editing the JPEG by
+hand guarantees the next change is missed.
+
+Two things in there that are load-bearing and easy to undo by accident:
+
+- **The crop is zoomed to 0.78.** The orthomosaic has black nodata wedges at its
+  corners; a full-frame crop puts one directly behind the headline, where it
+  reads as a rendering fault rather than as the edge of a survey.
+- **The scrim is a flat blend plus a left-weighted gradient**, not one flat
+  layer. The text block is on the left, and a single layer dark enough to carry
+  it flattens the whole image into mud.
+
+`og-default.jpg` is referenced by the homepage, `/film`, `/articles/`, the
+capability statement and the privacy notice; `og-accuracy-study.jpg` by the
+accuracy article alone.
+
 ## Orthomosaic widths — regenerate all three together
 
 Each date ships at **1200w, 1800w and 2400w**, wired up with `srcset` on the
