@@ -562,23 +562,68 @@ table.matrix{border-collapse:collapse; width:100%; min-width:900px; font-size:14
   </div>
 </section>
 
-<!-- ============================ TEMPLATE A — PLATE 01, THE LOUD MOMENT -->
-<section class="wrap" style="padding-bottom:clamp(40px,5vw,68px)">
-  <figure class="plate r-ortho">
-    <div class="plate__frame">
-      <!-- The 2400px render is more than a phone can show. Both dates carry the
-           same two widths so the swipe below still compares like with like. -->
-      <img src="media/ramblers-ortho-2026-08-03.jpg"
-           srcset="media/ramblers-ortho-2026-08-03-1200.jpg 1200w,
-                   media/ramblers-ortho-2026-08-03-1800.jpg 1800w,
-                   media/ramblers-ortho-2026-08-03.jpg 2400w"
-           sizes="100vw" width="2400" height="1447" fetchpriority="high"
-           alt="Orthomosaic of Ramblers Car Park — a 3.88 hectare woodland car park seen from directly above, assembled from 226 aerial frames.">
+<!-- ============================ TEMPLATE E — MONTH TO MONTH (5.5) -->
+<!-- The standalone orthomosaic plate that used to sit here was removed 2026-08-09:
+     it carried the same image as this slider's baseline frame, so with the slider
+     promoted above the pack section the two sat adjacent and duplicated each other.
+     The facts from its caption (site area, source GSD, the not-survey-grade line)
+     were folded into the note below the comparison. This section is now the LCP —
+     see the fetchpriority on the baseline frame. -->
+<section class="wrap">
+  <div class="sec-head">
+    <span class="sec-no">01</span>
+    <div class="sec-head__t">
+      <h2>The same mission, flown twice</h2>
+      <p>Two real captures of the same site, flown to the same saved mission. Drag the
+         divider. The two dates are a day apart, not a month — what is being demonstrated
+         here is that the flight repeats, which is the part a monthly record depends on.</p>
     </div>
-    <figcaption class="plate__cap">
-      <span>Orthomosaic &middot; Demonstration capture, not client work &middot; Ramblers Car Park, 3 Aug 2026 &middot; 3.88 ha &middot; 226 frames &middot; 2.0 cm/px &middot; Visual record, not survey-grade</span>
-    </figcaption>
-  </figure>
+    <span class="eyebrow sec-tag">Drag &middot; or use arrow keys</span>
+  </div>
+
+  <div class="cmp" id="cmp">
+    <div class="cmp__stage" id="cmp-stage">
+      <figure class="plate r-ortho cmp__f" data-cmp="a">
+        <div class="plate__frame">
+          <img src="media/ramblers-ortho-2026-08-03.jpg"
+               srcset="media/ramblers-ortho-2026-08-03-1200.jpg 1200w,
+                       media/ramblers-ortho-2026-08-03-1800.jpg 1800w,
+                       media/ramblers-ortho-2026-08-03.jpg 2400w"
+               sizes="100vw" width="2400" height="1447" fetchpriority="high"
+               alt="Orthomosaic of Ramblers Car Park on 3 August 2026, the baseline capture — a 3.88 hectare woodland car park seen from directly above, assembled from 226 aerial frames.">
+        </div>
+        <figcaption class="plate__cap"><span>Baseline &middot; 3 Aug 2026 &middot; 226 frames</span></figcaption>
+      </figure>
+      <figure class="plate r-ortho cmp__f" data-cmp="b">
+        <div class="plate__frame">
+          <img src="media/ramblers-ortho-2026-08-04.jpg"
+               srcset="media/ramblers-ortho-2026-08-04-1200.jpg 1200w,
+                       media/ramblers-ortho-2026-08-04-1800.jpg 1800w,
+                       media/ramblers-ortho-2026-08-04.jpg 2400w"
+               sizes="100vw" width="2400" height="1447"
+               alt="Orthomosaic of the same site on 4 August 2026, flown to the same saved mission.">
+        </div>
+        <figcaption class="plate__cap"><span>Repeat &middot; 4 Aug 2026 &middot; 228 frames</span></figcaption>
+      </figure>
+      <button class="cmp__handle" type="button" id="cmp-handle"
+              role="slider" aria-label="Compare the two capture dates"
+              aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" aria-valuetext="50% \u2014 showing the 3 August baseline"></button>
+    </div>
+    <div class="cmp__legend">
+      <span>&#9664; 3 Aug 2026 &middot; baseline</span>
+      <span>Demonstration capture &middot; Ramblers Car Park &middot; not client work</span>
+      <span>4 Aug 2026 &middot; repeat &#9654;</span>
+    </div>
+  </div>
+
+  <p style="margin-top:18px; font-size:15px; color:var(--slate); max-width:74ch">
+    Both captures reproduced line spacing to within 2&nbsp;cm (16.57&nbsp;m and 16.43&nbsp;m),
+    on identical bearings, at the same 40&nbsp;m altitude, with gimbal, ISO, shutter and white
+    balance fixed. Both orthomosaics are rendered on one shared grid at 0.105&nbsp;m/px, so the
+    divider above compares like with like rather than two independently-framed maps.
+    The site is 3.88&nbsp;ha and the source orthomosaics are 2.0&nbsp;cm/px, downsampled here
+    for the comparison. A visual record, not survey-grade.
+  </p>
 </section>
 
 <hr class="movement">
@@ -586,7 +631,7 @@ table.matrix{border-collapse:collapse; width:100%; min-width:900px; font-size:14
 <!-- ================================ TEMPLATE B — WHAT'S IN A PACK (5.3) -->
 <section class="wrap">
   <div class="sec-head">
-    <span class="sec-no">01</span>
+    <span class="sec-no">02</span>
     <div class="sec-head__t">
       <h2>What's in a progress pack</h2>
       <p>Seven items, the same seven every visit, flown to the same mission file.
@@ -637,64 +682,6 @@ table.matrix{border-collapse:collapse; width:100%; min-width:900px; font-size:14
       </p>
     </figure>
   </div>
-</section>
-
-<hr class="movement">
-
-<!-- ============================ TEMPLATE E — MONTH TO MONTH (5.5) -->
-<section class="wrap">
-  <div class="sec-head">
-    <span class="sec-no">02</span>
-    <div class="sec-head__t">
-      <h2>The same mission, flown twice</h2>
-      <p>Two real captures of the same site, flown to the same saved mission. Drag the
-         divider. The two dates are a day apart, not a month — what is being demonstrated
-         here is that the flight repeats, which is the part a monthly record depends on.</p>
-    </div>
-    <span class="eyebrow sec-tag">Drag &middot; or use arrow keys</span>
-  </div>
-
-  <div class="cmp" id="cmp">
-    <div class="cmp__stage" id="cmp-stage">
-      <figure class="plate r-ortho cmp__f" data-cmp="a">
-        <div class="plate__frame">
-          <img src="media/ramblers-ortho-2026-08-03.jpg"
-               srcset="media/ramblers-ortho-2026-08-03-1200.jpg 1200w,
-                       media/ramblers-ortho-2026-08-03-1800.jpg 1800w,
-                       media/ramblers-ortho-2026-08-03.jpg 2400w"
-               sizes="100vw" width="2400" height="1447" loading="lazy"
-               alt="Orthomosaic of Ramblers Car Park on 3 August 2026, the baseline capture.">
-        </div>
-        <figcaption class="plate__cap"><span>Baseline &middot; 3 Aug 2026 &middot; 226 frames</span></figcaption>
-      </figure>
-      <figure class="plate r-ortho cmp__f" data-cmp="b">
-        <div class="plate__frame">
-          <img src="media/ramblers-ortho-2026-08-04.jpg"
-               srcset="media/ramblers-ortho-2026-08-04-1200.jpg 1200w,
-                       media/ramblers-ortho-2026-08-04-1800.jpg 1800w,
-                       media/ramblers-ortho-2026-08-04.jpg 2400w"
-               sizes="100vw" width="2400" height="1447" loading="lazy"
-               alt="Orthomosaic of the same site on 4 August 2026, flown to the same saved mission.">
-        </div>
-        <figcaption class="plate__cap"><span>Repeat &middot; 4 Aug 2026 &middot; 228 frames</span></figcaption>
-      </figure>
-      <button class="cmp__handle" type="button" id="cmp-handle"
-              role="slider" aria-label="Compare the two capture dates"
-              aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" aria-valuetext="50% \u2014 showing the 3 August baseline"></button>
-    </div>
-    <div class="cmp__legend">
-      <span>&#9664; 3 Aug 2026 &middot; baseline</span>
-      <span>Demonstration capture &middot; Ramblers Car Park &middot; not client work</span>
-      <span>4 Aug 2026 &middot; repeat &#9654;</span>
-    </div>
-  </div>
-
-  <p style="margin-top:18px; font-size:15px; color:var(--slate); max-width:74ch">
-    Both captures reproduced line spacing to within 2&nbsp;cm (16.57&nbsp;m and 16.43&nbsp;m),
-    on identical bearings, at the same 40&nbsp;m altitude, with gimbal, ISO, shutter and white
-    balance fixed. Both orthomosaics are rendered on one shared grid at 0.105&nbsp;m/px, so the
-    divider above compares like with like rather than two independently-framed maps.
-  </p>
 </section>
 
 <!-- ================================== TEMPLATE F — THE MODEL BAY -->
