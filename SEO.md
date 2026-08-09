@@ -101,6 +101,15 @@ Track here. Check boxes when shipped and verified live.
 - [ ] Case study URL (Ramblers demo or real client when allowed)  
   **Now the highest-value page on this list** — see `PLAN-CONSTRUCTION-2026-08.md` P2.2.
   Construction buys on reference and there is no client work on the site yet.
+- [x] **`/articles/` + `/articles/how-accurate-is-a-sub-250g-drone`** — shipped 2026-08-09.
+  The accuracy study is the **anchor page**: the only URL on this site with a genuine reason
+  to rank, because it publishes a measured cross-date null test — percentiles, surface split,
+  and the negative results (2.7× volume over-read, blind detector missed the target). Nobody
+  else in this market publishes an error bar at all. Both pages carry canonical, OG tags and
+  JSON-LD (`BlogPosting` + `BreadcrumbList`, `CollectionPage` on the index); both are in
+  `sitemap.xml`; the home page links in from the accuracy section and the footer.
+  **Still owed:** `og:image` for the article, and an update when the datum-shift correction
+  is built — the page promises the measurement, not the promise.
 - [x] **`/film` — film/FPV page so film queries do not dilute the homepage** — done 2026-08-07.
   Also a positioning fix, not just SEO: FPV rates beside a progress pack invite a commercial
   manager to price the operator as a videographer.  

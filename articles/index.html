@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Articles — measurement, method and limits | Shining Star Drones</title>
+<meta name="description" content="Field notes from a working drone operator in Berkshire: what the kit actually measures, how it was tested, and where it fails. Numbers measured on real flights, negative results included.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://shiningstardrones.co.uk/articles/">
+
+<meta property="og:title" content="Articles — measurement, method and limits">
+<meta property="og:description" content="Field notes from a working drone operator: what the kit measures, how it was tested, and where it fails. Negative results included.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://shiningstardrones.co.uk/articles/">
+
+<link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48">
+<link rel="icon" type="image/png" href="/favicon-32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/icon-192.png" sizes="192x192">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="theme-color" content="#F6F8F6">
+
+<script>
+/* Applied before first paint so a returning dark-mode visitor never sees a
+   light flash. Shares the ssd-theme key with the home page. */
+(function () {
+  try {
+    if (localStorage.getItem('ssd-theme') === 'dark') {
+      document.documentElement.setAttribute('data-theme', 'dark');
+    }
+  } catch (e) {}
+})();
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@500;600&family=Public+Sans:wght@300;400;500&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "Articles — Shining Star Drones",
+  "url": "https://shiningstardrones.co.uk/articles/",
+  "description": "Field notes on drone survey measurement, method and limits, from a GVC-qualified operator based in Slough.",
+  "isPartOf": {"@type": "WebSite", "name": "Shining Star Drones", "url": "https://shiningstardrones.co.uk"},
+  "hasPart": [
+    {
+      "@type": "BlogPosting",
+      "headline": "How accurate is a sub-250 g drone, really?",
+      "url": "https://shiningstardrones.co.uk/articles/how-accurate-is-a-sub-250g-drone",
+      "datePublished": "2026-08-09",
+      "author": {"@type": "Person", "name": "Andrew Abdul-Malek"}
+    }
+  ]
+}
+</script>
+
+<style>
+/* Same tokens as the home page, but only the rules this page uses. The site has
+   no build step, so each page carries its own sheet. */
+:root{
+  --chart:#F6F8F6; --paper:#FDFEFC; --ink:#0E1519; --slate:#5A6670;
+  --hairline:#C4CCC6; --magenta:#A81B5D; --airway:#2A5D8F; --on-accent:#FDFEFC;
+  --sans:"Public Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+  --head:"Archivo Narrow","Archivo",-apple-system,BlinkMacSystemFont,"Segoe UI Semibold",Helvetica,Arial,sans-serif;
+  --mono:"Roboto Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  --wide:1340px; --gut:clamp(18px,4vw,44px); --ledger:rgba(14,21,25,.055);
+}
+:root[data-theme="dark"]{
+  --chart:#0E1519; --paper:#141C21; --ink:#E8EDEA; --slate:#9AA6AE;
+  --hairline:#2A363C; --magenta:#E4589A; --airway:#78A9D8; --on-accent:#0E1519;
+  --ledger:rgba(232,237,234,.05);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; background:var(--chart); color:var(--ink); font-family:var(--sans);
+  font-weight:400; font-size:17px; line-height:1.65; font-variant-numeric:tabular-nums;
+  -webkit-font-smoothing:antialiased; overflow-x:hidden;
+}
+img{max-width:100%; display:block}
+a{color:var(--magenta); text-underline-offset:3px}
+:focus-visible{outline:2px solid var(--airway); outline-offset:2px}
+.wrap{max-width:var(--wide); margin:0 auto; padding-inline:var(--gut)}
+.read{max-width:68ch}
+
+.eyebrow{
+  font-family:var(--mono); font-size:11px; font-weight:500; letter-spacing:.16em;
+  text-transform:uppercase; color:var(--slate); margin:0;
+}
+h1{
+  font-family:var(--head); font-weight:600; letter-spacing:-.03em; line-height:1;
+  font-size:clamp(40px,7vw,80px); margin:16px 0 0;
+}
+h2{font-family:var(--head); font-weight:600; letter-spacing:-.015em; line-height:1.12; font-size:clamp(23px,2.6vw,32px); margin:0}
+h3{font-family:var(--head); font-weight:500; font-size:19px; margin:0 0 8px}
+p{margin:0 0 18px; max-width:68ch}
+strong{font-weight:500}
+
+/* ------------------------------------------------------------- masthead */
+.masthead{border-bottom:1px solid var(--hairline); background:var(--paper)}
+.masthead__in{display:flex; align-items:center; justify-content:space-between; gap:20px; flex-wrap:wrap; padding-block:16px}
+.masthead__home{display:inline-block; min-height:44px}
+.masthead__home img{height:26px; width:auto}
+.wm-light{display:none}
+:root[data-theme="dark"] .wm-dark{display:none}
+:root[data-theme="dark"] .wm-light{display:block}
+.masthead__strap{display:block; margin-top:5px}
+.masthead__act{display:flex; align-items:center; gap:14px; flex-wrap:wrap}
+.masthead__tel{display:inline-flex; align-items:center; min-height:44px; color:var(--ink); text-decoration:none; font-family:var(--mono); font-size:14px}
+.theme{display:inline-flex; border:1px solid var(--hairline); border-radius:2px; overflow:hidden}
+.theme button{
+  font:500 12px/1 var(--mono); letter-spacing:.1em; text-transform:uppercase;
+  padding:9px 11px; background:transparent; color:var(--slate); border:0; cursor:pointer;
+}
+.theme button[aria-pressed="true"]{background:var(--ink); color:var(--chart)}
+.btn{
+  display:inline-block; font-family:var(--mono); font-size:13px; font-weight:500;
+  letter-spacing:.08em; text-transform:uppercase; text-decoration:none;
+  padding:13px 18px; border:1px solid var(--ink); color:var(--ink); border-radius:2px;
+}
+.btn--go{background:var(--magenta); border-color:var(--magenta); color:var(--on-accent)}
+
+.crumbs{font-family:var(--mono); font-size:12px; letter-spacing:.06em; color:var(--slate); padding-block:14px 0}
+.crumbs a{color:var(--slate); text-decoration:none}
+.crumbs a:hover{color:var(--magenta)}
+
+/* ------------------------------------------------------------------ hero */
+.ledger{background:var(--ledger)}
+.hero{padding-block:clamp(30px,4.6vw,58px)}
+.stand{font-size:clamp(18px,1.9vw,22px); font-weight:300; line-height:1.5; margin-top:20px; max-width:58ch}
+
+/* ------------------------------------------------------------------ list */
+.feed{padding-block:clamp(26px,3.6vw,48px)}
+.item{
+  display:grid; gap:clamp(14px,2.4vw,34px); padding-block:clamp(24px,3vw,36px);
+  border-top:1px solid var(--ink);
+}
+@media (min-width:900px){.item{grid-template-columns:170px 1fr 220px; align-items:start}}
+.item__meta{font-family:var(--mono); font-size:12px; letter-spacing:.06em; color:var(--slate); text-transform:uppercase; line-height:1.9}
+.item__t a{color:var(--ink); text-decoration:none}
+.item__t a:hover{color:var(--magenta)}
+.item__d{margin:12px 0 0; color:var(--slate); font-size:16px; max-width:60ch}
+.item__more{display:inline-block; margin-top:14px; font-family:var(--mono); font-size:12px; letter-spacing:.1em; text-transform:uppercase}
+/* The numbers a technical reader scans for before deciding to read the piece. */
+.item__figs{border-top:1px solid var(--hairline)}
+.item__figs > div{display:flex; justify-content:space-between; gap:14px; border-bottom:1px solid var(--hairline); padding:9px 0}
+.item__figs dt{font-size:14px; color:var(--slate)}
+.item__figs dd{margin:0; font-family:var(--mono); font-size:14px; white-space:nowrap}
+.rule-end{border:0; border-top:1px solid var(--ink); margin:0}
+
+.next{padding-block:clamp(26px,3.4vw,44px)}
+.next ul{margin:0; padding-left:20px; max-width:68ch; color:var(--slate)}
+.next li{margin-bottom:9px}
+.next li::marker{color:var(--magenta)}
+
+.cta{border-top:3px solid var(--magenta); padding-block:clamp(30px,4vw,50px)}
+.cta__act{display:flex; flex-wrap:wrap; gap:12px; margin-top:20px}
+
+.foot{background:var(--paper); border-top:1px solid var(--hairline)}
+.foot .wrap{display:grid; gap:26px; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); padding-block:36px}
+.foot h4{font-family:var(--mono); font-size:12px; font-weight:500; letter-spacing:.16em; text-transform:uppercase; color:var(--slate); margin:0 0 10px}
+.foot a{display:block; color:var(--ink); text-decoration:none; margin-bottom:7px; font-size:15px}
+.foot a:hover{color:var(--magenta)}
+.foot p{margin:0 0 7px; font-size:15px}
+.foot__legal{grid-column:1/-1; border-top:1px solid var(--hairline); padding-top:18px; display:flex; flex-wrap:wrap; gap:10px 26px; font-size:13px; color:var(--slate)}
+
+@media (max-width:600px){ .btn{padding:15px 20px} .foot a{padding-block:11px; margin-bottom:0} }
+@media (prefers-reduced-motion:reduce){*{animation:none!important; transition:none!important}}
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="wrap masthead__in">
+    <div>
+      <a class="masthead__home" href="/" aria-label="Shining Star Drones — home">
+        <img class="wm-dark" src="/brand/wordmark-oneline-dark.svg" alt="Shining Star Drones" width="846" height="48">
+        <img class="wm-light" src="/brand/wordmark-oneline-white.svg" alt="" aria-hidden="true" width="846" height="48">
+      </a>
+      <span class="eyebrow masthead__strap">GVC · CAA Authorised · £10m PL</span>
+    </div>
+    <div class="masthead__act">
+      <div class="theme" role="group" aria-label="Colour scheme">
+        <button type="button" data-theme-set="light" aria-pressed="true">Light</button>
+        <button type="button" data-theme-set="dark" aria-pressed="false">Dark</button>
+      </div>
+      <a class="masthead__tel" href="tel:+447415502186">+44 7415 502186</a>
+      <a class="btn btn--go" href="/#enquiry">Get a quote</a>
+    </div>
+  </div>
+</header>
+
+<nav class="wrap crumbs" aria-label="Breadcrumb">
+  <a href="/">Home</a> &rsaquo; <span>Articles</span>
+</nav>
+
+<main>
+
+<section class="ledger">
+  <div class="wrap hero">
+    <p class="eyebrow">Field notes &middot; Measurement, method and limits</p>
+    <h1>Articles</h1>
+    <p class="stand">Working notes from a drone operator who measures his own error. Every
+      number here came off a real flight, and the results that went badly are published with
+      the ones that went well — because the second kind is only worth anything next to the
+      first.</p>
+  </div>
+</section>
+
+<div class="wrap feed">
+
+  <article class="item">
+    <div class="item__meta">
+      9 Aug 2026<br>
+      Measurement<br>
+      ~10 min read
+    </div>
+    <div>
+      <h2 class="item__t"><a href="/articles/how-accurate-is-a-sub-250g-drone">How accurate is a sub-250&nbsp;g drone, really?</a></h2>
+      <p class="item__d">Almost every operator in this market claims "accurate to 2 cm" and
+        almost none of them have flown the same site twice to check. I did: the same car park,
+        the same saved mission, 24 hours apart, with nothing changed in between — so everything
+        the model reported was error. The result, the method, the surfaces it does not apply to,
+        and the three findings that don't flatter the kit, including a volume over-read of
+        2.7&times; and an automated change detector that missed a box entirely.</p>
+      <a class="item__more" href="/articles/how-accurate-is-a-sub-250g-drone">Read the study &rarr;</a>
+    </div>
+    <dl class="item__figs">
+      <div><dt>90% within</dt><dd>0.237 m</dd></div>
+      <div><dt>95% within</dt><dd>0.311 m</dd></div>
+      <div><dt>Hardstanding scatter</dt><dd>0.033 m</dd></div>
+      <div><dt>Volume over-read</dt><dd>2.7&times;</dd></div>
+    </dl>
+  </article>
+
+  <hr class="rule-end">
+
+  <section class="next">
+    <h3>What's coming</h3>
+    <p style="color:var(--slate); font-size:16px">Written when the work behind them is done and
+      measured, not before:</p>
+    <ul>
+      <li>Correcting the per-flight datum shift — whether 14–24 cm of constant offset can be
+        removed, and what is actually left when it is</li>
+      <li>Volume error at stockpile scale, on something considerably larger than a shoebox</li>
+      <li>What a month of progress packs looks like on a live site, with the client's permission</li>
+      <li>Flying inside the Heathrow zone: where the restrictions bite around Slough, Windsor
+        and the M4, and where they don't</li>
+    </ul>
+  </section>
+
+</div>
+
+<section class="cta">
+  <div class="wrap">
+    <p class="eyebrow">The day job</p>
+    <h2>Monthly construction progress monitoring, from Slough.</h2>
+    <p class="read" style="margin-top:14px">The same mission flown every visit — orthomosaic,
+      labelled stills and a month-to-month comparison, on your desk by the third working day,
+      before your progress meeting. Berkshire, Bucks, the M4 corridor and Greater London.</p>
+    <div class="cta__act">
+      <a class="btn btn--go" href="/#enquiry">Get a quote</a>
+      <a class="btn" href="/">How it works</a>
+      <a class="btn" href="/capability-statement">Capability statement</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div>
+      <h4>Contact</h4>
+      <a href="tel:+447415502186">+44 7415 502186</a>
+      <a href="mailto:info@shiningstardrones.co.uk">info@shiningstardrones.co.uk</a>
+      <p>Slough SL1, Berkshire</p>
+    </div>
+    <div>
+      <h4>Credentials</h4>
+      <p>GVC qualified</p>
+      <p>CAA authorised, commercial</p>
+      <p>£10m public liability</p>
+      <p>EC 785/2004 compliant</p>
+    </div>
+    <div>
+      <h4>Elsewhere</h4>
+      <a href="/">Progress monitoring</a>
+      <a href="/film">Brand film &amp; FPV</a>
+      <a href="https://www.youtube.com/@ShiningStarDronesUK">YouTube</a>
+      <a href="https://www.linkedin.com/company/shining-star-drones">LinkedIn</a>
+      <a href="/capability-statement">Capability statement</a>
+      <a href="/privacy">Privacy notice</a>
+    </div>
+    <div class="foot__legal">
+      <span>&copy; 2026 Andrew Abdul-Malek trading as Shining Star Drones &middot; Slough SL1, Berkshire</span>
+      <span>Berkshire · Bucks · Slough–Maidenhead–M4 · Surrey · Herts · Greater London</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var root = document.documentElement,
+      meta = document.querySelector('meta[name="theme-color"]'),
+      btns = document.querySelectorAll('[data-theme-set]');
+
+  function apply(theme) {
+    if (theme === 'dark') root.setAttribute('data-theme', 'dark');
+    else root.removeAttribute('data-theme');
+    if (meta) meta.setAttribute('content', theme === 'dark' ? '#0E1519' : '#F6F8F6');
+    btns.forEach(function (b) {
+      b.setAttribute('aria-pressed', String(b.dataset.themeSet === theme));
+    });
+    try { localStorage.setItem('ssd-theme', theme); } catch (e) {}
+  }
+
+  btns.forEach(function (b) {
+    b.addEventListener('click', function () { apply(b.dataset.themeSet); });
+  });
+
+  apply(root.getAttribute('data-theme') === 'dark' ? 'dark' : 'light');
+})();
+</script>
+
+</body>
+</html>

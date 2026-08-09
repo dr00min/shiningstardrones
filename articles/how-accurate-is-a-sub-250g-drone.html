@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How accurate is a sub-250 g drone, really? | Shining Star Drones</title>
+<meta name="description" content="I flew the same car park twice, 24 hours apart, changed nothing, and measured the difference. The result, the method, and the three findings that don't flatter the kit — including a volume over-read of 2.7x.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://shiningstardrones.co.uk/articles/how-accurate-is-a-sub-250g-drone">
+
+<meta property="og:title" content="How accurate is a sub-250 g drone, really?">
+<meta property="og:description" content="Same car park, flown twice, 24 hours apart. Nothing changed, so everything the model reports is error. The number, the method, and the results that don't flatter the kit.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://shiningstardrones.co.uk/articles/how-accurate-is-a-sub-250g-drone">
+
+<link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48">
+<link rel="icon" type="image/png" href="/favicon-32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/icon-192.png" sizes="192x192">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="theme-color" content="#F6F8F6">
+
+<script>
+/* Applied before first paint so a returning dark-mode visitor never sees a
+   light flash. Shares the ssd-theme key with the home page. */
+(function () {
+  try {
+    if (localStorage.getItem('ssd-theme') === 'dark') {
+      document.documentElement.setAttribute('data-theme', 'dark');
+    }
+  } catch (e) {}
+})();
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@500;600&family=Public+Sans:wght@300;400;500&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "How accurate is a sub-250 g drone, really?",
+  "description": "A cross-date null test on real hardware: the same site flown twice, 24 hours apart, with nothing changed between the flights, so every non-zero difference is error. Reported as percentiles, split by surface, with the negative results included.",
+  "datePublished": "2026-08-09",
+  "dateModified": "2026-08-09",
+  "inLanguage": "en-GB",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://shiningstardrones.co.uk/articles/how-accurate-is-a-sub-250g-drone"
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Andrew Abdul-Malek",
+    "jobTitle": "GVC-qualified remote pilot",
+    "worksFor": {"@type": "Organization", "name": "Shining Star Drones"}
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Shining Star Drones",
+    "url": "https://shiningstardrones.co.uk"
+  },
+  "about": ["Photogrammetry accuracy", "Construction progress monitoring", "Drone survey", "Digital surface model"]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://shiningstardrones.co.uk/"},
+    {"@type": "ListItem", "position": 2, "name": "Articles", "item": "https://shiningstardrones.co.uk/articles/"},
+    {"@type": "ListItem", "position": 3, "name": "How accurate is a sub-250 g drone, really?"}
+  ]
+}
+</script>
+
+<style>
+/* Same tokens as the home page, but only the rules this page uses. The site has
+   no build step, so each page carries its own sheet — the pattern film.html and
+   capability-statement.html already follow. */
+:root{
+  --chart:#F6F8F6; --paper:#FDFEFC; --ink:#0E1519; --slate:#5A6670;
+  --hairline:#C4CCC6; --magenta:#A81B5D; --airway:#2A5D8F; --on-accent:#FDFEFC;
+  --sans:"Public Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+  --head:"Archivo Narrow","Archivo",-apple-system,BlinkMacSystemFont,"Segoe UI Semibold",Helvetica,Arial,sans-serif;
+  --mono:"Roboto Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  --wide:1340px; --gut:clamp(18px,4vw,44px); --ledger:rgba(14,21,25,.055);
+
+  /* Chart series. NOT the brand --magenta/--airway pair: that blue fails the
+     chroma floor and the dark-mode lightness band. These two were snapped to
+     the nearest passing step and validated in both modes — all six checks pass
+     (CVD dE 13.3 protan light / 11.2 protan dark, both well clear of the 8
+     floor). Change one and re-validate the pair; do not eyeball it. */
+  --s1:#A81B5D;   /* 04 Aug — the cross-date result, the headline series */
+  --s2:#1B5FA6;   /* 03 Aug — the same-morning pair */
+  --grid:rgba(14,21,25,.10);
+}
+:root[data-theme="dark"]{
+  --chart:#0E1519; --paper:#141C21; --ink:#E8EDEA; --slate:#9AA6AE;
+  --hairline:#2A363C; --magenta:#E4589A; --airway:#78A9D8; --on-accent:#0E1519;
+  --ledger:rgba(232,237,234,.05);
+  --s1:#E4589A; --s2:#4E92DC; --grid:rgba(232,237,234,.12);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; background:var(--chart); color:var(--ink); font-family:var(--sans);
+  font-weight:400; font-size:17px; line-height:1.65; font-variant-numeric:tabular-nums;
+  -webkit-font-smoothing:antialiased; overflow-x:hidden;
+}
+img,svg{max-width:100%; display:block}
+a{color:var(--magenta); text-underline-offset:3px}
+:focus-visible{outline:2px solid var(--airway); outline-offset:2px}
+.wrap{max-width:var(--wide); margin:0 auto; padding-inline:var(--gut)}
+.read{max-width:68ch}
+
+.eyebrow{
+  font-family:var(--mono); font-size:11px; font-weight:500; letter-spacing:.16em;
+  text-transform:uppercase; color:var(--slate); margin:0;
+}
+h1{
+  font-family:var(--head); font-weight:600; letter-spacing:-.025em; line-height:1.02;
+  font-size:clamp(36px,5.6vw,66px); margin:16px 0 0; max-width:19ch;
+}
+h2{
+  font-family:var(--head); font-weight:600; letter-spacing:-.015em; line-height:1.1;
+  font-size:clamp(24px,2.8vw,34px); margin:0 0 12px; max-width:26ch;
+}
+h3{
+  font-family:var(--head); font-weight:500; letter-spacing:-.01em; line-height:1.2;
+  font-size:clamp(18px,1.7vw,21px); margin:0 0 8px;
+}
+p{margin:0 0 18px; max-width:68ch}
+strong{font-weight:500}
+
+/* ------------------------------------------------------------- masthead */
+.masthead{border-bottom:1px solid var(--hairline); background:var(--paper)}
+.masthead__in{display:flex; align-items:center; justify-content:space-between; gap:20px; flex-wrap:wrap; padding-block:16px}
+.masthead__home{display:inline-block; min-height:44px}
+.masthead__home img{height:26px; width:auto}
+.wm-light{display:none}
+:root[data-theme="dark"] .wm-dark{display:none}
+:root[data-theme="dark"] .wm-light{display:block}
+.masthead__strap{display:block; margin-top:5px}
+.masthead__act{display:flex; align-items:center; gap:14px; flex-wrap:wrap}
+.masthead__tel{display:inline-flex; align-items:center; min-height:44px; color:var(--ink); text-decoration:none; font-family:var(--mono); font-size:14px}
+.theme{display:inline-flex; border:1px solid var(--hairline); border-radius:2px; overflow:hidden}
+.theme button{
+  font:500 12px/1 var(--mono); letter-spacing:.1em; text-transform:uppercase;
+  padding:9px 11px; background:transparent; color:var(--slate); border:0; cursor:pointer;
+}
+.theme button[aria-pressed="true"]{background:var(--ink); color:var(--chart)}
+.btn{
+  display:inline-block; font-family:var(--mono); font-size:13px; font-weight:500;
+  letter-spacing:.08em; text-transform:uppercase; text-decoration:none;
+  padding:13px 18px; border:1px solid var(--ink); color:var(--ink); border-radius:2px;
+}
+.btn--go{background:var(--magenta); border-color:var(--magenta); color:var(--on-accent)}
+
+/* ---------------------------------------------------------------- crumbs */
+.crumbs{font-family:var(--mono); font-size:12px; letter-spacing:.06em; color:var(--slate); padding-block:14px 0}
+.crumbs a{color:var(--slate); text-decoration:none}
+.crumbs a:hover{color:var(--magenta)}
+
+/* ------------------------------------------------------------------ hero */
+.ledger{background:var(--ledger)}
+.hero{padding-block:clamp(26px,4vw,48px) clamp(30px,4vw,52px)}
+.stand{font-size:clamp(18px,1.9vw,22px); font-weight:300; line-height:1.5; margin-top:20px; max-width:58ch}
+.byline{
+  display:flex; flex-wrap:wrap; gap:8px 20px; margin-top:26px; padding-top:16px;
+  border-top:1px solid var(--hairline); font-family:var(--mono); font-size:12px;
+  letter-spacing:.06em; color:var(--slate); text-transform:uppercase;
+}
+
+/* ------------------------------------------------------------ stat tiles */
+/* Four headline numbers. Deliberately includes one that is bad news — the point
+   of the piece is that the bad ones are published too. */
+.tiles{
+  display:grid; grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+  border-top:1px solid var(--ink); margin-top:clamp(26px,3vw,40px);
+}
+.tile{padding:18px 20px 20px 0; border-bottom:1px solid var(--hairline)}
+@media (min-width:820px){.tile+.tile{padding-left:20px; border-left:1px solid var(--hairline)}}
+.tile__k{font-family:var(--mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--slate)}
+.tile__v{font-family:var(--head); font-weight:600; font-size:clamp(28px,3vw,38px); line-height:1.05; margin-top:8px; letter-spacing:-.02em}
+.tile__v--bad{color:var(--magenta)}
+.tile__c{font-size:14px; color:var(--slate); margin-top:6px; line-height:1.45}
+
+/* ----------------------------------------------------------------- body */
+/* Narrower than the site's 1340px wrap. This page is one column of prose, and a
+   68ch measure sitting at the left edge of a 1340px field reads as a mistake. */
+.body{max-width:1080px; padding-block:clamp(30px,4vw,54px)}
+.body section{padding-block:clamp(22px,3vw,38px)}
+.body section+section{border-top:1px solid var(--hairline)}
+.lede{font-size:19px; font-weight:300}
+ul.list{margin:0 0 18px; padding-left:20px; max-width:68ch}
+ul.list li{margin-bottom:9px}
+ul.list li::marker{color:var(--magenta)}
+
+/* ---------------------------------------------------------------- tables */
+.tbl-scroll{overflow-x:auto; margin:0 0 10px; -webkit-overflow-scrolling:touch}
+table{border-collapse:collapse; width:100%; min-width:520px; font-size:15px}
+caption{
+  text-align:left; font-family:var(--mono); font-size:11px; letter-spacing:.12em;
+  text-transform:uppercase; color:var(--slate); padding-bottom:10px;
+}
+th,td{text-align:right; padding:10px 12px; border-bottom:1px solid var(--hairline); white-space:nowrap}
+th:first-child,td:first-child{text-align:left; white-space:normal}
+thead th{
+  font-family:var(--mono); font-size:11px; font-weight:500; letter-spacing:.1em;
+  text-transform:uppercase; color:var(--slate); border-bottom:1px solid var(--ink);
+}
+tbody tr:last-child td{border-bottom:1px solid var(--ink)}
+td.num{font-family:var(--mono)}
+.hl{color:var(--magenta); font-weight:500}
+.tnote{font-size:14px; color:var(--slate); margin-top:10px; max-width:68ch}
+
+/* ---------------------------------------------------------------- charts */
+.fig{margin:0 0 12px; padding:clamp(16px,2vw,22px); border:1px solid var(--hairline); background:var(--paper)}
+.fig__t{font-family:var(--head); font-weight:500; font-size:18px; line-height:1.25; margin:0 0 4px}
+.fig__s{font-size:14px; color:var(--slate); margin:0 0 16px; max-width:66ch}
+/* The chart scrolls sideways below ~600px rather than shrinking its labels into
+   illegibility — same treatment as the tables. */
+.fig__plot{overflow-x:auto; -webkit-overflow-scrolling:touch}
+/* Capped so the bars keep the proportions they were drawn at; a chart stretched
+   to 1000px turns 46px bars into slabs. */
+.fig__plot svg{min-width:560px; width:100%; max-width:780px; height:auto; margin-inline:auto}
+.legend{display:flex; flex-wrap:wrap; gap:8px 20px; margin-top:14px; font-size:13px; color:var(--slate)}
+.legend span{display:inline-flex; align-items:center; gap:8px}
+.legend i{width:12px; height:12px; border-radius:2px; display:inline-block}
+/* Chart text wears text tokens, never the series colour. */
+.c-ax{fill:var(--slate); font-family:"Roboto Mono",monospace; font-size:12px}
+.c-lab{fill:var(--ink); font-family:"Roboto Mono",monospace; font-size:12.5px}
+.c-lab--mut{fill:var(--slate); font-family:"Roboto Mono",monospace; font-size:11.5px}
+.c-grid{stroke:var(--grid); stroke-width:1}
+.c-base{stroke:var(--hairline); stroke-width:1.5}
+.s1{fill:var(--s1)} .s2{fill:var(--s2)} .sm{fill:var(--slate); opacity:.55}
+
+/* -------------------------------------------------------------- callouts */
+.note{
+  border-left:3px solid var(--magenta); padding:2px 0 2px 18px; margin:0 0 20px; max-width:68ch;
+}
+.note p:last-child{margin-bottom:0}
+.card{
+  border:1px solid var(--hairline); background:var(--paper);
+  padding:clamp(18px,2.4vw,26px); margin:0 0 20px;
+}
+.card h3{margin-top:0}
+.two{display:grid; gap:clamp(18px,2.6vw,32px)}
+@media (min-width:880px){.two{grid-template-columns:1fr 1fr; align-items:start}}
+dl.spec{margin:0; border-top:1px solid var(--hairline)}
+dl.spec > div{display:flex; justify-content:space-between; gap:18px; border-bottom:1px solid var(--hairline); padding:11px 0}
+dl.spec dt{color:var(--slate); font-size:15px}
+dl.spec dd{margin:0; font-family:var(--mono); font-size:14px; text-align:right}
+
+/* -------------------------------------------------------------- cta/foot */
+.cta{border-top:3px solid var(--magenta); padding-block:clamp(32px,4vw,52px)}
+.cta h2{max-width:22ch}
+.cta__act{display:flex; flex-wrap:wrap; gap:12px; margin-top:22px}
+
+.foot{background:var(--paper); border-top:1px solid var(--hairline)}
+.foot .wrap{display:grid; gap:26px; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); padding-block:36px}
+.foot h4{font-family:var(--mono); font-size:12px; font-weight:500; letter-spacing:.16em; text-transform:uppercase; color:var(--slate); margin:0 0 10px}
+.foot a{display:block; color:var(--ink); text-decoration:none; margin-bottom:7px; font-size:15px}
+.foot a:hover{color:var(--magenta)}
+.foot p{margin:0 0 7px; font-size:15px}
+.foot__legal{grid-column:1/-1; border-top:1px solid var(--hairline); padding-top:18px; display:flex; flex-wrap:wrap; gap:10px 26px; font-size:13px; color:var(--slate)}
+
+@media (max-width:600px){ .btn{padding:15px 20px} .foot a{padding-block:11px; margin-bottom:0} }
+@media (prefers-reduced-motion:reduce){*{animation:none!important; transition:none!important}}
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="wrap masthead__in">
+    <div>
+      <a class="masthead__home" href="/" aria-label="Shining Star Drones — home">
+        <img class="wm-dark" src="/brand/wordmark-oneline-dark.svg" alt="Shining Star Drones" width="846" height="48">
+        <img class="wm-light" src="/brand/wordmark-oneline-white.svg" alt="" aria-hidden="true" width="846" height="48">
+      </a>
+      <span class="eyebrow masthead__strap">GVC · CAA Authorised · £10m PL</span>
+    </div>
+    <div class="masthead__act">
+      <div class="theme" role="group" aria-label="Colour scheme">
+        <button type="button" data-theme-set="light" aria-pressed="true">Light</button>
+        <button type="button" data-theme-set="dark" aria-pressed="false">Dark</button>
+      </div>
+      <a class="masthead__tel" href="tel:+447415502186">+44 7415 502186</a>
+      <a class="btn btn--go" href="/#enquiry">Get a quote</a>
+    </div>
+  </div>
+</header>
+
+<nav class="wrap crumbs" aria-label="Breadcrumb">
+  <a href="/">Home</a> &rsaquo; <a href="/articles/">Articles</a> &rsaquo; <span>How accurate is a sub-250&nbsp;g drone?</span>
+</nav>
+
+<main>
+
+<article>
+
+<section class="ledger">
+  <div class="wrap hero">
+    <p class="eyebrow">Field note &middot; Measurement &middot; 9 August 2026</p>
+    <h1>How accurate is a sub-250&nbsp;g drone, really?</h1>
+    <p class="stand">I flew the same car park twice, 24 hours apart, changed nothing between
+      the flights, and measured the difference. Everything the model reported was therefore
+      error. Here is the number, the method, and the three results that don't flatter the kit.</p>
+    <p class="byline">
+      <span>Andrew Abdul-Malek</span>
+      <span>GVC-qualified remote pilot</span>
+      <span>~10 min read</span>
+      <span>Measured 3–4 Aug 2026</span>
+    </p>
+
+    <div class="tiles">
+      <div class="tile">
+        <div class="tile__k">Cross-date repeatability</div>
+        <div class="tile__v">0.24 m</div>
+        <p class="tile__c">90% of bare and hard ground agreed within this, 24 hours apart. 95% within 0.31 m.</p>
+      </div>
+      <div class="tile">
+        <div class="tile__k">Scatter on hardstanding</div>
+        <div class="tile__v">0.033 m</div>
+        <p class="tile__c">The random component alone, on a stable concrete apron. The rest is a correctable offset.</p>
+      </div>
+      <div class="tile">
+        <div class="tile__k">Absolute datum drift</div>
+        <div class="tile__v tile__v--bad">27.78 m</div>
+        <p class="tile__c">How far the aircraft's absolute altitude moved in 24 hours while flying the identical height. Why nobody should sell absolute levels off this kit.</p>
+      </div>
+      <div class="tile">
+        <div class="tile__k">Volume error, small object</div>
+        <div class="tile__v tile__v--bad">2.7&times; over</div>
+        <p class="tile__c">A tape-measured 0.045 m³ box read as 0.122 m³. Published because it is the limit that matters.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap body">
+
+<section>
+  <h2>Why this page exists</h2>
+  <p class="lede">Search for drone survey accuracy and almost everyone says the same thing:
+    <em>accurate to 2 cm</em>. No method, no repeat flight, no error bar, and no statement of
+    what the number leaves out.</p>
+  <p>Usually that figure is the ground sample distance — the size of one pixel on the ground —
+    quoted as though it were accuracy. It isn't. GSD tells you what you can <em>see</em>. It
+    tells you nothing about whether the same point lands in the same place when you come back
+    next month, which is the only thing that matters if the survey's job is to show change.</p>
+  <p>That distinction is not academic if you are the person signing a valuation, defending a
+    programme position, or putting a figure in a claim pack. A number without a stated boundary
+    is something you can be cross-examined on. A number with one is evidence.</p>
+  <p>So here is mine, with the method, the caveats, and the parts that went badly.</p>
+</section>
+
+<section>
+  <h2>The test: fly it twice, change nothing</h2>
+  <p>The principle is called a null test and it needs no reference data at all. Fly a site,
+    fly it again with nothing changed in between, process both reconstructions independently,
+    and subtract one elevation model from the other. The correct answer is zero everywhere.
+    It never is — and <strong>everything that isn't zero is error.</strong> The site is its own
+    control, so there is nothing to assume and nothing to take on trust.</p>
+
+  <div class="two">
+    <div>
+      <h3>The site</h3>
+      <dl class="spec">
+        <div><dt>Location</dt><dd>Ramblers Car Park, nr Slough</dd></div>
+        <div><dt>Site area</dt><dd>3.88 ha</dd></div>
+        <div><dt>Area analysed</dt><dd>2.37 ha</dd></div>
+        <div><dt>Surface</dt><dd>tarmac, gravel, woodland</dd></div>
+        <div><dt>Tree canopy</dt><dd>44% of the area</dd></div>
+        <div><dt>Status</dt><dd>validation site, not client work</dd></div>
+      </dl>
+      <p class="tnote">The analysed area is smaller than the site because 8 m is trimmed off
+        the survey boundary before anything is measured. Edge cells are seen by few frames and
+        are known to be unreliable — including them would flatter nobody and mislead everybody.</p>
+    </div>
+    <div>
+      <h3>The capture</h3>
+      <dl class="spec">
+        <div><dt>Aircraft</dt><dd>DJI Mini 3 Pro (&lt;250 g)</dd></div>
+        <div><dt>Positioning</dt><dd>GNSS only — no RTK, no GCPs</dd></div>
+        <div><dt>Height</dt><dd>40.0 m above launch</dd></div>
+        <div><dt>Camera</dt><dd>12 MP, gimbal −90° nadir</dd></div>
+        <div><dt>Exposure</dt><dd>ISO 400, 1/640, manual WB</dd></div>
+        <div><dt>Pattern</dt><dd>crosshatch, 70% side / 80% forward</dd></div>
+        <div><dt>Output grid</dt><dd>2.0 cm/px</dd></div>
+      </dl>
+      <p class="tnote">Three flights: a baseline and a repeat five minutes apart on 3 August,
+        then the same mission again at the same time of morning on 4 August. 226, 227 and 228
+        frames, about 11 minutes each.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>First, the flight has to repeat</h2>
+  <p>None of the rest means anything if the aircraft doesn't fly the same lines each visit, so
+    that gets checked first — from the GPS position and camera settings written into every
+    delivered frame, not from the flight plan.</p>
+  <p>A day apart, the mission reproduced <strong>7 lines on one bearing and 12 on the other, at
+    16.57 m and 16.43 m spacing — the same as the previous day to within 2 cm</strong>, at an
+    identical 40.00 m above launch, with gimbal, ISO, shutter, white balance and shot interval
+    unchanged. That is the part a monthly record depends on, and it is the part that is
+    genuinely solved.</p>
+  <div class="note">
+    <p>Worth being clear about why: the mission is a saved file, flown by the aircraft, not a
+      route flown by hand. A hand-flown site cannot be compared month to month, however good
+      the pilot is.</p>
+  </div>
+</section>
+
+<section>
+  <h2>The headline number</h2>
+  <p>Bare and hard ground only — the surfaces anybody actually measures. Vegetation is
+    reported separately below rather than averaged in.</p>
+
+  <figure class="fig">
+    <p class="fig__t">How closely two independent surveys of the same ground agree</p>
+    <p class="fig__s">Vertical difference between two reconstructions of an unchanged site.
+      Lower is better. The 24-hour pair is better than the two flights taken five minutes apart.</p>
+
+    <!-- Grouped bars: 4 ordered percentile classes x 2 dates. Data-ends rounded 4px
+         and clipped at the baseline so only the top corners round. Values are
+         direct-labelled, so identity never rests on colour alone. -->
+    <div class="fig__plot">
+    <svg viewBox="0 0 720 320" role="img" aria-labelledby="figA-t figA-d">
+      <title id="figA-t">Vertical agreement between repeat surveys, by percentile of surface</title>
+      <desc id="figA-d">On 4 August, 24 hours after the baseline: 50% of the surface within
+        0.112 m, 68% within 0.160 m, 90% within 0.237 m, 95% within 0.311 m. On 3 August, five
+        minutes after the baseline: 0.21 m, 0.27 m, 0.41 m and 0.51 m for the same
+        percentiles.</desc>
+      <defs>
+        <clipPath id="clipA"><rect x="0" y="0" width="720" height="270"/></clipPath>
+      </defs>
+
+      <!-- gridlines + y axis -->
+      <g class="c-grid">
+        <line x1="54" y1="270" x2="700" y2="270"/>
+        <line x1="54" y1="226.4" x2="700" y2="226.4"/>
+        <line x1="54" y1="182.7" x2="700" y2="182.7"/>
+        <line x1="54" y1="139.1" x2="700" y2="139.1"/>
+        <line x1="54" y1="95.5" x2="700" y2="95.5"/>
+        <line x1="54" y1="51.8" x2="700" y2="51.8"/>
+      </g>
+      <g class="c-ax" text-anchor="end">
+        <text x="44" y="274">0</text>
+        <text x="44" y="230.4">0.1</text>
+        <text x="44" y="186.7">0.2</text>
+        <text x="44" y="143.1">0.3</text>
+        <text x="44" y="99.5">0.4</text>
+        <text x="44" y="55.8">0.5 m</text>
+      </g>
+      <line class="c-base" x1="54" y1="270" x2="700" y2="270"/>
+
+      <g clip-path="url(#clipA)">
+        <!-- 50% -->
+        <rect class="s2" x="88"  y="178.4" width="46" height="96"  rx="4"><title>3 Aug, 5 min apart — 50% within 0.21 m</title></rect>
+        <rect class="s1" x="136" y="221.1" width="46" height="53"  rx="4"><title>4 Aug, 24 h apart — 50% within 0.112 m</title></rect>
+        <!-- 68% -->
+        <rect class="s2" x="249" y="152.2" width="46" height="122" rx="4"><title>3 Aug, 5 min apart — 68% within 0.27 m</title></rect>
+        <rect class="s1" x="297" y="200.2" width="46" height="74"  rx="4"><title>4 Aug, 24 h apart — 68% within 0.160 m</title></rect>
+        <!-- 90% -->
+        <rect class="s2" x="410" y="91.1"  width="46" height="183" rx="4"><title>3 Aug, 5 min apart — 90% within 0.41 m</title></rect>
+        <rect class="s1" x="458" y="166.6" width="46" height="108" rx="4"><title>4 Aug, 24 h apart — 90% within 0.237 m</title></rect>
+        <!-- 95% -->
+        <rect class="s2" x="571" y="47.5"  width="46" height="227" rx="4"><title>3 Aug, 5 min apart — 95% within 0.51 m</title></rect>
+        <rect class="s1" x="619" y="134.3" width="46" height="140" rx="4"><title>4 Aug, 24 h apart — 95% within 0.311 m</title></rect>
+      </g>
+
+      <!-- direct labels -->
+      <g class="c-lab--mut" text-anchor="middle">
+        <text x="111" y="171">0.21</text>
+        <text x="272" y="145">0.27</text>
+        <text x="433" y="84">0.41</text>
+        <text x="594" y="40">0.51</text>
+      </g>
+      <g class="c-lab" text-anchor="middle">
+        <text x="159" y="214">0.112</text>
+        <text x="320" y="193">0.160</text>
+        <text x="481" y="159">0.237</text>
+        <text x="642" y="127">0.311</text>
+      </g>
+
+      <!-- x axis -->
+      <g class="c-ax" text-anchor="middle">
+        <text x="134" y="292">50%</text>
+        <text x="295" y="292">68%</text>
+        <text x="456" y="292">90%</text>
+        <text x="617" y="292">95%</text>
+        <text x="377" y="313">…of the surface agrees to within this many metres</text>
+      </g>
+    </svg>
+    </div>
+
+    <div class="legend">
+      <span><i style="background:var(--s2)"></i>3 Aug 2026 — two flights, 5 minutes apart</span>
+      <span><i style="background:var(--s1)"></i>4 Aug 2026 — the same mission, 24 hours later</span>
+    </div>
+  </figure>
+
+  <div class="tbl-scroll">
+    <table>
+      <caption>Vertical difference on bare and hard ground · 2.37 ha · 8 m edge trim</caption>
+      <thead>
+        <tr><th scope="col">Bare / hard ground</th><th scope="col">3 Aug — 5 min apart</th><th scope="col">4 Aug — 24 h apart</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Median difference</td><td class="num">−0.076 m</td><td class="num">−0.063 m</td></tr>
+        <tr><td>50% of cells within</td><td class="num">0.21 m</td><td class="num hl">0.112 m</td></tr>
+        <tr><td>68% within</td><td class="num">0.27 m</td><td class="num hl">0.160 m</td></tr>
+        <tr><td>90% within</td><td class="num">0.41 m</td><td class="num hl">0.237 m</td></tr>
+        <tr><td>95% within</td><td class="num">0.51 m</td><td class="num hl">0.311 m</td></tr>
+        <tr><td>99% within</td><td class="num">4.48 m</td><td class="num">2.83 m</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="tnote">The 99th percentile is included deliberately. Most of that tail is not
+    error at all — I was standing on site and there were vehicles in the car park, and things
+    that genuinely moved between flights show up as change because they <em>were</em> change.
+    It is left in because removing inconvenient cells is exactly how these figures get
+    massaged.</p>
+
+  <h3 style="margin-top:26px">The 24-hour result is better than the 5-minute one, and I did not expect that</h3>
+  <p>The pair flown five minutes apart should be the easy case: same light, same air, same
+    battery-fresh conditions. It came out worse. The reason is in the next section — that pair
+    happened to carry a larger constant offset, and a constant offset shifts every percentile
+    at once.</p>
+  <p>The useful conclusion is the one that matters commercially: <strong>coming back a month
+    later does not degrade the comparison.</strong> That is the whole premise of a progress
+    record, and it is now measured rather than assumed. The unglamorous conclusion is that
+    run-to-run variation is larger than day-to-day variation at this scale, so a single pair of
+    flights is not a spec — it is one sample.</p>
+
+  <h3 style="margin-top:26px">Percentiles, not RMS — and why that isn't a dodge</h3>
+  <p>Almost every published accuracy claim is an RMS or a standard deviation, which assumes the
+    errors are bell-shaped. These aren't. The distribution has heavy tails: most cells are very
+    good and a small number are terrible, so an average is dragged around by the worst cells and
+    reports a figure that describes nothing you would recognise on site. "90% of the surface
+    within 0.24 m" is a statement you can go and check. A lone "± X m RMS" hides both how good
+    the good part is and how bad the bad part is.</p>
+</section>
+
+<section>
+  <h2>Where the error actually lives</h2>
+  <p>Splitting the same difference map by surface type — classified by vegetation height, not
+    by eye — shows the error is not spread evenly at all.</p>
+
+  <figure class="fig">
+    <p class="fig__t">95% of cells agree within this, by surface</p>
+    <p class="fig__s">Same flights, same processing, same day. Nearly half this site is tree
+      canopy, and the canopy carries almost all of the error.</p>
+
+    <div class="fig__plot">
+    <svg viewBox="0 0 720 300" role="img" aria-labelledby="figB-t figB-d">
+      <title id="figB-t">Repeat-survey agreement by surface type</title>
+      <desc id="figB-d">Bare and hard ground, 43.7% of the area, agrees within 0.51 m at the
+        95th percentile. Low vegetation, 4.3% of area, 2.29 m. Scrub and hedge, 7.8%, 2.58 m.
+        Tree canopy, 44.2% of the area, 2.81 m.</desc>
+      <defs>
+        <clipPath id="clipB"><rect x="220" y="0" width="480" height="300"/></clipPath>
+      </defs>
+
+      <!-- gridlines -->
+      <g class="c-grid">
+        <line x1="220" y1="30" x2="220" y2="250"/>
+        <line x1="353" y1="30" x2="353" y2="250"/>
+        <line x1="486" y1="30" x2="486" y2="250"/>
+        <line x1="620" y1="30" x2="620" y2="250"/>
+      </g>
+
+      <g clip-path="url(#clipB)">
+        <rect class="s1" x="216" y="46"  width="72"  height="22" rx="4"><title>Bare / hard ground — 95% within 0.51 m</title></rect>
+        <rect class="sm" x="216" y="98"  width="310" height="22" rx="4"><title>Low vegetation and grass — 95% within 2.29 m</title></rect>
+        <rect class="sm" x="216" y="150" width="347" height="22" rx="4"><title>Scrub and hedge — 95% within 2.58 m</title></rect>
+        <rect class="sm" x="216" y="202" width="379" height="22" rx="4"><title>Tree canopy — 95% within 2.81 m</title></rect>
+      </g>
+
+      <!-- row labels -->
+      <g>
+        <text class="c-lab" x="0" y="55">Bare / hard ground</text>
+        <text class="c-lab--mut" x="0" y="71">43.7% of area</text>
+        <text class="c-lab" x="0" y="107">Low veg, grass</text>
+        <text class="c-lab--mut" x="0" y="123">4.3% of area</text>
+        <text class="c-lab" x="0" y="159">Scrub, hedge</text>
+        <text class="c-lab--mut" x="0" y="175">7.8% of area</text>
+        <text class="c-lab" x="0" y="211">Tree canopy</text>
+        <text class="c-lab--mut" x="0" y="227">44.2% of area</text>
+      </g>
+
+      <!-- value labels -->
+      <g class="c-lab">
+        <text x="298" y="63">0.51 m</text>
+        <text x="536" y="115">2.29 m</text>
+        <text x="573" y="167">2.58 m</text>
+        <text x="605" y="219">2.81 m</text>
+      </g>
+
+      <!-- x axis -->
+      <line class="c-base" x1="220" y1="250" x2="700" y2="250"/>
+      <g class="c-ax" text-anchor="middle">
+        <text x="220" y="270">0</text>
+        <text x="353" y="270">1 m</text>
+        <text x="486" y="270">2 m</text>
+        <text x="620" y="270">3 m</text>
+        <text x="460" y="291">95th percentile of vertical difference</text>
+      </g>
+    </svg>
+    </div>
+  </figure>
+
+  <p>Bare ground is 43.7% of this site and behaves well. Tree canopy is 44.2% and is five times
+    worse — leaves move, and two reconstructions of a moving surface will never agree. Grass and
+    scrub sit in between.</p>
+  <div class="note">
+    <p><strong>So "this site is accurate to X" is a meaningless sentence.</strong> Quote one
+      site-wide figure for a wooded site and you are mostly reporting how the wind was blowing.
+      Any accuracy claim has to say which surface it applies to. On a live construction site
+      the mix is kinder than this — but the rule doesn't change.</p>
+  </div>
+</section>
+
+<section>
+  <h2>The number I could have published instead</h2>
+  <p>There is a stable concrete apron on this site that gets measured separately every visit,
+    precisely because it is not supposed to change. Across the 24-hour pair, the
+    <strong>scatter on that apron is 0.033 m</strong>.</p>
+  <p>Three centimetres. If I wanted a flattering headline, that is the number to put on the
+    home page, and it would be perfectly true.</p>
+  <p>It would also be misleading, because sitting underneath that scatter is a
+    <strong>systematic vertical offset of 0.137 m</strong> across dates — 0.237 m for the
+    same-morning pair — that the alignment step does not remove. The whole surface is shifted
+    up or down slightly, per flight. So the honest reading of the same measurement is: the
+    random part is 3–5 cm, and there is a per-flight datum shift of 14–24 cm on top of it.</p>
+
+  <div class="tbl-scroll">
+    <table>
+      <caption>Stable reference surface — the site's own noise floor</caption>
+      <thead>
+        <tr><th scope="col">Pair</th><th scope="col">Scatter (std)</th><th scope="col">Systematic offset</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>4 Aug — 24 hours apart</td><td class="num">0.033 m</td><td class="num">−0.137 m</td></tr>
+        <tr><td>3 Aug — 5 minutes apart</td><td class="num">0.046 m</td><td class="num">−0.237 m</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p class="tnote">This is also the explanation for the surprise above: the same-morning pair
+    carried the larger offset, so it scored worse despite the easier conditions.</p>
+  <p>A constant is correctable — measure it on a surface known not to have moved and subtract
+    it before differencing. Doing that properly means fitting it locally rather than site-wide,
+    because the offset is not uniform across the ground, and <strong>it is not built yet.</strong>
+    Until it is, the figure I quote is the 0.24 m / 0.31 m one, not the 3 cm one. When it's
+    done, this page gets the measurement, not the promise.</p>
+</section>
+
+<section>
+  <h2>Absolute height is far worse — and it isn't the drone's fault</h2>
+  <p>Everything above is <em>relative</em>: how well two surveys agree with each other. Absolute
+    height — real levels, above Ordnance Datum — is a different question, and this is the
+    hardest evidence I have on it.</p>
+  <div class="card">
+    <h3>27.78 metres in 24 hours</h3>
+    <p>Flying the identical mission at an identical <strong>40.00 m above launch</strong>, the
+      aircraft's recorded absolute altitude moved from 64.76 m to 92.54 m between the two dates.
+      Within a single morning it moved 1.45 m.</p>
+    <p style="margin-bottom:0">The aircraft flew the correct height above the launch point on
+      both days. What moved was the barometric datum it measures against — air pressure, not
+      position.</p>
+  </div>
+  <p>That is why every figure on this page is expressed as change relative to the baseline
+    survey, why the takeoff point is fixed and re-used on every visit, and why I will not give
+    you AOD levels off this aircraft. Anyone quoting absolute levels from a non-RTK sub-250 g
+    drone either hasn't checked this or isn't telling you.</p>
+</section>
+
+<section>
+  <h2>The results that don't flatter the kit</h2>
+  <p>On the second visit I put a tape-measured cardboard box on the tarmac — 0.50 × 0.30 × 0.30 m —
+    and flew over it without telling the processing anything about it. The point was to find the
+    detection threshold rather than assume one. Three things came out of it, and they point in
+    different directions.</p>
+
+  <div class="two">
+    <div class="card">
+      <h3>1. Plan measurement: very good</h3>
+      <p>From the orthomosaic the box measured <strong>0.537 × 0.320 m</strong> against a true
+        0.50 × 0.30 — errors of 2–4 cm, and area within 4%. At 2 cm/px it is 25 × 15 pixels with
+        crisp edges.</p>
+      <p style="margin-bottom:0">Measuring hard-edged things in plan — slab outlines, hardstanding,
+        stored materials, roof areas — is genuinely reliable at this scale.</p>
+    </div>
+    <div class="card">
+      <h3>2. Height: not good</h3>
+      <p>The elevation model read the box as <strong>0.20 m tall against a true 0.30 m</strong>,
+        a 33% under-read, and smeared its footprint from 0.5 × 0.3 m to
+        <strong>1.09 × 0.755 m</strong>.</p>
+      <p style="margin-bottom:0">That was measured inside a single survey, so it is not an
+        alignment error. It is the modelled surface rounding off a small, sharp object.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>3. Volume: over-read by 2.7&times;</h3>
+    <p>Follow the smeared footprint through and the box's volume comes out at
+      <strong>0.122 m³ against a true 0.045 m³</strong>. Nearly three times too much.</p>
+    <p>The mechanism is an edge effect, so in principle it should shrink in proportion as objects
+      get larger — a stockpile several metres across is a different regime from a shoebox.
+      <strong>But I have not measured that, so I don't claim it.</strong> What the measurement
+      supports today is a flat rule: no volume figures for anything of this size, and no
+      certified volumes from this aircraft at all.</p>
+    <p style="margin-bottom:0">This is the single most useful thing on the page for a buyer.
+      Stockpile volumes are the deliverable most often sold off small drones, and the error is
+      in the direction that costs you money.</p>
+  </div>
+
+  <div class="card">
+    <h3>4. Automated change detection missed it completely</h3>
+    <p>Running a blind search for objects that appeared between the two dates — no hint about
+      where to look — <strong>the box did not make the top 25 candidates</strong>, even with the
+      search tuned to the height it actually read. The site carries tens of thousands of cells
+      showing 0.25–0.50 m of apparent change on nominally flat ground, and a 0.20 m signal is
+      not separable from that clutter. The box was found by eye, in the orthomosaic, in seconds.</p>
+    <p style="margin-bottom:0">The same search found every parked car immediately and correctly.
+      <strong>So: automatic detection works at roughly car scale, 1.0–1.5 m and up. Below that,
+      a person looking at the image beats the algorithm</strong> — which is fine, because that
+      is exactly how a progress pack gets read.</p>
+  </div>
+</section>
+
+<section>
+  <h2>What this supports, and what it doesn't</h2>
+  <div class="two">
+    <div>
+      <h3>Fit for</h3>
+      <ul class="list">
+        <li>Dated visual site records for progress meetings and monthly reports</li>
+        <li>Month-to-month comparison of the same site, flown to the same saved mission</li>
+        <li>Programme evidence and delay or claim narratives — what was where, and when</li>
+        <li>Plan measurement of hard-edged features: areas, extents, layout, access</li>
+        <li>Roof and elevation condition inspection without scaffold or access equipment</li>
+        <li>Spotting change at roughly car scale and upwards, reliably</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Not fit for</h3>
+      <ul class="list">
+        <li>Setting out, or anything a contractor will build to</li>
+        <li>Legal boundary determination</li>
+        <li>Absolute levels above Ordnance Datum</li>
+        <li>Certified stockpile volumes, or any volume for small objects</li>
+        <li>Anything requiring a survey-grade accuracy statement</li>
+        <li>Measuring ground under tree canopy</li>
+      </ul>
+    </div>
+  </div>
+  <p>Where a job genuinely needs survey grade, the answer is an RTK aircraft with ground control
+    and an accuracy statement attached to the file — which I'll hire in and say so. The
+    interesting point of this whole exercise is how much useful work sits on the left-hand list,
+    and how rarely anyone states the boundary between the two.</p>
+</section>
+
+<section>
+  <h2>Five questions worth asking any drone supplier</h2>
+  <ul class="list">
+    <li><strong>Have you flown the same site twice and differenced the results?</strong> If not,
+      the accuracy figure is a specification sheet, not a measurement.</li>
+    <li><strong>Is your number GSD or measured repeatability?</strong> "2 cm" is almost always
+      pixel size. They are not the same quantity and they differ by an order of magnitude.</li>
+    <li><strong>Percentiles or RMS, and over which surface?</strong> A site-wide RMS across
+      vegetation tells you nothing about the ground you care about.</li>
+    <li><strong>Relative to a baseline, or absolute?</strong> Absolute levels off a non-RTK
+      aircraft should be refused, not priced.</li>
+    <li><strong>What was excluded?</strong> Edge trim, masked areas and removed outliers are all
+      legitimate — provided they're declared.</li>
+  </ul>
+  <p>If you get straight answers to those five, you're dealing with someone who has actually
+    measured their own work. It is a short list.</p>
+</section>
+
+<section>
+  <h2>Method, and how to check me</h2>
+  <p>Processing is OpenDroneMap, incremental structure-from-motion, with rolling-shutter
+    correction enabled using the aircraft's true 26 ms sensor readout. Both repeats are aligned
+    to the baseline reconstruction's point cloud before differencing, so what is compared is
+    like with like. Orthomosaic and elevation model are produced on a locked 2.0 cm/px grid that
+    never changes for this site — a resolution change between visits would inject noise into
+    exactly the measurement being sold. Surfaces are classified as bare or vegetated by
+    subtracting the terrain model from the surface model, not by eye.</p>
+  <p>The difference maps are computed cell by cell across 2.37 ha after an 8 m edge trim, and
+    reported as percentiles of absolute difference plus a median bias.</p>
+
+  <div class="card">
+    <h3>Limits of this study, stated plainly</h3>
+    <ul class="list" style="margin-bottom:0">
+      <li><strong>One site, one aircraft, one operator, one weather condition.</strong> Dry, calm,
+        light cloud, low sun, early morning both days.</li>
+      <li><strong>This measures repeatability, not absolute accuracy.</strong> There is no
+        independent survey control here — deliberately, since the question being asked is whether
+        two visits agree with each other.</li>
+      <li><strong>The 99th-percentile tail includes real movement</strong> — me, and vehicles.
+        The true noise floor is probably better than the tail implies.</li>
+      <li><strong>Two pairs of flights is a small sample.</strong> The gap between the two results
+        is itself evidence that a single pair does not pin down a spec.</li>
+      <li><strong>The 2.7× volume over-read was measured on a shoebox.</strong> Whether it shrinks
+        at stockpile scale is untested here and is not claimed.</li>
+      <li><strong>None of it is survey-grade,</strong> and nothing here should be used for setting
+        out.</li>
+    </ul>
+  </div>
+  <p class="tnote">Figures last updated 9 August 2026. If any of them change — including in the
+    wrong direction — this page changes with them.</p>
+</section>
+
+</div>
+
+</article>
+
+<section class="cta">
+  <div class="wrap">
+    <p class="eyebrow">The point of all this</p>
+    <h2>A record you can put in a pack and defend.</h2>
+    <p class="read">Monthly construction progress monitoring across Berkshire, Bucks, the M4
+      corridor and Greater London — the same mission flown every visit, delivered as an
+      orthomosaic, labelled stills and a month-to-month comparison, on your desk by the third
+      working day. With the boundary of what it measures stated up front, as above.</p>
+    <div class="cta__act">
+      <a class="btn btn--go" href="/#enquiry">Get a quote</a>
+      <a class="btn" href="/">How the progress pack works</a>
+      <a class="btn" href="/capability-statement">Capability statement</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div>
+      <h4>Contact</h4>
+      <a href="tel:+447415502186">+44 7415 502186</a>
+      <a href="mailto:info@shiningstardrones.co.uk">info@shiningstardrones.co.uk</a>
+      <p>Slough SL1, Berkshire</p>
+    </div>
+    <div>
+      <h4>Credentials</h4>
+      <p>GVC qualified</p>
+      <p>CAA authorised, commercial</p>
+      <p>£10m public liability</p>
+      <p>EC 785/2004 compliant</p>
+    </div>
+    <div>
+      <h4>Elsewhere</h4>
+      <a href="/">Progress monitoring</a>
+      <a href="/articles/">Articles</a>
+      <a href="/film">Brand film &amp; FPV</a>
+      <a href="https://www.youtube.com/@ShiningStarDronesUK">YouTube</a>
+      <a href="https://www.linkedin.com/company/shining-star-drones">LinkedIn</a>
+      <a href="/capability-statement">Capability statement</a>
+      <a href="/privacy">Privacy notice</a>
+    </div>
+    <div class="foot__legal">
+      <span>&copy; 2026 Andrew Abdul-Malek trading as Shining Star Drones &middot; Slough SL1, Berkshire</span>
+      <span>Berkshire · Bucks · Slough–Maidenhead–M4 · Surrey · Herts · Greater London</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var root = document.documentElement,
+      meta = document.querySelector('meta[name="theme-color"]'),
+      btns = document.querySelectorAll('[data-theme-set]');
+
+  function apply(theme) {
+    if (theme === 'dark') root.setAttribute('data-theme', 'dark');
+    else root.removeAttribute('data-theme');
+    if (meta) meta.setAttribute('content', theme === 'dark' ? '#0E1519' : '#F6F8F6');
+    btns.forEach(function (b) {
+      b.setAttribute('aria-pressed', String(b.dataset.themeSet === theme));
+    });
+    try { localStorage.setItem('ssd-theme', theme); } catch (e) {}
+  }
+
+  btns.forEach(function (b) {
+    b.addEventListener('click', function () { apply(b.dataset.themeSet); });
+  });
+
+  apply(root.getAttribute('data-theme') === 'dark' ? 'dark' : 'light');
+})();
+</script>
+
+</body>
+</html>

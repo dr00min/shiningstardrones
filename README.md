@@ -8,6 +8,8 @@ Static marketing site for [shiningstardrones.co.uk](https://shiningstardrones.co
 |---|---|
 | `index.html` | Landing page (services, showreel, areas, pricing, contact form) |
 | `film.html` | Brand film / FPV, at `/film`. **Split out of `index.html` on 2026-08-07** — FPV rates next to a progress pack invite a commercial manager to price this as videography |
+| `articles/index.html` | Articles index, at `/articles/`. Field notes on measurement, method and limits |
+| `articles/*.html` | One file per article, at `/articles/<slug>`. **Asset paths must be root-relative (`/brand/…`)** — these pages sit one directory down |
 | `capability-statement.html` | One-page proof artifact for procurement teams |
 | `PLAN-CONSTRUCTION-2026-08.md` | Repositioning backlog: what shipped, what is gated on evidence, and what must not be claimed before it is true |
 | `CNAME` | Vestigial. The live site is a Cloudflare Worker, not GitHub Pages. |
