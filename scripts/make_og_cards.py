@@ -95,7 +95,7 @@ def ticks(d):
 
 
 def card(f, src, out, eyebrow, head, stand, figs,
-         url="shiningstardrones.co.uk"):
+         url="parallaxaerial.uk"):
     im = base(src)
     d = ImageDraw.Draw(im)
     ticks(d)

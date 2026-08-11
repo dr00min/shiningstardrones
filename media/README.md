@@ -99,9 +99,9 @@ PYTHONPATH=. python3 -m ddt report \
   --site "Ramblers Car Park" \
   --client "Demonstration capture — not client work" \
   --date 2026-08-04 --aircraft "DJI Mini 3 Pro" --altitude 40 \
-  --company "Shining Star Drones" --accent "#A81B5D" \
+  --company "Parallax Aerial" --accent "#9E0F4F" \
   --operator "GBR-OP-335BHXRJHNYT" \
-  --contact "info@shiningstardrones.co.uk  ·  +44 7415 502186" \
+  --contact "info@parallaxaerial.uk  ·  +44 7415 502186" \
   --out report.pdf
 ```
 

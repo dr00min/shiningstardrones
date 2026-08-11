@@ -1,10 +1,10 @@
-# SEO — Shining Star Drones
+# SEO — Parallax Aerial
 
 **Last audit:** 2026-08-07  
-**Live origin:** `https://shiningstardrones.co.uk`  
+**Live origin:** `https://parallaxaerial.uk`  
 **Source:** this repo (`website/`) · Cloudflare Worker deploy on push to `main`  
 **Skill:** pipeline `.grok/skills/seo/` (and `.claude/skills/seo/`) — run `/seo`  
-**Auditor:** `python3 ../.grok/skills/seo/scripts/seo_audit.py . --base-url https://shiningstardrones.co.uk --out /tmp/ssd-seo-audit`
+**Auditor:** `python3 ../.grok/skills/seo/scripts/seo_audit.py . --base-url https://parallaxaerial.uk --out /tmp/ssd-seo-audit`
 
 This file is the **working backlog + evidence**, not a ranking promise. GSC query data is operator-side; re-rank the list when impressions arrive.
 
@@ -54,18 +54,18 @@ Track here. Check boxes when shipped and verified live.
 ### P0 — indexation integrity
 
 - [ ] **HTTP apex → HTTPS 301**  
-  Evidence (2026-08-07): `curl -sI http://shiningstardrones.co.uk/` → `200` (no `Location`).  
+  Evidence (2026-08-07): `curl -sI http://parallaxaerial.uk/` → `200` (no `Location`).  
   `http://www…` already 301s to HTTPS apex.  
   Fix in Cloudflare: Always Use HTTPS / redirect rule covering apex HTTP.  
-  Verify: both HTTP hosts return 301 to `https://shiningstardrones.co.uk…`.
+  Verify: both HTTP hosts return 301 to `https://parallaxaerial.uk…`.
 
 ### P1 — head tags, social, schema
 
 - [x] **Self-referential `rel=canonical`** on all four pages — done 2026-08-07  
-  - `https://shiningstardrones.co.uk/`  
-  - `https://shiningstardrones.co.uk/film` *(new)*  
-  - `https://shiningstardrones.co.uk/capability-statement`  
-  - `https://shiningstardrones.co.uk/privacy`
+  - `https://parallaxaerial.uk/`  
+  - `https://parallaxaerial.uk/film` *(new)*  
+  - `https://parallaxaerial.uk/capability-statement`  
+  - `https://parallaxaerial.uk/privacy`
 - [x] **`og:image` + dimensions** — done 2026-08-09. Two 1200×630 cards built from the real
   Ramblers orthomosaic by `scripts/make_og_cards.py`: `media/og-default.jpg` (home, `/film`,
   `/articles/`, capability statement, privacy) and `media/og-accuracy-study.jpg` (the accuracy
@@ -76,7 +76,7 @@ Track here. Check boxes when shipped and verified live.
   Home, `/film` and both article pages also carry `twitter:title` / `twitter:description`;
   capability-statement and privacy inherit theirs from the OG tags.
 - [x] **Full OG bundle** on capability-statement + privacy — done 2026-08-09.
-- [x] **Shorten home title** — done 2026-08-07, now `Progress packs by the 3rd working day | Shining Star Drones` (58 chars).  
+- [x] **Shorten home title** — done 2026-08-07, now `Progress packs by the 3rd working day | Parallax Aerial` (58 chars).  
   Note the clock changed with the repositioning: the promise is a **calendar date the buyer
   already keeps**, not a duration. 48 h is now a capability line, not the headline — see
   `PLAN-CONSTRUCTION-2026-08.md` P1.2. Any future title candidate should follow that.
@@ -134,9 +134,9 @@ Track here. Check boxes when shipped and verified live.
 
 | URL | Result |
 |-----|--------|
-| `https://shiningstardrones.co.uk/` | 200 |
-| `https://www.shiningstardrones.co.uk/` | 301 → apex |
-| `http://shiningstardrones.co.uk/` | **200 — fix** |
+| `https://parallaxaerial.uk/` | 200 |
+| `https://www.parallaxaerial.uk/` | 301 → apex |
+| `http://parallaxaerial.uk/` | **200 — fix** |
 | `http://www…` | 301 → HTTPS apex |
 | `/*.html` / `/index.html` | 307 → clean paths |
 | `/robots.txt` | 200 (repo + CF managed bot rules) |

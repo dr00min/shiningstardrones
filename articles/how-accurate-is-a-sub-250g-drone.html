@@ -3,30 +3,30 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>How accurate is a sub-250 g drone, really? | Shining Star Drones</title>
+<title>How accurate is a sub-250 g drone, really? | Parallax Aerial</title>
 <meta name="description" content="I flew the same car park twice, 24 hours apart, changed nothing, and measured the difference. The result, the method, and the three findings that don't flatter the kit — including a volume over-read of 2.7x.">
 <meta name="robots" content="index,follow">
-<link rel="canonical" href="https://shiningstardrones.co.uk/articles/how-accurate-is-a-sub-250g-drone">
+<link rel="canonical" href="https://parallaxaerial.uk/articles/how-accurate-is-a-sub-250g-drone">
 
 <meta property="og:title" content="How accurate is a sub-250 g drone, really?">
 <meta property="og:description" content="Same car park, flown twice, 24 hours apart. Nothing changed, so everything the model reports is error. The number, the method, and the results that don't flatter the kit.">
 <meta property="og:type" content="article">
-<meta property="og:url" content="https://shiningstardrones.co.uk/articles/how-accurate-is-a-sub-250g-drone">
-<meta property="og:image" content="https://shiningstardrones.co.uk/media/og-accuracy-study.jpg">
+<meta property="og:url" content="https://parallaxaerial.uk/articles/how-accurate-is-a-sub-250g-drone">
+<meta property="og:image" content="https://parallaxaerial.uk/media/og-accuracy-study.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="The Ramblers Car Park orthomosaic, overlaid with the study's headline figures: 0.24 m at 90% agreement, 0.033 m scatter on hardstanding, and a 2.7x volume over-read.">
-<meta property="og:site_name" content="Shining Star Drones">
+<meta property="og:site_name" content="Parallax Aerial">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="How accurate is a sub-250 g drone, really?">
 <meta name="twitter:description" content="Same site, flown twice, 24 hours apart. Nothing changed, so everything the model reported is error. The number, the method, and the results that don't flatter the kit.">
-<meta name="twitter:image" content="https://shiningstardrones.co.uk/media/og-accuracy-study.jpg">
+<meta name="twitter:image" content="https://parallaxaerial.uk/media/og-accuracy-study.jpg">
 
 <link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48">
 <link rel="icon" type="image/png" href="/favicon-32.png" sizes="32x32">
 <link rel="icon" type="image/png" href="/icon-192.png" sizes="192x192">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<meta name="theme-color" content="#F6F8F6">
+<meta name="theme-color" content="#F7F7F4">
 
 <script>
 /* Applied before first paint so a returning dark-mode visitor never sees a
@@ -42,7 +42,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@500;600&family=Public+Sans:wght@300;400;500&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Public+Sans:wght@300;400;500&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
 
 <script type="application/ld+json">
 {
@@ -53,21 +53,21 @@
   "datePublished": "2026-08-09",
   "dateModified": "2026-08-09",
   "inLanguage": "en-GB",
-  "image": "https://shiningstardrones.co.uk/media/og-accuracy-study.jpg",
+  "image": "https://parallaxaerial.uk/media/og-accuracy-study.jpg",
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": "https://shiningstardrones.co.uk/articles/how-accurate-is-a-sub-250g-drone"
+    "@id": "https://parallaxaerial.uk/articles/how-accurate-is-a-sub-250g-drone"
   },
   "author": {
     "@type": "Person",
     "name": "Andrew Abdul-Malek",
     "jobTitle": "GVC-qualified remote pilot",
-    "worksFor": {"@type": "Organization", "name": "Shining Star Drones"}
+    "worksFor": {"@type": "Organization", "name": "Parallax Aerial"}
   },
   "publisher": {
     "@type": "Organization",
-    "name": "Shining Star Drones",
-    "url": "https://shiningstardrones.co.uk"
+    "name": "Parallax Aerial",
+    "url": "https://parallaxaerial.uk"
   },
   "about": ["Photogrammetry accuracy", "Construction progress monitoring", "Drone survey", "Digital surface model"]
 }
@@ -77,8 +77,8 @@
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   "itemListElement": [
-    {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://shiningstardrones.co.uk/"},
-    {"@type": "ListItem", "position": 2, "name": "Articles", "item": "https://shiningstardrones.co.uk/articles/"},
+    {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://parallaxaerial.uk/"},
+    {"@type": "ListItem", "position": 2, "name": "Articles", "item": "https://parallaxaerial.uk/articles/"},
     {"@type": "ListItem", "position": 3, "name": "How accurate is a sub-250 g drone, really?"}
   ]
 }
@@ -89,27 +89,27 @@
    no build step, so each page carries its own sheet — the pattern film.html and
    capability-statement.html already follow. */
 :root{
-  --chart:#F6F8F6; --paper:#FDFEFC; --ink:#0E1519; --slate:#5A6670;
-  --hairline:#C4CCC6; --magenta:#A81B5D; --airway:#2A5D8F; --on-accent:#FDFEFC;
+  --chart:#F7F7F4; --paper:#FFFFFF; --ink:#16161A; --slate:#5C5C63;
+  --hairline:#D6D6CF; --magenta:#9E0F4F; --airway:#5B6BE0; --on-accent:#FFFFFF;
   --sans:"Public Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
-  --head:"Archivo Narrow","Archivo",-apple-system,BlinkMacSystemFont,"Segoe UI Semibold",Helvetica,Arial,sans-serif;
-  --mono:"Roboto Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
-  --wide:1340px; --gut:clamp(18px,4vw,44px); --ledger:rgba(14,21,25,.055);
+  --head:"Space Grotesk",-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  --wide:1340px; --gut:clamp(18px,4vw,44px); --ledger:rgba(22,22,26,.055);
 
   /* Chart series. NOT the brand --magenta/--airway pair: that blue fails the
      chroma floor and the dark-mode lightness band. These two were snapped to
      the nearest passing step and validated in both modes — all six checks pass
      (CVD dE 13.3 protan light / 11.2 protan dark, both well clear of the 8
      floor). Change one and re-validate the pair; do not eyeball it. */
-  --s1:#A81B5D;   /* 04 Aug — the cross-date result, the headline series */
-  --s2:#1B5FA6;   /* 03 Aug — the same-morning pair */
+  --s1:#9E0F4F;   /* 04 Aug — the cross-date result, the headline series */
+  --s2:#5B6BE0;   /* 03 Aug — the same-morning pair */
   --grid:rgba(14,21,25,.10);
 }
 :root[data-theme="dark"]{
-  --chart:#0E1519; --paper:#141C21; --ink:#E8EDEA; --slate:#9AA6AE;
-  --hairline:#2A363C; --magenta:#E4589A; --airway:#78A9D8; --on-accent:#0E1519;
-  --ledger:rgba(232,237,234,.05);
-  --s1:#E4589A; --s2:#4E92DC; --grid:rgba(232,237,234,.12);
+  --chart:#16161A; --paper:#1E1E24; --ink:#F7F7F4; --slate:#9B9BA6;
+  --hairline:#32323A; --magenta:#E0447F; --airway:#8E9BFF; --on-accent:#16161A;
+  --ledger:rgba(247,247,244,.05);
+  --s1:#E0447F; --s2:#8E9BFF; --grid:rgba(247,247,244,.12);
 }
 *,*::before,*::after{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
@@ -239,9 +239,9 @@ td.num{font-family:var(--mono)}
 .legend span{display:inline-flex; align-items:center; gap:8px}
 .legend i{width:12px; height:12px; border-radius:2px; display:inline-block}
 /* Chart text wears text tokens, never the series colour. */
-.c-ax{fill:var(--slate); font-family:"Roboto Mono",monospace; font-size:12px}
-.c-lab{fill:var(--ink); font-family:"Roboto Mono",monospace; font-size:12.5px}
-.c-lab--mut{fill:var(--slate); font-family:"Roboto Mono",monospace; font-size:11.5px}
+.c-ax{fill:var(--slate); font-family:"IBM Plex Mono",monospace; font-size:12px}
+.c-lab{fill:var(--ink); font-family:"IBM Plex Mono",monospace; font-size:12.5px}
+.c-lab--mut{fill:var(--slate); font-family:"IBM Plex Mono",monospace; font-size:11.5px}
 .c-grid{stroke:var(--grid); stroke-width:1}
 .c-base{stroke:var(--hairline); stroke-width:1.5}
 .s1{fill:var(--s1)} .s2{fill:var(--s2)} .sm{fill:var(--slate); opacity:.55}
@@ -285,9 +285,9 @@ dl.spec dd{margin:0; font-family:var(--mono); font-size:14px; text-align:right}
 <header class="masthead">
   <div class="wrap masthead__in">
     <div>
-      <a class="masthead__home" href="/" aria-label="Shining Star Drones — home">
-        <img class="wm-dark" src="/brand/wordmark-oneline-dark.svg" alt="Shining Star Drones" width="846" height="48">
-        <img class="wm-light" src="/brand/wordmark-oneline-white.svg" alt="" aria-hidden="true" width="846" height="48">
+      <a class="masthead__home" href="/" aria-label="Parallax Aerial — home">
+        <img class="wm-dark" src="/brand/wordmark-oneline-dark.svg" alt="Parallax Aerial" width="378" height="47">
+        <img class="wm-light" src="/brand/wordmark-oneline-white.svg" alt="" aria-hidden="true" width="378" height="47">
       </a>
       <span class="eyebrow masthead__strap">GVC · CAA Authorised · £10m PL</span>
     </div>
@@ -854,7 +854,7 @@ dl.spec dd{margin:0; font-family:var(--mono); font-size:14px; text-align:right}
     <div>
       <h4>Contact</h4>
       <a href="tel:+447415502186">+44 7415 502186</a>
-      <a href="mailto:info@shiningstardrones.co.uk">info@shiningstardrones.co.uk</a>
+      <a href="mailto:info@parallaxaerial.uk">info@parallaxaerial.uk</a>
       <p>Slough SL1, Berkshire</p>
     </div>
     <div>
@@ -875,7 +875,7 @@ dl.spec dd{margin:0; font-family:var(--mono); font-size:14px; text-align:right}
       <a href="/privacy">Privacy notice</a>
     </div>
     <div class="foot__legal">
-      <span>&copy; 2026 Andrew Abdul-Malek trading as Shining Star Drones &middot; Slough SL1, Berkshire</span>
+      <span>&copy; 2026 Andrew Abdul-Malek trading as Parallax Aerial &middot; Slough SL1, Berkshire</span>
       <span>Berkshire · Bucks · Slough–Maidenhead–M4 · Surrey · Herts · Greater London</span>
     </div>
   </div>
@@ -890,7 +890,7 @@ dl.spec dd{margin:0; font-family:var(--mono); font-size:14px; text-align:right}
   function apply(theme) {
     if (theme === 'dark') root.setAttribute('data-theme', 'dark');
     else root.removeAttribute('data-theme');
-    if (meta) meta.setAttribute('content', theme === 'dark' ? '#0E1519' : '#F6F8F6');
+    if (meta) meta.setAttribute('content', theme === 'dark' ? '#16161A' : '#F7F7F4');
     btns.forEach(function (b) {
       b.setAttribute('aria-pressed', String(b.dataset.themeSet === theme));
     });
