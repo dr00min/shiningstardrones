@@ -206,6 +206,12 @@ still takes the 2400w -- correctly, not as a bug to chase.
 
 ## The 3D model was Z-up and had to be corrected
 
+> **The 3D section was removed from the site on 2026-08-12**, along with the GLB,
+> its poster, and the vendored `model-viewer` + Draco decoder. `scripts/fix_glb_up_axis.py`
+> was **kept** — the bug below is upstream and recurring, so this note stands for the
+> next model, whether or not it goes back on the site. Everything deleted is recoverable
+> from git history.
+
 `st-mary-magdalene-building.glb` arrived from the pipeline **lying on its back**.
 ODM's textured model is in a local ENU-style frame with **Z up**; `obj2glb`
 copies the vertices through without an axis remap, and glTF requires **Y up**.
