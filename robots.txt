@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /deliverables/
 
 Sitemap: https://parallaxaerial.uk/sitemap.xml
