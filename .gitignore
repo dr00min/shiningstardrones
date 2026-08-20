@@ -37,3 +37,11 @@ build/
 media/*.mp4
 media/*.mov
 media/*.webm
+
+# Client deliverable viewers (tile pyramids) are hosted on Cloudflare R2 at
+# media.parallaxaerial.uk -- NOT served by this Worker, and nothing in the
+# site's HTML links to a local copy. One got committed by mistake on
+# 2026-08-17 (97 MB, 9,130 files) and bloated .git's pack past Cloudflare
+# Workers' 25 MiB per-asset limit, breaking every deploy until untracked
+# 2026-08-20. See .assetsignore too -- belt and suspenders.
+deliverables/
