@@ -1,0 +1,17 @@
+# Cloudflare Workers Static Assets reads this file (gitignore syntax) to decide
+# what NOT to upload as a deployable asset. The auto-generated wrangler.jsonc
+# sets "assets": { "directory": "." } -- the whole repo checkout -- so without
+# this file, Wrangler walks .git itself and fails on any oversized pack file:
+#   "Asset too large... .git/objects/pack/pack-*.pack ... 92.9 MiB"
+# (limit is 25 MiB per asset). Hit 2026-08-20 after the repo's git history
+# accumulated several full-size PDF/tile-pyramid revisions.
+.git
+.github
+.wrangler
+node_modules
+
+# Not served by this Worker at all -- the real hosted copy is on Cloudflare R2
+# at media.parallaxaerial.uk (see CLAUDE.md / TOOLING.md in the drone-delivery-tool
+# repo). Nothing in this site's HTML links to it; committing it here was
+# accidental and it is most of the git-history bloat above.
+deliverables
