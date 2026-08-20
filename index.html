@@ -340,6 +340,7 @@ p:last-child{margin-bottom:0}
   width:38px; height:38px; background:var(--magenta); border:2px solid var(--on-accent);
 }
 .cmp__handle:focus-visible{outline:2px solid var(--airway); outline-offset:3px}
+.cmp__handle.no-ring:focus-visible{outline:none}
 @media (prefers-reduced-motion:no-preference){
   .cmp.is-live:not(.is-drag) .cmp__handle,
   .cmp.is-live:not(.is-drag) .cmp__f[data-cmp=b]{transition:left .12s linear, clip-path .12s linear}
@@ -1072,6 +1073,11 @@ table.matrix{border-collapse:collapse; width:100%; min-width:900px; font-size:14
   stage.addEventListener('pointerdown', function (e) {
     if (e.button !== undefined && e.button !== 0) return;
     cmp.classList.add('is-drag');
+    /* handle.focus() here is script-invoked, not a direct click on the handle
+       itself -- Chrome's focus-visible heuristic shows a ring for that even
+       though this is a pointer drag. no-ring suppresses it; blur clears the
+       flag so a later Tab-focus still gets the ring keyboard users need. */
+    handle.classList.add('no-ring');
     handle.focus({ preventScroll: true });
     stage.setPointerCapture(e.pointerId);
     fromEvent(e);
@@ -1083,6 +1089,8 @@ table.matrix{border-collapse:collapse; width:100%; min-width:900px; font-size:14
   ['pointerup', 'pointercancel'].forEach(function (t) {
     stage.addEventListener(t, function () { cmp.classList.remove('is-drag'); });
   });
+
+  handle.addEventListener('blur', function () { handle.classList.remove('no-ring'); });
 
   handle.addEventListener('keydown', function (e) {
     var step = { ArrowLeft: -2, ArrowRight: 2, PageDown: -10, PageUp: 10 }[e.key];
