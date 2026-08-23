@@ -535,7 +535,7 @@ table.matrix{border-collapse:collapse; width:100%; min-width:900px; font-size:14
     <div class="spec">
       <div class="spec__c"><div class="spec__k">On your desk</div><div class="spec__v">3rd working day<small>of the month · 48 h from a flight</small></div></div>
       <div class="spec__c"><div class="spec__k">Output</div><div class="spec__v">Orthomosaic JPG<small>labelled stills · PDF pack</small></div></div>
-      <div class="spec__c"><div class="spec__k">Accuracy</div><div class="spec__v">Measured, published<small>negative results included</small></div></div>
+      <div class="spec__c"><div class="spec__k">Repeatability</div><div class="spec__v">Measured, published<small>negative results included</small></div></div>
       <div class="spec__c"><div class="spec__k">Base</div><div class="spec__v">Slough, Berkshire<small>1 hour travel included</small></div></div>
     </div>
   </div>
@@ -645,10 +645,10 @@ table.matrix{border-collapse:collapse; width:100%; min-width:900px; font-size:14
     <figure class="plate r-a4">
       <div class="plate__frame">
         <img src="media/ramblers-pack-spread.jpg" width="1400" height="1996" loading="lazy"
-             alt="Two pages from the delivered PDF pack: the cover sheet, and the survey details and accuracy statement.">
+             alt="Two pages from the delivered PDF pack: the cover sheet, and the survey details and repeatability statement.">
       </div>
       <figcaption class="plate__cap">
-        <span>Pack spread &middot; Cover and accuracy statement &middot; Ramblers Car Park, 4 Aug 2026</span>
+        <span>Pack spread &middot; Cover and repeatability statement &middot; Ramblers Car Park, 4 Aug 2026</span>
       </figcaption>
       <p style="margin-top:14px">
         <a class="btn" href="media/sample-progress-pack.pdf" download>Download the sample &middot; PDF, 6 pages, 15&nbsp;MB</a>
@@ -795,18 +795,28 @@ table.matrix{border-collapse:collapse; width:100%; min-width:900px; font-size:14
       geometrically consistent visual record — enough for a progress meeting, a programme dispute,
       a roof condition check, or briefing a client. <strong>It is not survey-grade.</strong> It will
       not give you certified volumes or centimetre accuracy, and I won't put a number on a stockpile
-      from it. Where a job needs that, I hire an RTK aircraft, set ground control, and the accuracy
-      statement comes with the file.</p>
+      from it. Where a job needs that, I hire an RTK aircraft and set ground control.</p>
     <div class="figure">
-      <p class="figure__k">Here is mine.</p>
-      <p class="figure__v">On bare, hard ground, repeat surveys of the same site agree to within
-        <strong>0.24&nbsp;m for 90%</strong> of the surface and <strong>0.31&nbsp;m for 95%</strong>.</p>
-      <p class="figure__c">Measured on a validation site, 4 August 2026, by flying it twice and
-        comparing. Bare and hard ground only &mdash; vegetation and tree canopy are several times
-        worse. Percentiles, not RMS: the error distribution has heavy tails. Change is quoted
-        relative to the baseline survey, never as absolute levels. Not survey-grade, and not for
-        setting out.</p>
+      <p class="figure__k">Here is my repeatability statement.</p>
+      <p class="figure__v">On bare, hard ground, repeat surveys of the same site agree with
+        <strong>each other</strong> to within <strong>0.24&nbsp;m for 90%</strong> of the surface and
+        <strong>0.31&nbsp;m for 95%</strong>.</p>
+      <p class="figure__c">This is <em>repeatability</em>, not accuracy. It measures how well the
+        method agrees with itself between visits &mdash; the number that matters for month-on-month
+        comparison. It is not a measurement against a national coordinate frame, and it is not a
+        substitute for one: two flights can agree closely and both still sit off true level.</p>
+      <p class="figure__c" style="margin-top:12px">Measured on a validation site, 4 August 2026, by
+        flying it twice and comparing. Bare and hard ground only &mdash; vegetation and tree canopy
+        are several times worse. Percentiles, not RMS: the error distribution has heavy tails.
+        Change is quoted relative to the baseline survey, never as absolute levels. Not for setting
+        out, boundary determination, or measurement for payment.</p>
     </div>
+
+    <p class="figure__c" style="margin-top:20px; opacity:.96">Two limitations worth stating before
+      anyone asks. The Mini 3 Pro has a rolling shutter, which adds geometric error the faster the
+      aircraft moves. And the flight above was nadir-only, so systematic dome deformation across
+      the site is unquantified in that dataset &mdash; an independent checkpoint study, still to
+      come, is what will pin it down.</p>
 
     <!-- opacity lifted off .figure__c's .72: this paragraph carries the only link on an
          inverted panel, and at .72 it read as disabled text. -->
@@ -815,8 +825,9 @@ table.matrix{border-collapse:collapse; width:100%; min-width:900px; font-size:14
       <a href="/articles/how-accurate-is-a-sub-250g-drone" style="color:inherit; font-weight:500">how
       accurate is a sub-250&nbsp;g drone, really?</a></p>
 
-    <p class="limits__kick">If a supplier quotes you survey accuracy off a sub-250 g drone,
-      ask them for the accuracy statement.</p>
+    <p class="limits__kick">If a supplier quotes you survey accuracy off a sub-250 g drone, ask
+      for their repeatability statement: the same site, flown twice, with the difference
+      published.</p>
   </div>
 </section>
 
