@@ -125,7 +125,7 @@ thead th{font-family:var(--mono); font-weight:500; font-size:11px; letter-spacin
 <main class="wrap">
   <p class="eyebrow">Privacy notice</p>
   <h1>What I collect, why, and how long I keep it.</h1>
-  <p class="updated">Last updated 5 August 2026</p>
+  <p class="updated">Last updated 24 August 2026</p>
 
   <h2>Who is responsible for your data</h2>
   <p><strong>Andrew Abdul-Malek, trading as Parallax Aerial</strong>, is the data
@@ -202,11 +202,19 @@ thead th{font-family:var(--mono); font-weight:500; font-size:11px; letter-spacin
   <h2>Cookies and analytics</h2>
   <p>This site sets <strong>no cookies</strong> for analytics or advertising. The only thing stored
     in your browser is your light or dark colour-scheme preference, which is kept in local storage
-    on your own device, is never sent anywhere, and clears when you clear your browser data.</p>
+    on your own device, is never sent anywhere, and clears when you clear your browser data. There
+    is no cookie banner because there is nothing on this site that needs your consent.</p>
   <p>I use <strong>Cloudflare Web Analytics</strong> to see aggregate traffic &mdash; page views,
     referrers, countries, browsers and basic performance. It does not use cookies, does not build
     a profile of you across sites, and is not used for advertising. The measurement script is
     loaded from Cloudflare when a page is opened.</p>
+  <p>I also use <strong>Microsoft Clarity</strong> to see how pages are actually used &mdash; where
+    on a page attention lands, and anonymised recordings of how a visit moves through the site &mdash;
+    so I can fix what isn't working rather than guess. It runs in Clarity's no-consent mode: for
+    visitors in the UK and EEA it does not set the cookies Clarity would otherwise use to recognise
+    you again, and it does not link one page view to the next or to a previous visit. Each page view
+    gets a short-lived, non-persistent identifier used only to group the interaction data for that
+    one page.</p>
   <p>Fonts are loaded from Google Fonts, which means Google receives your IP address in order to
     serve them. The showreel video is served from Cloudflare, which likewise sees your IP address
     when the video loads.</p>
@@ -235,5 +243,14 @@ thead th{font-family:var(--mono); font-weight:500; font-size:11px; letter-spacin
 <!-- Cloudflare Web Analytics -->
 <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "5369f0ea5eda46acad301b6c079289b1"}'></script>
 <!-- End Cloudflare Web Analytics -->
+<!-- Microsoft Clarity (cookie-free mode: no consent granted, so no cookies set) -->
+<script>
+(function(c,l,a,r,i,t,y){
+    c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+    t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+    y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+})(window, document, "clarity", "script", "y7du1nai9j");
+</script>
+<!-- End Microsoft Clarity -->
 </body>
 </html>
