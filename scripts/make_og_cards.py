@@ -63,21 +63,28 @@ def tracked(draw, xy, text, f, fill, tracking):
     return x
 
 
-def base(src, zoom=0.78):
+def base(src, zoom=0.78, bias_x=0.0, bias_y=0.0, scrim=0.60):
     im = Image.open(src).convert("RGB")
     # Centre-crop to 1200:630. `zoom` pulls in past the survey boundary — the
     # orthomosaic has black nodata wedges at its corners, and a full-frame crop
     # puts one of them behind the headline where it reads as a rendering fault.
+    # `bias_x`/`bias_y` (-1..1) shift the crop window off-centre within what
+    # the zoom leaves free — used on og-default to drop the access road/car
+    # near the top of frame in favour of the pond, which reads better small.
     tw, th = im.width, int(im.width * H / W)
     if th > im.height:
         th, tw = im.height, int(im.height * W / H)
     tw, th = int(tw * zoom), int(th * zoom)
     left, top = (im.width - tw) // 2, (im.height - th) // 2
+    left += int(bias_x * (im.width - tw) / 2)
+    top += int(bias_y * (im.height - th) / 2)
+    left = max(0, min(im.width - tw, left))
+    top = max(0, min(im.height - th, top))
     im = im.crop((left, top, left + tw, top + th)).resize((W, H), Image.LANCZOS)
 
     # Flat scrim plus a left-weighted gradient: the text block sits on the left,
     # and a single flat layer heavy enough for it kills the whole image.
-    im = Image.blend(im, Image.new("RGB", (W, H), INK), 0.60)
+    im = Image.blend(im, Image.new("RGB", (W, H), INK), scrim)
     grad = Image.new("L", (W, 1))
     for x in range(W):
         grad.putpixel((x, 0), int(150 * max(0.0, 1 - (x / (W * 0.86)) ** 1.5)))
@@ -85,9 +92,9 @@ def base(src, zoom=0.78):
                            grad.resize((W, H), Image.BILINEAR))
 
 
-def ticks(d):
+def ticks(d, t=26):
     """The corner registration marks used on every plate on the site."""
-    t, o = 26, 26
+    o = t
     for (x, y, dx, dy) in ((o, o, 1, 1), (W - o, o, -1, 1),
                            (o, H - o, 1, -1), (W - o, H - o, -1, -1)):
         d.line([(x, y), (x + dx * t, y)], fill=MAGENTA, width=2)
@@ -95,13 +102,14 @@ def ticks(d):
 
 
 def card(f, src, out, eyebrow, head, stand, figs,
-         url="parallaxaerial.uk"):
-    im = base(src)
+         url="parallaxaerial.uk", zoom=0.78, bias_x=0.0, bias_y=0.0, scrim=0.60,
+         h_size=62, h_gap=66, tick=26):
+    im = base(src, zoom=zoom, bias_x=bias_x, bias_y=bias_y, scrim=scrim)
     d = ImageDraw.Draw(im)
-    ticks(d)
+    ticks(d, tick)
 
     f_eye = font(f["rm"], 17, 500)
-    f_h = font(f["an"], 62, 600)
+    f_h = font(f["an"], h_size, 600)
     f_st = font(f["ps"], 22, 300)
     f_val = font(f["an"], 40, 600)
     f_lab = font(f["rm"], 14, 400)
@@ -113,7 +121,7 @@ def card(f, src, out, eyebrow, head, stand, figs,
     y = 104
     for line in head:
         d.text((x, y), line, font=f_h, fill=PAPER)
-        y += 66
+        y += h_gap
 
     y += 22
     for line in stand:
@@ -154,13 +162,21 @@ if __name__ == "__main__":
          ("2.7×", "VOLUME OVER-READ")],
     )
 
-    # Figures must match the homepage spec row.
+    # Figures must match the homepage spec row (index.html .spec — the price
+    # band shown here until 2026-08-26 was dropped from the site 2026-08-13
+    # per the no-published-prices rule and this card was never regenerated;
+    # swapped for the row's current third figure, "Repeatability"). Crop is
+    # biased down off the default centre-crop to drop the access road/car
+    # near the top in favour of the pond, and the headline/ticks are sized
+    # up a touch — both read better at social-card thumbnail scale.
     card(
         f, ortho, root + "/media/og-default.jpg",
         "CONSTRUCTION PROGRESS MONITORING  ·  SLOUGH",
         ["The same flight,", "every month."],
         ["Orthomosaic, labelled stills and a month-to-month comparison —",
          "on your desk by the third working day, before your progress meeting."],
-        [("3rd working day", "OF THE MONTH"), ("£400–£650", "PER SITE, PER MONTH"),
+        [("3rd working day", "OF THE MONTH"),
+         ("Measured, published", "REPEATABILITY · NEGATIVE RESULTS INCLUDED"),
          ("GVC", "CAA AUTHORISED · £10m PL")],
+        zoom=0.60, bias_y=0.55, scrim=0.58, h_size=65, h_gap=69, tick=28,
     )
