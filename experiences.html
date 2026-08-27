@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Virtual Drone Experience for care homes — Parallax Aerial</title>
+<meta name="description" content="A live drone's-eye session for care home residents — the aircraft in the room, the view on the big screen, and the grounds from above. Slough-based, within an hour: Berkshire, Bucks, Oxfordshire and Greater London.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://parallaxaerial.uk/experiences">
+
+<meta property="og:title" content="Virtual Drone Experience for care homes — Parallax Aerial">
+<meta property="og:description" content="A live drone's-eye session for residents. Not a film — the aircraft is in the room, and they can see themselves waving from above.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://parallaxaerial.uk/experiences">
+<meta property="og:image" content="https://parallaxaerial.uk/media/og-default.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Parallax Aerial, Slough — aerial work across Berkshire and Buckinghamshire.">
+<meta property="og:site_name" content="Parallax Aerial">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Virtual Drone Experience for care homes — Parallax Aerial">
+<meta name="twitter:description" content="A live drone's-eye session for residents. Not a film — the aircraft is in the room.">
+<meta name="twitter:image" content="https://parallaxaerial.uk/media/og-default.jpg">
+
+<link rel="icon" href="favicon.ico" sizes="16x16 32x32 48x48">
+<link rel="icon" type="image/png" href="favicon-32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="icon-192.png" sizes="192x192">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F7F7F4">
+
+<script>
+/* Applied before first paint so a returning dark-mode visitor never sees a
+   light flash. Shares the ssd-theme key with the home page. */
+(function () {
+  try {
+    if (localStorage.getItem('ssd-theme') === 'dark') {
+      document.documentElement.setAttribute('data-theme', 'dark');
+    }
+  } catch (e) {}
+})();
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Public+Sans:wght@300;400;500&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+
+<style>
+/* Same tokens as the home page, but only the rules this page actually uses.
+   The site has no build step, so each page carries its own sheet — the pattern
+   film.html and capability-statement.html already follow. */
+:root{
+  --chart:#F7F7F4; --paper:#FFFFFF; --ink:#16161A; --slate:#5C5C63;
+  --hairline:#D6D6CF; --magenta:#9E0F4F; --airway:#5B6BE0; --on-accent:#FFFFFF;
+  --sans:"Public Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+  --head:"Space Grotesk",-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  --wide:1340px; --gut:clamp(18px,4vw,44px); --ledger:rgba(22,22,26,.055);
+}
+:root[data-theme="dark"]{
+  --chart:#16161A; --paper:#1E1E24; --ink:#F7F7F4; --slate:#9B9BA6;
+  --hairline:#32323A; --magenta:#E0447F; --airway:#8E9BFF; --on-accent:#16161A;
+  --ledger:rgba(247,247,244,.05);
+}
+*,*::before,*::after{box-sizing:border-box}
+body{
+  margin:0; background:var(--chart); color:var(--ink); font-family:var(--sans);
+  font-weight:300; font-size:17px; line-height:1.62; font-variant-numeric:tabular-nums;
+  -webkit-font-smoothing:antialiased;
+}
+img,video{max-width:100%; height:auto; display:block}
+a{color:var(--magenta)}
+:focus-visible{outline:2px solid var(--airway); outline-offset:2px}
+.wrap{max-width:var(--wide); margin:0 auto; padding-inline:var(--gut)}
+
+.eyebrow{
+  font-family:var(--mono); font-size:12px; font-weight:500; letter-spacing:.16em;
+  text-transform:uppercase; color:var(--slate); margin:0;
+}
+h1{
+  font-family:var(--head); font-weight:600; letter-spacing:-.02em; line-height:1.02;
+  font-size:clamp(38px,6.4vw,74px); margin:14px 0 0;
+}
+h2{
+  font-family:var(--head); font-weight:600; letter-spacing:-.015em; line-height:1.1;
+  font-size:clamp(25px,3vw,36px); margin:0 0 10px;
+}
+h3{
+  font-family:var(--head); font-weight:600; letter-spacing:-.01em; line-height:1.15;
+  font-size:19px; margin:0 0 6px;
+}
+p{margin:0 0 16px; max-width:66ch}
+.read{max-width:66ch}
+
+.masthead{border-bottom:1px solid var(--hairline); background:var(--paper)}
+.masthead__in{display:flex; align-items:center; justify-content:space-between; gap:20px; flex-wrap:wrap; padding-block:16px}
+.masthead__home{display:inline-block; min-height:44px}
+.masthead__home img{height:26px; width:auto}
+.wm-light{display:none}
+:root[data-theme="dark"] .wm-dark{display:none}
+:root[data-theme="dark"] .wm-light{display:block}
+.masthead__strap{display:block; margin-top:5px}
+.masthead__act{display:flex; align-items:center; gap:14px; flex-wrap:wrap}
+.masthead__tel{display:inline-flex; align-items:center; min-height:44px; color:var(--ink); text-decoration:none; font-family:var(--mono); font-size:14px}
+.theme{display:inline-flex; border:1px solid var(--hairline); border-radius:2px; overflow:hidden}
+.theme button{
+  font:500 12px/1 var(--mono); letter-spacing:.1em; text-transform:uppercase;
+  padding:9px 11px; background:transparent; color:var(--slate); border:0; cursor:pointer;
+}
+.theme button[aria-pressed="true"]{background:var(--ink); color:var(--chart)}
+.btn{
+  display:inline-block; font-family:var(--mono); font-size:13px; font-weight:500;
+  letter-spacing:.08em; text-transform:uppercase; text-decoration:none;
+  padding:13px 18px; border:1px solid var(--ink); color:var(--ink); border-radius:2px;
+}
+.btn--go{background:var(--magenta); border-color:var(--magenta); color:var(--on-accent)}
+
+.hero{padding-block:clamp(38px,6vw,74px)}
+.ledger{background:var(--ledger)}
+.stand{font-size:clamp(18px,2vw,22px); font-weight:300; margin-top:18px; max-width:60ch}
+
+.band{padding-block:clamp(34px,5vw,60px); border-top:1px solid var(--hairline)}
+.band:first-of-type{border-top:0}
+
+/* Three acts, and the practical notes, share one card grid. */
+.cards{display:grid; gap:clamp(16px,2vw,26px); margin-top:26px; grid-template-columns:repeat(auto-fit,minmax(255px,1fr))}
+.card{background:var(--paper); border:1px solid var(--hairline); border-radius:2px; padding:20px 20px 6px}
+.card__n{font-family:var(--mono); font-size:12px; font-weight:500; letter-spacing:.16em; color:var(--slate); display:block; margin-bottom:8px}
+.card p{font-size:16px; max-width:none}
+
+.notes{margin:22px 0 0; padding:0; list-style:none; max-width:66ch}
+.notes li{border-top:1px solid var(--hairline); padding:13px 0}
+.notes li strong{font-weight:500}
+
+.creds{margin:0; border-top:1px solid var(--hairline); max-width:66ch}
+.creds > div{display:flex; justify-content:space-between; gap:16px; border-bottom:1px solid var(--hairline); padding:13px 0}
+.creds dt{font-weight:400}
+.creds dd{margin:0; font-family:var(--mono); font-size:15px; text-align:right}
+
+.cta{padding-block:clamp(34px,5vw,60px)}
+.cta__acts{display:flex; flex-wrap:wrap; gap:10px; margin-top:20px}
+
+.foot{background:var(--paper); border-top:1px solid var(--hairline); margin-top:clamp(30px,4vw,52px)}
+.foot .wrap{display:grid; gap:26px; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); padding-block:36px}
+.foot h4{font-family:var(--mono); font-size:12px; font-weight:500; letter-spacing:.16em; text-transform:uppercase; color:var(--slate); margin:0 0 10px}
+.foot a{display:block; color:var(--ink); text-decoration:none; margin-bottom:7px; font-size:15px}
+.foot a:hover{color:var(--magenta)}
+.foot p{margin:0 0 7px; font-size:15px}
+.foot__legal{grid-column:1/-1; border-top:1px solid var(--hairline); padding-top:18px; display:flex; flex-wrap:wrap; gap:10px 26px; font-size:13px; color:var(--slate)}
+
+@media (max-width:600px){ .btn{padding:15px 20px} .foot a{padding-block:11px; margin-bottom:0} }
+@media (prefers-reduced-motion:reduce){*{animation:none!important; transition:none!important}}
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="wrap masthead__in">
+    <div>
+      <a class="masthead__home" href="/" aria-label="Parallax Aerial — home">
+        <img class="wm-dark" src="brand/wordmark-oneline-dark.svg" alt="Parallax Aerial" width="378" height="47">
+        <img class="wm-light" src="brand/wordmark-oneline-white.svg" alt="" aria-hidden="true" width="378" height="47">
+      </a>
+      <span class="eyebrow masthead__strap">GVC · CAA Authorised · £10m PL</span>
+    </div>
+    <div class="masthead__act">
+      <div class="theme" role="group" aria-label="Colour scheme">
+        <button type="button" data-theme-set="light" aria-pressed="true">Light</button>
+        <button type="button" data-theme-set="dark" aria-pressed="false">Dark</button>
+      </div>
+      <a class="masthead__tel" href="tel:+447415502186">+44 7415 502186</a>
+      <a class="btn btn--go" href="#enquire">Enquire</a>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<section class="ledger">
+  <div class="wrap hero">
+    <p class="eyebrow">Virtual Drone Experience · care homes &amp; community groups · Berkshire · Bucks · Oxon</p>
+    <h1>Flight, brought into the room.</h1>
+    <p class="stand">A live drone's-eye session for people who will never fly one
+      themselves. Not a film on a screen — the aircraft is in the room, flying now, and
+      the residents can see themselves in it, waving back from above.</p>
+  </div>
+</section>
+
+<section class="wrap band">
+  <p class="eyebrow">What happens</p>
+  <h2>Three parts, and the room sets the pace.</h2>
+  <p class="read">Built around the home's normal activity slot, and shaped with the
+    coordinator beforehand rather than on the day. Everything is slow, level and
+    announced before it happens.</p>
+
+  <div class="cards">
+    <div class="card">
+      <span class="card__n">01</span>
+      <h3>The aircraft in the room</h3>
+      <p>A small indoor drone, hovering, close enough to see properly — and the view from
+        its camera live on the big screen. Residents look up at it, then look across at
+        themselves from above, and wave. A recording cannot do this. It is the whole
+        reason the session is live.</p>
+    </div>
+    <div class="card">
+      <span class="card__n">02</span>
+      <h3>Out the window</h3>
+      <p>Where the grounds and the weather allow, the view goes outside: over the garden,
+        up, and there is the building from above — there is <em>your</em> window, the bench
+        by the path, the road you came in on. Their own place, from a viewpoint nobody in
+        the room has ever had of it.</p>
+    </div>
+    <div class="card">
+      <span class="card__n">03</span>
+      <h3>The goggles</h3>
+      <p>Optional, one resident at a time, seated, for half a minute or so — the view
+        filling their whole vision while the room carries on watching the screen. The big
+        bright screen is the main event; the goggles are the extra for whoever wants them.</p>
+    </div>
+  </div>
+</section>
+
+<section class="wrap band">
+  <p class="eyebrow">How it is run</p>
+  <h2>The care part is the specification, not a preference.</h2>
+  <p class="read">This is a room of seated, often frail people, and a pilot who is
+    concentrating. Every one of these is fixed procedure, not something decided on the day.</p>
+
+  <ul class="notes">
+    <li><strong>A member of staff spots, with one word.</strong> One person watches the
+      room and the aircraft, and says <em>stop</em>. The pilot cuts power. It is agreed and
+      rehearsed before anything takes off.</li>
+    <li><strong>Nothing moves without being announced.</strong> Slow, level, wide, long
+      holds, horizon flat. No dives, no fast turns. Motion that is announced does not
+      disorient; motion that arrives unannounced does.</li>
+    <li><strong>Goggles are always seated, always brief, always optional.</strong> They go
+      over most spectacles, the fit is adjusted in seconds, and a staff hand on the shoulder
+      stays there throughout. Anyone who would rather just watch the screen watches the
+      screen.</li>
+    <li><strong>Infection control is brought with us.</strong> Single-use hygienic face
+      masks per resident, alcohol wipes on the goggles between turns, hand sanitiser.</li>
+    <li><strong>Consent and capacity stay with the home.</strong> The home decides who
+      takes part, and cameras stay off residents' faces unless the home has cleared it.</li>
+    <li><strong>The screen comes with us too.</strong> Lounge TVs are wall-mounted, the
+      input is locked or the remote is missing. Yours is used if it works and ours is set up
+      if it does not, so a screen is never what stops the session.</li>
+  </ul>
+</section>
+
+<section class="wrap band">
+  <p class="eyebrow">Practical</p>
+  <h2>What is needed, and what is brought.</h2>
+  <div class="cards">
+    <div class="card">
+      <span class="card__n">FROM YOU</span>
+      <p>A lounge or activity room, a mains socket, and a coordinator who knows which
+        residents would enjoy it. The room size, screen, input and socket are confirmed in
+        advance by phone — never discovered on arrival.</p>
+    </div>
+    <div class="card">
+      <span class="card__n">FROM US</span>
+      <p>Aircraft, screen, goggles, cabling, hygiene kit — and arrival 45 to 60 minutes
+        early to set up and walk the room quietly before anyone comes in.</p>
+    </div>
+    <div class="card">
+      <span class="card__n">WHERE</span>
+      <p>Based in Slough. Within an hour: Berkshire, Buckinghamshire, Oxfordshire, Surrey
+        and Greater London. Further afield by arrangement.</p>
+    </div>
+  </div>
+
+  <dl class="creds" style="margin-top:30px">
+    <div><dt>Sessions</dt><dd>Quoted per home</dd></div>
+    <div><dt>Qualification</dt><dd>GVC · CAA authorised</dd></div>
+    <div><dt>Public liability</dt><dd>£10m</dd></div>
+    <div><dt>Enhanced DBS</dt><dd>Applied for</dd></div>
+  </dl>
+</section>
+
+<section class="ledger" id="enquire">
+  <div class="wrap cta">
+    <p class="eyebrow">Getting a session in the diary</p>
+    <h2>A phone call is usually faster than a form.</h2>
+    <p class="read">Tell me the home, roughly how many residents, and the activity slot you
+      have in mind, and you will get a straight answer the same day — including if it is
+      not right for your room. Sessions are quoted per home; ask and you get a figure, not
+      a brochure.</p>
+    <p class="cta__acts">
+      <a class="btn btn--go" href="tel:+447415502186">Call +44 7415 502186</a>
+      <a class="btn" href="mailto:info@parallaxaerial.uk?subject=Virtual%20Drone%20Experience%20enquiry">Email instead</a>
+    </p>
+  </div>
+</section>
+
+<section class="wrap band">
+  <h2>Here for the survey side?</h2>
+  <p>Parallax Aerial also flies monthly construction progress records — the same mission
+    every visit, orthomosaic and a month-to-month comparison. Different work, same aircraft
+    discipline, and it lives on the <a href="/">home page</a>.</p>
+  <p><a class="btn" href="/">Construction progress monitoring</a></p>
+</section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div>
+      <h4>Contact</h4>
+      <a href="tel:+447415502186">+44 7415 502186</a>
+      <a href="mailto:info@parallaxaerial.uk">info@parallaxaerial.uk</a>
+      <p>Slough SL1, Berkshire</p>
+    </div>
+    <div>
+      <h4>Credentials</h4>
+      <p>GVC qualified</p>
+      <p>CAA authorised, commercial</p>
+      <p>£10m public liability</p>
+      <p>EC 785/2004 compliant</p>
+    </div>
+    <div>
+      <h4>Elsewhere</h4>
+      <a href="/">Progress monitoring</a>
+      <a href="/film">Brand film &amp; FPV</a>
+      <a href="/articles/">Articles</a>
+      <a href="https://www.youtube.com/@ParallaxAerial">YouTube</a>
+      <a href="https://www.linkedin.com/company/shining-star-drones">LinkedIn</a>
+      <a href="/capability-statement">Capability statement</a>
+      <a href="/privacy">Privacy notice</a>
+    </div>
+    <div class="foot__legal">
+      <span>&copy; 2026 Andrew Abdul-Malek trading as Parallax Aerial &middot; Slough SL1, Berkshire</span>
+      <span>Berkshire · Bucks · Slough–Maidenhead–M4 · Surrey · Herts · Greater London</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var root = document.documentElement,
+      meta = document.querySelector('meta[name="theme-color"]'),
+      btns = document.querySelectorAll('[data-theme-set]');
+
+  function apply(theme) {
+    if (theme === 'dark') root.setAttribute('data-theme', 'dark');
+    else root.removeAttribute('data-theme');
+    if (meta) meta.setAttribute('content', theme === 'dark' ? '#16161A' : '#F7F7F4');
+    btns.forEach(function (b) {
+      b.setAttribute('aria-pressed', String(b.dataset.themeSet === theme));
+    });
+    try { localStorage.setItem('ssd-theme', theme); } catch (e) {}
+  }
+
+  btns.forEach(function (b) {
+    b.addEventListener('click', function () { apply(b.dataset.themeSet); });
+  });
+
+  apply(root.getAttribute('data-theme') === 'dark' ? 'dark' : 'light');
+})();
+</script>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "5369f0ea5eda46acad301b6c079289b1"}'></script>
+<!-- Microsoft Clarity (cookie-free mode: no consent granted, so no cookies set) -->
+<script>
+(function(c,l,a,r,i,t,y){
+    c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+    t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+    y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+})(window, document, "clarity", "script", "y7du1nai9j");
+</script>
+<!-- End Microsoft Clarity -->
+
+</body>
+</html>

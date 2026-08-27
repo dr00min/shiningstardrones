@@ -8,6 +8,7 @@ Static marketing site for [parallaxaerial.uk](https://parallaxaerial.uk) — GVC
 |---|---|
 | `index.html` | Landing page (services, showreel, areas, pricing, contact form) |
 | `film.html` | Brand film / FPV, at `/film`. **Split out of `index.html` on 2026-08-07** — FPV rates next to a progress pack invite a commercial manager to price this as videography |
+| `experiences.html` | Virtual Drone Experience, at `/experiences`. Live drone-view sessions for care homes — a separate business line with a separate buyer. **Kept off the hero deliberately**: a resident activity next to a progress pack confuses both audiences |
 | `articles/index.html` | Articles index, at `/articles/`. Field notes on measurement, method and limits |
 | `articles/*.html` | One file per article, at `/articles/<slug>`. **Asset paths must be root-relative (`/brand/…`)** — these pages sit one directory down |
 | `capability-statement.html` | One-page proof artifact for procurement teams |
