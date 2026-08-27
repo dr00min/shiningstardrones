@@ -141,6 +141,11 @@ a{color:inherit}
 .rule{border:0; border-top:1px solid var(--hairline); margin:0}
 /* magenta rule separates the page's major movements — accent job #1 */
 .movement{border:0; border-top:3px solid var(--magenta); margin:0}
+/* A movement rule sitting hard against the last line of the section above it read
+   as an underline on that paragraph rather than as a divider. Sections ending in a
+   .split already carry padding-bottom; the ones ending in a caption or a note carry
+   none, so the clearance goes on the rule itself and covers both cases. */
+section + .movement, section + .rule{margin-top:clamp(30px,4vw,54px)}
 h1,h2,h3{font-family:var(--head); font-weight:600; letter-spacing:-.015em; line-height:1.05; margin:0}
 h1{font-size:clamp(40px,7.2vw,86px); letter-spacing:-.03em; line-height:.96}
 h2{font-size:clamp(27px,3.4vw,44px)}
@@ -307,6 +312,14 @@ p:last-child{margin-bottom:0}
   .deflist dt{padding:11px 0 0; border-bottom:0}
   .deflist dd{padding:2px 0 11px}
 }
+/* --stack: the same list inside a half-width column. `max-content` sizes the label
+   column off the longest label, so a sentence-length label ("The flight is a file,
+   not a decision") left the definition about 16ch wide and set it as a ragged
+   gutter. Stacking label over definition gives the prose the whole column. */
+.deflist--stack{grid-template-columns:1fr}
+.deflist--stack dt{padding:15px 0 0; border-bottom:0; letter-spacing:.14em}
+.deflist--stack dd{padding:5px 0 16px; line-height:1.55}
+.deflist--stack > div:first-child dt{padding-top:11px}
 
 /* ---------------------------------------------------- A: contact strip */
 .strip{display:grid; gap:14px; grid-template-columns:repeat(2,1fr); padding-bottom:clamp(40px,5vw,68px)}
@@ -739,7 +752,7 @@ table.matrix{border-collapse:collapse; width:100%; min-width:900px; font-size:14
 
   <div class="split split--two">
     <div>
-      <dl class="deflist">
+      <dl class="deflist deflist--stack">
         <div>
           <dt>The flight is a file, not a decision</dt>
           <dd>Every visit flies the <em>same saved mission</em> — same lines, same heights,
