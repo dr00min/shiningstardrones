@@ -132,6 +132,7 @@ p{margin:0 0 16px; max-width:66ch}
 .shot img{width:100%; border:1px solid var(--hairline); border-radius:2px}
 .shot figcaption{margin-top:9px; font-family:var(--mono); font-size:13px; color:var(--slate)}
 .shots{display:grid; gap:clamp(16px,2vw,26px); margin-top:26px; grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+.player{background:#16161A; border:1px solid var(--hairline); border-radius:2px; overflow:hidden}
 
 .notes{margin:22px 0 0; padding:0; list-style:none; max-width:66ch}
 .notes li{border-top:1px solid var(--hairline); padding:13px 0}
@@ -196,6 +197,21 @@ p{margin:0 0 16px; max-width:66ch}
     <img src="media/experiences-hero.jpg" width="2000" height="947"
          alt="A woman seated in an armchair, smiling, with FPV goggles in her lap; opposite her the pilot wears goggles and holds a controller.">
     <figcaption>Testing the kit at home before we bring it to yours.</figcaption>
+  </figure>
+</section>
+
+<section class="wrap" style="padding-block:clamp(4px,1vw,10px) clamp(20px,3vw,34px)">
+  <figure class="shot">
+    <div class="player">
+      <video controls preload="none" playsinline poster="media/experiences-poster.jpg"
+             aria-label="Forty seconds of a drone-view session being tested at home">
+        <source src="https://media.parallaxaerial.uk/experiences-web-1080p-55MB.mp4" type="video/mp4">
+        <p style="padding:16px;color:#F7F7F4">Your browser can&rsquo;t play this video &mdash;
+          <a href="tel:+447415502186" style="color:#E0447F">give me a ring</a> and I&rsquo;ll describe it.</p>
+      </video>
+    </div>
+    <figcaption>Forty seconds &mdash; the kit tested at home, and the kind of view the flight
+      goes looking for once it is outside.</figcaption>
   </figure>
 </section>
 
