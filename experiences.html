@@ -12,15 +12,15 @@
 <meta property="og:description" content="A live drone's-eye session for residents. Not a film — the aircraft is in the room, and they can see themselves waving from above.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://parallaxaerial.uk/experiences">
-<meta property="og:image" content="https://parallaxaerial.uk/media/og-default.jpg">
+<meta property="og:image" content="https://parallaxaerial.uk/media/og-experiences.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Parallax Aerial, Slough — aerial work across Berkshire and Buckinghamshire.">
+<meta property="og:image:alt" content="Someone trying the FPV goggles at home, with the drone's live view on the room's television.">
 <meta property="og:site_name" content="Parallax Aerial">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Virtual Drone Experience for care homes — Parallax Aerial">
 <meta name="twitter:description" content="A live drone's-eye session for residents. Not a film — the aircraft is in the room.">
-<meta name="twitter:image" content="https://parallaxaerial.uk/media/og-default.jpg">
+<meta name="twitter:image" content="https://parallaxaerial.uk/media/og-experiences.jpg">
 
 <link rel="icon" href="favicon.ico" sizes="16x16 32x32 48x48">
 <link rel="icon" type="image/png" href="favicon-32.png" sizes="32x32">
@@ -127,6 +127,12 @@ p{margin:0 0 16px; max-width:66ch}
 .card__n{font-family:var(--mono); font-size:12px; font-weight:500; letter-spacing:.16em; color:var(--slate); display:block; margin-bottom:8px}
 .card p{font-size:16px; max-width:none}
 
+/* Photographs. Two-up by design -- there is no act 01 image yet. */
+.shot{margin:0}
+.shot img{width:100%; border:1px solid var(--hairline); border-radius:2px}
+.shot figcaption{margin-top:9px; font-family:var(--mono); font-size:13px; color:var(--slate)}
+.shots{display:grid; gap:clamp(16px,2vw,26px); margin-top:26px; grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+
 .notes{margin:22px 0 0; padding:0; list-style:none; max-width:66ch}
 .notes li{border-top:1px solid var(--hairline); padding:13px 0}
 .notes li strong{font-weight:500}
@@ -185,6 +191,14 @@ p{margin:0 0 16px; max-width:66ch}
   </div>
 </section>
 
+<section class="wrap" style="padding-block:clamp(20px,3vw,34px)">
+  <figure class="shot">
+    <img src="media/experiences-hero.jpg" width="2000" height="947"
+         alt="A woman seated in an armchair, smiling, with FPV goggles in her lap; opposite her the pilot wears goggles and holds a controller.">
+    <figcaption>Testing the kit at home before we bring it to yours.</figcaption>
+  </figure>
+</section>
+
 <section class="wrap band">
   <p class="eyebrow">What happens</p>
   <h2>Three parts, and the room sets the pace.</h2>
@@ -216,6 +230,19 @@ p{margin:0 0 16px; max-width:66ch}
         filling their whole vision while the room carries on watching the screen. The big
         bright screen is the main event; the goggles are the extra for whoever wants them.</p>
     </div>
+  </div>
+
+  <div class="shots">
+    <figure class="shot">
+      <img src="media/experiences-act2-church.jpg" width="1400" height="788"
+           alt="A flint church with a wooden tower seen from the air, the River Thames and wooded countryside behind it.">
+      <figcaption>The kind of view — a place you know, from a viewpoint you have never had of it.</figcaption>
+    </figure>
+    <figure class="shot">
+      <img src="media/experiences-act3-goggles.jpg" width="1400" height="788"
+           alt="Box-style FPV goggles worn by an older woman seated in an armchair.">
+      <figcaption>One person at a time, seated, for half a minute or so.</figcaption>
+    </figure>
   </div>
 </section>
 
