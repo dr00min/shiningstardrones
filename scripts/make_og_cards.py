@@ -5,7 +5,7 @@ Run from the repo root:
 
     python3 scripts/make_og_cards.py
 
-Writes media/og-default.jpg and media/og-accuracy-study.jpg.
+Writes media/og-default.jpg, media/og-accuracy-study.jpg and media/og-altitude.jpg.
 
 Why a script and not a one-off export: the cards carry live facts (the accuracy
 figures, the rate band, the delivery promise). When one of those changes on the
@@ -160,6 +160,19 @@ if __name__ == "__main__":
          "between the flights — so everything the model reported was error."],
         [("0.24 m", "90% AGREEMENT"), ("0.033 m", "SCATTER, HARDSTANDING"),
          ("2.7×", "VOLUME OVER-READ")],
+    )
+
+    # Figures must match the article. See articles/the-altitude-your-drone-reports.html
+    # The 4 Aug ortho, not 3 Aug: the card is about the second day's reading.
+    card(
+        f, root + "/media/ramblers-ortho-2026-08-04.jpg", root + "/media/og-altitude.jpg",
+        "FIELD NOTE  ·  MEASUREMENT",
+        ["The altitude your drone reports", "is not the altitude it flew"],
+        ["Same take-off spot, identical 40.00 m above launch on every flight.",
+         "The absolute altitude in the photos moved 27.78 m in 24 hours."],
+        [("40.00 m", "ABOVE LAUNCH, BOTH DAYS"), ("+27.78 m", "ABSOLUTE, 24 H LATER"),
+         ("−3 hPa", "HEATHROW PRESSURE")],
+        h_size=56, h_gap=60,
     )
 
     # Figures must match the homepage spec row (index.html .spec — the price

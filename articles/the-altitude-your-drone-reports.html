@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The altitude your drone reports is not the altitude it flew | Parallax Aerial</title>
+<meta name="description" content="Same site, same take-off spot, identical 40.00 m above launch on three flights — and the drone's absolute altitude moved 27.78 m in 24 hours. Why, how to check it on your own drone, and what it means for anyone quoting levels.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://parallaxaerial.uk/articles/the-altitude-your-drone-reports">
+
+<meta property="og:title" content="The altitude your drone reports is not the altitude it flew">
+<meta property="og:description" content="Identical 40.00 m above launch, three flights, one take-off spot. The absolute altitude moved 27.78 m in 24 hours. What moved, how to check yours, and what it means for absolute levels.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://parallaxaerial.uk/articles/the-altitude-your-drone-reports">
+<meta property="og:image" content="https://parallaxaerial.uk/media/og-altitude.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="The Ramblers Car Park orthomosaic, captioned with the article's figures: 40.00 m above launch both days, 27.78 m of absolute altitude drift, and a 3 hPa pressure fall at Heathrow.">
+<meta property="og:site_name" content="Parallax Aerial">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The altitude your drone reports is not the altitude it flew">
+<meta name="twitter:description" content="Identical 40.00 m above launch, three flights, one take-off spot. The absolute altitude moved 27.78 m in 24 hours. What moved, and how to check yours.">
+<meta name="twitter:image" content="https://parallaxaerial.uk/media/og-altitude.jpg">
+
+<link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48">
+<link rel="icon" type="image/png" href="/favicon-32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/icon-192.png" sizes="192x192">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="theme-color" content="#F7F7F4">
+
+<script>
+/* Applied before first paint so a returning dark-mode visitor never sees a
+   light flash. Shares the ssd-theme key with the home page. */
+(function () {
+  try {
+    if (localStorage.getItem('ssd-theme') === 'dark') {
+      document.documentElement.setAttribute('data-theme', 'dark');
+    }
+  } catch (e) {}
+})();
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Public+Sans:wght@300;400;500&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "The altitude your drone reports is not the altitude it flew",
+  "description": "Three flights of the same site from the same take-off spot, each at an identical 40.00 m above launch. The aircraft's recorded absolute altitude moved 27.78 m in 24 hours. Where that number comes from, why it moves, how to check it on your own drone, and what it means for absolute levels.",
+  "datePublished": "2026-10-07",
+  "dateModified": "2026-10-07",
+  "inLanguage": "en-GB",
+  "image": "https://parallaxaerial.uk/media/og-altitude.jpg",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://parallaxaerial.uk/articles/the-altitude-your-drone-reports"
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Andrew Abdul-Malek",
+    "jobTitle": "GVC-qualified remote pilot",
+    "worksFor": {"@type": "Organization", "name": "Parallax Aerial"}
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Parallax Aerial",
+    "url": "https://parallaxaerial.uk"
+  },
+  "about": ["Drone altitude", "Barometric altitude", "Photogrammetry accuracy", "Construction progress monitoring"]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://parallaxaerial.uk/"},
+    {"@type": "ListItem", "position": 2, "name": "Articles", "item": "https://parallaxaerial.uk/articles/"},
+    {"@type": "ListItem", "position": 3, "name": "The altitude your drone reports is not the altitude it flew"}
+  ]
+}
+</script>
+
+<style>
+/* Same tokens as the home page, but only the rules this page uses. The site has
+   no build step, so each page carries its own sheet — the pattern film.html and
+   capability-statement.html already follow. */
+:root{
+  --chart:#F7F7F4; --paper:#FFFFFF; --ink:#16161A; --slate:#5C5C63;
+  --hairline:#D6D6CF; --magenta:#9E0F4F; --airway:#5B6BE0; --on-accent:#FFFFFF;
+  --sans:"Public Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+  --head:"Space Grotesk",-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  --wide:1340px; --gut:clamp(18px,4vw,44px); --ledger:rgba(22,22,26,.055);
+
+  /* Chart series. NOT the brand --magenta/--airway pair: that blue fails the
+     chroma floor and the dark-mode lightness band. These two were snapped to
+     the nearest passing step and validated in both modes — all six checks pass
+     (CVD dE 13.3 protan light / 11.2 protan dark, both well clear of the 8
+     floor). Change one and re-validate the pair; do not eyeball it. */
+  --s1:#9E0F4F;   /* 04 Aug — the cross-date result, the headline series */
+  --s2:#5B6BE0;   /* 03 Aug — the same-morning pair */
+  --grid:rgba(14,21,25,.10);
+}
+:root[data-theme="dark"]{
+  --chart:#16161A; --paper:#1E1E24; --ink:#F7F7F4; --slate:#9B9BA6;
+  --hairline:#32323A; --magenta:#E0447F; --airway:#8E9BFF; --on-accent:#16161A;
+  --ledger:rgba(247,247,244,.05);
+  --s1:#E0447F; --s2:#8E9BFF; --grid:rgba(247,247,244,.12);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; background:var(--chart); color:var(--ink); font-family:var(--sans);
+  font-weight:400; font-size:17px; line-height:1.65; font-variant-numeric:tabular-nums;
+  -webkit-font-smoothing:antialiased; overflow-x:hidden;
+}
+img,svg{max-width:100%; display:block}
+a{color:var(--magenta); text-underline-offset:3px}
+:focus-visible{outline:2px solid var(--airway); outline-offset:2px}
+.wrap{max-width:var(--wide); margin:0 auto; padding-inline:var(--gut)}
+.read{max-width:68ch}
+
+.eyebrow{
+  font-family:var(--mono); font-size:11px; font-weight:500; letter-spacing:.16em;
+  text-transform:uppercase; color:var(--slate); margin:0;
+}
+h1{
+  font-family:var(--head); font-weight:600; letter-spacing:-.025em; line-height:1.02;
+  font-size:clamp(36px,5.6vw,66px); margin:16px 0 0; max-width:19ch;
+}
+h2{
+  font-family:var(--head); font-weight:600; letter-spacing:-.015em; line-height:1.1;
+  font-size:clamp(24px,2.8vw,34px); margin:0 0 12px; max-width:26ch;
+}
+h3{
+  font-family:var(--head); font-weight:500; letter-spacing:-.01em; line-height:1.2;
+  font-size:clamp(18px,1.7vw,21px); margin:0 0 8px;
+}
+p{margin:0 0 18px; max-width:68ch}
+strong{font-weight:500}
+
+/* ------------------------------------------------------------- masthead */
+.masthead{border-bottom:1px solid var(--hairline); background:var(--paper)}
+.masthead__in{display:flex; align-items:center; justify-content:space-between; gap:20px; flex-wrap:wrap; padding-block:16px}
+.masthead__home{display:inline-block; min-height:44px}
+.masthead__home img{height:26px; width:auto}
+.wm-light{display:none}
+:root[data-theme="dark"] .wm-dark{display:none}
+:root[data-theme="dark"] .wm-light{display:block}
+.masthead__strap{display:block; margin-top:5px}
+.masthead__act{display:flex; align-items:center; gap:14px; flex-wrap:wrap}
+.masthead__tel{display:inline-flex; align-items:center; min-height:44px; color:var(--ink); text-decoration:none; font-family:var(--mono); font-size:14px}
+.theme{display:inline-flex; border:1px solid var(--hairline); border-radius:2px; overflow:hidden}
+.theme button{
+  font:500 12px/1 var(--mono); letter-spacing:.1em; text-transform:uppercase;
+  padding:9px 11px; background:transparent; color:var(--slate); border:0; cursor:pointer;
+}
+.theme button[aria-pressed="true"]{background:var(--ink); color:var(--chart)}
+.btn{
+  display:inline-block; font-family:var(--mono); font-size:13px; font-weight:500;
+  letter-spacing:.08em; text-transform:uppercase; text-decoration:none;
+  padding:13px 18px; border:1px solid var(--ink); color:var(--ink); border-radius:2px;
+}
+.btn--go{background:var(--magenta); border-color:var(--magenta); color:var(--on-accent)}
+
+/* ---------------------------------------------------------------- crumbs */
+.crumbs{font-family:var(--mono); font-size:12px; letter-spacing:.06em; color:var(--slate); padding-block:14px 0}
+.crumbs a{color:var(--slate); text-decoration:none}
+.crumbs a:hover{color:var(--magenta)}
+
+/* ------------------------------------------------------------------ hero */
+.ledger{background:var(--ledger)}
+.hero{padding-block:clamp(26px,4vw,48px) clamp(30px,4vw,52px)}
+.stand{font-size:clamp(18px,1.9vw,22px); font-weight:300; line-height:1.5; margin-top:20px; max-width:58ch}
+.byline{
+  display:flex; flex-wrap:wrap; gap:8px 20px; margin-top:26px; padding-top:16px;
+  border-top:1px solid var(--hairline); font-family:var(--mono); font-size:12px;
+  letter-spacing:.06em; color:var(--slate); text-transform:uppercase;
+}
+
+/* ------------------------------------------------------------ stat tiles */
+/* Four headline numbers. Deliberately includes one that is bad news — the point
+   of the piece is that the bad ones are published too. */
+.tiles{
+  display:grid; grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+  border-top:1px solid var(--ink); margin-top:clamp(26px,3vw,40px);
+}
+.tile{padding:18px 20px 20px 0; border-bottom:1px solid var(--hairline)}
+@media (min-width:820px){.tile+.tile{padding-left:20px; border-left:1px solid var(--hairline)}}
+.tile__k{font-family:var(--mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--slate)}
+.tile__v{font-family:var(--head); font-weight:600; font-size:clamp(28px,3vw,38px); line-height:1.05; margin-top:8px; letter-spacing:-.02em}
+.tile__v--bad{color:var(--magenta)}
+.tile__c{font-size:14px; color:var(--slate); margin-top:6px; line-height:1.45}
+
+/* ----------------------------------------------------------------- body */
+/* Narrower than the site's 1340px wrap. This page is one column of prose, and a
+   68ch measure sitting at the left edge of a 1340px field reads as a mistake. */
+.body{max-width:1080px; padding-block:clamp(30px,4vw,54px)}
+.body section{padding-block:clamp(22px,3vw,38px)}
+.body section+section{border-top:1px solid var(--hairline)}
+.lede{font-size:19px; font-weight:300}
+ul.list{margin:0 0 18px; padding-left:20px; max-width:68ch}
+ul.list li{margin-bottom:9px}
+ul.list li::marker{color:var(--magenta)}
+
+/* ---------------------------------------------------------------- tables */
+.tbl-scroll{overflow-x:auto; margin:0 0 10px; -webkit-overflow-scrolling:touch}
+table{border-collapse:collapse; width:100%; min-width:520px; font-size:15px}
+caption{
+  text-align:left; font-family:var(--mono); font-size:11px; letter-spacing:.12em;
+  text-transform:uppercase; color:var(--slate); padding-bottom:10px;
+}
+th,td{text-align:right; padding:10px 12px; border-bottom:1px solid var(--hairline); white-space:nowrap}
+th:first-child,td:first-child{text-align:left; white-space:normal}
+thead th{
+  font-family:var(--mono); font-size:11px; font-weight:500; letter-spacing:.1em;
+  text-transform:uppercase; color:var(--slate); border-bottom:1px solid var(--ink);
+}
+tbody tr:last-child td{border-bottom:1px solid var(--ink)}
+td.num{font-family:var(--mono)}
+.hl{color:var(--magenta); font-weight:500}
+.tnote{font-size:14px; color:var(--slate); margin-top:10px; max-width:68ch}
+
+/* ---------------------------------------------------------------- charts */
+.fig{margin:0 0 12px; padding:clamp(16px,2vw,22px); border:1px solid var(--hairline); background:var(--paper)}
+.fig__t{font-family:var(--head); font-weight:500; font-size:18px; line-height:1.25; margin:0 0 4px}
+.fig__s{font-size:14px; color:var(--slate); margin:0 0 16px; max-width:66ch}
+/* The chart scrolls sideways below ~600px rather than shrinking its labels into
+   illegibility — same treatment as the tables. */
+.fig__plot{overflow-x:auto; -webkit-overflow-scrolling:touch}
+/* Capped so the bars keep the proportions they were drawn at; a chart stretched
+   to 1000px turns 46px bars into slabs. */
+.fig__plot svg{min-width:560px; width:100%; max-width:780px; height:auto; margin-inline:auto}
+.legend{display:flex; flex-wrap:wrap; gap:8px 20px; margin-top:14px; font-size:13px; color:var(--slate)}
+.legend span{display:inline-flex; align-items:center; gap:8px}
+.legend i{width:12px; height:12px; border-radius:2px; display:inline-block}
+/* Chart text wears text tokens, never the series colour. */
+.c-ax{fill:var(--slate); font-family:"IBM Plex Mono",monospace; font-size:12px}
+.c-lab{fill:var(--ink); font-family:"IBM Plex Mono",monospace; font-size:12.5px}
+.c-lab--mut{fill:var(--slate); font-family:"IBM Plex Mono",monospace; font-size:11.5px}
+.c-grid{stroke:var(--grid); stroke-width:1}
+.c-base{stroke:var(--hairline); stroke-width:1.5}
+.s1{fill:var(--s1)} .s2{fill:var(--s2)} .sm{fill:var(--slate); opacity:.55}
+
+/* -------------------------------------------------------------- callouts */
+.note{
+  border-left:3px solid var(--magenta); padding:2px 0 2px 18px; margin:0 0 20px; max-width:68ch;
+}
+.note p:last-child{margin-bottom:0}
+.card{
+  border:1px solid var(--hairline); background:var(--paper);
+  padding:clamp(18px,2.4vw,26px); margin:0 0 20px;
+}
+.card h3{margin-top:0}
+.two{display:grid; gap:clamp(18px,2.6vw,32px)}
+@media (min-width:880px){.two{grid-template-columns:1fr 1fr; align-items:start}}
+dl.spec{margin:0; border-top:1px solid var(--hairline)}
+dl.spec > div{display:flex; justify-content:space-between; gap:18px; border-bottom:1px solid var(--hairline); padding:11px 0}
+dl.spec dt{color:var(--slate); font-size:15px}
+dl.spec dd{margin:0; font-family:var(--mono); font-size:14px; text-align:right}
+
+/* -------------------------------------------------------------- cta/foot */
+.cta{border-top:3px solid var(--magenta); padding-block:clamp(32px,4vw,52px)}
+.cta h2{max-width:22ch}
+.cta__act{display:flex; flex-wrap:wrap; gap:12px; margin-top:22px}
+
+.foot{background:var(--paper); border-top:1px solid var(--hairline)}
+.foot .wrap{display:grid; gap:26px; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); padding-block:36px}
+.foot h4{font-family:var(--mono); font-size:12px; font-weight:500; letter-spacing:.16em; text-transform:uppercase; color:var(--slate); margin:0 0 10px}
+.foot a{display:block; color:var(--ink); text-decoration:none; margin-bottom:7px; font-size:15px}
+.foot a:hover{color:var(--magenta)}
+.foot p{margin:0 0 7px; font-size:15px}
+.foot__legal{grid-column:1/-1; border-top:1px solid var(--hairline); padding-top:18px; display:flex; flex-wrap:wrap; gap:10px 26px; font-size:13px; color:var(--slate)}
+
+@media (max-width:600px){ .btn{padding:15px 20px} .foot a{padding-block:11px; margin-bottom:0} }
+@media (prefers-reduced-motion:reduce){*{animation:none!important; transition:none!important}}
+
+/* ------------------------------------------------------------------ code */
+pre{font-family:var(--mono); font-size:13.5px; line-height:1.5; background:var(--paper); border:1px solid var(--hairline); padding:12px 14px; margin:10px 0 4px; overflow-x:auto; white-space:pre; -webkit-overflow-scrolling:touch}
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="wrap masthead__in">
+    <div>
+      <a class="masthead__home" href="/" aria-label="Parallax Aerial — home">
+        <img class="wm-dark" src="/brand/wordmark-oneline-dark.svg" alt="Parallax Aerial" width="378" height="47">
+        <img class="wm-light" src="/brand/wordmark-oneline-white.svg" alt="" aria-hidden="true" width="378" height="47">
+      </a>
+      <span class="eyebrow masthead__strap">GVC · CAA Authorised · £10m PL</span>
+    </div>
+    <div class="masthead__act">
+      <div class="theme" role="group" aria-label="Colour scheme">
+        <button type="button" data-theme-set="light" aria-pressed="true">Light</button>
+        <button type="button" data-theme-set="dark" aria-pressed="false">Dark</button>
+      </div>
+      <a class="masthead__tel" href="tel:+447415502186">+44 7415 502186</a>
+      <a class="btn btn--go" href="/#enquiry">Get a quote</a>
+    </div>
+  </div>
+</header>
+
+<nav class="wrap crumbs" aria-label="Breadcrumb">
+  <a href="/">Home</a> &rsaquo; <a href="/articles/">Articles</a> &rsaquo; <span>The altitude your drone reports</span>
+</nav>
+
+<main>
+
+<article>
+
+<section class="ledger">
+  <div class="wrap hero">
+    <p class="eyebrow">Field note &middot; Measurement &middot; 7 October 2026</p>
+    <h1>The altitude your drone reports is not the altitude it flew</h1>
+    <p class="stand">Three flights of the same site, from the same take-off spot, each at an
+      identical 40.00&nbsp;m above launch. Between the first morning and the next, the altitude
+      the drone wrote into its photos moved by 27.78&nbsp;metres. Nothing on the ground moved.
+      Here is where that number comes from, why it moves, and how to check your own drone in an
+      afternoon.</p>
+    <p class="byline">
+      <span>Andrew Abdul-Malek</span>
+      <span>GVC-qualified remote pilot</span>
+      <span>~7 min read</span>
+      <span>Measured 3–4 Aug 2026</span>
+    </p>
+
+    <div class="tiles">
+      <div class="tile">
+        <div class="tile__k">Height above launch</div>
+        <div class="tile__v">40.00 m</div>
+        <p class="tile__c">Median, on all three flights. The aircraft flew the height it was told to, every time.</p>
+      </div>
+      <div class="tile">
+        <div class="tile__k">Absolute altitude, 24 h later</div>
+        <div class="tile__v tile__v--bad">+27.78 m</div>
+        <p class="tile__c">Same aircraft, same mission, same take-off spot. Five minutes apart it had already moved 1.45 m.</p>
+      </div>
+      <div class="tile">
+        <div class="tile__k">Air pressure, Heathrow</div>
+        <div class="tile__v">−3 hPa</div>
+        <p class="tile__c">1012 to 1009 between the two mornings. Roughly 25 m of apparent climb, by the standard rule of thumb.</p>
+      </div>
+      <div class="tile">
+        <div class="tile__k">Change between visits</div>
+        <div class="tile__v">0.063 m</div>
+        <p class="tile__c">Median difference on bare ground across the same 24 hours, once the repeat is aligned to the first visit.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap body">
+
+<section>
+  <h2>Every drone photo carries two heights</h2>
+  <p class="lede">A DJI aircraft writes its position into every photo it takes. Alongside
+    latitude and longitude there are two altitudes, and they answer different questions.</p>
+  <ul class="list">
+    <li><strong>Relative altitude</strong> — how high the aircraft is above the point it took off
+      from. Zero on the ground, 40 at 40&nbsp;m up.</li>
+    <li><strong>Absolute altitude</strong> — how high it is above a fixed reference, meant to be
+      something like sea level. This is the one that looks like a level, and it is the one that
+      ends up in mapping software if nobody intervenes.</li>
+  </ul>
+  <p>I flew the same saved mission over a car park near Slough three times: twice on the morning
+    of 3 August, five minutes apart, and once more at the same time the following morning. Same
+    aircraft (a DJI Mini 3 Pro), same take-off spot, marked on the ground. These are the medians
+    across every photo on each flight, read straight out of the files:</p>
+
+  <div class="tbl-scroll">
+    <table>
+      <caption>Altitude tags, every frame of three flights · Ramblers Car Park</caption>
+      <thead>
+        <tr><th scope="col">Flight</th><th scope="col">Frames</th><th scope="col">Above launch</th><th scope="col">Absolute</th><th scope="col">Change in absolute</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>3 Aug, 06:38</td><td class="num">226</td><td class="num">40.00 m</td><td class="num">64.76 m</td><td class="num">—</td></tr>
+        <tr><td>3 Aug, 06:54</td><td class="num">227</td><td class="num">40.00 m</td><td class="num">66.21 m</td><td class="num">+1.45 m</td></tr>
+        <tr><td>4 Aug, 06:31</td><td class="num">228</td><td class="num">40.00 m</td><td class="num">92.54 m</td><td class="num hl">+27.78 m</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="tnote">Above-launch heights ranged 39.9–40.2 m within each flight. The aircraft held
+    its height above the ground to within a few centimetres on every pass.</p>
+  <p>So the drone flew the same height on all three flights. What changed was the number it gave
+    for that height.</p>
+</section>
+
+<section>
+  <h2>The absolute altitude is decided once, at take-off</h2>
+  <p>This is the part I didn't expect, and it makes the whole thing easier to understand.
+    Subtract the relative altitude from the absolute one, photo by photo, and you get
+    <strong>the same figure on every frame of a flight, to the centimetre</strong> — 226 photos,
+    one value. Across the three flights that value was:</p>
+  <div class="tbl-scroll">
+    <table>
+      <caption>What the aircraft decided the take-off spot's height was</caption>
+      <thead>
+        <tr><th scope="col">Flight</th><th scope="col">Absolute − relative</th><th scope="col">Spread across the flight</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>3 Aug, 06:38</td><td class="num">24.76 m</td><td class="num">0.00 m</td></tr>
+        <tr><td>3 Aug, 06:54</td><td class="num">26.21 m</td><td class="num">0.00 m</td></tr>
+        <tr><td>4 Aug, 06:31</td><td class="num hl">52.54 m</td><td class="num">0.00 m</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>In other words, the "absolute" altitude in the file isn't measured continuously during the
+    flight. It is the height above launch, plus one number that the aircraft settles on before it
+    takes off. That number is its estimate of how high the take-off spot is.</p>
+  <div class="note">
+    <p><strong>The same patch of tarmac was given three different heights: 24.76, 26.21 and
+      52.54&nbsp;m.</strong> At most one of those is right, and possibly none of them. Nothing in
+      the file tells you which.</p>
+  </div>
+</section>
+
+<section>
+  <h2>Why it moves: the weather</h2>
+  <p>Small drones measure height with a barometer, which senses air pressure. Near the ground,
+    pressure falls by about 1&nbsp;hectopascal (hPa) for every 8&nbsp;metres you climb. That makes
+    a barometer an excellent instrument for measuring change in height over a few minutes, which
+    is exactly what the relative altitude is.</p>
+  <p>It is a poor instrument for absolute height, because the weather moves the pressure too. If
+    the air pressure drops by 3&nbsp;hPa overnight as a weather system comes through, a barometer
+    sitting on the ground can't tell that apart from being lifted about 25&nbsp;metres.</p>
+  <p>I didn't log pressure on site, so I checked the nearest official record — the routine weather
+    reports from Heathrow, about 13&nbsp;km away:</p>
+  <div class="tbl-scroll">
+    <table>
+      <caption>Heathrow sea-level pressure (QNH) at the time of each flight</caption>
+      <thead>
+        <tr><th scope="col">Flight</th><th scope="col">Heathrow QNH</th><th scope="col">What that predicts</th><th scope="col">What the drone recorded</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>3 Aug, 06:38</td><td class="num">1012 hPa</td><td class="num">—</td><td class="num">—</td></tr>
+        <tr><td>3 Aug, 06:54</td><td class="num">1012 hPa</td><td class="num">too small to resolve</td><td class="num">+1.45 m</td></tr>
+        <tr><td>4 Aug, 06:31</td><td class="num">1009 hPa</td><td class="num">≈ +25 m (17–34 m)</td><td class="num hl">+27.78 m</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>The pressure fell 3&nbsp;hPa between the two mornings, which predicts roughly 25&nbsp;m of
+    apparent climb. The drone recorded 27.78&nbsp;m. The range in brackets comes from the reports
+    being rounded to whole hectopascals, so the true fall could be anywhere from 2 to 4.</p>
+  <p class="tnote">That is a strong match, but it is not proof. The pressure was measured 13&nbsp;km
+    away, not on the launch spot. The 1.45&nbsp;m shift within one morning is a change of about
+    0.2&nbsp;hPa, which those reports are too coarse to show. And I can't rule out some
+    contribution from satellite positioning, which is weakest in exactly this direction —
+    vertical.</p>
+</section>
+
+<section>
+  <h2>Why it matters to anyone reading a drone survey</h2>
+  <p>Mapping software builds its 3D model from the photos and the positions written into them. If
+    the heights in those positions are off by 27&nbsp;metres, so is the whole model. The model
+    still looks perfect. Every slab, kerb and stockpile is in the right place relative to every
+    other one. It just sits at the wrong height above sea level, and nothing on screen gives that
+    away.</p>
+  <p>That is why "the stockpile is at 42.6&nbsp;m above Ordnance Datum" from a drone without RTK
+    is a sentence to be wary of. The figure may be printed to a millimetre, but the reference
+    behind it was set by that morning's weather.</p>
+  <div class="card">
+    <h3>Ask this whenever a drone survey quotes you a level</h3>
+    <p style="margin-bottom:0"><strong>"What is the height referenced to, and how was it
+      checked?"</strong> A good answer names ground control points surveyed in independently, or an
+      RTK correction service, and gives an accuracy statement that comes with the file. If the
+      answer is the drone's GPS, the level isn't really a level.</p>
+  </div>
+</section>
+
+<section>
+  <h2>What fixing the take-off spot buys you</h2>
+  <p>The relative altitude is genuinely reliable over a single flight, and it's what the mission
+    is flown on. But it is measured from wherever the aircraft took off. Launch from a spot
+    2&nbsp;m higher next month and the whole flight is 2&nbsp;m higher above the site. Each photo
+    then covers slightly more ground at slightly lower detail, and the two visits are no longer
+    like for like.</p>
+  <p>So every site I fly has a recorded take-off point, and every visit launches from it. That is
+    why the table above shows 40.00&nbsp;m on all three flights. In the same three flights the
+    flight lines repeated to within 2&nbsp;cm of spacing.</p>
+  <p>Fixing the take-off spot solves the height above ground. It does nothing for the absolute
+    reference, which still moves with the weather. For that, each repeat visit is aligned to the
+    first visit's 3D model before anything is compared: in effect the later model is told
+    "you are the same ground as the first one", and the shift from the weather is removed. After
+    that, across the same 24 hours that moved the absolute altitude by 27.78&nbsp;m, the
+    <strong>median difference on bare ground was 0.063&nbsp;m</strong>, and 90% of it agreed within
+    0.237&nbsp;m. The full method and the results that went badly are in the
+    <a href="/articles/how-accurate-is-a-sub-250g-drone">accuracy study</a>.</p>
+  <p class="tnote">Alignment doesn't remove everything. On hard standing a residual whole-flight
+    offset of about 0.14&nbsp;m was left across those two dates. A correction measured on surfaces
+    known not to have moved brings that down to 12–14&nbsp;cm of tested error on this site, against
+    18–36&nbsp;cm without it. It needs at least two such surfaces on site, and it is not yet part
+    of the standard pack.</p>
+</section>
+
+<section>
+  <h2>The honest boundary</h2>
+  <div class="two">
+    <div>
+      <h3>A real measurement</h3>
+      <ul class="list">
+        <li>How much a surface changed between visits, relative to the first one</li>
+        <li>Where things are relative to each other on the same flight</li>
+        <li>Height above the take-off point during the flight itself</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Not a measurement</h3>
+      <ul class="list">
+        <li>Levels above Ordnance Datum from a drone without RTK</li>
+        <li>Anything a contractor will set out or build to</li>
+        <li>A single absolute height compared across two different days</li>
+      </ul>
+    </div>
+  </div>
+  <p>RTK is a different job, not a better version of this one. An RTK aircraft corrects its
+    position live against a reference station and gets its height to within centimetres. Pair it
+    with surveyed ground control and the accuracy statement a surveyor puts their name to, and
+    you get real levels. If the job needs levels, buy that. What I do sits underneath a signed
+    survey, as a monthly record of change, and doesn't replace one.</p>
+</section>
+
+<section>
+  <h2>Check it on your own drone in an afternoon</h2>
+  <p>You don't need to take my word for any of this. If you have a DJI drone, or photos from one:</p>
+  <ul class="list">
+    <li><strong>Take off from a marked spot</strong>, hover, take a photo, and land. Do it again an
+      hour or a day later from the same mark. A pair of old survey flights from the same site will
+      do just as well.</li>
+    <li><strong>Read the two heights out of each photo.</strong> The free tool ExifTool will show
+      them:
+      <pre><code>exiftool -n -AbsoluteAltitude -RelativeAltitude DJI_0001.JPG</code></pre></li>
+    <li><strong>Subtract one from the other</strong> on each flight, and compare the results
+      between flights.</li>
+    <li><strong>Look up the pressure</strong> for the nearest airfield at both times. Airport
+      weather reports (METARs) are archived publicly, and the pressure is the figure after the
+      "Q", in hPa.</li>
+  </ul>
+  <p>If your drone behaves like mine, the gap between the two flights will follow the pressure,
+    at about 8&nbsp;m per hPa.</p>
+  <p class="tnote">How each model sets its absolute altitude depends on the aircraft and its
+    firmware, and some lean more on satellite positioning than on the barometer. Everything above
+    was measured on a Mini 3 Pro. Don't assume another model does the same thing; this check
+    is how you find out.</p>
+</section>
+
+<section>
+  <h2>Limits, stated plainly</h2>
+  <div class="card">
+    <ul class="list" style="margin-bottom:0">
+      <li><strong>One aircraft, one site, three flights,</strong> over two dry, calm summer
+        mornings.</li>
+      <li><strong>Pressure came from Heathrow, about 13&nbsp;km away,</strong> rounded to whole hPa.
+        It is consistent with the measured shift. It does not prove that pressure was the only
+        cause.</li>
+      <li><strong>I don't know the true height of the take-off spot above Ordnance Datum,</strong>
+        so I can't say which of the three recorded figures, if any, was closest. The point stands
+        either way: they can't all be right.</li>
+      <li><strong>The altitude tags were read from the original files</strong> with no processing
+        in between. Anyone with the photos would get the same figures.</li>
+    </ul>
+  </div>
+  <p class="tnote">Figures last updated 7 October 2026.</p>
+</section>
+
+</div>
+
+</article>
+
+<section class="cta">
+  <div class="wrap">
+    <p class="eyebrow">The point of all this</p>
+    <h2>A record you can put in a pack and defend.</h2>
+    <p class="read">Monthly construction progress monitoring across Berkshire, Bucks, the M4
+      corridor and Greater London — the same mission flown every visit, delivered as an
+      orthomosaic, labelled stills and a month-to-month comparison, on your desk by the third
+      working day. With the boundary of what it measures stated up front, as above.</p>
+    <div class="cta__act">
+      <a class="btn btn--go" href="/#enquiry">Get a quote</a>
+      <a class="btn" href="/">How the progress pack works</a>
+      <a class="btn" href="/capability-statement">Capability statement</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div>
+      <h4>Contact</h4>
+      <a href="tel:+447415502186">+44 7415 502186</a>
+      <a href="mailto:info@parallaxaerial.uk">info@parallaxaerial.uk</a>
+      <p>Slough SL1, Berkshire</p>
+    </div>
+    <div>
+      <h4>Credentials</h4>
+      <p>GVC qualified</p>
+      <p>CAA authorised, commercial</p>
+      <p>£10m public liability</p>
+      <p>EC 785/2004 compliant</p>
+    </div>
+    <div>
+      <h4>Elsewhere</h4>
+      <a href="/">Progress monitoring</a>
+      <a href="/articles/">Articles</a>
+      <a href="/film">Brand film &amp; FPV</a>
+      <a href="https://www.youtube.com/@ParallaxAerial">YouTube</a>
+      <a href="https://www.linkedin.com/company/shining-star-drones">LinkedIn</a>
+      <a href="/capability-statement">Capability statement</a>
+      <a href="/privacy">Privacy notice</a>
+    </div>
+    <div class="foot__legal">
+      <span>&copy; 2026 Andrew Abdul-Malek trading as Parallax Aerial &middot; Slough SL1, Berkshire</span>
+      <span>Berkshire · Bucks · Slough–Maidenhead–M4 · Surrey · Herts · Greater London</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var root = document.documentElement,
+      meta = document.querySelector('meta[name="theme-color"]'),
+      btns = document.querySelectorAll('[data-theme-set]');
+
+  function apply(theme) {
+    if (theme === 'dark') root.setAttribute('data-theme', 'dark');
+    else root.removeAttribute('data-theme');
+    if (meta) meta.setAttribute('content', theme === 'dark' ? '#16161A' : '#F7F7F4');
+    btns.forEach(function (b) {
+      b.setAttribute('aria-pressed', String(b.dataset.themeSet === theme));
+    });
+    try { localStorage.setItem('ssd-theme', theme); } catch (e) {}
+  }
+
+  btns.forEach(function (b) {
+    b.addEventListener('click', function () { apply(b.dataset.themeSet); });
+  });
+
+  apply(root.getAttribute('data-theme') === 'dark' ? 'dark' : 'light');
+})();
+</script>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "5369f0ea5eda46acad301b6c079289b1"}'></script>
+<!-- Microsoft Clarity (cookie-free mode: no consent granted, so no cookies set) -->
+<script>
+(function(c,l,a,r,i,t,y){
+    c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+    t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+    y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+})(window, document, "clarity", "script", "y7du1nai9j");
+</script>
+<!-- End Microsoft Clarity -->
+
+</body>
+</html>
