@@ -5,7 +5,8 @@ Run from the repo root:
 
     python3 scripts/make_og_cards.py
 
-Writes media/og-default.jpg, media/og-accuracy-study.jpg and media/og-altitude.jpg.
+Writes media/og-default.jpg, media/og-accuracy-study.jpg, media/og-altitude.jpg and
+media/og-under-survey.jpg.
 
 Why a script and not a one-off export: the cards carry live facts (the accuracy
 figures, the rate band, the delivery promise). When one of those changes on the
@@ -172,6 +173,18 @@ if __name__ == "__main__":
          "The absolute altitude in the photos moved 27.78 m in 24 hours."],
         [("40.00 m", "ABOVE LAUNCH, BOTH DAYS"), ("+27.78 m", "ABSOLUTE, 24 H LATER"),
          ("−3 hPa", "HEATHROW PRESSURE")],
+        h_size=56, h_gap=60,
+    )
+
+    # Figures must match the article. See articles/under-a-signed-survey.html
+    card(
+        f, ortho, root + "/media/og-under-survey.jpg",
+        "FIELD NOTE  ·  POSITION",
+        ["A drone record sits under a", "signed survey, not in place of one"],
+        ["A surveyor said flying the drone is the easy part, and that proving",
+         "accuracy is the surveying profession's job. He is right."],
+        [("0.24 m", "REPEATABILITY, NOT ACCURACY"), ("0", "INDEPENDENT CHECKPOINTS"),
+         ("No levels", "SOLD, EVER")],
         h_size=56, h_gap=60,
     )
 

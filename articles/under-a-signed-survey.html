@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Drone progress records sit under a signed survey, not in place of one | Parallax Aerial</title>
+<meta name="description" content="A registered surveyor told me flying the drone is the easy part, and that proving accuracy is the surveyor's job. He is right. What a GPS-only drone record measures, what only a signed survey can give you, and how the two fit on one site.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://parallaxaerial.uk/articles/under-a-signed-survey">
+
+<meta property="og:title" content="A drone record sits under a signed survey, not in place of one">
+<meta property="og:description" content="A surveyor said flying the drone is the easy part, and that proving accuracy is the surveying profession's job. He is right. What each one is for, and how they fit on one site.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://parallaxaerial.uk/articles/under-a-signed-survey">
+<meta property="og:image" content="https://parallaxaerial.uk/media/og-under-survey.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="The Ramblers Car Park orthomosaic, captioned: a drone record sits under a signed survey, not in place of one. 0.24 m repeatability, zero independent checkpoints so far, no levels sold.">
+<meta property="og:site_name" content="Parallax Aerial">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="A drone record sits under a signed survey, not in place of one">
+<meta name="twitter:description" content="A surveyor said flying the drone is the easy part. He is right. What a GPS-only drone record measures, and what only a signed survey gives you.">
+<meta name="twitter:image" content="https://parallaxaerial.uk/media/og-under-survey.jpg">
+
+<link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48">
+<link rel="icon" type="image/png" href="/favicon-32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/icon-192.png" sizes="192x192">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="theme-color" content="#F7F7F4">
+
+<script>
+/* Applied before first paint so a returning dark-mode visitor never sees a
+   light flash. Shares the ssd-theme key with the home page. */
+(function () {
+  try {
+    if (localStorage.getItem('ssd-theme') === 'dark') {
+      document.documentElement.setAttribute('data-theme', 'dark');
+    }
+  } catch (e) {}
+})();
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Public+Sans:wght@300;400;500&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "A drone record sits under a signed survey, not in place of one",
+  "description": "A registered surveyor pointed out that flying the drone is the easy part, and that knowing, proving and taking responsibility for accuracy is the surveying profession's job. Why that is right, the difference between accuracy and repeatability, what a GPS-only drone record measures, and how it fits underneath a signed survey on the same site.",
+  "datePublished": "2026-10-14",
+  "dateModified": "2026-10-14",
+  "inLanguage": "en-GB",
+  "image": "https://parallaxaerial.uk/media/og-under-survey.jpg",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://parallaxaerial.uk/articles/under-a-signed-survey"
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Andrew Abdul-Malek",
+    "jobTitle": "GVC-qualified remote pilot",
+    "worksFor": {"@type": "Organization", "name": "Parallax Aerial"}
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Parallax Aerial",
+    "url": "https://parallaxaerial.uk"
+  },
+  "about": ["Drone survey accuracy", "Repeatability", "Land surveying", "Construction progress monitoring"]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://parallaxaerial.uk/"},
+    {"@type": "ListItem", "position": 2, "name": "Articles", "item": "https://parallaxaerial.uk/articles/"},
+    {"@type": "ListItem", "position": 3, "name": "A drone record sits under a signed survey, not in place of one"}
+  ]
+}
+</script>
+
+<style>
+/* Same tokens as the home page, but only the rules this page uses. The site has
+   no build step, so each page carries its own sheet — the pattern film.html and
+   capability-statement.html already follow. */
+:root{
+  --chart:#F7F7F4; --paper:#FFFFFF; --ink:#16161A; --slate:#5C5C63;
+  --hairline:#D6D6CF; --magenta:#9E0F4F; --airway:#5B6BE0; --on-accent:#FFFFFF;
+  --sans:"Public Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+  --head:"Space Grotesk",-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  --wide:1340px; --gut:clamp(18px,4vw,44px); --ledger:rgba(22,22,26,.055);
+
+  /* Chart series. NOT the brand --magenta/--airway pair: that blue fails the
+     chroma floor and the dark-mode lightness band. These two were snapped to
+     the nearest passing step and validated in both modes — all six checks pass
+     (CVD dE 13.3 protan light / 11.2 protan dark, both well clear of the 8
+     floor). Change one and re-validate the pair; do not eyeball it. */
+  --s1:#9E0F4F;   /* 04 Aug — the cross-date result, the headline series */
+  --s2:#5B6BE0;   /* 03 Aug — the same-morning pair */
+  --grid:rgba(14,21,25,.10);
+}
+:root[data-theme="dark"]{
+  --chart:#16161A; --paper:#1E1E24; --ink:#F7F7F4; --slate:#9B9BA6;
+  --hairline:#32323A; --magenta:#E0447F; --airway:#8E9BFF; --on-accent:#16161A;
+  --ledger:rgba(247,247,244,.05);
+  --s1:#E0447F; --s2:#8E9BFF; --grid:rgba(247,247,244,.12);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; background:var(--chart); color:var(--ink); font-family:var(--sans);
+  font-weight:400; font-size:17px; line-height:1.65; font-variant-numeric:tabular-nums;
+  -webkit-font-smoothing:antialiased; overflow-x:hidden;
+}
+img,svg{max-width:100%; display:block}
+a{color:var(--magenta); text-underline-offset:3px}
+:focus-visible{outline:2px solid var(--airway); outline-offset:2px}
+.wrap{max-width:var(--wide); margin:0 auto; padding-inline:var(--gut)}
+.read{max-width:68ch}
+
+.eyebrow{
+  font-family:var(--mono); font-size:11px; font-weight:500; letter-spacing:.16em;
+  text-transform:uppercase; color:var(--slate); margin:0;
+}
+h1{
+  font-family:var(--head); font-weight:600; letter-spacing:-.025em; line-height:1.02;
+  font-size:clamp(36px,5.6vw,66px); margin:16px 0 0; max-width:19ch;
+}
+h2{
+  font-family:var(--head); font-weight:600; letter-spacing:-.015em; line-height:1.1;
+  font-size:clamp(24px,2.8vw,34px); margin:0 0 12px; max-width:26ch;
+}
+h3{
+  font-family:var(--head); font-weight:500; letter-spacing:-.01em; line-height:1.2;
+  font-size:clamp(18px,1.7vw,21px); margin:0 0 8px;
+}
+p{margin:0 0 18px; max-width:68ch}
+strong{font-weight:500}
+
+/* ------------------------------------------------------------- masthead */
+.masthead{border-bottom:1px solid var(--hairline); background:var(--paper)}
+.masthead__in{display:flex; align-items:center; justify-content:space-between; gap:20px; flex-wrap:wrap; padding-block:16px}
+.masthead__home{display:inline-block; min-height:44px}
+.masthead__home img{height:26px; width:auto}
+.wm-light{display:none}
+:root[data-theme="dark"] .wm-dark{display:none}
+:root[data-theme="dark"] .wm-light{display:block}
+.masthead__strap{display:block; margin-top:5px}
+.masthead__act{display:flex; align-items:center; gap:14px; flex-wrap:wrap}
+.masthead__tel{display:inline-flex; align-items:center; min-height:44px; color:var(--ink); text-decoration:none; font-family:var(--mono); font-size:14px}
+.theme{display:inline-flex; border:1px solid var(--hairline); border-radius:2px; overflow:hidden}
+.theme button{
+  font:500 12px/1 var(--mono); letter-spacing:.1em; text-transform:uppercase;
+  padding:9px 11px; background:transparent; color:var(--slate); border:0; cursor:pointer;
+}
+.theme button[aria-pressed="true"]{background:var(--ink); color:var(--chart)}
+.btn{
+  display:inline-block; font-family:var(--mono); font-size:13px; font-weight:500;
+  letter-spacing:.08em; text-transform:uppercase; text-decoration:none;
+  padding:13px 18px; border:1px solid var(--ink); color:var(--ink); border-radius:2px;
+}
+.btn--go{background:var(--magenta); border-color:var(--magenta); color:var(--on-accent)}
+
+/* ---------------------------------------------------------------- crumbs */
+.crumbs{font-family:var(--mono); font-size:12px; letter-spacing:.06em; color:var(--slate); padding-block:14px 0}
+.crumbs a{color:var(--slate); text-decoration:none}
+.crumbs a:hover{color:var(--magenta)}
+
+/* ------------------------------------------------------------------ hero */
+.ledger{background:var(--ledger)}
+.hero{padding-block:clamp(26px,4vw,48px) clamp(30px,4vw,52px)}
+.stand{font-size:clamp(18px,1.9vw,22px); font-weight:300; line-height:1.5; margin-top:20px; max-width:58ch}
+.byline{
+  display:flex; flex-wrap:wrap; gap:8px 20px; margin-top:26px; padding-top:16px;
+  border-top:1px solid var(--hairline); font-family:var(--mono); font-size:12px;
+  letter-spacing:.06em; color:var(--slate); text-transform:uppercase;
+}
+
+/* ------------------------------------------------------------ stat tiles */
+/* Four headline numbers. Deliberately includes one that is bad news — the point
+   of the piece is that the bad ones are published too. */
+.tiles{
+  display:grid; grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+  border-top:1px solid var(--ink); margin-top:clamp(26px,3vw,40px);
+}
+.tile{padding:18px 20px 20px 0; border-bottom:1px solid var(--hairline)}
+@media (min-width:820px){.tile+.tile{padding-left:20px; border-left:1px solid var(--hairline)}}
+.tile__k{font-family:var(--mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--slate)}
+.tile__v{font-family:var(--head); font-weight:600; font-size:clamp(28px,3vw,38px); line-height:1.05; margin-top:8px; letter-spacing:-.02em}
+.tile__v--bad{color:var(--magenta)}
+.tile__c{font-size:14px; color:var(--slate); margin-top:6px; line-height:1.45}
+
+/* ----------------------------------------------------------------- body */
+/* Narrower than the site's 1340px wrap. This page is one column of prose, and a
+   68ch measure sitting at the left edge of a 1340px field reads as a mistake. */
+.body{max-width:1080px; padding-block:clamp(30px,4vw,54px)}
+.body section{padding-block:clamp(22px,3vw,38px)}
+.body section+section{border-top:1px solid var(--hairline)}
+.lede{font-size:19px; font-weight:300}
+ul.list{margin:0 0 18px; padding-left:20px; max-width:68ch}
+ul.list li{margin-bottom:9px}
+ul.list li::marker{color:var(--magenta)}
+
+/* ---------------------------------------------------------------- tables */
+.tbl-scroll{overflow-x:auto; margin:0 0 10px; -webkit-overflow-scrolling:touch}
+table{border-collapse:collapse; width:100%; min-width:520px; font-size:15px}
+caption{
+  text-align:left; font-family:var(--mono); font-size:11px; letter-spacing:.12em;
+  text-transform:uppercase; color:var(--slate); padding-bottom:10px;
+}
+th,td{text-align:right; padding:10px 12px; border-bottom:1px solid var(--hairline); white-space:nowrap}
+th:first-child,td:first-child{text-align:left; white-space:normal}
+thead th{
+  font-family:var(--mono); font-size:11px; font-weight:500; letter-spacing:.1em;
+  text-transform:uppercase; color:var(--slate); border-bottom:1px solid var(--ink);
+}
+tbody tr:last-child td{border-bottom:1px solid var(--ink)}
+td.num{font-family:var(--mono)}
+.hl{color:var(--magenta); font-weight:500}
+.tnote{font-size:14px; color:var(--slate); margin-top:10px; max-width:68ch}
+
+/* ---------------------------------------------------------------- charts */
+.fig{margin:0 0 12px; padding:clamp(16px,2vw,22px); border:1px solid var(--hairline); background:var(--paper)}
+.fig__t{font-family:var(--head); font-weight:500; font-size:18px; line-height:1.25; margin:0 0 4px}
+.fig__s{font-size:14px; color:var(--slate); margin:0 0 16px; max-width:66ch}
+/* The chart scrolls sideways below ~600px rather than shrinking its labels into
+   illegibility — same treatment as the tables. */
+.fig__plot{overflow-x:auto; -webkit-overflow-scrolling:touch}
+/* Capped so the bars keep the proportions they were drawn at; a chart stretched
+   to 1000px turns 46px bars into slabs. */
+.fig__plot svg{min-width:560px; width:100%; max-width:780px; height:auto; margin-inline:auto}
+.legend{display:flex; flex-wrap:wrap; gap:8px 20px; margin-top:14px; font-size:13px; color:var(--slate)}
+.legend span{display:inline-flex; align-items:center; gap:8px}
+.legend i{width:12px; height:12px; border-radius:2px; display:inline-block}
+/* Chart text wears text tokens, never the series colour. */
+.c-ax{fill:var(--slate); font-family:"IBM Plex Mono",monospace; font-size:12px}
+.c-lab{fill:var(--ink); font-family:"IBM Plex Mono",monospace; font-size:12.5px}
+.c-lab--mut{fill:var(--slate); font-family:"IBM Plex Mono",monospace; font-size:11.5px}
+.c-grid{stroke:var(--grid); stroke-width:1}
+.c-base{stroke:var(--hairline); stroke-width:1.5}
+.s1{fill:var(--s1)} .s2{fill:var(--s2)} .sm{fill:var(--slate); opacity:.55}
+
+/* -------------------------------------------------------------- callouts */
+.note{
+  border-left:3px solid var(--magenta); padding:2px 0 2px 18px; margin:0 0 20px; max-width:68ch;
+}
+.note p:last-child{margin-bottom:0}
+.card{
+  border:1px solid var(--hairline); background:var(--paper);
+  padding:clamp(18px,2.4vw,26px); margin:0 0 20px;
+}
+.card h3{margin-top:0}
+.two{display:grid; gap:clamp(18px,2.6vw,32px)}
+@media (min-width:880px){.two{grid-template-columns:1fr 1fr; align-items:start}}
+dl.spec{margin:0; border-top:1px solid var(--hairline)}
+dl.spec > div{display:flex; justify-content:space-between; gap:18px; border-bottom:1px solid var(--hairline); padding:11px 0}
+dl.spec dt{color:var(--slate); font-size:15px}
+dl.spec dd{margin:0; font-family:var(--mono); font-size:14px; text-align:right}
+
+/* -------------------------------------------------------------- cta/foot */
+.cta{border-top:3px solid var(--magenta); padding-block:clamp(32px,4vw,52px)}
+.cta h2{max-width:22ch}
+.cta__act{display:flex; flex-wrap:wrap; gap:12px; margin-top:22px}
+
+.foot{background:var(--paper); border-top:1px solid var(--hairline)}
+.foot .wrap{display:grid; gap:26px; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); padding-block:36px}
+.foot h4{font-family:var(--mono); font-size:12px; font-weight:500; letter-spacing:.16em; text-transform:uppercase; color:var(--slate); margin:0 0 10px}
+.foot a{display:block; color:var(--ink); text-decoration:none; margin-bottom:7px; font-size:15px}
+.foot a:hover{color:var(--magenta)}
+.foot p{margin:0 0 7px; font-size:15px}
+.foot__legal{grid-column:1/-1; border-top:1px solid var(--hairline); padding-top:18px; display:flex; flex-wrap:wrap; gap:10px 26px; font-size:13px; color:var(--slate)}
+
+@media (max-width:600px){ .btn{padding:15px 20px} .foot a{padding-block:11px; margin-bottom:0} }
+@media (prefers-reduced-motion:reduce){*{animation:none!important; transition:none!important}}
+
+/* ------------------------------------------------------------------ code */
+pre{font-family:var(--mono); font-size:13.5px; line-height:1.5; background:var(--paper); border:1px solid var(--hairline); padding:12px 14px; margin:10px 0 4px; overflow-x:auto; white-space:pre; -webkit-overflow-scrolling:touch}
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="wrap masthead__in">
+    <div>
+      <a class="masthead__home" href="/" aria-label="Parallax Aerial — home">
+        <img class="wm-dark" src="/brand/wordmark-oneline-dark.svg" alt="Parallax Aerial" width="378" height="47">
+        <img class="wm-light" src="/brand/wordmark-oneline-white.svg" alt="" aria-hidden="true" width="378" height="47">
+      </a>
+      <span class="eyebrow masthead__strap">GVC · CAA Authorised · £10m PL</span>
+    </div>
+    <div class="masthead__act">
+      <div class="theme" role="group" aria-label="Colour scheme">
+        <button type="button" data-theme-set="light" aria-pressed="true">Light</button>
+        <button type="button" data-theme-set="dark" aria-pressed="false">Dark</button>
+      </div>
+      <a class="masthead__tel" href="tel:+447415502186">+44 7415 502186</a>
+      <a class="btn btn--go" href="/#enquiry">Get a quote</a>
+    </div>
+  </div>
+</header>
+
+<nav class="wrap crumbs" aria-label="Breadcrumb">
+  <a href="/">Home</a> &rsaquo; <a href="/articles/">Articles</a> &rsaquo; <span>Under a signed survey</span>
+</nav>
+
+<main>
+
+<article>
+
+<section class="ledger">
+  <div class="wrap hero">
+    <p class="eyebrow">Field note &middot; Position &middot; 14 October 2026</p>
+    <h1>A drone record sits under a signed survey, not in place of one</h1>
+    <p class="stand">A registered surveyor commented under one of my posts that flying the drone
+      is the easy part, and that knowing, proving and taking responsibility for accuracy is
+      what the surveying profession is for. He is right. He also caught a real mistake on this
+      website. Here is what I sell, what I don't, and how the two fit on the same site.</p>
+    <p class="byline">
+      <span>Andrew Abdul-Malek</span>
+      <span>GVC-qualified remote pilot</span>
+      <span>~6 min read</span>
+    </p>
+
+    <div class="tiles">
+      <div class="tile">
+        <div class="tile__k">Repeatability, bare ground</div>
+        <div class="tile__v">0.24 m</div>
+        <p class="tile__c">90% of hard ground agreed within this between two visits 24 hours apart. Agreement with itself, not with a survey.</p>
+      </div>
+      <div class="tile">
+        <div class="tile__k">Independent checkpoints</div>
+        <div class="tile__v tile__v--bad">0</div>
+        <p class="tile__c">Surveyed marks held back from processing and checked afterwards. The study that would measure accuracy hasn't been run yet.</p>
+      </div>
+      <div class="tile">
+        <div class="tile__k">Absolute altitude, 24 h</div>
+        <div class="tile__v tile__v--bad">+27.78 m</div>
+        <p class="tile__c">How far the drone's own height reference moved overnight. Why I don't sell levels.</p>
+      </div>
+      <div class="tile">
+        <div class="tile__k">Plan area, small object</div>
+        <div class="tile__v">within 4%</div>
+        <p class="tile__c">A tape-measured box, read off the map. Its height under-read and its volume over-read 2.7&times;.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap body">
+
+<section>
+  <h2>The objection, and why I agree with it</h2>
+  <p class="lede">In August I posted a difference map: the same site flown twice, a day apart,
+    with nothing moved in between, so everything left over was error. Most of the replies were
+    from surveyors. The sharpest was from a registered surveyor with a mining endorsement.</p>
+  <p>His point was that ground sample distance, RTK and a dense point cloud don't prove
+    accuracy. Accuracy is proven with independent control, check points, quality checks and
+    statistics, and in his world those datasets feed volumes, reconciliations and statutory
+    plans. Then:</p>
+  <div class="note">
+    <p><strong>"Flying the drone is the easy part. Knowing, proving and taking responsibility for
+      the accuracy of the resulting survey is where the surveying profession comes in."</strong></p>
+  </div>
+  <p>I could have argued with that. I didn't, because there was nothing to argue with. It
+    describes the line I already draw around my own work: no RTK, no certified levels, no
+    setting out, no audited stock figures. What I fly is a record of change, and a record of
+    change belongs underneath a signed survey. It doesn't replace one.</p>
+  <p>His comment also caught a real error. This website was calling one of my numbers an
+    "accuracy statement", and it wasn't one.</p>
+</section>
+
+<section>
+  <h2>Accuracy and repeatability are different numbers</h2>
+  <p>The figure I publish, 90% of bare ground within 0.24&nbsp;m, comes from flying the same
+    site twice and comparing the two results. That measures <strong>repeatability</strong>:
+    how well the method agrees with itself from one visit to the next.</p>
+  <p><strong>Accuracy</strong> is agreement with the real ground, in a coordinate system other
+    people use. You can only measure it against marks that were surveyed independently and
+    held back from processing, so the software never had a chance to fit to them. I haven't
+    run that study yet.</p>
+  <div class="note">
+    <p>Two flights can agree with each other to five centimetres and both sit forty
+      centimetres off the true ground. Repeatability can't see that. Only independent
+      checkpoints can.</p>
+  </div>
+  <p>So the number is now labelled repeatability everywhere it appears: on this site, in the
+    sample pack and in the documents I hand over. It's still the right number for what I sell,
+    which is whether a site changed between visits. "Accuracy" was the wrong word for it.</p>
+  <p>For scale, HELIX Innovations, who fly with surveyed ground control, replied in the same
+    thread. On a construction site flown monthly for over a year, with the same control and
+    the same method, their flights differed by up to 100&nbsp;mm. They kindly agreed to be
+    quoted. Their figure and mine are different statistics on different sites, so don't read
+    them as a head-to-head. But it shows what ground control buys, and that even controlled
+    repeat flights don't land in exactly the same place.</p>
+</section>
+
+<section>
+  <h2>What each one is for</h2>
+  <div class="two">
+    <div class="card">
+      <h3>A signed survey</h3>
+      <ul class="list" style="margin-bottom:0">
+        <li>Control tied to the national grid and to Ordnance Datum</li>
+        <li>Levels a contractor can set out and build to</li>
+        <li>Volumes of record: valuations, reconciliations, year-end stock, statutory plans</li>
+        <li>A stated uncertainty, checked against independent marks</li>
+        <li>A professional who puts their name, and their indemnity, behind it</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>My monthly record</h3>
+      <ul class="list" style="margin-bottom:0">
+        <li>The same saved mission, flown from the same marked take-off spot every visit</li>
+        <li>Each visit aligned to the first, so the months compare like for like</li>
+        <li>An orthomosaic: where things are, and their size in plan</li>
+        <li>What changed since the first visit, measured relative to it</li>
+        <li>Labelled stills, on your desk by the third working day</li>
+      </ul>
+    </div>
+  </div>
+  <p>The drone isn't what decides which column a job falls in. The question is whether
+    someone will rely on an absolute number, a level, a coordinate or a certified volume,
+    for money, for setting out, or in a dispute. If they will, that's a surveyor's job. My
+    drone's own idea of height moved
+    <a href="/articles/the-altitude-your-drone-reports">27.78&nbsp;m overnight</a> with the
+    weather. Alignment removes that between visits, but nothing I do turns it into a level.</p>
+</section>
+
+<section>
+  <h2>How the two fit on one site</h2>
+  <p>A survey is a precise snapshot taken at chosen moments, usually key stages or when a
+    number has to be certified. Between those moments there are weeks when nobody records
+    anything. A monthly record covers those weeks: the same view, flown the same way, showing
+    what moved.</p>
+  <ul class="list">
+    <li><strong>The survey sets the reference.</strong> Levels, control and certified quantities
+      come from the surveyor, and stay theirs.</li>
+    <li><strong>The record covers the months in between.</strong> What was built, cleared,
+      stockpiled or moved, seen in plan and compared with the first visit.</li>
+    <li><strong>The record says where to look.</strong> If a change matters, the surveyor goes
+      and measures it properly. Nobody prices a valuation off my map.</li>
+  </ul>
+  <p>The record also has a size limit, and you should know it before relying on it. On a
+    tape-measured 0.5 &times; 0.3 &times; 0.3&nbsp;m box, the plan area off the orthomosaic came
+    within 4%. The height off the elevation model read 0.20&nbsp;m against a true 0.30, and the
+    volume over-read 2.7&times;. Automated change detection, with nobody looking, picks things
+    up at about the size of a car and not below. The full numbers, including the results that
+    went badly, are in the <a href="/articles/how-accurate-is-a-sub-250g-drone">repeatability
+    study</a>.</p>
+</section>
+
+<section>
+  <h2>Four questions for any drone operator</h2>
+  <div class="card">
+    <ul class="list" style="margin-bottom:0">
+      <li><strong>"Is that figure accuracy or repeatability?"</strong> If they can't say which,
+        it's probably neither. It's likely the pixel size.</li>
+      <li><strong>"Checked against what?"</strong> An accuracy figure needs surveyed marks that
+        were held back from processing. Ground control the software fitted to doesn't count as
+        a check.</li>
+      <li><strong>"Who signs it?"</strong> If you'll rely on a level or a volume, someone has to
+        put their name to it. That person is a surveyor.</li>
+      <li><strong>"What's the smallest change you can see?"</strong> A good answer comes with a
+        measured object behind it, not a camera specification.</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h2>Limits, stated plainly</h2>
+  <div class="card">
+    <ul class="list" style="margin-bottom:0">
+      <li><strong>The 0.24&nbsp;m figure is repeatability, measured on one site</strong> over
+        two dry summer mornings. It says nothing about agreement with Ordnance Survey
+        coordinates or heights.</li>
+      <li><strong>No independent checkpoint study has been run.</strong> Until it has, I don't
+        use the word accuracy about my own work.</li>
+      <li><strong>Doming is unquantified.</strong> Flights pointing straight down can bend a
+        shallow bowl or dome into the surface, worst in the middle of a site. Cross-hatched
+        lines help, but nobody has measured how much is left.</li>
+      <li><strong>The box test is one small object.</strong> The edge effects that inflate its
+        volume should matter less on a large stockpile. That hasn't been measured, so I don't
+        assume it.</li>
+    </ul>
+  </div>
+  <p class="tnote">Figures last updated 14 October 2026.</p>
+</section>
+
+</div>
+
+</article>
+
+
+<section class="cta">
+  <div class="wrap">
+    <p class="eyebrow">The point of all this</p>
+    <h2>A record you can put in a pack and defend.</h2>
+    <p class="read">Monthly construction progress monitoring across Berkshire, Bucks, the M4
+      corridor and Greater London — the same mission flown every visit, delivered as an
+      orthomosaic, labelled stills and a month-to-month comparison, on your desk by the third
+      working day. With the boundary of what it measures stated up front, as above.</p>
+    <div class="cta__act">
+      <a class="btn btn--go" href="/#enquiry">Get a quote</a>
+      <a class="btn" href="/">How the progress pack works</a>
+      <a class="btn" href="/capability-statement">Capability statement</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div>
+      <h4>Contact</h4>
+      <a href="tel:+447415502186">+44 7415 502186</a>
+      <a href="mailto:info@parallaxaerial.uk">info@parallaxaerial.uk</a>
+      <p>Slough SL1, Berkshire</p>
+    </div>
+    <div>
+      <h4>Credentials</h4>
+      <p>GVC qualified</p>
+      <p>CAA authorised, commercial</p>
+      <p>£10m public liability</p>
+      <p>EC 785/2004 compliant</p>
+    </div>
+    <div>
+      <h4>Elsewhere</h4>
+      <a href="/">Progress monitoring</a>
+      <a href="/articles/">Articles</a>
+      <a href="/film">Brand film &amp; FPV</a>
+      <a href="https://www.youtube.com/@ParallaxAerial">YouTube</a>
+      <a href="https://www.linkedin.com/company/shining-star-drones">LinkedIn</a>
+      <a href="/capability-statement">Capability statement</a>
+      <a href="/privacy">Privacy notice</a>
+    </div>
+    <div class="foot__legal">
+      <span>&copy; 2026 Andrew Abdul-Malek trading as Parallax Aerial &middot; Slough SL1, Berkshire</span>
+      <span>Berkshire · Bucks · Slough–Maidenhead–M4 · Surrey · Herts · Greater London</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var root = document.documentElement,
+      meta = document.querySelector('meta[name="theme-color"]'),
+      btns = document.querySelectorAll('[data-theme-set]');
+
+  function apply(theme) {
+    if (theme === 'dark') root.setAttribute('data-theme', 'dark');
+    else root.removeAttribute('data-theme');
+    if (meta) meta.setAttribute('content', theme === 'dark' ? '#16161A' : '#F7F7F4');
+    btns.forEach(function (b) {
+      b.setAttribute('aria-pressed', String(b.dataset.themeSet === theme));
+    });
+    try { localStorage.setItem('ssd-theme', theme); } catch (e) {}
+  }
+
+  btns.forEach(function (b) {
+    b.addEventListener('click', function () { apply(b.dataset.themeSet); });
+  });
+
+  apply(root.getAttribute('data-theme') === 'dark' ? 'dark' : 'light');
+})();
+</script>
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "5369f0ea5eda46acad301b6c079289b1"}'></script>
+<!-- Microsoft Clarity (cookie-free mode: no consent granted, so no cookies set) -->
+<script>
+(function(c,l,a,r,i,t,y){
+    c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+    t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+    y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+})(window, document, "clarity", "script", "y7du1nai9j");
+</script>
+<!-- End Microsoft Clarity -->
+
+</body>
+</html>
